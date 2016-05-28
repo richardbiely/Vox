@@ -650,7 +650,7 @@ void NPC::ImportEquippedItems(string inventoryFile)
 
 	if(importFile.is_open())
 	{
-		char * input = new char[128];
+		char input[128];
 		char * pEnd;
 
 		// Import the stored inventory items
@@ -830,8 +830,6 @@ void NPC::ImportEquippedItems(string inventoryFile)
 
 		// Import the number of coins
 		importFile.getline(input, 128, '|');
-
-		delete input;
 	}
 }
 

@@ -182,7 +182,7 @@ void QuestJournal::ImportQuestJournal(int playerNum)
 
 	if(importFile.is_open())
 	{
-		char * input = new char[128];
+		char input[128];
 		char * pEnd;
 
 		int numQuests;
@@ -232,7 +232,5 @@ void QuestJournal::ImportQuestJournal(int playerNum)
 		}
 
 		importFile.close();
-
-		delete input;
 	}
 }

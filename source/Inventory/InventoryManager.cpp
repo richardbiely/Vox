@@ -371,7 +371,7 @@ void InventoryManager::ImportInventory(string playerName)
 
     if(importFile.is_open())
     {
-        char * input = new char[128];
+        char input[128];
         char * pEnd;
 
 		// Import the stored inventory items
@@ -640,28 +640,26 @@ void InventoryManager::ImportInventory(string playerName)
 			}
 		}
 
-        // Import the number of coins
-        importFile.getline(input, 128, '|');
-        m_numCoins = strtol(input, &pEnd, 10);
+    // Import the number of coins
+    importFile.getline(input, 128, '|');
+    m_numCoins = strtol(input, &pEnd, 10);
 		m_coinsUpdated = true;
 
 		// Import the file signature
 		string tempString;
 		string signature;
 		importFile >> tempString >> signature;
-
-		delete input;
-
-        importFile.close();
-    }
+		
+    importFile.close();
+  }
 }
 
 bool InventoryManager::IsInventoryFull()
 {
-    for(int i = 0; i < MAX_NUM_INVENTORY_SLOTS; i++)
+  for(int i = 0; i < MAX_NUM_INVENTORY_SLOTS; i++)
+  {
+    if(m_ItemSlotMapping[i] == NULL)
     {
-        if(m_ItemSlotMapping[i] == NULL)
-        {
 			return false;
 		}
 	}

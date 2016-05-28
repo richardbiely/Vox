@@ -1299,7 +1299,7 @@ void CreateCharacter::UpdateCustomCounter(int incrementValue)
 	ifstream file;
 	// Open the counter file
 	file.open(counterFile, ios::in);
-	int counter;
+	int counter = 0;
 	if(file.is_open())
 	{		
 		file >> counter;
@@ -1762,10 +1762,12 @@ void CreateCharacter::CreatePressed()
 		//if(dirExists(characterBaseFolder) == false) // Check if we already have a character with the same name // TODO : dirExists
 		{
 #ifdef _WIN32
-			_mkdir(characterBaseFolder);
+			int ret = _mkdir(characterBaseFolder);
 #else
-			mkdir(characterBaseFolder, S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
+			int ret = mkdir(characterBaseFolder, S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
 #endif //_WIN32
+			if (ret != 0)
+				return;
 
 			char qbFilename[128];
 			char facesFilename[128];
@@ -2080,7 +2082,7 @@ void CreateCharacter::PresetButtonPressed(PresetButtonData* presetButtonData)
 	ifstream file;
 	// Open the counter file
 	file.open(counterFile, ios::in);
-	int counter;
+	int counter = 0;
 	if(file.is_open())
 	{		
 		file >> counter;

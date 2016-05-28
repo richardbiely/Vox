@@ -1067,7 +1067,7 @@ void Chunk::CreateMesh()
 	}
 
 	// Delete the merged array
-	delete l_merged;
+	delete [] l_merged;
 }
 
 void Chunk::CompleteMesh()

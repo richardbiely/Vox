@@ -214,9 +214,9 @@ void InstanceManager::SetupGLBuffers(InstanceParent *pInstanceParent)
 	glEnableVertexAttribArray(in_color);
 	glVertexAttribPointer(in_color, 4, GL_FLOAT, 0, 0, 0);
 
-	delete vertices;
-	delete normals;
-	delete colours;
+	delete [] vertices;
+	delete [] normals;
+	delete [] colours;
 }
 
 // Creation
@@ -418,7 +418,7 @@ void InstanceManager::Render()
 			}
 			glBufferData(GL_ARRAY_BUFFER, sizeof(float)*16*numInstanceObjectsRender, newMatrices, GL_STATIC_READ);
 
-			delete newMatrices;
+			delete [] newMatrices;
 		}
 
 
@@ -467,6 +467,6 @@ void InstanceManager::Render()
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 
-		delete indicesBuffer;
+		delete [] indicesBuffer;
 	}
 }

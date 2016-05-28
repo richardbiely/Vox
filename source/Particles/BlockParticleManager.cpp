@@ -1077,8 +1077,8 @@ void BlockParticleManager::RenderInstanced(bool noWorldOffset)
 		}
 		glBufferData(GL_ARRAY_BUFFER, sizeof(float) * 16 * numBlockParticlesRender, newMatrices, GL_STATIC_READ);
 
-		delete newColors;
-		delete newMatrices;
+		delete [] newColors;
+		delete [] newMatrices;
 	}
 
 	// Render the block particle instances

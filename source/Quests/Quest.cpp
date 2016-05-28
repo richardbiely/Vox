@@ -262,7 +262,7 @@ void Quest::ImportQuest(const char* filename)
 
 	if(importFile.is_open())
 	{
-		char * input = new char[128];
+		char input[128];
 		char * pEnd;
 
 		// Name
@@ -316,11 +316,11 @@ void Quest::ImportQuest(const char* filename)
 			enemie = strtol(input, &pEnd, 10);
 			pNewObjective->m_enemie = (eEnemyType)enemie;
 
-            // Item
-            int item;
-            importFile.getline(input, 128, '|');
-            item = strtol(input, &pEnd, 10);
-            pNewObjective->m_item = (eItem)item;
+      // Item
+      int item;
+      importFile.getline(input, 128, '|');
+      item = strtol(input, &pEnd, 10);
+      pNewObjective->m_item = (eItem)item;
 
 			// Talk NPC
 			char npcName[128];
@@ -434,8 +434,6 @@ void Quest::ImportQuest(const char* filename)
 		}
 
 		importFile.close();
-
-		delete input;
 	}
 }
 

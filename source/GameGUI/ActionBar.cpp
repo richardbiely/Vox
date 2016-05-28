@@ -241,7 +241,7 @@ void ActionBar::ImportActionBar(string playerName)
 
 	if(importFile.is_open())
 	{
-		char * input = new char[128];
+		char input[128];
 		char * pEnd;
 
 		// Import the stored inventory items
@@ -286,9 +286,7 @@ void ActionBar::ImportActionBar(string playerName)
 		string tempString;
 		string signature;
 		importFile >> tempString >> signature;
-
-		delete input;
-
+		
 		importFile.close();
 	}
 }
