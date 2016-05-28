@@ -151,6 +151,7 @@ void NPCManager::DeleteNPC(string name)
 		if(m_vpNPCList[i]->GetName() == name)
 		{
 			pDeleteObject = m_vpNPCList[i];
+			break;
 		}
 	}
 
