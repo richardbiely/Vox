@@ -1259,7 +1259,6 @@ void Chunk::UpdateMergedSide(int *merged, int blockx, int blocky, int blockz, in
 
 	// 2nd phase
 	int loop = incrementer;
-	incrementer = 0;
 	incrementer = incrementY;
 
 	doMore = true;

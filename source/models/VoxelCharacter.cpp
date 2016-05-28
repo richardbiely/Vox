@@ -1350,7 +1350,7 @@ int VoxelCharacter::GetCurrentAnimationIndex(AnimationSections section)
 {
 	if(m_pCharacterAnimator[AnimationSections_FullBody] == NULL)
 	{
-		-1;
+		return -1;
 	}
 
 	return m_pCharacterAnimator[section]->GetCurrentAnimationIndex();

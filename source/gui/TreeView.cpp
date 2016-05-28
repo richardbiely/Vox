@@ -23,7 +23,6 @@ TreeView::TreeView(Renderer* pRenderer, unsigned int GUIFont, string rootName)
   : Container(pRenderer),
     mScrollBar(pRenderer)
 {
-	m_pRenderer = pRenderer;
 	m_GUIFont = GUIFont;
 
 	m_root = NULL;

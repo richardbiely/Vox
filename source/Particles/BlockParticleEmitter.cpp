@@ -26,9 +26,6 @@ BlockParticleEmitter::BlockParticleEmitter(Renderer* pRenderer, BlockParticleMan
 
 	m_erase = false;
 
-	m_started = false;
-	m_paused = false;
-
 	m_pParent = NULL;
 	m_pParentParticle = NULL;
 	m_isReferenceEmitter = false;

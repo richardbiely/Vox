@@ -283,8 +283,8 @@ public:
 protected:
 	/* Protected methods */
 	VoxGame() {};
-	VoxGame(const VoxGame&) {};
-	VoxGame &operator=(const VoxGame&) {};
+	VoxGame(const VoxGame&) = delete;
+	VoxGame &operator=(const VoxGame&) = delete;
 
 	// GUI callbacks
 	static void _PlayAnimationPressed(void *apData);

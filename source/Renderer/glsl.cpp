@@ -1370,14 +1370,15 @@ int glShaderObject::load(const char* filename)
     
    if (len==0) return -2;   // "Empty File" 
     
-   if (ShaderSource!=0)    // there is already a source loaded, free it!
+   if (ShaderSource!=nullptr)    // there is already a source loaded, free it!
    {
       if (_memalloc)
       delete[] ShaderSource;
    }
     
    ShaderSource = (GLubyte*) new char[len+1];
-   if (ShaderSource == 0) return -3;   // can't reserve memory
+   if (ShaderSource==nullptr)
+		 return -3;   // can't reserve memory
    _memalloc = true;
      
    ShaderSource[len] = 0;  // len isn't always strlen cause some characters are stripped in ascii read...

@@ -95,7 +95,6 @@ protected:
 
 private:
 	/* Private members */
-	Renderer* m_pRenderer;
 	unsigned int m_GUIFont;
 
 	int m_xIndent;

@@ -158,7 +158,7 @@ bool QubicleBinary::Import(const char* fileName, bool faceMerging)
 	m_fileName = fileName;
 
 	char qbFilename[256];
-	sprintf(qbFilename, fileName);;
+	sprintf(qbFilename, "%s", fileName);;
 
 	FILE* pQBfile = NULL;
 	fopen_s(&pQBfile, qbFilename, "rb");
@@ -168,7 +168,7 @@ bool QubicleBinary::Import(const char* fileName, bool faceMerging)
 
 	if (pQBfile != NULL)
 	{
-		int ok = 0;
+		size_t ok = 0;
 		ok = fread(&m_version[0], sizeof(char)*4, 1, pQBfile) == 1;
 		ok = fread(&m_colourFormat, sizeof(unsigned int), 1, pQBfile) == 1;
 		ok = fread(&m_zAxisOrientation, sizeof(unsigned int), 1, pQBfile) == 1;
@@ -285,7 +285,7 @@ bool QubicleBinary::Import(const char* fileName, bool faceMerging)
 bool QubicleBinary::Export(const char* fileName)
 {
 	char qbFilename[256];
-	sprintf(qbFilename, fileName);;
+	sprintf(qbFilename, "%s", fileName);;
 
 	FILE* pQBfile = NULL;
 	fopen_s(&pQBfile, qbFilename, "wb");
@@ -933,7 +933,6 @@ void QubicleBinary::UpdateMergedSide(int *merged, int matrixIndex, int blockx, i
 
 	// 2nd phase
 	int loop = incrementer;
-	incrementer = 0;
 	incrementer = incrementY;
 
 	doMore = true;
