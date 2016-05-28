@@ -235,30 +235,30 @@ public:
 
 	// Transparency
 	void EnableTransparency(BlendFunction source, BlendFunction destination);
-	void DisableTransparency();
+	static void DisableTransparency();
 	GLenum GetBlendEnum(BlendFunction flag);
 
 	// Sampling
-	void EnableMultiSampling();
-	void DisableMultiSampling();
+	static void EnableMultiSampling();
+	static void DisableMultiSampling();
 
 	// Vector normalize
 	void EnableVectorNormalize();
 	void DisableVectorNormalize();
 
 	// Depth testing
-	void EnableDepthTest(DepthTest lTestFunction);
-	void DisableDepthTest();
-	GLenum GetDepthTest(DepthTest lTest);
-	void EnableDepthWrite();
-	void DisableDepthWrite();
+	static void EnableDepthTest(DepthTest lTestFunction);
+	static void DisableDepthTest();
+	static GLenum GetDepthTest(DepthTest lTest);
+	static void EnableDepthWrite();
+	static void DisableDepthWrite();
 
 	// Colour material
 	void EnableColourMaterial();
 	void DisableColourMaterial();
 
 	// Immediate mode
-	void EnableImmediateMode(ImmediateModePrimitive mode);
+	static void EnableImmediateMode(ImmediateModePrimitive mode);
 	void ImmediateVertex(float x, float y, float z);
 	void ImmediateVertex(int x, int y, int z);
 	void ImmediateNormal(float x, float y, float z);

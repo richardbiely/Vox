@@ -1751,10 +1751,10 @@ void CreateCharacter::_CreatePressed(void *apData)
 
 void CreateCharacter::CreatePressed()
 {
-	if(strcmp(m_pNameTextBox->GetText().c_str(), "") != 0) // Don't allow empty name
+	if(!m_pNameTextBox->GetText().empty()) // Don't allow empty name
 	{
-		string type = m_pNameTextBox->GetText().c_str();
-		string modelName = m_pNameTextBox->GetText().c_str();
+		string type = m_pNameTextBox->GetText();
+		string modelName = m_pNameTextBox->GetText();
 
 		char characterBaseFolder[128];
 		sprintf(characterBaseFolder, "saves/characters/%s", type.c_str());
@@ -1799,6 +1799,7 @@ void CreateCharacter::CreatePressed()
 
 void CreateCharacter::_BackPressed(void *apData)
 {
+	assert(apData != nullptr);
 	CreateCharacter* lpCreateCharacter = (CreateCharacter*)apData;
 	lpCreateCharacter->BackPressed();
 }
@@ -2167,7 +2168,7 @@ void CreateCharacter::_SaveDefaultsPressed(void *apData)
 	lpCreateCharacter->SaveDefaultsPressed();
 }
 
-void CreateCharacter::SaveDefaultsPressed()
+void CreateCharacter::SaveDefaultsPressed() const
 {
 	// Folder name is lower case
 	string presetFolderName;

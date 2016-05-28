@@ -35,23 +35,24 @@ public:
 	void QuadraticAttenuation(const float quadraticttenuation) { m_quadraticAttenuation = quadraticttenuation; }
 	void Point(const bool point) { m_point = point; }
 	void Spotlight(const bool spotlight) { m_spotlight = spotlight; }
-	const Colour Ambient() const { return m_ambient; }
-	const Colour Diffuse() const { return m_diffuse; }
-	const Colour Specular() const { return m_specular; }
-	const vec3 Position() const { return m_position; }
-	const vec3 Direction() const { return m_direction; }
-	const float Exponent() const { return m_exponent; }
-	const float Cutoff() const { return m_cutoff; }
-	const float ConstantAttenuation() const { return m_constantAttenuation; }
-	const float LinearAttenuation() const { return m_linearAttenuation; }
-	const float QuadraticAttenuation() const { return m_quadraticAttenuation; }
-	const bool Point() const { return m_point; }
-	const bool Spotlight() const { return m_spotlight; }
+
+	const Colour& Ambient() const { return m_ambient; }
+	const Colour& Diffuse() const { return m_diffuse; }
+	const Colour& Specular() const { return m_specular; }
+	const vec3& Position() const { return m_position; }
+	const vec3& Direction() const { return m_direction; }
+	float Exponent() const { return m_exponent; }
+	float Cutoff() const { return m_cutoff; }
+	float ConstantAttenuation() const { return m_constantAttenuation; }
+	float LinearAttenuation() const { return m_linearAttenuation; }
+	float QuadraticAttenuation() const { return m_quadraticAttenuation; }
+	bool Point() const { return m_point; }
+	bool Spotlight() const { return m_spotlight; }
 
 	// Apply light
 	void Apply(int id) const;
 
-	void Render();
+	void Render() const;
 
 private:
 	Colour m_ambient;
@@ -121,7 +122,7 @@ inline void Light::Apply(int id) const {
 	glEnable(lightNum);
 }
 
-inline void Light::Render()
+inline void Light::Render() const
 {
 	GLfloat lLightScale = 0.1f;
 

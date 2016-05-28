@@ -17,9 +17,6 @@
 #include <glm/vec3.hpp>
 using namespace glm;
 
-#include <iostream>
-using namespace std;
-
 const float PI = 3.14159265358979323846f;
 
 
@@ -104,8 +101,8 @@ public:
 	Matrix4x4& operator*=(const float &sca) { Scale(*this, sca, *this); return *this; }
 	Matrix4x4 operator/(const float &sca) const { Matrix4x4 result; return Scale(*this, (1/sca), result); }
 	Matrix4x4& operator/=(const float &sca) { Scale(*this, (1/sca), *this); return *this; }
-	Matrix4x4 operator*(const Matrix4x4 &m) { Matrix4x4 result; return Multiply(*this, m, result); }
-	vec3 operator*(const vec3 &v) { vec3 result; return Multiply(*this, v, result); }
+	Matrix4x4 operator*(const Matrix4x4 &m) const { Matrix4x4 result; return Multiply(*this, m, result); }
+	vec3 operator*(const vec3 &v) const { vec3 result; return Multiply(*this, v, result); }
 	bool operator==(const Matrix4x4 &m) const { return equal(*this, m); };
 	bool operator!=(const Matrix4x4 &m) const { return !equal(*this, m); };
 

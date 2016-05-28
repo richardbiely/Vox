@@ -143,7 +143,7 @@ protected:
 	void DeleteButtonPressed(DeleteButtonData* deleteButtonData);
 
 	static void _SaveDefaultsPressed(void *apData);
-	void SaveDefaultsPressed();
+	void SaveDefaultsPressed() const;
 	
 private:
 	/* Private methods */

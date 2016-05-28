@@ -40,7 +40,8 @@ int LoadFileTGA( const char *filename, unsigned char **pixels, int *width, int *
 	unsigned char	*ptr;				// pointer to pixels data
 	int				row, col, i;		// temporary variables
 
-
+	if (!pixels)
+		return -1;
 
 	/////////////////////////////////////////////////////
 	// read the entire file in the buffer
@@ -73,13 +74,7 @@ int LoadFileTGA( const char *filename, unsigned char **pixels, int *width, int *
 
 	if( height )
 		*height = tgah->is_height;
-
-	if( !pixels )
-	{
-		delete [] buffer;
-		return (-1);
-	}
-
+	
 
 	// allocate memory to store pixel data
 	(*pixels) = new unsigned char[ tgah->is_width * tgah->is_height * 4 ];

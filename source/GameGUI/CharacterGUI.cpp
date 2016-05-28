@@ -878,6 +878,7 @@ void CharacterGUI::ShowEquipHover(EquipSlot equipSlot)
 	case EquipSlot_Feet : {  GetPlayerFeetDimensions(&x, &y, &width, &height); } break;
 	case EquipSlot_Accessory1 : {  GetPlayerAccessory1Dimensions(&x, &y, &width, &height); } break;
 	case EquipSlot_Accessory2 : {  GetPlayerAccessory2Dimensions(&x, &y, &width, &height); } break;
+	default: assert(false);
 	}
 	m_equipHoverXOrigin = x;
 	m_pEquipHoverIcon->SetDimensions(m_equipHoverXOrigin+(int)m_equipHoverXOffset, y, width+16, height+16);

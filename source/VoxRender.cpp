@@ -1285,7 +1285,7 @@ void VoxGame::RenderDeferredRenderingPaperDoll()
 		pShader->setUniform1f("farZ", 1000.0f);
 
 		pShader->setUniform1f("samplingMultiplier", 0.5f);
-		pShader->setUniform1i("lighting_enabled", false);
+		pShader->setUniform1i("lighting_enabled", 0);
 
 		m_pRenderer->SetRenderMode(RM_TEXTURED);
 			m_pRenderer->EnableImmediateMode(IM_QUADS);
@@ -1349,7 +1349,7 @@ void VoxGame::RenderDeferredRenderingPortrait()
 		pShader->setUniform1f("farZ", 1000.0f);
 
 		pShader->setUniform1f("samplingMultiplier", 0.5f);
-		pShader->setUniform1i("lighting_enabled", false);
+		pShader->setUniform1i("lighting_enabled", 0);
 
 		m_pRenderer->SetRenderMode(RM_TEXTURED);
 		m_pRenderer->EnableImmediateMode(IM_QUADS);

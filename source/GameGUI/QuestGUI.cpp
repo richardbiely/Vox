@@ -232,7 +232,7 @@ void QuestGUI::SetWindowDimensions(int windowWidth, int windowHeight)
 }
 
 // Skinning the GUI
-void QuestGUI::SkinGUI()
+void QuestGUI::SkinGUI() const
 {
 	string themeName = VoxGame::GetInstance()->GetModsManager()->GetHUDTextureTheme();
 

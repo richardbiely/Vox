@@ -1346,13 +1346,13 @@ glShaderObject::~glShaderObject()
 }
 
 //----------------------------------------------------------------------------- 
-unsigned long getFileLength(ifstream& file)
+size_t getFileLength(ifstream& file)
 {
     if(!file.good()) return 0;
     
-    unsigned long pos=file.tellg();
+    size_t pos=file.tellg();
     file.seekg(0,ios::end);
-    unsigned long len = file.tellg();
+		size_t len = file.tellg();
     file.seekg(ios::beg);
     
     return len;
@@ -1366,7 +1366,7 @@ int glShaderObject::load(const char* filename)
 	file.open(filename, ios::in);
    if(!file) return -1;
     
-   unsigned long len = getFileLength(file);
+   size_t len = getFileLength(file);
     
    if (len==0) return -2;   // "Empty File" 
     

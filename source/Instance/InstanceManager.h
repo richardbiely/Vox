@@ -50,7 +50,7 @@ public:
 	}
 };
 
-typedef vector<InstanceObject*> InstanceObjectList;
+typedef std::vector<InstanceObject*> InstanceObjectList;
 
 class InstanceParent
 {
@@ -63,11 +63,11 @@ public:
 
 	InstanceObjectList m_vpInstanceObjectList;
 
-	string m_modelName;
+	std::string m_modelName;
 	QubicleBinary* m_pQubicleBinary;
 };
 
-typedef vector<InstanceParent*> InstanceParentList;
+typedef std::vector<InstanceParent*> InstanceParentList;
 
 
 class InstanceManager
@@ -90,8 +90,8 @@ public:
 	void SetupGLBuffers(InstanceParent *pInstanceParent);
 
 	// Creation
-	InstanceParent* GetInstanceParent(string modelName);
-	InstanceObject* AddInstanceObject(string modelName, vec3 position, vec3 rotation, float instanceScale, Chunk* pOwningChunk, int voxelX, int voxelY, int voxelZ);
+	InstanceParent* GetInstanceParent(std::string modelName);
+	InstanceObject* AddInstanceObject(std::string modelName, vec3 position, vec3 rotation, float instanceScale, Chunk* pOwningChunk, int voxelX, int voxelY, int voxelZ);
 
 	// Rendering modes
 	void SetWireFrameRender(bool wireframe);

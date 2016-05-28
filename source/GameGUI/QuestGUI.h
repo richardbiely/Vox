@@ -48,7 +48,7 @@ public:
 	void SetWindowDimensions(int windowWidth, int windowHeight);
 
 	// Skinning the GUI
-	void SkinGUI();
+	void SkinGUI() const;
 	void UnSkinGUI();
 
 	// Loading

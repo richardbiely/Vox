@@ -782,6 +782,7 @@ GLenum Renderer::GetBlendEnum(BlendFunction flag)
 	case BF_ONE_MINUS_SRC_ALPHA:
 		glFlag = GL_ONE_MINUS_SRC_ALPHA;
 		break;
+	default: assert(false);
 	}
 
 	return glFlag;
@@ -851,6 +852,7 @@ GLenum Renderer::GetDepthTest(DepthTest lTest)
 	case DT_NOTEQUAL:
 		glFlag = GL_NOTEQUAL;
 		break;
+	default: assert(false);
 	}
 
 	return glFlag;
@@ -913,6 +915,8 @@ void Renderer::EnableImmediateMode(ImmediateModePrimitive mode)
 	case IM_POLYGON:
 		glMode = GL_POLYGON;
 		break;
+	default:
+		assert(false);
 	}
 
 	glBegin(glMode);
