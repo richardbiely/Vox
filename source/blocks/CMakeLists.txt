@@ -7,5 +7,5 @@ set(BLOCKS_SRCS
 	"${CMAKE_CURRENT_SOURCE_DIR}/BiomeManager.cpp"
 	"${CMAKE_CURRENT_SOURCE_DIR}/BlocksEnum.h"
 	PARENT_SCOPE)
-
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 source_group("blocks" FILES ${BLOCKS_SRCS})

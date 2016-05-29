@@ -8,5 +8,5 @@ set(MATHS_SRCS
 	"${CMAKE_CURRENT_SOURCE_DIR}/Plane3D.cpp"
 	"${CMAKE_CURRENT_SOURCE_DIR}/BoundingRegion.h"
 	PARENT_SCOPE)
-
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 source_group("maths" FILES ${MATHS_SRCS})

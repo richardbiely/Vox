@@ -21,5 +21,5 @@ set(RENDERER_SRCS
     "${CMAKE_CURRENT_SOURCE_DIR}/vertexarray.h"
     "${CMAKE_CURRENT_SOURCE_DIR}/viewport.h"
     PARENT_SCOPE)
-
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 source_group("renderer" FILES ${RENDERER_SRCS})
