@@ -2,7 +2,7 @@
 
 # Vox
 
-[![Build Status](https://circleci.com/gh/AlwaysGeeky/Vox.svg?style=shield&circle-token=cf7352c6949877a9b363a72e88f9ad1ebbc213c4)](https://circleci.com/gh/AlwaysGeeky/Vox/tree/master)
+[![Build Status](https://circleci.com/gh/richardbiely/Vox.svg?style=shield&circle-token=c9391233c76d9211511f0071840abead1b50f09b)](https://circleci.com/gh/richardbiely/Vox/tree/master)
 [![Join the chat at https://gitter.im/AlwaysGeeky/Vox](https://badges.gitter.im/AlwaysGeeky/Vox.svg)](https://gitter.im/AlwaysGeeky/Vox?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Repo Size](https://reposs.herokuapp.com/?path=AlwaysGeeky/Vox)](https://github.com/AlwaysGeeky/Vox)
 [![License](https://img.shields.io/badge/Licence-GNU-blue.svg)](https://github.com/AlwaysGeeky/Vox/blob/master/LICENSE.md)
