@@ -234,6 +234,7 @@ if(MSVC14)
 	endif()
 endif(MSVC14)
 
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 if(MSVC)
 	set_target_properties(Vox PROPERTIES RUNTIME_OUTPUT_DIRECTORY "../../")
 	set_target_properties(Vox PROPERTIES RUNTIME_OUTPUT_DIRECTORY_DEBUG "../../")
