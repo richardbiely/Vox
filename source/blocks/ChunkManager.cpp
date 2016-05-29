@@ -1105,7 +1105,7 @@ void ChunkManager::UpdatingChunksThread()
 
 		m_ChunkMapMutexLock.lock();
 		typedef map<ChunkCoordKeys, Chunk*>::iterator it_type;
-		for (it_type iterator = m_chunksMap.begin(); iterator != m_chunksMap.end(); iterator++)
+		for (it_type iterator = m_chunksMap.begin(); iterator != m_chunksMap.end(); ++iterator)
 		{
 			Chunk* pChunk = iterator->second;
 
@@ -1303,7 +1303,7 @@ void ChunkManager::UpdatingChunksThread()
 
 		// Check for rebuild chunks
 		m_ChunkMapMutexLock.lock();
-		for (it_type iterator = m_chunksMap.begin(); iterator != m_chunksMap.end(); iterator++)
+		for (it_type iterator = m_chunksMap.begin(); iterator != m_chunksMap.end(); ++iterator)
 		{
 			Chunk* pChunk = iterator->second;
 
@@ -1374,7 +1374,7 @@ void ChunkManager::Render(bool shadowRender)
 	m_pRenderer->PushMatrix();
 		m_ChunkMapMutexLock.lock();
 		typedef map<ChunkCoordKeys, Chunk*>::iterator it_type;
-		for (it_type iterator = m_chunksMap.begin(); iterator != m_chunksMap.end(); iterator++)
+		for (it_type iterator = m_chunksMap.begin(); iterator != m_chunksMap.end(); ++iterator)
 		{
 			Chunk* pChunk = iterator->second;
 
@@ -1447,7 +1447,7 @@ void ChunkManager::RenderDebug()
 
 	m_ChunkMapMutexLock.lock();
 	typedef map<ChunkCoordKeys, Chunk*>::iterator it_type;
-	for (it_type iterator = m_chunksMap.begin(); iterator != m_chunksMap.end(); iterator++)
+	for (it_type iterator = m_chunksMap.begin(); iterator != m_chunksMap.end(); ++iterator)
 	{
 		Chunk* pChunk = iterator->second;
 
@@ -1463,7 +1463,7 @@ void ChunkManager::Render2D(Camera* pCamera, unsigned int viewport, unsigned int
 {
 	m_ChunkMapMutexLock.lock();
 	typedef map<ChunkCoordKeys, Chunk*>::iterator it_type;
-	for (it_type iterator = m_chunksMap.begin(); iterator != m_chunksMap.end(); iterator++)
+	for (it_type iterator = m_chunksMap.begin(); iterator != m_chunksMap.end(); ++iterator)
 	{
 		Chunk* pChunk = iterator->second;
 
