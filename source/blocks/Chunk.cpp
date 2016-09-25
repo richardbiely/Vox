@@ -44,8 +44,8 @@ Chunk::~Chunk()
 {
 	Unload();
 
-	delete m_colour;
-	delete m_blockType;
+	delete [] m_colour;
+	delete [] m_blockType;
 }
 
 // Player pointer
@@ -183,7 +183,7 @@ void Chunk::Setup()
 
 			Biome biome = VoxGame::GetInstance()->GetBiomeManager()->GetBiome(vec3(xPosition, 0.0f, zPosition));
 
-			// Get the 
+			// Get the
 			float noise = octave_noise_2d(m_pVoxSettings->m_landscapeOctaves, m_pVoxSettings->m_landscapePersistence, m_pVoxSettings->m_landscapeScale, xPosition, zPosition);
 			float noiseNormalized = ((noise + 1.0f) * 0.5f);
 			float noiseHeight = noiseNormalized * CHUNK_SIZE;
@@ -225,7 +225,7 @@ void Chunk::Setup()
 						BlockType blockType = BlockType_Default;
 
 						m_pBiomeManager->GetChunkColourAndBlockType(xPosition, yPosition, zPosition, noise, colorNoiseNormalized, &red, &green, &blue, &blockType);
-						
+
 						SetColour(x, y, z, red, green, blue, alpha);
 						SetBlockType(x, y, z, blockType);
 					}
@@ -1649,7 +1649,7 @@ void Chunk::Render2D(Camera* pCamera, unsigned int viewport, unsigned int font)
 		sprintf(lLine4, "Surrounded: %s", m_surroundedChunk ? "true" : "false");
 		char lLine5[64];
 		sprintf(lLine5, "Rebuilds: %i", m_numRebuilds);
-		
+
 		m_pRenderer->PushMatrix();
 			m_pRenderer->SetRenderMode(RM_SOLID);
 			m_pRenderer->SetProjectionMode(PM_2D, viewport);

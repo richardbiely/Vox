@@ -10,6 +10,8 @@
 // ******************************************************************************
 
 #include "AudioManager.h"
+#include <iostream>
+#include "fmod/include/fmod_errors.h"
 
 // Initialize the singleton instance
 AudioManager *AudioManager::c_instance = 0;
@@ -18,7 +20,7 @@ void ERRCHECK(FMOD_RESULT result)
 {
 	if (result != FMOD_OK)
 	{
-		cout << "FMOD error! (" << result << ") " << FMOD_ErrorString(result) << "\n";
+		std::cout << "FMOD error! (" << result << ") " << FMOD_ErrorString(result) << std::endl;
 		//printf("FMOD error! (%d) %s\n", result, FMOD_ErrorString(result));
 		exit(-1);
 	}
@@ -40,7 +42,7 @@ void AudioManager::Destroy()
 {
 	if(c_instance)
 	{
-        Shutdown();
+				Shutdown();
 
 		delete c_instance;
 	}
@@ -56,7 +58,7 @@ void AudioManager::Setup()
 
 	if (m_FMODVersion < FMOD_VERSION)
 	{
-		cout << "Error!  You are using an old version of FMOD " << m_FMODVersion <<".  This program requires " << FMOD_VERSION << "\n";
+		std::cout << "Error!  You are using an old version of FMOD " << m_FMODVersion <<".  This program requires " << FMOD_VERSION << std::endl;
 		//printf("Error!  You are using an old version of FMOD %08x.  This program requires %08x\n", version, FMOD_VERSION);
 		return;
 	}
@@ -80,7 +82,7 @@ void AudioManager::Shutdown()
 
 AudioManager::AudioManager()
 {
-    SetEnableAudio(true);
+		SetEnableAudio(true);
 }
 
 void AudioManager::Update(vec3 listenerPos, vec3 listenerForward, vec3 listenerUp)
@@ -96,10 +98,10 @@ void AudioManager::Update(vec3 listenerPos, vec3 listenerForward, vec3 listenerU
 	m_FMODResult = m_FMODSystem->update();
 	ERRCHECK(m_FMODResult);
 }
-	
+
 void AudioManager::SetEnableAudio(bool enable)
 {
-    m_audioEnabled = enable;
+		m_audioEnabled = enable;
 }
 
 void AudioManager::StopAllSounds()

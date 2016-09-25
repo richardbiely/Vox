@@ -657,9 +657,7 @@
     <ClCompile Include="..\..\source\VoxWindow.cpp">
       <Filter>source\game</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\source\AudioManager\SoundEffects.cpp">
-      <Filter>source\AudioManager</Filter>
-    </ClCompile>
+    <ClCompile Include="..\..\source\AudioManager\SoundEffects.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\source\glew\include\GL\glew.h">
@@ -1661,9 +1659,7 @@
     <ClInclude Include="..\..\source\VoxWindow.h">
       <Filter>source\game</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\source\AudioManager\SoundEffectsEnum.h">
-      <Filter>source\AudioManager</Filter>
-    </ClInclude>
+    <ClInclude Include="..\..\source\AudioManager\SoundEffectsEnum.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\source\glm\detail\type_mat3x4.inl">

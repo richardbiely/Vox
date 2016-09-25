@@ -16,12 +16,7 @@
 #pragma once
 
 #include "../Maths/3dmaths.h"
-
-#include <stdio.h>
-
 #include "fmod/include/fmod.hpp"
-#include "fmod/include/fmod_errors.h"
-#include "fmod/include/fmod.h"
 
 
 class AudioManager
@@ -63,7 +58,7 @@ protected:
 private:
 	/* Private members */
 	FMOD::System *m_FMODSystem;
-	
+
 	FMOD_RESULT m_FMODResult;
 	unsigned int m_FMODVersion;
 
