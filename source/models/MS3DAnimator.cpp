@@ -133,12 +133,12 @@ bool MS3DAnimator::LoadAnimations(const char *animationFileName)
 			file >> tempString >> pAnimations[i].endLeftWeaponTrailFrame;
 
 			// Work out the start time and end time
-			pAnimations[i].startTime = pAnimations[i].startFrame * 1000.0/mpModel->mAnimationFPS;
-			pAnimations[i].endTime = pAnimations[i].endFrame * 1000.0/mpModel->mAnimationFPS;
-			pAnimations[i].startRightWeaponTrailTime = pAnimations[i].startRightWeaponTrailFrame * 1000.0 / mpModel->mAnimationFPS;
-			pAnimations[i].endRightWeaponTrailTime = pAnimations[i].endRightWeaponTrailFrame * 1000.0 / mpModel->mAnimationFPS;
-			pAnimations[i].startLeftWeaponTrailTime = pAnimations[i].startLeftWeaponTrailFrame * 1000.0 / mpModel->mAnimationFPS;
-			pAnimations[i].endLeftWeaponTrailTime = pAnimations[i].endLeftWeaponTrailFrame * 1000.0 / mpModel->mAnimationFPS;
+			pAnimations[i].startTime = pAnimations[i].startFrame * 1000.0f / mpModel->mAnimationFPS;
+			pAnimations[i].endTime = pAnimations[i].endFrame * 1000.0f / mpModel->mAnimationFPS;
+			pAnimations[i].startRightWeaponTrailTime = pAnimations[i].startRightWeaponTrailFrame * 1000.0f / mpModel->mAnimationFPS;
+			pAnimations[i].endRightWeaponTrailTime = pAnimations[i].endRightWeaponTrailFrame * 1000.0f / mpModel->mAnimationFPS;
+			pAnimations[i].startLeftWeaponTrailTime = pAnimations[i].startLeftWeaponTrailFrame * 1000.0f / mpModel->mAnimationFPS;
+			pAnimations[i].endLeftWeaponTrailTime = pAnimations[i].endLeftWeaponTrailFrame * 1000.0f / mpModel->mAnimationFPS;
 		}
 
 		// Close the file
@@ -778,9 +778,10 @@ void MS3DAnimator::Update(float dt)
 		}
 
 		// Also store the current trans and rot values in the start blend variables, in case we want to start a new blend.
-		pJointAnimation->currentBlendTrans[0] = transform.GetTranslationVector().x;
-		pJointAnimation->currentBlendTrans[1] = transform.GetTranslationVector().y;
-		pJointAnimation->currentBlendTrans[2] = transform.GetTranslationVector().z;
+		const vec3& v = transform.GetTranslationVector();
+		pJointAnimation->currentBlendTrans[0] =v.x;
+		pJointAnimation->currentBlendTrans[1] =v.y;
+		pJointAnimation->currentBlendTrans[2] =v.z;
 		pJointAnimation->currentBlendRot[0] = rotVec[0];
 		pJointAnimation->currentBlendRot[1] = rotVec[1];
 		pJointAnimation->currentBlendRot[2] = rotVec[2];
@@ -847,9 +848,10 @@ void MS3DAnimator::UpdateBlending(float dt)
 		}
 
 		// Also store the current trans and rot values in the start blend variables, in case we want to start a new blend.
-		pJointAnimation->currentBlendTrans[0] = transform.GetTranslationVector().x;
-		pJointAnimation->currentBlendTrans[1] = transform.GetTranslationVector().y;
-		pJointAnimation->currentBlendTrans[2] = transform.GetTranslationVector().z;
+		const vec3& v = transform.GetTranslationVector();
+		pJointAnimation->currentBlendTrans[0] = v.x;
+		pJointAnimation->currentBlendTrans[1] = v.y;
+		pJointAnimation->currentBlendTrans[2] = v.z;
 		pJointAnimation->currentBlendRot[0] = rotVec[0];
 		pJointAnimation->currentBlendRot[1] = rotVec[1];
 		pJointAnimation->currentBlendRot[2] = rotVec[2];

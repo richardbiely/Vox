@@ -756,8 +756,9 @@ void Enemy::InitEnemyForType()
 			pNewEquipment->SetVoxelCharacterParent(NULL);
 			pNewEquipment->LoadWeapon("media/gamedata/items/Quiver/Quiver.item", false);
 
-			pNewEquipment->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->SetScaleAndOffsetForMatrix("Quiver", pNewEquipment->GetAnimatedSection(0)->m_renderScale, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.x, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.y, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.z);
-			QubicleMatrix* pQuiverMatrix = pNewEquipment->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->GetQubicleMatrix("Quiver");
+			AnimatedSection* section = pNewEquipment->GetAnimatedSection(0);
+			section->m_pVoxelObject->GetQubicleModel()->SetScaleAndOffsetForMatrix("Quiver", section->m_renderScale, section->m_renderOffset.x, section->m_renderOffset.y, section->m_renderOffset.z);
+			QubicleMatrix* pQuiverMatrix = section->m_pVoxelObject->GetQubicleModel()->SetQubicleMatrix("Quiver");
 			pQuiverMatrix->m_boneIndex = m_pVoxelCharacter->GetBodyBoneIndex();
 			m_pVoxelCharacter->AddQubicleMatrix(pQuiverMatrix, false);
 		}
@@ -971,49 +972,49 @@ void Enemy::InitEnemyForType()
 
 void Enemy::LoadWeapon(bool left, string weaponFile)
 {
+	auto updateWeapon = [&](VoxelWeapon* weapon)
+	{
+		// Lights
+		for (int i = 0; i < weapon->GetNumLights(); i++)
+		{
+			unsigned int lightId;
+			vec3 lightPos;
+			float lightRadius;
+			float lightDiffuseMultiplier;
+			Colour lightColour;
+			bool connectedToSegment;
+			weapon->GetLightParams(i, &lightId, &lightPos, &lightRadius, &lightDiffuseMultiplier, &lightColour, &connectedToSegment);
+
+			if (lightId != -1)
+			{
+				m_pLightingManager->RemoveLight(lightId);
+				weapon->SetLightingId(i, -1);
+			}
+		}
+
+		// Particle effects
+		for (int i = 0; i < weapon->GetNumParticleEffects(); i++)
+		{
+			unsigned int particleEffectId;
+			vec3 ParticleEffectPos;
+			string effectName;
+			bool connectedToSegment;
+			weapon->GetParticleEffectParams(i, &particleEffectId, &ParticleEffectPos, &effectName, &connectedToSegment);
+
+			if (particleEffectId != -1)
+			{
+				m_pBlockParticleManager->DestroyParticleEffect(particleEffectId);
+				weapon->SetParticleEffectId(i, -1);
+			}
+		}
+	};
+
 	if(left)
 	{
 		if(m_pVoxelCharacter->GetLeftWeapon() != NULL)
 		{
 			if(m_pVoxelCharacter->IsLeftWeaponLoaded())
-			{
-				// Lights
-				for(int i = 0; i < m_pVoxelCharacter->GetLeftWeapon()->GetNumLights(); i++)
-				{
-					unsigned int lightId;
-					vec3 lightPos;
-					float lightRadius;
-					float lightDiffuseMultiplier;
-					Colour lightColour;
-					bool connectedToSegment;
-					m_pVoxelCharacter->GetLeftWeapon()->GetLightParams(i, &lightId, &lightPos, &lightRadius, &lightDiffuseMultiplier, &lightColour, &connectedToSegment);
-
-					if(lightId != -1)
-					{
-						m_pLightingManager->RemoveLight(lightId);
-						m_pVoxelCharacter->GetLeftWeapon()->SetLightingId(i, -1);
-					}
-				}
-
-				// Particle effects
-				for(int i = 0; i < m_pVoxelCharacter->GetLeftWeapon()->GetNumParticleEffects(); i++)
-				{
-					unsigned int particleEffectId;
-					vec3 ParticleEffectPos;
-					string effectName;
-					bool connectedToSegment;
-					m_pVoxelCharacter->GetLeftWeapon()->GetParticleEffectParams(i, &particleEffectId, &ParticleEffectPos, &effectName, &connectedToSegment);
-
-					if(particleEffectId != -1)
-					{
-						m_pBlockParticleManager->DestroyParticleEffect(particleEffectId);
-						m_pVoxelCharacter->GetLeftWeapon()->SetParticleEffectId(i, -1);
-					}
-				}
-			}
-
-			// Load the weapon file
-			m_pVoxelCharacter->LoadLeftWeapon(weaponFile.c_str());
+				updateWeapon(m_pVoxelCharacter->GetLeftWeapon());
 		}
 	}
 	else
@@ -1021,41 +1022,7 @@ void Enemy::LoadWeapon(bool left, string weaponFile)
 		if(m_pVoxelCharacter->GetRightWeapon() != NULL)
 		{
 			if(m_pVoxelCharacter->IsRightWeaponLoaded())
-			{
-				// Lights
-				for(int i = 0; i < m_pVoxelCharacter->GetRightWeapon()->GetNumLights(); i++)
-				{
-					unsigned int lightId;
-					vec3 lightPos;
-					float lightRadius;
-					float lightDiffuseMultiplier;
-					Colour lightColour;
-					bool connectedToSegment;
-					m_pVoxelCharacter->GetRightWeapon()->GetLightParams(i, &lightId, &lightPos, &lightRadius, &lightDiffuseMultiplier, &lightColour, &connectedToSegment);
-
-					if(lightId != -1)
-					{
-						m_pLightingManager->RemoveLight(lightId);
-						m_pVoxelCharacter->GetRightWeapon()->SetLightingId(i, -1);
-					}
-				}
-
-				// Particle effects
-				for(int i = 0; i < m_pVoxelCharacter->GetRightWeapon()->GetNumParticleEffects(); i++)
-				{
-					unsigned int particleEffectId;
-					vec3 ParticleEffectPos;
-					string effectName;
-					bool connectedToSegment;
-					m_pVoxelCharacter->GetRightWeapon()->GetParticleEffectParams(i, &particleEffectId, &ParticleEffectPos, &effectName, &connectedToSegment);
-
-					if(particleEffectId != -1)
-					{
-						m_pBlockParticleManager->DestroyParticleEffect(particleEffectId);
-						m_pVoxelCharacter->GetRightWeapon()->SetParticleEffectId(i, -1);
-					}
-				}
-			}
+				updateWeapon(m_pVoxelCharacter->GetRightWeapon());
 
 			// Load the weapon file
 			m_pVoxelCharacter->LoadRightWeapon(weaponFile.c_str());
@@ -2095,18 +2062,18 @@ void Enemy::Explode()
 
 	if(m_eEnemyType == eEnemyType_WalkingZombie)
 	{
-		QubicleBinary* pQubicleModel = m_pVoxelCharacter->GetQubicleModel();
+		const QubicleBinary* pQubicleModel = m_pVoxelCharacter->GetQubicleModel();
 
 		int legsIndex = pQubicleModel->GetMatrixIndexForName("Legs");
-		QubicleMatrix* pLegsMatrix = pQubicleModel->GetQubicleMatrix(legsIndex);
+		const QubicleMatrix* pLegsMatrix = pQubicleModel->GetQubicleMatrix(legsIndex);
 		m_pBlockParticleManager->ExplodeQubicleMatrix(pLegsMatrix, m_pVoxelCharacter->GetCharacterScale(), 100, false, 1.0f, 1.0f, 1.0f, 1.0f);
 
 		int leftFootIndex = pQubicleModel->GetMatrixIndexForName("Left_Foot");
-		QubicleMatrix* pLeftFootMatrix = pQubicleModel->GetQubicleMatrix(leftFootIndex);
+		const QubicleMatrix* pLeftFootMatrix = pQubicleModel->GetQubicleMatrix(leftFootIndex);
 		m_pBlockParticleManager->ExplodeQubicleMatrix(pLeftFootMatrix, m_pVoxelCharacter->GetCharacterScale(), 100, false, 1.0f, 1.0f, 1.0f, 1.0f);
 
 		int rightFootIndex = pQubicleModel->GetMatrixIndexForName("Right_Foot");
-		QubicleMatrix* pRightFootMatrix = pQubicleModel->GetQubicleMatrix(rightFootIndex);
+		const QubicleMatrix* pRightFootMatrix = pQubicleModel->GetQubicleMatrix(rightFootIndex);
 		m_pBlockParticleManager->ExplodeQubicleMatrix(pRightFootMatrix, m_pVoxelCharacter->GetCharacterScale(), 100, false, 1.0f, 1.0f, 1.0f, 1.0f);
 
 		ConvertIntoOtherEnemyType(eEnemyType_CrawlingZombie, 0.08f);
@@ -2123,7 +2090,7 @@ void Enemy::Explode()
 
 	for(int explodeCounter = 0; explodeCounter < 3; explodeCounter++)
 	{
-		QubicleBinary* pQubicleModel = NULL;
+		const QubicleBinary* pQubicleModel = NULL;
 		if(explodeCounter == 0)
 		{
 			pQubicleModel = m_pVoxelCharacter->GetQubicleModel();

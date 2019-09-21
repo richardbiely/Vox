@@ -605,8 +605,10 @@ void Player::EquipItem(InventoryItem* pItem, bool supressAudio)
 			pNewEquipment->SetVoxelCharacterParent(NULL);
 			pNewEquipment->LoadWeapon("media/gamedata/items/Quiver/Quiver.item", false);
 
-			pNewEquipment->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->SetScaleAndOffsetForMatrix("Quiver", pNewEquipment->GetAnimatedSection(0)->m_renderScale, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.x, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.y, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.z);
-			QubicleMatrix* pQuiverMatrix = pNewEquipment->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->GetQubicleMatrix("Quiver");
+			auto* pAnimSection = pNewEquipment->GetAnimatedSection(0);
+			auto* pModel = pAnimSection->m_pVoxelObject->GetQubicleModel();
+			pModel->SetScaleAndOffsetForMatrix("Quiver", pAnimSection->m_renderScale, pAnimSection->m_renderOffset.x, pAnimSection->m_renderOffset.y, pAnimSection->m_renderOffset.z);
+			QubicleMatrix* pQuiverMatrix = pModel->SetQubicleMatrix("Quiver");
 			pQuiverMatrix->m_boneIndex = m_pVoxelCharacter->GetBodyBoneIndex();
 			m_pVoxelCharacter->AddQubicleMatrix(pQuiverMatrix, false);
 		}
@@ -741,7 +743,7 @@ void Player::EquipItem(InventoryItem* pItem, bool supressAudio)
 			pNewEquipment->LoadWeapon(pItem->m_filename.c_str(), false);
 
 			pNewEquipment->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->SetScaleAndOffsetForMatrix("Helm", pNewEquipment->GetAnimatedSection(0)->m_renderScale, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.x, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.y, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.z);
-			QubicleMatrix* pHelmMatrix = pNewEquipment->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->GetQubicleMatrix("Helm");
+			QubicleMatrix* pHelmMatrix = pNewEquipment->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->SetQubicleMatrix("Helm");
 			pHelmMatrix->m_boneIndex = m_pVoxelCharacter->GetHeadBoneIndex();
 			m_pVoxelCharacter->AddQubicleMatrix(pHelmMatrix, false);
 		}
@@ -758,7 +760,7 @@ void Player::EquipItem(InventoryItem* pItem, bool supressAudio)
 			if (pItem->m_right)
 			{
 				pNewEquipment->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->SetScaleAndOffsetForMatrix("Right_Shoulder_Armor", pNewEquipment->GetAnimatedSection(0)->m_renderScale, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.x, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.y, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.z);
-				QubicleMatrix* pRightShoulderMatrix = pNewEquipment->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->GetQubicleMatrix("Right_Shoulder_Armor");
+				QubicleMatrix* pRightShoulderMatrix = pNewEquipment->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->SetQubicleMatrix("Right_Shoulder_Armor");
 				pRightShoulderMatrix->m_boneIndex = m_pVoxelCharacter->GetRightShoulderBoneIndex();
 				m_pVoxelCharacter->AddQubicleMatrix(pRightShoulderMatrix, false);
 			}
@@ -766,7 +768,7 @@ void Player::EquipItem(InventoryItem* pItem, bool supressAudio)
 			if (pItem->m_left)
 			{
 				pNewEquipment->GetAnimatedSection(1)->m_pVoxelObject->GetQubicleModel()->SetScaleAndOffsetForMatrix("Left_Shoulder_Armor", pNewEquipment->GetAnimatedSection(1)->m_renderScale, pNewEquipment->GetAnimatedSection(1)->m_renderOffset.x, pNewEquipment->GetAnimatedSection(1)->m_renderOffset.y, pNewEquipment->GetAnimatedSection(1)->m_renderOffset.z);
-				QubicleMatrix* pLeftShoulderMatrix = pNewEquipment->GetAnimatedSection(1)->m_pVoxelObject->GetQubicleModel()->GetQubicleMatrix("Left_Shoulder_Armor");
+				QubicleMatrix* pLeftShoulderMatrix = pNewEquipment->GetAnimatedSection(1)->m_pVoxelObject->GetQubicleModel()->SetQubicleMatrix("Left_Shoulder_Armor");
 				pLeftShoulderMatrix->m_boneIndex = m_pVoxelCharacter->GetLeftShoulderBoneIndex();
 				m_pVoxelCharacter->AddQubicleMatrix(pLeftShoulderMatrix, false);
 			}
@@ -782,7 +784,7 @@ void Player::EquipItem(InventoryItem* pItem, bool supressAudio)
 			pNewEquipment->LoadWeapon(pItem->m_filename.c_str(), false);
 
 			pNewEquipment->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->SetScaleAndOffsetForMatrix("Body", pNewEquipment->GetAnimatedSection(0)->m_renderScale, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.x, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.y, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.z);
-			QubicleMatrix* pBodyMatrix = pNewEquipment->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->GetQubicleMatrix("Body");
+			QubicleMatrix* pBodyMatrix = pNewEquipment->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->SetQubicleMatrix("Body");
 			pBodyMatrix->m_boneIndex = m_pVoxelCharacter->GetBodyBoneIndex();
 			m_pVoxelCharacter->AddQubicleMatrix(pBodyMatrix, false);
 		}
@@ -797,7 +799,7 @@ void Player::EquipItem(InventoryItem* pItem, bool supressAudio)
 			pNewEquipment->LoadWeapon(pItem->m_filename.c_str(), false);
 
 			pNewEquipment->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->SetScaleAndOffsetForMatrix("Legs", pNewEquipment->GetAnimatedSection(0)->m_renderScale, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.x, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.y, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.z);
-			QubicleMatrix* pLegsMatrix = pNewEquipment->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->GetQubicleMatrix("Legs");
+			QubicleMatrix* pLegsMatrix = pNewEquipment->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->SetQubicleMatrix("Legs");
 			pLegsMatrix->m_boneIndex = m_pVoxelCharacter->GetLegsBoneIndex();
 			m_pVoxelCharacter->AddQubicleMatrix(pLegsMatrix, false);
 		}
@@ -814,7 +816,7 @@ void Player::EquipItem(InventoryItem* pItem, bool supressAudio)
 			if (pItem->m_right)
 			{
 				pNewEquipment->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->SetScaleAndOffsetForMatrix("Right_Hand", pNewEquipment->GetAnimatedSection(0)->m_renderScale, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.x, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.y, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.z);
-				QubicleMatrix* pRightHandMatrix = pNewEquipment->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->GetQubicleMatrix("Right_Hand");
+				QubicleMatrix* pRightHandMatrix = pNewEquipment->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->SetQubicleMatrix("Right_Hand");
 				pRightHandMatrix->m_boneIndex = m_pVoxelCharacter->GetRightHandBoneIndex();
 				m_pVoxelCharacter->AddQubicleMatrix(pRightHandMatrix, false);
 			}
@@ -822,7 +824,7 @@ void Player::EquipItem(InventoryItem* pItem, bool supressAudio)
 			if (pItem->m_left)
 			{
 				pNewEquipment->GetAnimatedSection(1)->m_pVoxelObject->GetQubicleModel()->SetScaleAndOffsetForMatrix("Left_Hand", pNewEquipment->GetAnimatedSection(1)->m_renderScale, pNewEquipment->GetAnimatedSection(1)->m_renderOffset.x, pNewEquipment->GetAnimatedSection(1)->m_renderOffset.y, pNewEquipment->GetAnimatedSection(1)->m_renderOffset.z);
-				QubicleMatrix* pLeftHandMatrix = pNewEquipment->GetAnimatedSection(1)->m_pVoxelObject->GetQubicleModel()->GetQubicleMatrix("Left_Hand");
+				QubicleMatrix* pLeftHandMatrix = pNewEquipment->GetAnimatedSection(1)->m_pVoxelObject->GetQubicleModel()->SetQubicleMatrix("Left_Hand");
 				pLeftHandMatrix->m_boneIndex = m_pVoxelCharacter->GetLeftHandBoneIndex();
 				m_pVoxelCharacter->AddQubicleMatrix(pLeftHandMatrix, false);
 			}
@@ -840,7 +842,7 @@ void Player::EquipItem(InventoryItem* pItem, bool supressAudio)
 			if (pItem->m_right)
 			{
 				pNewEquipment->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->SetScaleAndOffsetForMatrix("Right_Foot", pNewEquipment->GetAnimatedSection(0)->m_renderScale, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.x, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.y, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.z);
-				QubicleMatrix* pRightFootMatrix = pNewEquipment->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->GetQubicleMatrix("Right_Foot");
+				QubicleMatrix* pRightFootMatrix = pNewEquipment->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->SetQubicleMatrix("Right_Foot");
 				pRightFootMatrix->m_boneIndex = m_pVoxelCharacter->GetRightFootBoneIndex();
 				m_pVoxelCharacter->AddQubicleMatrix(pRightFootMatrix, false);
 			}
@@ -848,7 +850,7 @@ void Player::EquipItem(InventoryItem* pItem, bool supressAudio)
 			if (pItem->m_left)
 			{
 				pNewEquipment->GetAnimatedSection(1)->m_pVoxelObject->GetQubicleModel()->SetScaleAndOffsetForMatrix("Left_Foot", pNewEquipment->GetAnimatedSection(1)->m_renderScale, pNewEquipment->GetAnimatedSection(1)->m_renderOffset.x, pNewEquipment->GetAnimatedSection(1)->m_renderOffset.y, pNewEquipment->GetAnimatedSection(1)->m_renderOffset.z);
-				QubicleMatrix* pLeftFootMatrix = pNewEquipment->GetAnimatedSection(1)->m_pVoxelObject->GetQubicleModel()->GetQubicleMatrix("Left_Foot");
+				QubicleMatrix* pLeftFootMatrix = pNewEquipment->GetAnimatedSection(1)->m_pVoxelObject->GetQubicleModel()->SetQubicleMatrix("Left_Foot");
 				pLeftFootMatrix->m_boneIndex = m_pVoxelCharacter->GetLeftFootBoneIndex();
 				m_pVoxelCharacter->AddQubicleMatrix(pLeftFootMatrix, false);
 			}
@@ -966,7 +968,7 @@ void Player::UnequipItem(EquipSlot equipSlot, bool left, bool right)
 	break;
 	case EquipSlot_Body:
 	{
-		QubicleMatrix* pBodyMatrix = m_pCharacterBackup->GetQubicleMatrix("Body");
+		QubicleMatrix* pBodyMatrix = m_pCharacterBackup->SetQubicleMatrix("Body");
 		pBodyMatrix->m_boneIndex = m_pVoxelCharacter->GetBodyBoneIndex();
 		m_pVoxelCharacter->AddQubicleMatrix(pBodyMatrix, false);
 
@@ -977,7 +979,7 @@ void Player::UnequipItem(EquipSlot equipSlot, bool left, bool right)
 	break;
 	case EquipSlot_Legs:
 	{
-		QubicleMatrix* pLegsMatrix = m_pCharacterBackup->GetQubicleMatrix("Legs");
+		QubicleMatrix* pLegsMatrix = m_pCharacterBackup->SetQubicleMatrix("Legs");
 		pLegsMatrix->m_boneIndex = m_pVoxelCharacter->GetLegsBoneIndex();
 		m_pVoxelCharacter->AddQubicleMatrix(pLegsMatrix, false);
 
@@ -990,14 +992,14 @@ void Player::UnequipItem(EquipSlot equipSlot, bool left, bool right)
 	{
 		if (right)
 		{
-			QubicleMatrix* pRightHandMatrix = m_pCharacterBackup->GetQubicleMatrix("Right_Hand");
+			QubicleMatrix* pRightHandMatrix = m_pCharacterBackup->SetQubicleMatrix("Right_Hand");
 			pRightHandMatrix->m_boneIndex = m_pVoxelCharacter->GetRightHandBoneIndex();
 			m_pVoxelCharacter->AddQubicleMatrix(pRightHandMatrix, false);
 		}
 
 		if (left)
 		{
-			QubicleMatrix* pLeftHandMatrix = m_pCharacterBackup->GetQubicleMatrix("Left_Hand");
+			QubicleMatrix* pLeftHandMatrix = m_pCharacterBackup->SetQubicleMatrix("Left_Hand");
 			pLeftHandMatrix->m_boneIndex = m_pVoxelCharacter->GetLeftHandBoneIndex();
 			m_pVoxelCharacter->AddQubicleMatrix(pLeftHandMatrix, false);
 		}
@@ -1012,14 +1014,14 @@ void Player::UnequipItem(EquipSlot equipSlot, bool left, bool right)
 	{
 		if (right)
 		{
-			QubicleMatrix* pRightFootMatrix = m_pCharacterBackup->GetQubicleMatrix("Right_Foot");
+			QubicleMatrix* pRightFootMatrix = m_pCharacterBackup->SetQubicleMatrix("Right_Foot");
 			pRightFootMatrix->m_boneIndex = m_pVoxelCharacter->GetRightFootBoneIndex();
 			m_pVoxelCharacter->AddQubicleMatrix(pRightFootMatrix, false);
 		}
 
 		if (left)
 		{
-			QubicleMatrix* pLeftFootMatrix = m_pCharacterBackup->GetQubicleMatrix("Left_Foot");
+			QubicleMatrix* pLeftFootMatrix = m_pCharacterBackup->SetQubicleMatrix("Left_Foot");
 			pLeftFootMatrix->m_boneIndex = m_pVoxelCharacter->GetLeftFootBoneIndex();
 			m_pVoxelCharacter->AddQubicleMatrix(pLeftFootMatrix, false);
 		}

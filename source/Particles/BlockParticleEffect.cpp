@@ -68,7 +68,7 @@ void BlockParticleEffect::SetPosition(vec3 pos)
 	m_position = pos;
 }
 
-vec3 BlockParticleEffect::GetPosition()
+vec3 BlockParticleEffect::GetPosition() const
 {
 	return m_position;
 }
@@ -315,67 +315,67 @@ void BlockParticleEffect::Export(const char* fileName)
 
 		int numEmitters = (int)m_vpBlockParticleEmittersList.size();
 		exportFile << "numEmitters: " << numEmitters << "\n";
-		for(int i = 0; i < numEmitters; i++)
+		for (BlockParticleEmitter* pEmitter : m_vpBlockParticleEmittersList)
 		{
-			exportFile << "emitterName: " << m_vpBlockParticleEmittersList[i]->m_emitterName << "\n";
-			exportFile << "emitterPosition: " << m_vpBlockParticleEmittersList[i]->m_position.x << " " << m_vpBlockParticleEmittersList[i]->m_position.y << " " << m_vpBlockParticleEmittersList[i]->m_position.z << "\n";
-			exportFile << "creationTime: " << m_vpBlockParticleEmittersList[i]->m_creationTime << "\n";
-			exportFile << "numParticles: " << m_vpBlockParticleEmittersList[i]->m_numParticlesToSpawn << "\n";
-			exportFile << "followEmitter: " << m_vpBlockParticleEmittersList[i]->m_particlesFollowEmitter << "\n";
-			exportFile << "orbit: " << m_vpBlockParticleEmittersList[i]->m_orbit << "\n";
-			exportFile << "orbitReverse: " << m_vpBlockParticleEmittersList[i]->m_orbitReverse << "\n";
-			exportFile << "orbitRadius: " << m_vpBlockParticleEmittersList[i]->m_orbitRadius << "\n";
-			exportFile << "orbitTime: " << m_vpBlockParticleEmittersList[i]->m_orbitTime << "\n";
-			exportFile << "emitterType: " << (int)m_vpBlockParticleEmittersList[i]->m_emitterType << "\n";
-			exportFile << "emitterRadius: " << m_vpBlockParticleEmittersList[i]->m_emitterRadius << "\n";
-			exportFile << "emitterLengthX: " << m_vpBlockParticleEmittersList[i]->m_emitterLengthX << "\n";
-			exportFile << "emitterLengthY: " << m_vpBlockParticleEmittersList[i]->m_emitterLengthY << "\n";
-			exportFile << "emitterLengthZ: " << m_vpBlockParticleEmittersList[i]->m_emitterLengthZ << "\n";
-			exportFile << "spawnOutline: " << m_vpBlockParticleEmittersList[i]->m_spawnOutline << "\n";
-			exportFile << "gravityDir: " << m_vpBlockParticleEmittersList[i]->m_gravityDirection.x << " " << m_vpBlockParticleEmittersList[i]->m_gravityDirection.y << " " << m_vpBlockParticleEmittersList[i]->m_gravityDirection.z << "\n";
-			exportFile << "gravityMultiplier: " << m_vpBlockParticleEmittersList[i]->m_gravityMultiplier << "\n";
-			exportFile << "pointOrigin: " << m_vpBlockParticleEmittersList[i]->m_pointOrigin.x << " " << m_vpBlockParticleEmittersList[i]->m_pointOrigin.y << " " << m_vpBlockParticleEmittersList[i]->m_pointOrigin.z << "\n";
-			exportFile << "startScale: " << m_vpBlockParticleEmittersList[i]->m_startScale << "\n";
-			exportFile << "startScaleVariance: " << m_vpBlockParticleEmittersList[i]->m_startScaleVariance << "\n";
-			exportFile << "endScale: " << m_vpBlockParticleEmittersList[i]->m_endScale << "\n";
-			exportFile << "endScaleVariance: " << m_vpBlockParticleEmittersList[i]->m_endScaleVariance << "\n";
-			exportFile << "startRed: " << m_vpBlockParticleEmittersList[i]->m_startRed << "\n";
-			exportFile << "startRedVariance: " << m_vpBlockParticleEmittersList[i]->m_startRedVariance << "\n";
-			exportFile << "endRed: " << m_vpBlockParticleEmittersList[i]->m_endRed << "\n";
-			exportFile << "endRedVariance: " << m_vpBlockParticleEmittersList[i]->m_endRedVariance << "\n";
-			exportFile << "startGreen: " << m_vpBlockParticleEmittersList[i]->m_startGreen << "\n";
-			exportFile << "startGreenVariance: " << m_vpBlockParticleEmittersList[i]->m_startGreenVariance << "\n";
-			exportFile << "endGreen: " << m_vpBlockParticleEmittersList[i]->m_endGreen << "\n";
-			exportFile << "endGreenVariance: " << m_vpBlockParticleEmittersList[i]->m_endGreenVariance << "\n";
-			exportFile << "startBlue: " << m_vpBlockParticleEmittersList[i]->m_startBlue << "\n";
-			exportFile << "startBlueVariance: " << m_vpBlockParticleEmittersList[i]->m_startBlueVariance << "\n";
-			exportFile << "endBlue: " << m_vpBlockParticleEmittersList[i]->m_endBlue << "\n";
-			exportFile << "endBlueVariance: " << m_vpBlockParticleEmittersList[i]->m_endBlueVariance << "\n";
-			exportFile << "startAlpha: " << m_vpBlockParticleEmittersList[i]->m_startAlpha << "\n";
-			exportFile << "startAlphaVariance: " << m_vpBlockParticleEmittersList[i]->m_startAlphaVariance << "\n";
-			exportFile << "endAlpha: " << m_vpBlockParticleEmittersList[i]->m_endAlpha << "\n";
-			exportFile << "endAlphaVariance: " << m_vpBlockParticleEmittersList[i]->m_endAlphaVariance << "\n";
-			exportFile << "lifeTime: " << m_vpBlockParticleEmittersList[i]->m_lifeTime << "\n";
-			exportFile << "lifeTimeVariance: " << m_vpBlockParticleEmittersList[i]->m_lifeTimeVariance << "\n";
-			exportFile << "velocityTowardsPoint: " << m_vpBlockParticleEmittersList[i]->m_velocityTowardsPoint << "\n";
-			exportFile << "accelerationTowardsPoint: " << m_vpBlockParticleEmittersList[i]->m_accelerationTowardsPoint << "\n";
-			exportFile << "worldCollisions: " << m_vpBlockParticleEmittersList[i]->m_checkWorldCollisions << "\n";
-			exportFile << "destoryOnCollision: " << m_vpBlockParticleEmittersList[i]->m_destoryOnCollision << "\n";
-			exportFile << "decayOnCollision: " << m_vpBlockParticleEmittersList[i]->m_startLifeDecayOnCollision << "\n";
-			exportFile << "startVelocity: " << m_vpBlockParticleEmittersList[i]->m_startVelocity.x << " " << m_vpBlockParticleEmittersList[i]->m_startVelocity.y << " " << m_vpBlockParticleEmittersList[i]->m_startVelocity.z << "\n";
-			exportFile << "startVelocityVariance: " << m_vpBlockParticleEmittersList[i]->m_startVelocityVariance.x << " " << m_vpBlockParticleEmittersList[i]->m_startVelocityVariance.y << " " << m_vpBlockParticleEmittersList[i]->m_startVelocityVariance.z << "\n";
-			exportFile << "randomStartRotation: " << m_vpBlockParticleEmittersList[i]->m_randomStartRotation << "\n";
-			exportFile << "startAngularVelocity: " << m_vpBlockParticleEmittersList[i]->m_startAngularVelocity.x << " " << m_vpBlockParticleEmittersList[i]->m_startAngularVelocity.y << " " << m_vpBlockParticleEmittersList[i]->m_startAngularVelocity.z << "\n";
-			exportFile << "startAngularVelocityVariance: " << m_vpBlockParticleEmittersList[i]->m_startAngularVelocityVariance.x << " " << m_vpBlockParticleEmittersList[i]->m_startAngularVelocityVariance.y << " " << m_vpBlockParticleEmittersList[i]->m_startAngularVelocityVariance.z << "\n";
-			exportFile << "tangentialVelocityXY: " << m_vpBlockParticleEmittersList[i]->m_tangentialVelocityXY << "\n";
-			exportFile << "tangentialAccelerationXY: " << m_vpBlockParticleEmittersList[i]->m_tangentialAccelerationXY << "\n";
-			exportFile << "tangentialVelocityXZ: " << m_vpBlockParticleEmittersList[i]->m_tangentialVelocityXZ << "\n";
-			exportFile << "tangentialAccelerationXZ: " << m_vpBlockParticleEmittersList[i]->m_tangentialAccelerationXZ << "\n";
-			exportFile << "tangentialVelocityYZ: " << m_vpBlockParticleEmittersList[i]->m_tangentialVelocityYZ << "\n";
-			exportFile << "tangentialAccelerationYZ: " << m_vpBlockParticleEmittersList[i]->m_tangentialAccelerationYZ << "\n";
-			exportFile << "creteEmitter: " << m_vpBlockParticleEmittersList[i]->m_createEmitters << "\n";
-			exportFile << "createEmitterName: " << m_vpBlockParticleEmittersList[i]->m_createEmitterName << "\n";
-			exportFile << "isReferenceEmitter: " << m_vpBlockParticleEmittersList[i]->m_isReferenceEmitter << "\n";
+			exportFile << "emitterName: " << pEmitter->m_emitterName << "\n";
+			exportFile << "emitterPosition: " << pEmitter->m_position.x << " " << pEmitter->m_position.y << " " << pEmitter->m_position.z << "\n";
+			exportFile << "creationTime: " << pEmitter->m_creationTime << "\n";
+			exportFile << "numParticles: " << pEmitter->m_numParticlesToSpawn << "\n";
+			exportFile << "followEmitter: " << pEmitter->m_particlesFollowEmitter << "\n";
+			exportFile << "orbit: " << pEmitter->m_orbit << "\n";
+			exportFile << "orbitReverse: " << pEmitter->m_orbitReverse << "\n";
+			exportFile << "orbitRadius: " << pEmitter->m_orbitRadius << "\n";
+			exportFile << "orbitTime: " << pEmitter->m_orbitTime << "\n";
+			exportFile << "emitterType: " << (int)pEmitter->m_emitterType << "\n";
+			exportFile << "emitterRadius: " << pEmitter->m_emitterRadius << "\n";
+			exportFile << "emitterLengthX: " << pEmitter->m_emitterLengthX << "\n";
+			exportFile << "emitterLengthY: " << pEmitter->m_emitterLengthY << "\n";
+			exportFile << "emitterLengthZ: " << pEmitter->m_emitterLengthZ << "\n";
+			exportFile << "spawnOutline: " << pEmitter->m_spawnOutline << "\n";
+			exportFile << "gravityDir: " << pEmitter->m_gravityDirection.x << " " << pEmitter->m_gravityDirection.y << " " << pEmitter->m_gravityDirection.z << "\n";
+			exportFile << "gravityMultiplier: " << pEmitter->m_gravityMultiplier << "\n";
+			exportFile << "pointOrigin: " << pEmitter->m_pointOrigin.x << " " << pEmitter->m_pointOrigin.y << " " << pEmitter->m_pointOrigin.z << "\n";
+			exportFile << "startScale: " << pEmitter->m_startScale << "\n";
+			exportFile << "startScaleVariance: " << pEmitter->m_startScaleVariance << "\n";
+			exportFile << "endScale: " << pEmitter->m_endScale << "\n";
+			exportFile << "endScaleVariance: " << pEmitter->m_endScaleVariance << "\n";
+			exportFile << "startRed: " << pEmitter->m_startRed << "\n";
+			exportFile << "startRedVariance: " << pEmitter->m_startRedVariance << "\n";
+			exportFile << "endRed: " << pEmitter->m_endRed << "\n";
+			exportFile << "endRedVariance: " << pEmitter->m_endRedVariance << "\n";
+			exportFile << "startGreen: " << pEmitter->m_startGreen << "\n";
+			exportFile << "startGreenVariance: " << pEmitter->m_startGreenVariance << "\n";
+			exportFile << "endGreen: " << pEmitter->m_endGreen << "\n";
+			exportFile << "endGreenVariance: " << pEmitter->m_endGreenVariance << "\n";
+			exportFile << "startBlue: " << pEmitter->m_startBlue << "\n";
+			exportFile << "startBlueVariance: " << pEmitter->m_startBlueVariance << "\n";
+			exportFile << "endBlue: " << pEmitter->m_endBlue << "\n";
+			exportFile << "endBlueVariance: " << pEmitter->m_endBlueVariance << "\n";
+			exportFile << "startAlpha: " << pEmitter->m_startAlpha << "\n";
+			exportFile << "startAlphaVariance: " << pEmitter->m_startAlphaVariance << "\n";
+			exportFile << "endAlpha: " << pEmitter->m_endAlpha << "\n";
+			exportFile << "endAlphaVariance: " << pEmitter->m_endAlphaVariance << "\n";
+			exportFile << "lifeTime: " << pEmitter->m_lifeTime << "\n";
+			exportFile << "lifeTimeVariance: " << pEmitter->m_lifeTimeVariance << "\n";
+			exportFile << "velocityTowardsPoint: " << pEmitter->m_velocityTowardsPoint << "\n";
+			exportFile << "accelerationTowardsPoint: " << pEmitter->m_accelerationTowardsPoint << "\n";
+			exportFile << "worldCollisions: " << pEmitter->m_checkWorldCollisions << "\n";
+			exportFile << "destoryOnCollision: " << pEmitter->m_destoryOnCollision << "\n";
+			exportFile << "decayOnCollision: " << pEmitter->m_startLifeDecayOnCollision << "\n";
+			exportFile << "startVelocity: " << pEmitter->m_startVelocity.x << " " << pEmitter->m_startVelocity.y << " " << pEmitter->m_startVelocity.z << "\n";
+			exportFile << "startVelocityVariance: " << pEmitter->m_startVelocityVariance.x << " " << pEmitter->m_startVelocityVariance.y << " " << pEmitter->m_startVelocityVariance.z << "\n";
+			exportFile << "randomStartRotation: " << pEmitter->m_randomStartRotation << "\n";
+			exportFile << "startAngularVelocity: " << pEmitter->m_startAngularVelocity.x << " " << pEmitter->m_startAngularVelocity.y << " " << pEmitter->m_startAngularVelocity.z << "\n";
+			exportFile << "startAngularVelocityVariance: " << pEmitter->m_startAngularVelocityVariance.x << " " << pEmitter->m_startAngularVelocityVariance.y << " " << pEmitter->m_startAngularVelocityVariance.z << "\n";
+			exportFile << "tangentialVelocityXY: " << pEmitter->m_tangentialVelocityXY << "\n";
+			exportFile << "tangentialAccelerationXY: " << pEmitter->m_tangentialAccelerationXY << "\n";
+			exportFile << "tangentialVelocityXZ: " << pEmitter->m_tangentialVelocityXZ << "\n";
+			exportFile << "tangentialAccelerationXZ: " << pEmitter->m_tangentialAccelerationXZ << "\n";
+			exportFile << "tangentialVelocityYZ: " << pEmitter->m_tangentialVelocityYZ << "\n";
+			exportFile << "tangentialAccelerationYZ: " << pEmitter->m_tangentialAccelerationYZ << "\n";
+			exportFile << "creteEmitter: " << pEmitter->m_createEmitters << "\n";
+			exportFile << "createEmitterName: " << pEmitter->m_createEmitterName << "\n";
+			exportFile << "isReferenceEmitter: " << pEmitter->m_isReferenceEmitter << "\n";
 		}
 	}
 }
@@ -426,12 +426,12 @@ void BlockParticleEffect::PauseEffect()
 	}
 }
 
-bool BlockParticleEffect::IsStarted()
+bool BlockParticleEffect::IsStarted() const
 {
 	return m_started;
 }
 
-bool BlockParticleEffect::IsPaused()
+bool BlockParticleEffect::IsPaused() const
 {
 	return m_paused;
 }

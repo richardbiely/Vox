@@ -34,7 +34,7 @@ public:
 	void ClearEmitters();
 
 	void SetPosition(vec3 pos);
-	vec3 GetPosition();
+	vec3 GetPosition() const;
 
 	void Import(const char* fileName);
 	void Export(const char* fileName);
@@ -43,8 +43,8 @@ public:
 	void StopEffect();
 	void PauseEffect();
 
-	bool IsStarted();
-	bool IsPaused();
+	bool IsStarted() const;
+	bool IsPaused() const;
 
 	void AddEmitterToParticleEffect(BlockParticleEmitter* pEmitter);
 	void RemoveEmitterFromParticleEffect(BlockParticleEmitter* pEmitter);

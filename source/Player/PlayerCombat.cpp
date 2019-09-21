@@ -652,7 +652,7 @@ void Player::Explode()
 	// Explode the qubicle binary voxel file
 	for (int explodeCounter = 0; explodeCounter < 3; explodeCounter++)
 	{
-		QubicleBinary* pQubicleModel = NULL;
+		const QubicleBinary* pQubicleModel = NULL;
 		int spawnChance = 100;
 		if (explodeCounter == 0)
 		{

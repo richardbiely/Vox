@@ -345,17 +345,18 @@ void InstanceManager::Render()
 
 	for(int instanceParentId = 0; instanceParentId < (int)m_vpInstanceParentList.size(); instanceParentId++)
 	{
-		OpenGLTriangleMesh* pMesh = m_vpInstanceParentList[instanceParentId]->m_pQubicleBinary->GetQubicleMatrix(0)->m_pMesh;
+		InstanceParent* pParent = m_vpInstanceParentList[instanceParentId];
+		OpenGLTriangleMesh * pMesh = pParent->m_pQubicleBinary->GetQubicleMatrix(0)->m_pMesh;
 
 		unsigned int numIndices = (int)pMesh->m_triangles.size() * 3;
 		unsigned int numTriangles = (int)pMesh->m_triangles.size();
 		unsigned int* indicesBuffer = new unsigned int[numIndices];
 		int lIndexCounter = 0;
-		for(unsigned int i = 0; i < numTriangles; i++)
+		for (auto pTriangle : pMesh->m_triangles)
 		{
-			indicesBuffer[lIndexCounter] = pMesh->m_triangles[i]->vertexIndices[0];
-			indicesBuffer[lIndexCounter+1] = pMesh->m_triangles[i]->vertexIndices[1];
-			indicesBuffer[lIndexCounter+2] = pMesh->m_triangles[i]->vertexIndices[2];
+			indicesBuffer[lIndexCounter+0] = pTriangle->vertexIndices[0];
+			indicesBuffer[lIndexCounter+1] = pTriangle->vertexIndices[1];
+			indicesBuffer[lIndexCounter+2] = pTriangle->vertexIndices[2];
 
 			lIndexCounter += 3;
 		}
@@ -369,43 +370,44 @@ void InstanceManager::Render()
 			int counter = 0;
 			
 			instanceObjectRenderCounter = 0;
-			for(unsigned int i = 0; i < (int)m_vpInstanceParentList[instanceParentId]->m_vpInstanceObjectList.size() && instanceObjectRenderCounter < numInstanceObjectsRender; i++)
+			for (unsigned int i = 0; i < (int)pParent->m_vpInstanceObjectList.size() && instanceObjectRenderCounter < numInstanceObjectsRender; i++)
 			{
-				if(m_vpInstanceParentList[instanceParentId]->m_vpInstanceObjectList[i]->m_render == false)
+				InstanceObject* pObject = pParent->m_vpInstanceObjectList[i];
+				if (pObject->m_render == false)
 				{
 					continue;
 				}
 
-				newMatrices[counter+0] = m_vpInstanceParentList[instanceParentId]->m_vpInstanceObjectList[i]->m_worldMatrix.m[0];
-				newMatrices[counter+1] = m_vpInstanceParentList[instanceParentId]->m_vpInstanceObjectList[i]->m_worldMatrix.m[1];
-				newMatrices[counter+2] = m_vpInstanceParentList[instanceParentId]->m_vpInstanceObjectList[i]->m_worldMatrix.m[2];
-				newMatrices[counter+3] = m_vpInstanceParentList[instanceParentId]->m_vpInstanceObjectList[i]->m_worldMatrix.m[3];
-				newMatrices[counter+4] = m_vpInstanceParentList[instanceParentId]->m_vpInstanceObjectList[i]->m_worldMatrix.m[4];
-				newMatrices[counter+5] = m_vpInstanceParentList[instanceParentId]->m_vpInstanceObjectList[i]->m_worldMatrix.m[5];
-				newMatrices[counter+6] = m_vpInstanceParentList[instanceParentId]->m_vpInstanceObjectList[i]->m_worldMatrix.m[6];
-				newMatrices[counter+7] = m_vpInstanceParentList[instanceParentId]->m_vpInstanceObjectList[i]->m_worldMatrix.m[7];
-				newMatrices[counter+8] = m_vpInstanceParentList[instanceParentId]->m_vpInstanceObjectList[i]->m_worldMatrix.m[8];
-				newMatrices[counter+9] = m_vpInstanceParentList[instanceParentId]->m_vpInstanceObjectList[i]->m_worldMatrix.m[9];
-				newMatrices[counter+10] = m_vpInstanceParentList[instanceParentId]->m_vpInstanceObjectList[i]->m_worldMatrix.m[10];
-				newMatrices[counter+11] = m_vpInstanceParentList[instanceParentId]->m_vpInstanceObjectList[i]->m_worldMatrix.m[11];
-				newMatrices[counter+12] = m_vpInstanceParentList[instanceParentId]->m_vpInstanceObjectList[i]->m_worldMatrix.m[12];
-				newMatrices[counter+13] = m_vpInstanceParentList[instanceParentId]->m_vpInstanceObjectList[i]->m_worldMatrix.m[13];
-				newMatrices[counter+14] = m_vpInstanceParentList[instanceParentId]->m_vpInstanceObjectList[i]->m_worldMatrix.m[14];
-				newMatrices[counter+15] = m_vpInstanceParentList[instanceParentId]->m_vpInstanceObjectList[i]->m_worldMatrix.m[15];
+				newMatrices[counter + 0] = pObject->m_worldMatrix.m[0];
+				newMatrices[counter + 1] = pObject->m_worldMatrix.m[1];
+				newMatrices[counter + 2] = pObject->m_worldMatrix.m[2];
+				newMatrices[counter + 3] = pObject->m_worldMatrix.m[3];
+				newMatrices[counter + 4] = pObject->m_worldMatrix.m[4];
+				newMatrices[counter + 5] = pObject->m_worldMatrix.m[5];
+				newMatrices[counter + 6] = pObject->m_worldMatrix.m[6];
+				newMatrices[counter + 7] = pObject->m_worldMatrix.m[7];
+				newMatrices[counter + 8] = pObject->m_worldMatrix.m[8];
+				newMatrices[counter + 9] = pObject->m_worldMatrix.m[9];
+				newMatrices[counter + 10] = pObject->m_worldMatrix.m[10];
+				newMatrices[counter + 11] = pObject->m_worldMatrix.m[11];
+				newMatrices[counter + 12] = pObject->m_worldMatrix.m[12];
+				newMatrices[counter + 13] = pObject->m_worldMatrix.m[13];
+				newMatrices[counter + 14] = pObject->m_worldMatrix.m[14];
+				newMatrices[counter + 15] = pObject->m_worldMatrix.m[15];
 				counter += 16;
 
 				instanceObjectRenderCounter++;
 			}
 
-			glBindVertexArray(m_vpInstanceParentList[instanceParentId]->m_vertexArray);
+			glBindVertexArray(pParent->m_vertexArray);
 
 			if(m_vpInstanceParentList[instanceParentId]->m_matrixBuffer != -1)
 			{
-				glDeleteBuffers(1, &m_vpInstanceParentList[instanceParentId]->m_matrixBuffer);
+				glDeleteBuffers(1, &pParent->m_matrixBuffer);
 			}
 			// Bind buffer for matrix and copy data into buffer
-			glGenBuffers(1, &m_vpInstanceParentList[instanceParentId]->m_matrixBuffer);
-			glBindBuffer(GL_ARRAY_BUFFER, m_vpInstanceParentList[instanceParentId]->m_matrixBuffer);
+			glGenBuffers(1, &pParent->m_matrixBuffer);
+			glBindBuffer(GL_ARRAY_BUFFER, pParent->m_matrixBuffer);
 			for (int i = 0; i < 4; i++)
 			{
 				glVertexAttribPointer(in_model_matrix + i,		// Location

@@ -128,7 +128,7 @@ void Chunk::SetCreated(bool created)
 	m_created = created;
 }
 
-bool Chunk::IsCreated()
+bool Chunk::IsCreated() const
 {
 	return m_created;
 }
@@ -300,12 +300,12 @@ void Chunk::Setup()
 	SetNeedsRebuild(true, true);
 }
 
-bool Chunk::IsSetup()
+bool Chunk::IsSetup() const
 {
 	return m_setup;
 }
 
-bool Chunk::IsUnloading()
+bool Chunk::IsUnloading() const
 {
 	return m_isUnloading;
 }
@@ -327,7 +327,7 @@ void Chunk::SetPosition(vec3 pos)
 	m_position = pos;
 }
 
-vec3 Chunk::GetPosition()
+vec3 Chunk::GetPosition() const
 {
 	return m_position;
 }
@@ -343,32 +343,32 @@ void Chunk::SetNumNeighbours(int neighbours)
 	m_numNeighbours = neighbours;
 }
 
-Chunk* Chunk::GetxMinus()
+Chunk* Chunk::GetxMinus() const
 {
 	return m_pxMinus;
 }
 
-Chunk* Chunk::GetxPlus()
+Chunk* Chunk::GetxPlus() const
 {
 	return m_pxPlus;
 }
 
-Chunk* Chunk::GetyMinus()
+Chunk* Chunk::GetyMinus() const
 {
 	return m_pyMinus;
 }
 
-Chunk* Chunk::GetyPlus()
+Chunk* Chunk::GetyPlus() const
 {
 	return m_pyPlus;
 }
 
-Chunk* Chunk::GetzMinus()
+Chunk* Chunk::GetzMinus() const
 {
 	return m_pzMinus;
 }
 
-Chunk* Chunk::GetzPlus()
+Chunk* Chunk::GetzPlus() const
 {
 	return m_pzPlus;
 }
@@ -441,7 +441,7 @@ void Chunk::StopBatchUpdate()
 }
 
 // Active
-bool Chunk::GetActive(int x, int y, int z)
+bool Chunk::GetActive(int x, int y, int z) const
 {
 	unsigned colour = m_colour[x + y * CHUNK_SIZE + z * CHUNK_SIZE_SQUARED];
 	unsigned int alpha = (colour & 0xFF000000) >> 24;
@@ -458,7 +458,7 @@ bool Chunk::GetActive(int x, int y, int z)
 }
 
 // Inside chunk
-bool Chunk::IsInsideChunk(vec3 pos)
+bool Chunk::IsInsideChunk(vec3 pos) const
 {
 	if ((pos.x < m_position.x - BLOCK_RENDER_SIZE) || (pos.x - m_position.x > CHUNK_SIZE * (BLOCK_RENDER_SIZE*2.0f) - BLOCK_RENDER_SIZE))
 		return false;
@@ -537,7 +537,7 @@ void Chunk::GetColour(int x, int y, int z, float* r, float* g, float* b, float* 
 	*r = (float)(red / 255.0f);
 	*g = (float)(green / 255.0f);
 	*b = (float)(blue / 255.0f);
-	*a = 1.0f;
+	*a = (float)(alpha / 255.0f);
 }
 
 void Chunk::SetColour(int x, int y, int z, unsigned int colour, bool setBlockType)
@@ -563,13 +563,13 @@ void Chunk::SetColour(int x, int y, int z, unsigned int colour, bool setBlockTyp
 	}
 }
 
-unsigned int Chunk::GetColour(int x, int y, int z)
+unsigned int Chunk::GetColour(int x, int y, int z) const
 {
 	return m_colour[x + y * CHUNK_SIZE + z * CHUNK_SIZE_SQUARED];
 }
 
 // Block type
-BlockType Chunk::GetBlockType(int x, int y, int z)
+BlockType Chunk::GetBlockType(int x, int y, int z) const
 {
 	return m_blockType[x + y * CHUNK_SIZE + z * CHUNK_SIZE_SQUARED];
 }
@@ -580,12 +580,12 @@ void Chunk::SetBlockType(int x, int y, int z, BlockType blockType)
 }
 
 // Flags
-bool Chunk::IsEmpty()
+bool Chunk::IsEmpty() const
 {
 	return m_emptyChunk;
 }
 
-bool Chunk::IsSurrounded()
+bool Chunk::IsSurrounded() const
 {
 	return m_surroundedChunk;
 }
@@ -1487,12 +1487,12 @@ void Chunk::SetNeedsRebuild(bool rebuild, bool rebuildNeighours)
 	m_rebuildNeighours = rebuildNeighours;
 }
 
-bool Chunk::NeedsRebuild()
+bool Chunk::NeedsRebuild() const
 {
 	return m_rebuild;
 }
 
-bool Chunk::IsRebuildingMesh()
+bool Chunk::IsRebuildingMesh() const
 {
 	return m_isRebuildingMesh;
 }

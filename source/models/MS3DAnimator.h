@@ -27,17 +27,20 @@ typedef struct Animation
 	int startFrame;
 	int endFrame;
 	int blendFrame;
-	double startTime;
-	double endTime;
-	bool looping;
+
 	int startRightWeaponTrailFrame;
 	int endRightWeaponTrailFrame;
-	double startRightWeaponTrailTime;
-	double endRightWeaponTrailTime;
 	int startLeftWeaponTrailFrame;
 	int endLeftWeaponTrailFrame;
-	double startLeftWeaponTrailTime;
-	double endLeftWeaponTrailTime;
+
+	float startTime;
+	float endTime;
+	float startRightWeaponTrailTime;
+	float endRightWeaponTrailTime;
+	float startLeftWeaponTrailTime;
+	float endLeftWeaponTrailTime;	
+	
+	bool looping;
 	char animationName[MAX_ANIMATION_NAME];
 } Animation;
 

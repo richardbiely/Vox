@@ -51,9 +51,9 @@ InventoryManager::InventoryManager()
 		m_equippedSlots[i] = NULL;
 	}	
 
-	m_playerName = "";
+	m_playerName.clear();
 
-    m_numCoins = 0;
+  m_numCoins = 0;
 	m_coinsUpdated = true;
 
 	m_supressExport = false;

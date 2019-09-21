@@ -203,9 +203,9 @@ public:
 	BlockType SetBlockTypeBasedOnColour(int r, int g, int b);
 
 	// Importing into the world chunks
-	void ImportQubicleBinaryMatrix(QubicleMatrix* pMatrix, vec3 position, QubicleImportDirection direction);
-	QubicleBinary* ImportQubicleBinary(QubicleBinary* qubicleBinaryFile, vec3 position, QubicleImportDirection direction);
-	QubicleBinary* ImportQubicleBinary(const char* filename, vec3 position, QubicleImportDirection direction);
+	void ImportQubicleBinaryMatrix(const QubicleMatrix* pMatrix, vec3 position, QubicleImportDirection direction);
+	const QubicleBinary* ImportQubicleBinary(const QubicleBinary* qubicleBinaryFile, vec3 position, QubicleImportDirection direction);
+	const QubicleBinary* ImportQubicleBinary(const char* filename, vec3 position, QubicleImportDirection direction);
 
 	// Explosions
 	void CreateBlockDestroyParticleEffect(float r, float g, float b, float a, vec3 blockPosition);

@@ -29,15 +29,16 @@ class Renderer;
 
 class InstanceObject
 {
-public:
-	bool m_erase;
-	bool m_render;
+public:	
 	Matrix4x4 m_worldMatrix;
 
 	Chunk* m_pOwningChunk;
 	int m_voxelX;
 	int m_voxelY;
 	int m_voxelZ;
+
+	bool m_erase;
+	bool m_render;
 
 	void UpdateMatrix(vec3 position, vec3 rotation, float scale)
 	{

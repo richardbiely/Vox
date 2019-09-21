@@ -75,7 +75,7 @@ vec3 VoxelObject::GetCenter()
 	vec3 centerPos;
 	for(int i = 0; i < m_pVoxelModel->GetNumMatrices(); i++)
 	{
-		QubicleMatrix* pMatrix = m_pVoxelModel->GetQubicleMatrix(i);
+		const QubicleMatrix* pMatrix = m_pVoxelModel->GetQubicleMatrix(i);
 
 		centerPos.x += (pMatrix->m_matrixSizeX*0.5f)*pMatrix->m_scale;
 		centerPos.y += (pMatrix->m_matrixSizeY*0.5f)*pMatrix->m_scale;

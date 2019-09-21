@@ -58,11 +58,11 @@ public:
 
 	// Creation and destruction
 	void SetCreated(bool created);
-	bool IsCreated();
+	bool IsCreated() const;
 	void Unload();
 	void Setup();
-	bool IsSetup();
-	bool IsUnloading();
+	bool IsSetup() const;
+	bool IsUnloading() const;
 
 	// Saving and loading
 	void SaveChunk();
@@ -70,17 +70,17 @@ public:
 
 	// Position
 	void SetPosition(vec3 pos);
-	vec3 GetPosition();
+	vec3 GetPosition() const;
 
 	// Neighbours
 	int GetNumNeighbours();
 	void SetNumNeighbours(int neighbours);
-	Chunk* GetxMinus();
-	Chunk* GetxPlus();
-	Chunk* GetyMinus();
-	Chunk* GetyPlus();
-	Chunk* GetzMinus();
-	Chunk* GetzPlus();
+	Chunk* GetxMinus() const;
+	Chunk* GetxPlus() const;
+	Chunk* GetyMinus() const;
+	Chunk* GetyPlus() const;
+	Chunk* GetzMinus() const;
+	Chunk* GetzPlus() const;
 	void SetxMinus(Chunk* pChunk);
 	void SetxPlus(Chunk* pChunk);
 	void SetyMinus(Chunk* pChunk);
@@ -99,10 +99,10 @@ public:
 	void StopBatchUpdate();
 
 	// Active
-	bool GetActive(int x, int y, int z);
+	bool GetActive(int x, int y, int z) const;
 
 	// Inside chunk
-	bool IsInsideChunk(vec3 pos);
+	bool IsInsideChunk(vec3 pos) const;
 
 	// Items
 	void AddItem(Item* pItem);
@@ -113,15 +113,15 @@ public:
 	void SetColour(int x, int y, int z, float r, float g, float b, float a, bool setBlockType = false);
 	void GetColour(int x, int y, int z, float* r, float* g, float* b, float* a);
 	void SetColour(int x, int y, int z, unsigned int colour, bool setBlockType = false);
-	unsigned int GetColour(int x, int y, int z);
+	unsigned int GetColour(int x, int y, int z) const;
 
 	// Block type
-	BlockType GetBlockType(int x, int y, int z);
+	BlockType GetBlockType(int x, int y, int z) const;
 	void SetBlockType(int x, int y, int z, BlockType blockType);
 
 	// Flags
-	bool IsEmpty();
-	bool IsSurrounded();
+	bool IsEmpty() const;
+	bool IsSurrounded() const;
 	void UpdateWallFlags();
 	bool UpdateSurroundedFlag();
 	void UpdateEmptyFlag();
@@ -134,8 +134,8 @@ public:
 	// Rebuild
 	void RebuildMesh();
 	void SetNeedsRebuild(bool rebuild, bool rebuildNeighours);
-	bool NeedsRebuild();
-	bool IsRebuildingMesh();
+	bool NeedsRebuild() const;
+	bool IsRebuildingMesh() const;
 	void SwitchToCachedMesh();
 	void UndoCachedMesh();
 

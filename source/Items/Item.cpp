@@ -117,7 +117,7 @@ Item::~Item()
 	for(unsigned int i = 0; i < m_vpBoundingRegionList.size(); i++)
 	{
 		delete m_vpBoundingRegionList[i];
-		m_vpBoundingRegionList[i] = 0;
+		m_vpBoundingRegionList[i] = NULL;
 	}
 	m_vpBoundingRegionList.clear();
 }
@@ -242,9 +242,10 @@ void Item::LoadItem(const char* objectFilename)
 	if(m_pVoxelItem != NULL)
 	{
 		// Collision bounding region		
-		int numX = m_pVoxelItem->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->GetQubicleMatrix(0)->m_matrixSizeX;
-		int numY = m_pVoxelItem->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->GetQubicleMatrix(0)->m_matrixSizeY;
-		int numZ = m_pVoxelItem->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->GetQubicleMatrix(0)->m_matrixSizeZ;
+		const QubicleMatrix* pMatrix = m_pVoxelItem->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->GetQubicleMatrix(0);
+		const int numX = pMatrix->m_matrixSizeX;
+		const int numY = pMatrix->m_matrixSizeY;
+		const int numZ = pMatrix->m_matrixSizeZ;
 		CreateBoundingRegion(vec3(0.0f, 0.0f, 0.0f), BoundingRegionType_Cube, 0.0f, numX*0.5f, numY*0.5f, numZ*0.5f, 1.0);
 
 		UpdateCollisionRadius();
@@ -1073,9 +1074,10 @@ bool Item::IsCollisionEnabled()
 
 void Item::UpdateCollisionRadius()
 {
-	int numX = m_pVoxelItem->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->GetQubicleMatrix(0)->m_matrixSizeX;
-	int numY = m_pVoxelItem->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->GetQubicleMatrix(0)->m_matrixSizeY;
-	int numZ = m_pVoxelItem->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->GetQubicleMatrix(0)->m_matrixSizeZ;
+	const QubicleMatrix* pMatrix = m_pVoxelItem->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->GetQubicleMatrix(0);
+	const int numX = pMatrix->m_matrixSizeX;
+	const int numY = pMatrix->m_matrixSizeY;
+	const int numZ = pMatrix->m_matrixSizeZ;
 
 	int max = numX;
 	if (numY > max)

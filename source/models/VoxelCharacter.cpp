@@ -88,8 +88,8 @@ void VoxelCharacter::Reset()
 	m_eyesOffset = vec3(0.0f, 0.0f, 0.0f);
 	m_mouthOffset = vec3(0.0f, 0.0f, 0.0f);
 	m_currentFacialExpression = 0;
-	m_eyesBoneName = "";
-	m_mouthBoneName = "";
+	m_eyesBoneName.clear();
+	m_mouthBoneName.clear();
 	m_eyesBone = -1;
 	m_mouthBone = -1;
 	m_eyesMatrixIndex = -1;
@@ -385,21 +385,22 @@ bool VoxelCharacter::SaveFaces(const char *facesFileName)
 
 void VoxelCharacter::SetupFacesBones()
 {
-	m_eyesBone = m_pCharacterAnimator[AnimationSections_FullBody]->GetModel()->GetBoneIndex(m_eyesBoneName.c_str());
-	m_mouthBone = m_pCharacterAnimator[AnimationSections_FullBody]->GetModel()->GetBoneIndex(m_mouthBoneName.c_str());
+	const MS3DModel* pModel = m_pCharacterAnimator[AnimationSections_FullBody]->GetModel();
+	m_eyesBone = pModel->GetBoneIndex(m_eyesBoneName.c_str());
+	m_mouthBone = pModel->GetBoneIndex(m_mouthBoneName.c_str());
 
 	m_eyesMatrixIndex = m_pVoxelModel->GetMatrixIndexForName(m_eyesBoneName.c_str());
 	m_mouthMatrixIndex = m_pVoxelModel->GetMatrixIndexForName(m_mouthBoneName.c_str());
 
-	m_headBoneIndex = m_pCharacterAnimator[AnimationSections_FullBody]->GetModel()->GetBoneIndex("Head");
-	m_bodyBoneIndex = m_pCharacterAnimator[AnimationSections_FullBody]->GetModel()->GetBoneIndex("Body");
-	m_leftShoulderBoneIndex = m_pCharacterAnimator[AnimationSections_FullBody]->GetModel()->GetBoneIndex("Left_Shoulder");
-	m_leftHandBoneIndex = m_pCharacterAnimator[AnimationSections_FullBody]->GetModel()->GetBoneIndex("Left_Hand");
-	m_rightShoulderBoneIndex = m_pCharacterAnimator[AnimationSections_FullBody]->GetModel()->GetBoneIndex("Right_Shoulder");
-	m_rightHandBoneIndex = m_pCharacterAnimator[AnimationSections_FullBody]->GetModel()->GetBoneIndex("Right_Hand");
-	m_legsBoneIndex = m_pCharacterAnimator[AnimationSections_FullBody]->GetModel()->GetBoneIndex("Legs");
-	m_rightFootBoneIndex = m_pCharacterAnimator[AnimationSections_FullBody]->GetModel()->GetBoneIndex("Right_Foot");
-	m_leftFootBoneIndex = m_pCharacterAnimator[AnimationSections_FullBody]->GetModel()->GetBoneIndex("Left_Foot");
+	m_headBoneIndex = pModel->GetBoneIndex("Head");
+	m_bodyBoneIndex = pModel->GetBoneIndex("Body");
+	m_leftShoulderBoneIndex = pModel->GetBoneIndex("Left_Shoulder");
+	m_leftHandBoneIndex = pModel->GetBoneIndex("Left_Hand");
+	m_rightShoulderBoneIndex = pModel->GetBoneIndex("Right_Shoulder");
+	m_rightHandBoneIndex = pModel->GetBoneIndex("Right_Hand");
+	m_legsBoneIndex = pModel->GetBoneIndex("Legs");
+	m_rightFootBoneIndex = pModel->GetBoneIndex("Right_Foot");
+	m_leftFootBoneIndex = pModel->GetBoneIndex("Left_Foot");
 }
 
 void VoxelCharacter::ModifyEyesTextures(const char *charactersBaseFolder, const char* characterType, const char* eyeTextureFolder)
@@ -546,13 +547,13 @@ void VoxelCharacter::SetCharacterScale(float scale)
 	m_characterScale = scale;
 }
 
-float VoxelCharacter::GetCharacterScale()
+float VoxelCharacter::GetCharacterScale() const
 {
 	return m_characterScale;
 }
 
 // Character alpha
-float VoxelCharacter::GetCharacterAlpha()
+float VoxelCharacter::GetCharacterAlpha() const
 {
 	return m_characterAlpha;
 }
@@ -564,12 +565,12 @@ void VoxelCharacter::SetHeadAndUpperBodyLookRotation(float lookRotationAngle, fl
 	m_zLookTranslate = zLookTranslate;
 }
 
-float VoxelCharacter::GetHeadAndUpperBodyLookRotation()
+float VoxelCharacter::GetHeadAndUpperBodyLookRotation() const
 {
 	return m_lookRotationAngle;
 }
 
-float VoxelCharacter::GetHeadAndUpperBodyLookzTranslate()
+float VoxelCharacter::GetHeadAndUpperBodyLookzTranslate() const
 {
 	return m_zLookTranslate;
 }
@@ -579,12 +580,12 @@ void VoxelCharacter::SetCharacterMatrixRenderParams(const char* matrixName, floa
 	m_pVoxelModel->SetScaleAndOffsetForMatrix(matrixName, scale, xOffset, yOffset, zOffset);
 }
 
-float VoxelCharacter::GetBoneMatrixRenderScale(const char* matrixName)
+float VoxelCharacter::GetBoneMatrixRenderScale(const char* matrixName) const
 {
 	return m_pVoxelModel->GetScale(matrixName);
 }
 
-vec3 VoxelCharacter::GetBoneMatrixRenderOffset(const char* matrixName)
+vec3 VoxelCharacter::GetBoneMatrixRenderOffset(const char* matrixName) const
 {
 	return m_pVoxelModel->GetOffset(matrixName);
 }
@@ -635,12 +636,12 @@ void VoxelCharacter::UnloadLeftWeapon()
 	m_leftWeaponLoaded = false;
 }
 
-bool VoxelCharacter::IsRightWeaponLoaded()
+bool VoxelCharacter::IsRightWeaponLoaded() const
 {
 	return m_rightWeaponLoaded;
 }
 
-bool VoxelCharacter::IsLeftWeaponLoaded()
+bool VoxelCharacter::IsLeftWeaponLoaded() const
 {
 	return m_leftWeaponLoaded;
 }
@@ -651,7 +652,7 @@ void VoxelCharacter::SetUpdateAnimator(bool update)
 	m_updateAnimator = update;
 }
 
-Matrix4x4 VoxelCharacter::GetBoneMatrix(AnimationSections section, int index)
+Matrix4x4 VoxelCharacter::GetBoneMatrix(AnimationSections section, int index) const
 {
 	if(m_loaded)
 	{
@@ -662,7 +663,7 @@ Matrix4x4 VoxelCharacter::GetBoneMatrix(AnimationSections section, int index)
 	return empty;
 }
 
-Matrix4x4 VoxelCharacter::GetBoneMatrix(AnimationSections section, const char* boneName)
+Matrix4x4 VoxelCharacter::GetBoneMatrix(AnimationSections section, const char* boneName) const
 {
 	if(m_loaded)
 	{
@@ -674,7 +675,7 @@ Matrix4x4 VoxelCharacter::GetBoneMatrix(AnimationSections section, const char* b
 	return empty;
 }
 
-Matrix4x4 VoxelCharacter::GetBoneMatrixPaperdoll(int index, bool left)
+Matrix4x4 VoxelCharacter::GetBoneMatrixPaperdoll(int index, bool left) const
 {
 	if(m_loaded)
 	{
@@ -692,7 +693,7 @@ Matrix4x4 VoxelCharacter::GetBoneMatrixPaperdoll(int index, bool left)
 	return empty;
 }
 
-int VoxelCharacter::GetBoneIndex(const char* boneName)
+int VoxelCharacter::GetBoneIndex(const char* boneName) const
 {
 	if(m_loaded)
 	{
@@ -702,7 +703,7 @@ int VoxelCharacter::GetBoneIndex(const char* boneName)
 	return -1;
 }
 
-int VoxelCharacter::GetMatrixIndexForName(const char* matrixName)
+int VoxelCharacter::GetMatrixIndexForName(const char* matrixName) const
 {
 	if(m_loaded)
 	{
@@ -712,22 +713,22 @@ int VoxelCharacter::GetMatrixIndexForName(const char* matrixName)
 	return -1;
 }
 
-MS3DModel* VoxelCharacter::GetMS3DModel()
+const MS3DModel* VoxelCharacter::GetMS3DModel() const
 {
 	return m_pCharacterModel;
 }
 
-MS3DAnimator* VoxelCharacter::GetMS3DAnimator(AnimationSections section)
+const MS3DAnimator* VoxelCharacter::GetMS3DAnimator(AnimationSections section) const
 {
 	return m_pCharacterAnimator[section];
 }
 
-QubicleBinary* VoxelCharacter::GetQubicleModel()
+const QubicleBinary* VoxelCharacter::GetQubicleModel() const
 {
 	return m_pVoxelModel;
 }
 
-vec3 VoxelCharacter::GetBoneScale()
+vec3 VoxelCharacter::GetBoneScale() const
 {
 	return m_boneScale;
 }
@@ -747,20 +748,14 @@ void VoxelCharacter::SetWireFrameRender(bool wireframe)
 		m_pVoxelModel->SetWireFrameRender(wireframe);
 	}
 
-	if(m_pLeftWeapon != NULL)
+	if(m_pLeftWeapon != NULL && m_leftWeaponLoaded)
 	{
-		if(m_leftWeaponLoaded)
-		{
-			m_pLeftWeapon->SetWireFrameRender(wireframe);
-		}
+		m_pLeftWeapon->SetWireFrameRender(wireframe);
 	}
 
-	if(m_pRightWeapon != NULL)
+	if(m_pRightWeapon != NULL && m_rightWeaponLoaded)
 	{
-		if(m_rightWeaponLoaded)
-		{
-			m_pRightWeapon->SetWireFrameRender(wireframe);
-		}
+		m_pRightWeapon->SetWireFrameRender(wireframe);
 	}
 }
 
@@ -789,20 +784,14 @@ void VoxelCharacter::SetMeshAlpha(float alpha, bool force)
 		m_pVoxelModel->SetMeshAlpha(m_characterAlpha);
 	}
 
-	if(m_pLeftWeapon)
+	if(m_pLeftWeapon && m_leftWeaponLoaded)
 	{
-		if(m_leftWeaponLoaded)
-		{
-			m_pLeftWeapon->SetMeshAlpha(m_characterAlpha);
-		}
+		m_pLeftWeapon->SetMeshAlpha(m_characterAlpha);
 	}
 
-	if(m_pRightWeapon)
+	if(m_pRightWeapon && m_rightWeaponLoaded)
 	{
-		if(m_rightWeaponLoaded)
-		{
-			m_pRightWeapon->SetMeshAlpha(m_characterAlpha);
-		}
+		m_pRightWeapon->SetMeshAlpha(m_characterAlpha);
 	}
 }
 
@@ -813,20 +802,14 @@ void VoxelCharacter::SetMeshSingleColour(float r, float g, float b)
 		m_pVoxelModel->SetMeshSingleColour(r, g, b);
 	}
 
-	if(m_pLeftWeapon)
+	if (m_pLeftWeapon && m_leftWeaponLoaded)
 	{
-		if(m_leftWeaponLoaded)
-		{
-			m_pLeftWeapon->SetMeshSingleColour(r, g, b);
-		}
+		m_pLeftWeapon->SetMeshSingleColour(r, g, b);
 	}
 
-	if(m_pRightWeapon)
+	if (m_pRightWeapon && m_rightWeaponLoaded)
 	{
-		if(m_rightWeaponLoaded)
-		{
-			m_pRightWeapon->SetMeshSingleColour(r, g, b);
-		}
+		m_pRightWeapon->SetMeshSingleColour(r, g, b);
 	}
 }
 
@@ -835,12 +818,12 @@ void VoxelCharacter::SetBreathingAnimationEnabled(bool enable)
 	m_bBreathingAnimationEnabled = enable;
 }
 
-bool VoxelCharacter::IsBreathingAnimationEnabled()
+bool VoxelCharacter::IsBreathingAnimationEnabled() const
 {
 	return m_bBreathingAnimationEnabled;
 }
 
-bool VoxelCharacter::IsBreathingAnimationStarted()
+bool VoxelCharacter::IsBreathingAnimationStarted() const
 {
 	return m_bBreathingAnimationStarted;
 }
@@ -849,53 +832,57 @@ void VoxelCharacter::StartBreathAnimation()
 {
 	m_bBreathingAnimationStarted = true;
 
-	FloatInterpolation* lBodyYInterpolation1 = Interpolator::GetInstance()->CreateFloatInterpolation(&m_breathingBodyYOffset, 0.0f, 0.35f, 1.5f, 100.0f);
-	FloatInterpolation* lBodyYInterpolation2 = Interpolator::GetInstance()->CreateFloatInterpolation(&m_breathingBodyYOffset, 0.35f, 0.35f, 0.175f, 0.0f);
-	FloatInterpolation* lBodyYInterpolation3 = Interpolator::GetInstance()->CreateFloatInterpolation(&m_breathingBodyYOffset, 0.35f, 0.0f, 1.5f, -100.0f);
-	FloatInterpolation* lBodyYInterpolation4 = Interpolator::GetInstance()->CreateFloatInterpolation(&m_breathingBodyYOffset, 0.0f, 0.0f, 0.05f, 0.0f, NULL, _BreathAnimationFinished, this);
-	Interpolator::GetInstance()->LinkFloatInterpolation(lBodyYInterpolation1, lBodyYInterpolation2);
-	Interpolator::GetInstance()->LinkFloatInterpolation(lBodyYInterpolation2, lBodyYInterpolation3);
-	Interpolator::GetInstance()->LinkFloatInterpolation(lBodyYInterpolation3, lBodyYInterpolation4);
+	auto* pInterpolator = Interpolator::GetInstance();
 
-	FloatInterpolation* lHandsYInterpolation1 = Interpolator::GetInstance()->CreateFloatInterpolation(&m_breathingHandsYOffset, 0.0f, 0.0f, 0.5f, 0.0f);
-	FloatInterpolation* lHandsYInterpolation2 = Interpolator::GetInstance()->CreateFloatInterpolation(&m_breathingHandsYOffset, 0.0f, 0.75f, 1.25f, 100.0f);
-	FloatInterpolation* lHandsYInterpolation3 = Interpolator::GetInstance()->CreateFloatInterpolation(&m_breathingHandsYOffset, 0.75f, 0.75f, 0.125f, 0.0f);
-	FloatInterpolation* lHandsYInterpolation4 = Interpolator::GetInstance()->CreateFloatInterpolation(&m_breathingHandsYOffset, 0.75f, 0.0f, 1.5f, -100.0f);
-	Interpolator::GetInstance()->LinkFloatInterpolation(lHandsYInterpolation1, lHandsYInterpolation2);
-	Interpolator::GetInstance()->LinkFloatInterpolation(lHandsYInterpolation2, lHandsYInterpolation3);
-	Interpolator::GetInstance()->LinkFloatInterpolation(lHandsYInterpolation3, lHandsYInterpolation4);
+	FloatInterpolation* lBodyYInterpolation1 = pInterpolator->CreateFloatInterpolation(&m_breathingBodyYOffset, 0.0f, 0.35f, 1.5f, 100.0f);
+	FloatInterpolation* lBodyYInterpolation2 = pInterpolator->CreateFloatInterpolation(&m_breathingBodyYOffset, 0.35f, 0.35f, 0.175f, 0.0f);
+	FloatInterpolation* lBodyYInterpolation3 = pInterpolator->CreateFloatInterpolation(&m_breathingBodyYOffset, 0.35f, 0.0f, 1.5f, -100.0f);
+	FloatInterpolation* lBodyYInterpolation4 = pInterpolator->CreateFloatInterpolation(&m_breathingBodyYOffset, 0.0f, 0.0f, 0.05f, 0.0f, NULL, _BreathAnimationFinished, this);
+	pInterpolator->LinkFloatInterpolation(lBodyYInterpolation1, lBodyYInterpolation2);
+	pInterpolator->LinkFloatInterpolation(lBodyYInterpolation2, lBodyYInterpolation3);
+	pInterpolator->LinkFloatInterpolation(lBodyYInterpolation3, lBodyYInterpolation4);
 
-	Interpolator::GetInstance()->AddFloatInterpolation(lBodyYInterpolation1);
-	Interpolator::GetInstance()->AddFloatInterpolation(lHandsYInterpolation1);
+	FloatInterpolation* lHandsYInterpolation1 = pInterpolator->CreateFloatInterpolation(&m_breathingHandsYOffset, 0.0f, 0.0f, 0.5f, 0.0f);
+	FloatInterpolation* lHandsYInterpolation2 = pInterpolator->CreateFloatInterpolation(&m_breathingHandsYOffset, 0.0f, 0.75f, 1.25f, 100.0f);
+	FloatInterpolation* lHandsYInterpolation3 = pInterpolator->CreateFloatInterpolation(&m_breathingHandsYOffset, 0.75f, 0.75f, 0.125f, 0.0f);
+	FloatInterpolation* lHandsYInterpolation4 = pInterpolator->CreateFloatInterpolation(&m_breathingHandsYOffset, 0.75f, 0.0f, 1.5f, -100.0f);
+	pInterpolator->LinkFloatInterpolation(lHandsYInterpolation1, lHandsYInterpolation2);
+	pInterpolator->LinkFloatInterpolation(lHandsYInterpolation2, lHandsYInterpolation3);
+	pInterpolator->LinkFloatInterpolation(lHandsYInterpolation3, lHandsYInterpolation4);
+
+	pInterpolator->AddFloatInterpolation(lBodyYInterpolation1);
+	pInterpolator->AddFloatInterpolation(lHandsYInterpolation1);
 }
 
-float VoxelCharacter::GetBreathingAnimationOffsetForBone(int boneIndex)
+float VoxelCharacter::GetBreathingAnimationOffsetForBone(int boneIndex) const
 {
-	if(strcmp(m_pCharacterAnimator[AnimationSections_FullBody]->GetModel()->GetNameFromBoneIndex(boneIndex), "Head") == 0)
+	auto* pFullBodyModel = m_pCharacterAnimator[AnimationSections_FullBody]->GetModel();
+
+	if(strcmp(pFullBodyModel->GetNameFromBoneIndex(boneIndex), "Head") == 0)
 	{
 		return m_breathingBodyYOffset * 0.75f;
 	}
-	if(strcmp(m_pCharacterAnimator[AnimationSections_FullBody]->GetModel()->GetNameFromBoneIndex(boneIndex), "Body") == 0)
+	if(strcmp(pFullBodyModel->GetNameFromBoneIndex(boneIndex), "Body") == 0)
 	{
 		return m_breathingBodyYOffset;
 	}
-	if(strcmp(m_pCharacterAnimator[AnimationSections_FullBody]->GetModel()->GetNameFromBoneIndex(boneIndex), "Legs") == 0)
+	if(strcmp(pFullBodyModel->GetNameFromBoneIndex(boneIndex), "Legs") == 0)
 	{
 		return m_breathingBodyYOffset * 0.5f;
 	}
-	if(strcmp(m_pCharacterAnimator[AnimationSections_FullBody]->GetModel()->GetNameFromBoneIndex(boneIndex), "Right_Shoulder") == 0)
+	if(strcmp(pFullBodyModel->GetNameFromBoneIndex(boneIndex), "Right_Shoulder") == 0)
 	{
 		return m_breathingHandsYOffset;
 	}
-	if(strcmp(m_pCharacterAnimator[AnimationSections_FullBody]->GetModel()->GetNameFromBoneIndex(boneIndex), "Left_Shoulder") == 0)
+	if(strcmp(pFullBodyModel->GetNameFromBoneIndex(boneIndex), "Left_Shoulder") == 0)
 	{
 		return m_breathingHandsYOffset;
 	}
-	if(strcmp(m_pCharacterAnimator[AnimationSections_FullBody]->GetModel()->GetNameFromBoneIndex(boneIndex), "Right_Hand") == 0)
+	if(strcmp(pFullBodyModel->GetNameFromBoneIndex(boneIndex), "Right_Hand") == 0)
 	{
 		return m_breathingHandsYOffset;
 	}
-	if(strcmp(m_pCharacterAnimator[AnimationSections_FullBody]->GetModel()->GetNameFromBoneIndex(boneIndex), "Left_Hand") == 0)
+	if(strcmp(pFullBodyModel->GetNameFromBoneIndex(boneIndex), "Left_Hand") == 0)
 	{
 		return m_breathingHandsYOffset;
 	}
@@ -908,17 +895,17 @@ int VoxelCharacter::GetNumFacialExpressions() const
 	return m_numFacialExpressions;
 }
 
-const char* VoxelCharacter::GetFacialExpressionName(const int index)
+const char* VoxelCharacter::GetFacialExpressionName(const int index) const
 {
 	return m_pFacialExpressions[index].m_facialExpressionName.c_str();
 }
 
-vec3 VoxelCharacter::GetEyesOffset()
+vec3 VoxelCharacter::GetEyesOffset() const
 {
 	return m_eyesOffset;
 }
 
-vec3 VoxelCharacter::GetMouthOffset()
+vec3 VoxelCharacter::GetMouthOffset() const
 {
 	return m_mouthOffset;
 }
@@ -939,7 +926,7 @@ void VoxelCharacter::SetWinkAnimationEnabled(bool enable)
 	m_bWinkAnimationEnabled = enable;
 }
 
-bool VoxelCharacter::IsWinkAnimationEnabled()
+bool VoxelCharacter::IsWinkAnimationEnabled() const
 {
 	return m_bWinkAnimationEnabled;
 }
@@ -976,7 +963,7 @@ void VoxelCharacter::SetTalkingAnimationEnabled(bool enable)
 	}
 }
 
-bool VoxelCharacter::IsTalkingAnimationEnabled()
+bool VoxelCharacter::IsTalkingAnimationEnabled() const
 {
 	return m_bTalkingAnimationEnabled;
 }
@@ -986,7 +973,7 @@ void VoxelCharacter::SetRandomMouthSelection(bool random)
 	m_randomMouthSelection = random;
 }
 
-bool VoxelCharacter::IsRandomMouthSelectionEnabled()
+bool VoxelCharacter::IsRandomMouthSelectionEnabled() const
 {
 	return m_randomMouthSelection;
 }
@@ -1085,7 +1072,7 @@ void VoxelCharacter::PlayFacialExpression(int facialAnimationIndex)
 	}
 }
 
-int VoxelCharacter::GetCurrentFacialAnimation()
+int VoxelCharacter::GetCurrentFacialAnimation() const
 {
 	return m_currentFacialExpression;
 }
@@ -1110,32 +1097,32 @@ void VoxelCharacter::SetMouthBone(string mouthBoneName)
 	}
 }
 
-string VoxelCharacter::GetEyesBoneName()
+string VoxelCharacter::GetEyesBoneName() const
 {
 	return m_eyesBoneName;
 }
 
-string VoxelCharacter::GetMouthBoneName()
+string VoxelCharacter::GetMouthBoneName() const
 {
 	return m_mouthBoneName;
 }
 
-int VoxelCharacter::GetEyesBone()
+int VoxelCharacter::GetEyesBone() const
 {
 	return m_eyesBone;
 }
 
-int VoxelCharacter::GetMouthBone()
+int VoxelCharacter::GetMouthBone() const
 {
 	return m_mouthBone;
 }
 
-int VoxelCharacter::GetEyesMatrixIndex()
+int VoxelCharacter::GetEyesMatrixIndex() const
 {
 	return m_eyesMatrixIndex;
 }
 
-int VoxelCharacter::GetMouthMatrixIndex()
+int VoxelCharacter::GetMouthMatrixIndex() const
 {
 	return m_mouthMatrixIndex;
 }
@@ -1152,28 +1139,28 @@ void VoxelCharacter::SetMouthTextureSize(float width, float height)
 	m_mouthTextureHeight = height;
 }
 
-float VoxelCharacter::GetEyeTextureWidth()
+float VoxelCharacter::GetEyeTextureWidth() const
 {
 	return m_eyesTextureWidth;
 }
 
-float VoxelCharacter::GetEyeTextureHeight()
+float VoxelCharacter::GetEyeTextureHeight() const
 {
 	return m_eyesTextureHeight;
 }
 
-float VoxelCharacter::GetMouthTextureWidth()
+float VoxelCharacter::GetMouthTextureWidth() const
 {
 	return m_mouthTextureWidth;
 }
 
-float VoxelCharacter::GetMouthTextureHeight()
+float VoxelCharacter::GetMouthTextureHeight() const
 {
 	return m_mouthTextureHeight;
 }
 
 // Face looking
-vec3 VoxelCharacter::GetFaceLookingDirection()
+vec3 VoxelCharacter::GetFaceLookingDirection() const
 {
 	return m_faceLookingDirection;
 }
@@ -1190,7 +1177,7 @@ void VoxelCharacter::SetFaceLookingDirection(vec3 looking)
 	}
 }
 
-vec3 VoxelCharacter::GetFaceTargetDirection()
+vec3 VoxelCharacter::GetFaceTargetDirection() const
 {
 	return m_faceTargetDirection;
 }
@@ -1207,7 +1194,7 @@ void VoxelCharacter::SetFaceTargetDirection(vec3 target)
 	}	
 }
 
-float VoxelCharacter::GetFaceLookToTargetSpeedMultiplier()
+float VoxelCharacter::GetFaceLookToTargetSpeedMultiplier() const
 {
 	return m_faceLookToTargetSpeedMultiplier;
 }
@@ -1217,47 +1204,47 @@ void VoxelCharacter::SetFaceLookToTargetSpeedMultiplier(float speedMultiplier)
 	m_faceLookToTargetSpeedMultiplier = speedMultiplier;
 }
 
-int VoxelCharacter::GetHeadBoneIndex()
+int VoxelCharacter::GetHeadBoneIndex() const
 {
 	return m_headBoneIndex;
 }
 
-int VoxelCharacter::GetBodyBoneIndex()
+int VoxelCharacter::GetBodyBoneIndex() const
 {
 	return m_bodyBoneIndex;
 }
 
-int VoxelCharacter::GetLeftShoulderBoneIndex()
+int VoxelCharacter::GetLeftShoulderBoneIndex() const
 {
 	return m_leftShoulderBoneIndex;
 }
 
-int VoxelCharacter::GetLeftHandBoneIndex()
+int VoxelCharacter::GetLeftHandBoneIndex() const
 {
 	return m_leftHandBoneIndex;
 }
 
-int VoxelCharacter::GetRightShoulderBoneIndex()
+int VoxelCharacter::GetRightShoulderBoneIndex() const
 {
 	return m_rightShoulderBoneIndex;
 }
 
-int VoxelCharacter::GetRightHandBoneIndex()
+int VoxelCharacter::GetRightHandBoneIndex() const
 {
 	return m_rightHandBoneIndex;
 }
 
-int VoxelCharacter::GetLegsBoneIndex()
+int VoxelCharacter::GetLegsBoneIndex() const
 {
 	return m_legsBoneIndex;
 }
 
-int VoxelCharacter::GetRightFootBoneIndex()
+int VoxelCharacter::GetRightFootBoneIndex() const
 {
 	return m_rightFootBoneIndex;
 }
 
-int VoxelCharacter::GetLeftFootBoneIndex()
+int VoxelCharacter::GetLeftFootBoneIndex() const
 {
 	return m_leftFootBoneIndex;
 }
@@ -1267,12 +1254,12 @@ void VoxelCharacter::SetRandomLookDirection(bool enable)
 	m_bRandomLookDirectionEnabled = enable;
 }
 
-bool VoxelCharacter::IsRandomLookDirectionEnabled()
+bool VoxelCharacter::IsRandomLookDirectionEnabled() const
 {
 	return m_bRandomLookDirectionEnabled;
 }
 
-int VoxelCharacter::GetNumAnimations()
+int VoxelCharacter::GetNumAnimations() const
 {
 	if(m_pCharacterAnimator[AnimationSections_FullBody] == NULL)
 	{
@@ -1282,7 +1269,7 @@ int VoxelCharacter::GetNumAnimations()
 	return m_pCharacterAnimator[AnimationSections_FullBody]->GetNumAnimations();
 }
 
-const char* VoxelCharacter::GetAnimationName(int index)
+const char* VoxelCharacter::GetAnimationName(int index) const
 {
 	if(m_pCharacterAnimator[AnimationSections_FullBody] == NULL)
 	{
@@ -1470,7 +1457,7 @@ void VoxelCharacter::BlendIntoAnimation(AnimationSections section, bool waitForC
 	}
 }
 
-bool VoxelCharacter::HasAnimationFinished(AnimationSections section)
+bool VoxelCharacter::HasAnimationFinished(AnimationSections section) const
 {
 	if(m_pCharacterAnimator[AnimationSections_FullBody] == NULL)
 	{
@@ -1480,7 +1467,7 @@ bool VoxelCharacter::HasAnimationFinished(AnimationSections section)
 	return m_pCharacterAnimator[section]->HasAnimationFinished();
 }
 
-bool VoxelCharacter::HasAnimationLooped(AnimationSections section)
+bool VoxelCharacter::HasAnimationLooped(AnimationSections section) const
 {
 	if(m_pCharacterAnimator[AnimationSections_FullBody] == NULL)
 	{
@@ -1501,32 +1488,32 @@ void VoxelCharacter::StepAnimationFrame(float dt)
 	}
 }
 
-int VoxelCharacter::GetStartFrame(const char *lAnimationName)
+int VoxelCharacter::GetStartFrame(const char *lAnimationName) const
 {
 	return m_pCharacterAnimator[AnimationSections_FullBody]->GetStartFrame(lAnimationName);
 }
 
-int VoxelCharacter::GetEndFrame(const char *lAnimationName)
+int VoxelCharacter::GetEndFrame(const char *lAnimationName) const
 {
 	return m_pCharacterAnimator[AnimationSections_FullBody]->GetEndFrame(lAnimationName);
 }
 
-int VoxelCharacter::GetCurrentFrame()
+int VoxelCharacter::GetCurrentFrame() const
 {
 	return m_pCharacterAnimator[AnimationSections_FullBody]->GetCurrentFrame();
 }
 
-int VoxelCharacter::GetNumJoints()
+int VoxelCharacter::GetNumJoints() const
 {
 	return m_pCharacterModel->GetNumJoints();
 }
 
-Joint* VoxelCharacter::GetJoint(int index)
+const Joint* VoxelCharacter::GetJoint(int index) const
 {
 	return m_pCharacterModel->GetJoint(index);
 }
 
-Joint* VoxelCharacter::GetJoint(const char* jointName)
+const Joint* VoxelCharacter::GetJoint(const char* jointName) const
 {
 	return m_pCharacterModel->GetJoint(jointName);
 }
@@ -1544,12 +1531,12 @@ void VoxelCharacter::PlayAnimationOnPaperDoll(const char *lAnimationName, bool l
 }
 
 // Matrices
-int VoxelCharacter::GetNumModelMatrices()
+int VoxelCharacter::GetNumModelMatrices() const
 {
 	return m_pVoxelModel->GetNumMatrices();
 }
 
-const char* VoxelCharacter::GetModelMatrixName(int index)
+const char* VoxelCharacter::GetModelMatrixName(int index) const
 {
 	return m_pVoxelModel->GetMatrixName(index);
 }
@@ -1575,7 +1562,7 @@ void VoxelCharacter::SetQubicleMatrixRender(const char* matrixName, bool render)
 	m_pVoxelModel->SetQubicleMatrixRender(matrixName, render);
 }
 
-string VoxelCharacter::GetSubSelectionName(int pickingId)
+string VoxelCharacter::GetSubSelectionName(int pickingId) const
 {
 	return m_pVoxelModel->GetSubSelectionName(pickingId);
 }
@@ -1845,7 +1832,8 @@ void VoxelCharacter::RenderFaceTextures(bool eyesTexture, bool wireframe, bool t
 	}
 
 	m_pRenderer->PushMatrix();
-		if(transparency)
+	{
+		if (transparency)
 		{
 			m_pRenderer->EnableTransparency(BF_SRC_ALPHA, BF_ONE_MINUS_SRC_ALPHA);
 		}
@@ -1853,7 +1841,7 @@ void VoxelCharacter::RenderFaceTextures(bool eyesTexture, bool wireframe, bool t
 		// Store cull mode
 		CullMode cullMode = m_pRenderer->GetCullMode();
 
-		if(wireframe)
+		if (wireframe)
 		{
 			m_pRenderer->SetLineWidth(1.0f);
 			m_pRenderer->SetRenderMode(RM_WIREFRAME);
@@ -1863,8 +1851,8 @@ void VoxelCharacter::RenderFaceTextures(bool eyesTexture, bool wireframe, bool t
 		{
 			m_pRenderer->SetRenderMode(RM_TEXTURED);
 		}
-		
-		if(eyesTexture)
+
+		if (eyesTexture)
 		{
 			m_pRenderer->BindTexture(m_faceEyesTexture);
 		}
@@ -1873,7 +1861,7 @@ void VoxelCharacter::RenderFaceTextures(bool eyesTexture, bool wireframe, bool t
 			m_pRenderer->BindTexture(m_faceMouthTexture);
 		}
 
-		if(transparency)
+		if (transparency)
 		{
 			m_pRenderer->ImmediateColourAlpha(1.0f, 1.0f, 1.0f, m_characterAlpha);
 		}
@@ -1881,10 +1869,11 @@ void VoxelCharacter::RenderFaceTextures(bool eyesTexture, bool wireframe, bool t
 		{
 			m_pRenderer->ImmediateColourAlpha(1.0f, 1.0f, 1.0f, 1.0f);
 		}
-		
+
 		m_pRenderer->EnableMaterial(m_pVoxelModel->GetMaterial());
 
 		m_pRenderer->EnableImmediateMode(IM_QUADS);
+		{
 			//m_pRenderer->ImmediateNormal(0.0f, 0.0f, 1.0f);
 			m_pRenderer->ImmediateTextureCoordinate(0.0f, texture_h);
 			m_pRenderer->ImmediateVertex(0.0f, 0.0f, 0.0f);
@@ -1897,6 +1886,7 @@ void VoxelCharacter::RenderFaceTextures(bool eyesTexture, bool wireframe, bool t
 			//m_pRenderer->ImmediateNormal(0.0f, 0.0f, 1.0f);
 			m_pRenderer->ImmediateTextureCoordinate(0.0f, 0.0f);
 			m_pRenderer->ImmediateVertex(0.0f, height, 0.0f);
+		}
 		m_pRenderer->DisableImmediateMode();
 		m_pRenderer->DisableTexture();
 
@@ -1907,6 +1897,7 @@ void VoxelCharacter::RenderFaceTextures(bool eyesTexture, bool wireframe, bool t
 
 		// Restore cull mode
 		m_pRenderer->SetCullMode(cullMode);
+	}
 	m_pRenderer->PopMatrix();
 }
 
@@ -1914,28 +1905,22 @@ void VoxelCharacter::RenderWeapons(bool renderOutline, bool reflection, bool sil
 {
 	if(m_pLeftWeapon != NULL)
 	{
-		if(m_leftWeaponLoaded)
+		if(m_leftWeaponLoaded && m_renderLeftWeapon)
 		{
-			if(m_renderLeftWeapon)
-			{
-				m_pRenderer->PushMatrix();
-					m_pRenderer->ScaleWorldMatrix(m_characterScale, m_characterScale, m_characterScale);
-					m_pLeftWeapon->Render(renderOutline, reflection, silhouette, OutlineColour);
-				m_pRenderer->PopMatrix();
-			}
+			m_pRenderer->PushMatrix();
+				m_pRenderer->ScaleWorldMatrix(m_characterScale, m_characterScale, m_characterScale);
+				m_pLeftWeapon->Render(renderOutline, reflection, silhouette, OutlineColour);
+			m_pRenderer->PopMatrix();
 		}
 	}
 	if(m_pRightWeapon != NULL)
 	{
-		if(m_rightWeaponLoaded)
+		if(m_rightWeaponLoaded && m_renderRightWeapon)
 		{
-			if(m_renderRightWeapon)
-			{
-				m_pRenderer->PushMatrix();
-					m_pRenderer->ScaleWorldMatrix(m_characterScale, m_characterScale, m_characterScale);
-					m_pRightWeapon->Render(renderOutline, reflection, silhouette, OutlineColour);
-				m_pRenderer->PopMatrix();
-			}
+			m_pRenderer->PushMatrix();
+				m_pRenderer->ScaleWorldMatrix(m_characterScale, m_characterScale, m_characterScale);
+				m_pRightWeapon->Render(renderOutline, reflection, silhouette, OutlineColour);
+			m_pRenderer->PopMatrix();
 		}
 	}
 }
@@ -1944,26 +1929,20 @@ void VoxelCharacter::RenderWeaponTrails()
 {
 	if(m_pLeftWeapon != NULL)
 	{
-		if(m_leftWeaponLoaded)
+		if(m_leftWeaponLoaded && m_renderLeftWeapon)
 		{
-			if(m_renderLeftWeapon)
-			{
-				m_pRenderer->PushMatrix();
-					m_pLeftWeapon->RenderWeaponTrails();
-				m_pRenderer->PopMatrix();
-			}
+			m_pRenderer->PushMatrix();
+				m_pLeftWeapon->RenderWeaponTrails();
+			m_pRenderer->PopMatrix();
 		}
 	}
 	if(m_pRightWeapon != NULL)
 	{
-		if(m_rightWeaponLoaded)
+		if(m_rightWeaponLoaded && m_renderRightWeapon)
 		{
-			if(m_renderRightWeapon)
-			{
-				m_pRenderer->PushMatrix();
-					m_pRightWeapon->RenderWeaponTrails();
-				m_pRenderer->PopMatrix();
-			}
+			m_pRenderer->PushMatrix();
+				m_pRightWeapon->RenderWeaponTrails();
+			m_pRenderer->PopMatrix();
 		}
 	}
 }
@@ -2030,33 +2009,27 @@ void VoxelCharacter::RenderWeaponsPaperdoll()
 {
 	if(m_pLeftWeapon != NULL)
 	{
-		if(m_leftWeaponLoaded)
+		if(m_leftWeaponLoaded && m_renderLeftWeapon)
 		{
-			if(m_renderLeftWeapon)
-			{
-				Colour OutlineColour(1.0f, 1.0f, 0.0f, 1.0f);
+			Colour OutlineColour(1.0f, 1.0f, 0.0f, 1.0f);
 
-				m_pRenderer->PushMatrix();
-					m_pRenderer->ScaleWorldMatrix(0.08f, 0.08f, 0.08f);
-					m_pLeftWeapon->RenderPaperdoll();
-				m_pRenderer->PopMatrix();
-			}
+			m_pRenderer->PushMatrix();
+				m_pRenderer->ScaleWorldMatrix(0.08f, 0.08f, 0.08f);
+				m_pLeftWeapon->RenderPaperdoll();
+			m_pRenderer->PopMatrix();
 		}
 	}
 
 	if(m_pRightWeapon != NULL)
 	{
-		if(m_rightWeaponLoaded)
+		if(m_rightWeaponLoaded && m_renderRightWeapon)
 		{
-			if(m_renderRightWeapon)
-			{
-				Colour OutlineColour(1.0f, 1.0f, 0.0f, 1.0f);
+			Colour OutlineColour(1.0f, 1.0f, 0.0f, 1.0f);
 
-				m_pRenderer->PushMatrix();
-					m_pRenderer->ScaleWorldMatrix(0.08f, 0.08f, 0.08f);
-					m_pRightWeapon->RenderPaperdoll();
-				m_pRenderer->PopMatrix();
-			}
+			m_pRenderer->PushMatrix();
+				m_pRenderer->ScaleWorldMatrix(0.08f, 0.08f, 0.08f);
+				m_pRightWeapon->RenderPaperdoll();
+			m_pRenderer->PopMatrix();
 		}
 	}
 }

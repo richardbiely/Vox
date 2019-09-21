@@ -687,7 +687,7 @@ BlockType ChunkManager::SetBlockTypeBasedOnColour(int r, int g, int b)
 }
 
 // Importing into the world chunks
-void ChunkManager::ImportQubicleBinaryMatrix(QubicleMatrix* pMatrix, vec3 position, QubicleImportDirection direction)
+void ChunkManager::ImportQubicleBinaryMatrix(const QubicleMatrix* pMatrix, vec3 position, QubicleImportDirection direction)
 {
 	bool mirrorX = false;
 	bool mirrorY = false;
@@ -854,13 +854,13 @@ void ChunkManager::ImportQubicleBinaryMatrix(QubicleMatrix* pMatrix, vec3 positi
 	vChunkBatchUpdateList.clear();
 }
 
-QubicleBinary* ChunkManager::ImportQubicleBinary(QubicleBinary* qubicleBinaryFile, vec3 position, QubicleImportDirection direction)
+const QubicleBinary* ChunkManager::ImportQubicleBinary(const QubicleBinary* qubicleBinaryFile, vec3 position, QubicleImportDirection direction)
 {
 	int numMatrices = qubicleBinaryFile->GetNumMatrices();
 
 	for (int i = 0; i < numMatrices; i++)
 	{
-		QubicleMatrix* pMatrix = qubicleBinaryFile->GetQubicleMatrix(i);
+		const QubicleMatrix* pMatrix = qubicleBinaryFile->GetQubicleMatrix(i);
 
 		ImportQubicleBinaryMatrix(pMatrix, position, direction);
 	}
@@ -868,7 +868,7 @@ QubicleBinary* ChunkManager::ImportQubicleBinary(QubicleBinary* qubicleBinaryFil
 	return qubicleBinaryFile;
 }
 
-QubicleBinary* ChunkManager::ImportQubicleBinary(const char* filename, vec3 position, QubicleImportDirection direction)
+const QubicleBinary* ChunkManager::ImportQubicleBinary(const char* filename, vec3 position, QubicleImportDirection direction)
 {
 	QubicleBinary* qubicleBinaryFile = m_pQubicleBinaryManager->GetQubicleBinaryFile(filename, true);
 	if (qubicleBinaryFile != NULL)

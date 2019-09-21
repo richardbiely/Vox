@@ -284,7 +284,7 @@ void NPC::SetName(string name)
 	m_name = name;
 }
 
-string NPC::GetName()
+string NPC::GetName() const
 {
 	return m_name;
 }
@@ -294,7 +294,7 @@ void NPC::SetType(string typeName)
 	m_type = typeName;
 }
 
-string NPC::GetType()
+string NPC::GetType() const
 {
 	return m_type;
 }
@@ -304,7 +304,7 @@ void NPC::SetModelname(string modelName)
 	m_modelName = modelName;
 }
 
-string NPC::GetModelName()
+string NPC::GetModelName() const
 {
 	return m_modelName;
 }
@@ -314,7 +314,7 @@ void NPC::SetPosition(vec3 pos)
 	m_position = pos;
 }
 
-vec3 NPC::GetPosition()
+vec3 NPC::GetPosition() const
 {
 	return m_position;
 }
@@ -325,7 +325,7 @@ void NPC::SetRotation(float rot)
 	m_forward = vec3(sin(angle), 0.0f, cos(angle));
 }
 
-float NPC::GetRotation()
+float NPC::GetRotation() const
 {
 	float rotationAngle = acos(dot(vec3(0.0f, 0.0f, 1.0f), m_forward));
 	rotationAngle = RadToDeg(rotationAngle);
@@ -344,7 +344,7 @@ void NPC::SetScale(float scale)
 	UpdateRadius();
 }
 
-float NPC::GetRadius()
+float NPC::GetRadius() const
 {
 	return m_radius;
 }
@@ -354,24 +354,24 @@ void NPC::UpdateRadius()
 	m_radius = m_pVoxelCharacter->GetCharacterScale() / 0.14f;
 }
 
-vec3 NPC::GetCenter()
+vec3 NPC::GetCenter() const
 {
 	vec3 center = m_position + vec3(0.0f, m_radius, 0.0f);
 
 	return center;
 }
 
-vec3 NPC::GetForwardVector()
+vec3 NPC::GetForwardVector() const
 {
 	return m_worldMatrix.GetForwardVector();
 }
 
-vec3 NPC::GetRightVector()
+vec3 NPC::GetRightVector() const
 {
 	return m_worldMatrix.GetRightVector();
 }
 
-vec3 NPC::GetUpVector()
+vec3 NPC::GetUpVector() const
 {
 	return m_worldMatrix.GetUpVector();
 }
@@ -382,7 +382,7 @@ void NPC::SetFrontEndNPC(bool frontEnd)
 	m_frontEndNPC = frontEnd;
 }
 
-bool NPC::IsFrontEndNPC()
+bool NPC::IsFrontEndNPC() const
 {
 	return m_frontEndNPC;
 }
@@ -428,7 +428,7 @@ void NPC::SetNPCCombatType(eNPCCombatType eNPCCombatType, bool setWeaponModel)
 				pNewEquipment->LoadWeapon("media/gamedata/items/Quiver/Quiver.item", false);
 
 				pNewEquipment->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->SetScaleAndOffsetForMatrix("Quiver", pNewEquipment->GetAnimatedSection(0)->m_renderScale, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.x, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.y, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.z);
-				QubicleMatrix* pQuiverMatrix = pNewEquipment->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->GetQubicleMatrix("Quiver");
+				QubicleMatrix* pQuiverMatrix = pNewEquipment->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->SetQubicleMatrix("Quiver");
 				pQuiverMatrix->m_boneIndex = m_pVoxelCharacter->GetBodyBoneIndex();
 				m_pVoxelCharacter->AddQubicleMatrix(pQuiverMatrix, false);
 
@@ -856,7 +856,7 @@ void NPC::EquipItem(EquipSlot equipSlot, const char* itemFilename, bool left, bo
 				pNewEquipment->LoadWeapon(itemFilename, false);
 
 				pNewEquipment->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->SetScaleAndOffsetForMatrix("Helm", pNewEquipment->GetAnimatedSection(0)->m_renderScale, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.x, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.y, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.z);
-				QubicleMatrix* pHelmMatrix = pNewEquipment->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->GetQubicleMatrix("Helm");
+				QubicleMatrix* pHelmMatrix = pNewEquipment->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->SetQubicleMatrix("Helm");
 				pHelmMatrix->m_boneIndex = m_pVoxelCharacter->GetHeadBoneIndex();
 				m_pVoxelCharacter->AddQubicleMatrix(pHelmMatrix, false);
 			}
@@ -873,7 +873,7 @@ void NPC::EquipItem(EquipSlot equipSlot, const char* itemFilename, bool left, bo
 				if(right)
 				{
 					pNewEquipment->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->SetScaleAndOffsetForMatrix("Right_Shoulder_Armor", pNewEquipment->GetAnimatedSection(0)->m_renderScale, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.x, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.y, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.z);
-					QubicleMatrix* pRightShoulderMatrix = pNewEquipment->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->GetQubicleMatrix("Right_Shoulder_Armor");
+					QubicleMatrix* pRightShoulderMatrix = pNewEquipment->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->SetQubicleMatrix("Right_Shoulder_Armor");
 					pRightShoulderMatrix->m_boneIndex = m_pVoxelCharacter->GetRightShoulderBoneIndex();
 					m_pVoxelCharacter->AddQubicleMatrix(pRightShoulderMatrix, false);
 				}
@@ -881,7 +881,7 @@ void NPC::EquipItem(EquipSlot equipSlot, const char* itemFilename, bool left, bo
 				if(left)
 				{
 					pNewEquipment->GetAnimatedSection(1)->m_pVoxelObject->GetQubicleModel()->SetScaleAndOffsetForMatrix("Left_Shoulder_Armor", pNewEquipment->GetAnimatedSection(1)->m_renderScale, pNewEquipment->GetAnimatedSection(1)->m_renderOffset.x, pNewEquipment->GetAnimatedSection(1)->m_renderOffset.y, pNewEquipment->GetAnimatedSection(1)->m_renderOffset.z);				
-					QubicleMatrix* pLeftShoulderMatrix = pNewEquipment->GetAnimatedSection(1)->m_pVoxelObject->GetQubicleModel()->GetQubicleMatrix("Left_Shoulder_Armor");				
+					QubicleMatrix* pLeftShoulderMatrix = pNewEquipment->GetAnimatedSection(1)->m_pVoxelObject->GetQubicleModel()->SetQubicleMatrix("Left_Shoulder_Armor");
 					pLeftShoulderMatrix->m_boneIndex = m_pVoxelCharacter->GetLeftShoulderBoneIndex();				
 					m_pVoxelCharacter->AddQubicleMatrix(pLeftShoulderMatrix, false);
 				}
@@ -897,7 +897,7 @@ void NPC::EquipItem(EquipSlot equipSlot, const char* itemFilename, bool left, bo
 				pNewEquipment->LoadWeapon(itemFilename, false);
 
 				pNewEquipment->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->SetScaleAndOffsetForMatrix("Body", pNewEquipment->GetAnimatedSection(0)->m_renderScale, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.x, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.y, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.z);
-				QubicleMatrix* pBodyMatrix = pNewEquipment->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->GetQubicleMatrix("Body");
+				QubicleMatrix* pBodyMatrix = pNewEquipment->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->SetQubicleMatrix("Body");
 				pBodyMatrix->m_boneIndex = m_pVoxelCharacter->GetBodyBoneIndex();
 				m_pVoxelCharacter->AddQubicleMatrix(pBodyMatrix, false);
 			}
@@ -912,7 +912,7 @@ void NPC::EquipItem(EquipSlot equipSlot, const char* itemFilename, bool left, bo
 				pNewEquipment->LoadWeapon(itemFilename, false);
 
 				pNewEquipment->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->SetScaleAndOffsetForMatrix("Legs", pNewEquipment->GetAnimatedSection(0)->m_renderScale, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.x, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.y, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.z);
-				QubicleMatrix* pLegsMatrix = pNewEquipment->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->GetQubicleMatrix("Legs");
+				QubicleMatrix* pLegsMatrix = pNewEquipment->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->SetQubicleMatrix("Legs");
 				pLegsMatrix->m_boneIndex = m_pVoxelCharacter->GetLegsBoneIndex();
 				m_pVoxelCharacter->AddQubicleMatrix(pLegsMatrix, false);
 			}
@@ -929,7 +929,7 @@ void NPC::EquipItem(EquipSlot equipSlot, const char* itemFilename, bool left, bo
 				if(right)
 				{
 					pNewEquipment->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->SetScaleAndOffsetForMatrix("Right_Hand", pNewEquipment->GetAnimatedSection(0)->m_renderScale, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.x, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.y, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.z);
-					QubicleMatrix* pRightHandMatrix = pNewEquipment->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->GetQubicleMatrix("Right_Hand");
+					QubicleMatrix* pRightHandMatrix = pNewEquipment->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->SetQubicleMatrix("Right_Hand");
 					pRightHandMatrix->m_boneIndex = m_pVoxelCharacter->GetRightHandBoneIndex();
 					m_pVoxelCharacter->AddQubicleMatrix(pRightHandMatrix, false);
 				}
@@ -937,7 +937,7 @@ void NPC::EquipItem(EquipSlot equipSlot, const char* itemFilename, bool left, bo
 				if(left)
 				{
 					pNewEquipment->GetAnimatedSection(1)->m_pVoxelObject->GetQubicleModel()->SetScaleAndOffsetForMatrix("Left_Hand", pNewEquipment->GetAnimatedSection(1)->m_renderScale, pNewEquipment->GetAnimatedSection(1)->m_renderOffset.x, pNewEquipment->GetAnimatedSection(1)->m_renderOffset.y, pNewEquipment->GetAnimatedSection(1)->m_renderOffset.z);				
-					QubicleMatrix* pLeftHandMatrix = pNewEquipment->GetAnimatedSection(1)->m_pVoxelObject->GetQubicleModel()->GetQubicleMatrix("Left_Hand");				
+					QubicleMatrix* pLeftHandMatrix = pNewEquipment->GetAnimatedSection(1)->m_pVoxelObject->GetQubicleModel()->SetQubicleMatrix("Left_Hand");
 					pLeftHandMatrix->m_boneIndex = m_pVoxelCharacter->GetLeftHandBoneIndex();				
 					m_pVoxelCharacter->AddQubicleMatrix(pLeftHandMatrix, false);
 				}
@@ -955,7 +955,7 @@ void NPC::EquipItem(EquipSlot equipSlot, const char* itemFilename, bool left, bo
 				if(right)
 				{
 					pNewEquipment->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->SetScaleAndOffsetForMatrix("Right_Foot", pNewEquipment->GetAnimatedSection(0)->m_renderScale, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.x, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.y, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.z);
-					QubicleMatrix* pRightFootMatrix = pNewEquipment->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->GetQubicleMatrix("Right_Foot");
+					QubicleMatrix* pRightFootMatrix = pNewEquipment->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->SetQubicleMatrix("Right_Foot");
 					pRightFootMatrix->m_boneIndex = m_pVoxelCharacter->GetRightFootBoneIndex();
 					m_pVoxelCharacter->AddQubicleMatrix(pRightFootMatrix, false);
 				}
@@ -963,7 +963,7 @@ void NPC::EquipItem(EquipSlot equipSlot, const char* itemFilename, bool left, bo
 				if(left)
 				{
 					pNewEquipment->GetAnimatedSection(1)->m_pVoxelObject->GetQubicleModel()->SetScaleAndOffsetForMatrix("Left_Foot", pNewEquipment->GetAnimatedSection(1)->m_renderScale, pNewEquipment->GetAnimatedSection(1)->m_renderOffset.x, pNewEquipment->GetAnimatedSection(1)->m_renderOffset.y, pNewEquipment->GetAnimatedSection(1)->m_renderOffset.z);				
-					QubicleMatrix* pLeftFootMatrix = pNewEquipment->GetAnimatedSection(1)->m_pVoxelObject->GetQubicleModel()->GetQubicleMatrix("Left_Foot");				
+					QubicleMatrix* pLeftFootMatrix = pNewEquipment->GetAnimatedSection(1)->m_pVoxelObject->GetQubicleModel()->SetQubicleMatrix("Left_Foot");
 					pLeftFootMatrix->m_boneIndex = m_pVoxelCharacter->GetLeftFootBoneIndex();				
 					m_pVoxelCharacter->AddQubicleMatrix(pLeftFootMatrix, false);
 				}
@@ -1010,7 +1010,7 @@ void NPC::UnequipItem(EquipSlot equipSlot, bool left, bool right)
 		break;
 	case EquipSlot_Body:
 		{
-			QubicleMatrix* pBodyMatrix = m_pCharacterBackup->GetQubicleMatrix("Body");
+			QubicleMatrix* pBodyMatrix = m_pCharacterBackup->SetQubicleMatrix("Body");
 			pBodyMatrix->m_boneIndex = m_pVoxelCharacter->GetBodyBoneIndex();
 			m_pVoxelCharacter->AddQubicleMatrix(pBodyMatrix, false);
 
@@ -1021,7 +1021,7 @@ void NPC::UnequipItem(EquipSlot equipSlot, bool left, bool right)
 		break;
 	case EquipSlot_Legs:
 		{
-			QubicleMatrix* pLegsMatrix = m_pCharacterBackup->GetQubicleMatrix("Legs");
+			QubicleMatrix* pLegsMatrix = m_pCharacterBackup->SetQubicleMatrix("Legs");
 			pLegsMatrix->m_boneIndex = m_pVoxelCharacter->GetLegsBoneIndex();
 			m_pVoxelCharacter->AddQubicleMatrix(pLegsMatrix, false);
 
@@ -1034,14 +1034,14 @@ void NPC::UnequipItem(EquipSlot equipSlot, bool left, bool right)
 		{
 			if (right)
 			{
-				QubicleMatrix* pRightHandMatrix = m_pCharacterBackup->GetQubicleMatrix("Right_Hand");
+				QubicleMatrix* pRightHandMatrix = m_pCharacterBackup->SetQubicleMatrix("Right_Hand");
 				pRightHandMatrix->m_boneIndex = m_pVoxelCharacter->GetRightHandBoneIndex();
 				m_pVoxelCharacter->AddQubicleMatrix(pRightHandMatrix, false);
 			}
 
 			if (left)
 			{
-				QubicleMatrix* pLeftHandMatrix = m_pCharacterBackup->GetQubicleMatrix("Left_Hand");
+				QubicleMatrix* pLeftHandMatrix = m_pCharacterBackup->SetQubicleMatrix("Left_Hand");
 				pLeftHandMatrix->m_boneIndex = m_pVoxelCharacter->GetLeftHandBoneIndex();
 				m_pVoxelCharacter->AddQubicleMatrix(pLeftHandMatrix, false);
 			}
@@ -1056,14 +1056,14 @@ void NPC::UnequipItem(EquipSlot equipSlot, bool left, bool right)
 		{
 			if (right)
 			{
-				QubicleMatrix* pRightFootMatrix = m_pCharacterBackup->GetQubicleMatrix("Right_Foot");
+				QubicleMatrix* pRightFootMatrix = m_pCharacterBackup->SetQubicleMatrix("Right_Foot");
 				pRightFootMatrix->m_boneIndex = m_pVoxelCharacter->GetRightFootBoneIndex();
 				m_pVoxelCharacter->AddQubicleMatrix(pRightFootMatrix, false);
 			}
 
 			if (left)
 			{
-				QubicleMatrix* pLeftFootMatrix = m_pCharacterBackup->GetQubicleMatrix("Left_Foot");
+				QubicleMatrix* pLeftFootMatrix = m_pCharacterBackup->SetQubicleMatrix("Left_Foot");
 				pLeftFootMatrix->m_boneIndex = m_pVoxelCharacter->GetLeftFootBoneIndex();
 				m_pVoxelCharacter->AddQubicleMatrix(pLeftFootMatrix, false);
 			}
@@ -1141,7 +1141,7 @@ float NPC::GetSkeletonBoneScale()
 }
 
 // NPC State
-eNPCState NPC::GetState()
+eNPCState NPC::GetState() const
 {
 	return m_eNPCState;
 }
@@ -1159,7 +1159,7 @@ void NPC::SetLookAtPositionWhenReachedTarget(bool enabled, vec3 lookAtPosition)
 }
 
 // Dead
-bool NPC::IsDead()
+bool NPC::IsDead() const
 {
 	// TODO : IsDead()
 	return false;
@@ -1171,27 +1171,27 @@ eProjectileHitboxType NPC::GetProjectileHitboxType()
 	return m_eProjectileHitboxType;
 }
 
-float NPC::GetProjectileHitboxRadius()
+float NPC::GetProjectileHitboxRadius() const
 {
 	return m_projectileHitboxRadius;
 }
 
-float NPC::GetProjectileHitboxXLength()
+float NPC::GetProjectileHitboxXLength() const
 {
 	return m_projectileHitboxXLength;
 }
 
-float NPC::GetProjectileHitboxYLength()
+float NPC::GetProjectileHitboxYLength() const
 {
 	return m_projectileHitboxYLength;
 }
 
-float NPC::GetProjectileHitboxZLength()
+float NPC::GetProjectileHitboxZLength() const
 {
 	return m_projectileHitboxZLength;
 }
 
-vec3 NPC::GetProjectileHitboxCenter()
+vec3 NPC::GetProjectileHitboxCenter() const
 {
 	return GetCenter() + m_projectileHitboxCenterOffset;
 }
@@ -1627,7 +1627,7 @@ void NPC::Explode()
 	// Explode the qubicle binary voxel file
 	for (int explodeCounter = 0; explodeCounter < 3; explodeCounter++)
 	{
-		QubicleBinary* pQubicleModel = NULL;
+		const QubicleBinary* pQubicleModel = NULL;
 		int spawnChance = 100;
 		if (explodeCounter == 0)
 		{
@@ -1866,17 +1866,17 @@ void NPC::ReleaseAttack()
 	}
 }
 
-bool NPC::CanAttack()
+bool NPC::CanAttack() const
 {
 	return m_bCanAttack;
 }
 
-bool NPC::GetAttackEnabled()
+bool NPC::GetAttackEnabled() const
 {
 	return m_attackEnabled && (m_attackEnabledDelayTimer <= 0.0f);
 }
 
-float NPC::GetAttackRadius()
+float NPC::GetAttackRadius() const
 {
 	return m_attackRadius;
 }
@@ -1886,12 +1886,12 @@ void NPC::SetAttackRadius(float attackRadius)
 	m_attackRadius = attackRadius;
 }
 
-float NPC::GetAttackRotation()
+float NPC::GetAttackRotation() const
 {
 	return m_attackRotation;
 }
 
-float NPC::GetAttackSegmentAngle()
+float NPC::GetAttackSegmentAngle() const
 {
 	return m_attackSegmentAngle;
 }
@@ -1980,12 +1980,12 @@ void NPC::SetBodyTurnSpeedMultiplier(float multiplier)
 	m_bodyTurnSpeedMultiplier = multiplier;
 }
 
-bool NPC::IsLookAtPointMode()
+bool NPC::IsLookAtPointMode() const
 {
 	return m_bLookAtPoint;
 }
 
-bool NPC::IsLookingAtPoint()
+bool NPC::IsLookingAtPoint() const
 {
 	return m_bIsLookingAtPoint;
 }
@@ -2062,7 +2062,7 @@ void NPC::UpdateGridPosition()
 	}
 }
 
-Chunk* NPC::GetCachedGridChunkOrFromPosition(vec3 pos)
+Chunk* NPC::GetCachedGridChunkOrFromPosition(vec3 pos) const
 {
 	// First check if the position is in the same grid as the cached chunk
 	int gridPositionX = (int)((pos.x + Chunk::BLOCK_RENDER_SIZE) / Chunk::CHUNK_SIZE);
@@ -2095,7 +2095,7 @@ void NPC::ClearChunkCacheForChunk(Chunk* pChunk)
 }
 
 // Collision
-bool NPC::CheckCollisions(vec3 positionCheck, vec3 previousPosition, vec3 *pNormal, vec3 *pMovement)
+bool NPC::CheckCollisions(vec3 positionCheck, vec3 previousPosition, vec3 *pNormal, vec3 *pMovement) const
 {
 	float radius = GetRadius();
 
@@ -2231,7 +2231,7 @@ bool NPC::CheckCollisions(vec3 positionCheck, vec3 previousPosition, vec3 *pNorm
 	return false;
 }
 
-bool NPC::IsBlockInFront()
+bool NPC::IsBlockInFront() const
 {
 	vec3 blockPos_Check;
 	int blockX_Check, blockY_Check, blockZ_Check;
@@ -2267,7 +2267,7 @@ bool NPC::IsBlockInFront()
 	return false;
 }
 
-bool NPC::IsPushingCollisionEnabled()
+bool NPC::IsPushingCollisionEnabled() const
 {
 	return  m_bPushingCollisionEnabled;
 }
@@ -2282,7 +2282,7 @@ void NPC::SetCreditsNPC(bool creditsNPC)
 	m_isCreditsNPC = creditsNPC;
 }
 
-bool NPC::IsCreditsNPC()
+bool NPC::IsCreditsNPC() const
 {
 	return m_isCreditsNPC;
 }
@@ -2324,7 +2324,7 @@ void NPC::SetOutlineRender(bool outline)
 	m_outlineRender = outline;
 }
 
-bool NPC::GetOutlineRender()
+bool NPC::GetOutlineRender() const
 {
 	return m_outlineRender;
 }
@@ -2334,7 +2334,7 @@ void NPC::SetHoverRender(bool hover)
 	m_hoverRender = hover;
 }
 
-bool NPC::GetHoverRender()
+bool NPC::GetHoverRender() const
 {
 	return m_hoverRender;
 }
@@ -2352,12 +2352,12 @@ void NPC::SetSubSelectionRender(bool subSelection)
 	m_subSelectionRender = subSelection;
 }
 
-bool NPC::GetSubSelectionRender()
+bool NPC::GetSubSelectionRender() const
 {
 	return m_subSelectionRender;
 }
 
-vec2 NPC::GetScreenPosition()
+vec2 NPC::GetScreenPosition() const
 {
 	return m_screenPosition;
 }
@@ -3266,14 +3266,14 @@ void NPC::RenderWaypointsDebug()
 			m_pRenderer->DisableImmediateMode();
 		}
 
-		for(unsigned int i = 0; i < m_vpWayPointList.size(); i++)
+		for (WayPoint* pWaypoint : m_vpWayPointList)
 		{
-			float l_length = m_vpWayPointList[i]->m_xLength;
-			float l_height = m_vpWayPointList[i]->m_yLength;
-			float l_width = m_vpWayPointList[i]->m_zLength;
+			const float l_length = pWaypoint->m_xLength;
+			const float l_height = pWaypoint->m_yLength;
+			const float l_width = pWaypoint->m_zLength;
 
 			m_pRenderer->PushMatrix();
-				m_pRenderer->TranslateWorldMatrix(m_vpWayPointList[i]->m_position.x, m_vpWayPointList[i]->m_position.y, m_vpWayPointList[i]->m_position.z);
+				m_pRenderer->TranslateWorldMatrix(pWaypoint->m_position.x, pWaypoint->m_position.y, pWaypoint->m_position.z);
 
 				m_pRenderer->SetRenderMode(RM_WIREFRAME);
 				m_pRenderer->SetCullMode(CM_NOCULL);
@@ -3319,14 +3319,14 @@ void NPC::RenderWaypointsDebug()
 			m_pRenderer->PopMatrix();
 
 			// Connecting waypoints
-			if(m_vpWayPointList[i]->m_pNextWaypoint != NULL)
+			if(pWaypoint->m_pNextWaypoint != NULL)
 			{
 				m_pRenderer->SetRenderMode(RM_SOLID);
 				m_pRenderer->SetLineWidth(1.0f);
 				m_pRenderer->EnableImmediateMode(IM_LINES);
 					m_pRenderer->ImmediateColourAlpha(0.75f, 1.0f, 0.5f, 1.0f);
-					m_pRenderer->ImmediateVertex(m_vpWayPointList[i]->m_position.x, m_vpWayPointList[i]->m_position.y, m_vpWayPointList[i]->m_position.z);
-					m_pRenderer->ImmediateVertex(m_vpWayPointList[i]->m_pNextWaypoint->m_position.x, m_vpWayPointList[i]->m_pNextWaypoint->m_position.y, m_vpWayPointList[i]->m_pNextWaypoint->m_position.z);
+					m_pRenderer->ImmediateVertex(pWaypoint->m_position.x, pWaypoint->m_position.y, pWaypoint->m_position.z);
+					m_pRenderer->ImmediateVertex(pWaypoint->m_pNextWaypoint->m_position.x, pWaypoint->m_pNextWaypoint->m_position.y, pWaypoint->m_pNextWaypoint->m_position.z);
 				m_pRenderer->DisableImmediateMode();
 			}
 		}
@@ -3339,13 +3339,13 @@ void NPC::RenderSubSelection(bool outline, bool silhouette)
 	m_pRenderer->PushMatrix();
 		m_pRenderer->MultiplyWorldMatrix(m_worldMatrix);
 
-		if(m_subSelectionSelected != "")
+		if(m_subSelectionSelected.empty())
 		{
 			Colour OulineColour(1.0f, 1.0f, 0.0f, 1.0f);
 			m_pVoxelCharacter->RenderSubSelection(m_subSelectionSelected, outline, silhouette, OulineColour);
 		}
 
-		if(m_subSelectionHover != "" && m_subSelectionHover != m_subSelectionSelected)
+		if(m_subSelectionHover.empty() && m_subSelectionHover != m_subSelectionSelected)
 		{
 			Colour OulineColour(1.0f, 0.0f, 1.0f, 1.0f);
 			m_pVoxelCharacter->RenderSubSelection(m_subSelectionHover, outline, silhouette, OulineColour);

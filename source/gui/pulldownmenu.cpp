@@ -23,24 +23,24 @@ PulldownMenu::PulldownMenu(Renderer* pRenderer, unsigned int GUIFont, const std:
   : Container(pRenderer),
     mTextColour(0.0f, 0.0f, 0.0f),
     mMenuTitle(pRenderer, GUIFont, MenuTitle, Colour(0.0f, 0.0f, 0.0f)),
-	mMenuName(pRenderer, GUIFont, MenuTitle, Colour(0.0f, 0.0f, 0.0f)),
+		mMenuName(pRenderer, GUIFont, MenuTitle, Colour(0.0f, 0.0f, 0.0f)),
     mPulldownMenu(pRenderer, GUIFont, MenuTitle, false),
-	mScrollBar(pRenderer),
-	m_bSelected(false),
-	m_bHover(false),
-	m_bDisabled(false),
-	mGUIFont(GUIFont),
+		mScrollBar(pRenderer),
+		m_bSelected(false),
+		m_bHover(false),
+		m_bDisabled(false),
+		mGUIFont(GUIFont),
     m_pPulldownIcon(0),
-	m_pPulldownSelectedIcon(0),
-	m_pPulldownHoverIcon(0),
-	m_pPulldownDisabledIcon(0),
-	m_pMenuBackgroundDefault(0),
-	m_pMenuBackgroundHover(0),
-	m_pMenuBackgroundSelected(0),
-	m_pMenuBackgroundDisabled(0),
-	m_pTitleBackgroundDefault(0),
-	m_pTitleBackgroundHover(0),
-	m_pTitleBackgroundSelected(0),
+		m_pPulldownSelectedIcon(0),
+		m_pPulldownHoverIcon(0),
+		m_pPulldownDisabledIcon(0),
+		m_pMenuBackgroundDefault(0),
+		m_pMenuBackgroundHover(0),
+		m_pMenuBackgroundSelected(0),
+		m_pMenuBackgroundDisabled(0),
+		m_pTitleBackgroundDefault(0),
+		m_pTitleBackgroundHover(0),
+		m_pTitleBackgroundSelected(0),
     m_pTitleBackgroundDisabled(0)
 {
 	SetDefaultIcons(pRenderer);
@@ -1022,12 +1022,14 @@ void PulldownMenu::MouseExited(const MouseEvent& lEvent)
 		return;
 	}
 
+	PulldownMenu* pParent = mPulldownMenu.GetPullDownMenuParent();
+
 	// Make sure that we are inside the bounds of the parent menu
 	int lTextHeight = m_pRenderer->GetFreeTypeTextHeight(GetGUIFont(), "%s", mPulldownMenu.GetMenuTitle().c_str());
 	int lMenuHeight = lTextHeight + (mPulldownMenu.GetMenuItemSpacer() * 2);
-	int lFullMenuDisplayHeight = mPulldownMenu.GetPullDownMenuParent()->GetMaxNumItemsDisplayed() * lMenuHeight;
-	int lMenuX = mPulldownMenu.GetPullDownMenuParent()->GetLocation().m_x;
-	int lMenuY = mPulldownMenu.GetPullDownMenuParent()->GetLocation().m_y - lFullMenuDisplayHeight;
+	int lFullMenuDisplayHeight = pParent->GetMaxNumItemsDisplayed() * lMenuHeight;
+	int lMenuX = pParent->GetLocation().m_x;
+	int lMenuY = pParent->GetLocation().m_y - lFullMenuDisplayHeight;
 	int lMenuWidth = mPulldownMenu.GetBiggestWidth()+ (mPulldownMenu.GetMenuItemSpacer() * 2);
 
 	//if(lEvent.GetX() > lMenuX && lEvent.GetX() <= lMenuX+lMenuWidth && lEvent.GetY() > lMenuY && lEvent.GetY() <= lMenuY+lFullMenuDisplayHeight)

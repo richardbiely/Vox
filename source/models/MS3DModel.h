@@ -189,14 +189,14 @@ public:
 	void SetupJoints();
 
 	void CalculateBoundingBox();
-	BoundingBox* GetBoundingBox();
+	const BoundingBox* GetBoundingBox() const;
 
-	int GetBoneIndex(const char* boneName);
-	const char* GetNameFromBoneIndex(int boneIndex);
+	int GetBoneIndex(const char* boneName) const;
+	const char* GetNameFromBoneIndex(int boneIndex) const;
 
-	int GetNumJoints();
-	Joint* GetJoint(const char* jointName);
-	Joint* GetJoint(int index);
+	int GetNumJoints() const;
+	const Joint* GetJoint(const char* jointName) const;
+	const Joint* GetJoint(int index) const;
 
 	void Update(float dt);
 

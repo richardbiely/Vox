@@ -77,26 +77,26 @@ public:
 	// Accessors / Setters
 	VoxelCharacter* GetVoxelCharacter();
 	void SetName(string name);
-	string GetName();
+	string GetName() const;
 	void SetType(string typeName);
-	string GetType();
+	string GetType() const;
 	void SetModelname(string modelName);
-	string GetModelName();
+	string GetModelName() const;
 	void SetPosition(vec3 pos);
-	vec3 GetPosition();
+	vec3 GetPosition() const;
 	void SetRotation(float rot);
-	float GetRotation();
+	float GetRotation() const;
 	void SetScale(float scale);
-	float GetRadius();
+	float GetRadius() const;
 	void UpdateRadius();
-	vec3 GetCenter();
-	vec3 GetForwardVector();
-	vec3 GetRightVector();
-	vec3 GetUpVector();
+	vec3 GetCenter() const;
+	vec3 GetForwardVector() const;
+	vec3 GetRightVector() const;
+	vec3 GetUpVector() const;
 
 	// Front-end NPCs
 	void SetFrontEndNPC(bool frontEnd);
-	bool IsFrontEndNPC();
+	bool IsFrontEndNPC() const;
 	void SetPlayerClass(PlayerClass selectedClass);
 	PlayerClass GetPlayerClass();
 
@@ -122,22 +122,22 @@ public:
 	float GetSkeletonBoneScale();
 
 	// NPC State
-	eNPCState GetState();
+	eNPCState GetState() const;
 
 	// Movement gameplay
 	void SetMoveToPlayer(bool moveToPlayer);
 	void SetLookAtPositionWhenReachedTarget(bool enabled, vec3 lookAtPosition);
 
 	// Dead
-	bool IsDead();
+	bool IsDead() const;
 
 	// Projectile hitbox
 	eProjectileHitboxType GetProjectileHitboxType();
-	float GetProjectileHitboxRadius();
-	float GetProjectileHitboxXLength();
-	float GetProjectileHitboxYLength();
-	float GetProjectileHitboxZLength();
-	vec3 GetProjectileHitboxCenter();
+	float GetProjectileHitboxRadius() const;
+	float GetProjectileHitboxXLength() const;
+	float GetProjectileHitboxYLength() const;
+	float GetProjectileHitboxZLength() const;
+	vec3 GetProjectileHitboxCenter() const;
 
 	// Movement
 	void MoveAbsolute(vec3 direction, const float speed, bool shouldChangeForward = true);
@@ -163,12 +163,12 @@ public:
 	// Attacking
 	void Attack();
 	void ReleaseAttack();
-	bool CanAttack();
-	bool GetAttackEnabled();
-	float GetAttackRadius();
+	bool CanAttack() const;
+	bool GetAttackEnabled() const;
+	float GetAttackRadius() const;
 	void SetAttackRadius(float attackRadius);
-	float GetAttackRotation();
-	float GetAttackSegmentAngle();
+	float GetAttackRotation() const;
+	float GetAttackSegmentAngle() const;
 	void SetEnemyDied(Enemy* pEnemy);
 	void SetTargetEnemy(Enemy* pEnemy);
 
@@ -178,8 +178,8 @@ public:
 	void SetRandomLookMode();
 	void SetBodyTurnStopThreshold(float threshold);
 	void SetBodyTurnSpeedMultiplier(float multiplier);
-	bool IsLookAtPointMode();
-	bool IsLookingAtPoint();
+	bool IsLookAtPointMode() const;
+	bool IsLookingAtPoint() const;
 
 	// Talking
 	void SetNPCTalkMode(float talkDelay, float talkTime);
@@ -191,28 +191,28 @@ public:
 
 	// World
 	void UpdateGridPosition();
-	Chunk* GetCachedGridChunkOrFromPosition(vec3 pos);
+	Chunk* GetCachedGridChunkOrFromPosition(vec3 pos) const;
 	void ClearChunkCacheForChunk(Chunk* pChunk);
 
 	// Collision
-	bool CheckCollisions(vec3 positionCheck, vec3 previousPosition, vec3 *pNormal, vec3 *pMovement);
-	bool IsBlockInFront();
-	bool IsPushingCollisionEnabled();
+	bool CheckCollisions(vec3 positionCheck, vec3 previousPosition, vec3 *pNormal, vec3 *pMovement) const;
+	bool IsBlockInFront() const;
+	bool IsPushingCollisionEnabled() const;
 	void SetPushingCollisionEnabled(bool pushEnabled);
 
 	void SetCreditsNPC(bool creditsNPC);
-	bool IsCreditsNPC();
+	bool IsCreditsNPC() const;
 
 	// Rendering Helpers
 	void CalculateWorldTransformMatrix();
 	void SetOutlineRender(bool outline);
-	bool GetOutlineRender();
+	bool GetOutlineRender() const;
 	void SetHoverRender(bool hover);
-	bool GetHoverRender();
+	bool GetHoverRender() const;
 	void SetWireFrameRender(bool wireframe);
 	void SetSubSelectionRender(bool subSelection);
-	bool GetSubSelectionRender();
-	vec2 GetScreenPosition();
+	bool GetSubSelectionRender() const;
+	vec2 GetScreenPosition() const;
 
 	// Updating
 	void UpdateWeaponLights(float dt);

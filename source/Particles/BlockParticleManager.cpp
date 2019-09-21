@@ -85,9 +85,9 @@ BlockParticleManager::BlockParticleManager(Renderer* pRenderer, ChunkManager* pC
 	m_colourBuffer = -1;
 	m_matrixBuffer = -1;
 
-	bool shaderLoaded = false;
 	m_instanceShader = -1;
-	shaderLoaded = m_pRenderer->LoadGLSLShader("media/shaders/instance.vertex", "media/shaders/instance.pixel", &m_instanceShader);
+	bool shaderLoaded = m_pRenderer->LoadGLSLShader("media/shaders/instance.vertex", "media/shaders/instance.pixel", &m_instanceShader);
+	assert(shaderLoaded == true);
 
 	// Materials
 	m_pRenderer->CreateMaterial(Colour(0.7f, 0.7f, 0.7f, 1.0f), Colour(1.0f, 1.0f, 1.0f, 1.0f), Colour(1.0f, 1.0f, 1.0f, 1.0f), Colour(0.0f, 0.0f, 0.0f, 0.0f), 64, &m_blockMaterialID);
@@ -152,7 +152,7 @@ void BlockParticleManager::ClearParticleChunkCacheForChunk(Chunk* pChunk)
 	}
 }
 
-unsigned int BlockParticleManager::GetInstanceShaderIndex()
+unsigned int BlockParticleManager::GetInstanceShaderIndex() const
 {
 	return m_instanceShader;
 }
@@ -299,28 +299,28 @@ void BlockParticleManager::SetupGLBuffers()
 }
 
 // Accessors
-int BlockParticleManager::GetNumBlockParticleEffects()
+int BlockParticleManager::GetNumBlockParticleEffects() const
 {
 	int numEffects = (int)m_vpBlockParticleEffectsList.size();
 
 	return numEffects;
 }
 
-int BlockParticleManager::GetNumBlockParticleEmitters()
+int BlockParticleManager::GetNumBlockParticleEmitters() const
 {
 	int numEmitters = (int)m_vpBlockParticleEmittersList.size();
 
 	return numEmitters;
 }
 
-int BlockParticleManager::GetNumBlockParticles()
+int BlockParticleManager::GetNumBlockParticles() const
 {
 	int numParticles = (int)m_vpBlockParticlesList.size();
 
 	return numParticles;
 }
 
-int BlockParticleManager::GetNumRenderableParticles(bool noWorldOffset)
+int BlockParticleManager::GetNumRenderableParticles(bool noWorldOffset) const
 {
 	int numparticlesToRender = 0;
 	for(int i = 0; i < (int)m_vpBlockParticlesList.size(); i++)
@@ -716,13 +716,13 @@ void BlockParticleManager::SetRenderNoWoldOffsetViewport(unsigned int particleEf
 	}
 }
 
-void BlockParticleManager::ExplodeQubicleBinary(QubicleBinary* pQubicleBinary, float scale, int particleSpawnChance)
+void BlockParticleManager::ExplodeQubicleBinary(const QubicleBinary* pQubicleBinary, float scale, int particleSpawnChance)
 {
 	if(pQubicleBinary != NULL)
 	{
 		for (int i = 0; i < pQubicleBinary->GetNumMatrices(); i++)
 		{
-			QubicleMatrix* pMatrix = pQubicleBinary->GetQubicleMatrix(i);
+			const QubicleMatrix* pMatrix = pQubicleBinary->GetQubicleMatrix(i);
 
 			float r = 1.0f;
 			float g = 1.0f;
@@ -734,7 +734,7 @@ void BlockParticleManager::ExplodeQubicleBinary(QubicleBinary* pQubicleBinary, f
 	}
 }
 
-void BlockParticleManager::ExplodeQubicleMatrix(QubicleMatrix* pMatrix, float scale, int particleSpawnChance, bool allSameColour, float sameR, float sameG, float sameB, float sameA)
+void BlockParticleManager::ExplodeQubicleMatrix(const QubicleMatrix* pMatrix, float scale, int particleSpawnChance, bool allSameColour, float sameR, float sameG, float sameB, float sameA)
 {
 	if(pMatrix != NULL)
 	{
@@ -932,7 +932,7 @@ void BlockParticleManager::RenderInstanced(bool noWorldOffset)
 {
 	glShader* pShader = m_pRenderer->GetShader(m_instanceShader);
 
-	GLint in_position = glGetAttribLocation(pShader->GetProgramObject(), "in_position");
+	//GLint in_position = glGetAttribLocation(pShader->GetProgramObject(), "in_position");
 	GLint in_color = glGetAttribLocation(pShader->GetProgramObject(), "in_color");
 	GLint in_model_matrix = glGetAttribLocation(pShader->GetProgramObject(), "in_model_matrix");
 
@@ -946,14 +946,16 @@ void BlockParticleManager::RenderInstanced(bool noWorldOffset)
 		int counter = 0;
 		for (int i = 0; i < numBlockParticles; i++)
 		{
+			BlockParticle* pParticle = m_vpBlockParticlesList[i];
+
 			// If we are a emitter creation particle, don't render.
-			if (m_vpBlockParticlesList[i]->m_createEmitters == true)
+			if (pParticle->m_createEmitters == true)
 			{
 				continue;
 			}
 
 			// If we are to be erased, don't render
-			if (m_vpBlockParticlesList[i]->m_erase == true)
+			if (pParticle->m_erase == true)
 			{
 				continue;
 			}
@@ -961,31 +963,34 @@ void BlockParticleManager::RenderInstanced(bool noWorldOffset)
 			// If we are rendering the special viewport particles and our parent particle effect viewport flag isn't set, don't render.
 			if (noWorldOffset)
 			{
-				if (m_vpBlockParticlesList[i]->m_pParent == NULL ||
-					m_vpBlockParticlesList[i]->m_pParent->m_pParent == NULL ||
-					m_vpBlockParticlesList[i]->m_pParent->m_pParent->m_renderNoWoldOffsetViewport == false)
+				if (
+					pParticle->m_pParent == NULL ||
+					pParticle->m_pParent->m_pParent == NULL ||
+					pParticle->m_pParent->m_pParent->m_renderNoWoldOffsetViewport == false)
 				{
 					continue;
 				}
 			}
 
-			newColors[counter + 0] = m_vpBlockParticlesList[i]->m_currentRed;
-			newColors[counter + 1] = m_vpBlockParticlesList[i]->m_currentGreen;
-			newColors[counter + 2] = m_vpBlockParticlesList[i]->m_currentBlue;
-			newColors[counter + 3] = m_vpBlockParticlesList[i]->m_currentAlpha;
+			newColors[counter + 0] = pParticle->m_currentRed;
+			newColors[counter + 1] = pParticle->m_currentGreen;
+			newColors[counter + 2] = pParticle->m_currentBlue;
+			newColors[counter + 3] = pParticle->m_currentAlpha;
 			counter += 4;
 		}
 		counter = 0;
 		for (int i = 0; i < numBlockParticles; i++)
 		{
+			BlockParticle* pParticle = m_vpBlockParticlesList[i];
+
 			// If we are a emitter creation particle, don't render.
-			if (m_vpBlockParticlesList[i]->m_createEmitters == true)
+			if (pParticle->m_createEmitters == true)
 			{
 				continue;
 			}
 
 			// If we are to be erased, don't render
-			if (m_vpBlockParticlesList[i]->m_erase == true)
+			if (pParticle->m_erase == true)
 			{
 				continue;
 			}
@@ -993,53 +998,54 @@ void BlockParticleManager::RenderInstanced(bool noWorldOffset)
 			// If we are rendering the special viewport particles and our parent particle effect viewport flag isn't set, don't render.
 			if (noWorldOffset)
 			{
-				if (m_vpBlockParticlesList[i]->m_pParent == NULL ||
-					m_vpBlockParticlesList[i]->m_pParent->m_pParent == NULL ||
-					m_vpBlockParticlesList[i]->m_pParent->m_pParent->m_renderNoWoldOffsetViewport == false)
+				if (
+					pParticle->m_pParent == NULL ||
+					pParticle->m_pParent->m_pParent == NULL ||
+					pParticle->m_pParent->m_pParent->m_renderNoWoldOffsetViewport == false)
 				{
 					continue;
 				}
 			}
 
-			m_vpBlockParticlesList[i]->CalculateWorldTransformMatrix();
+			pParticle->CalculateWorldTransformMatrix();
 
 			if (noWorldOffset)
 			{
-				newMatrices[counter + 0] = m_vpBlockParticlesList[i]->m_worldMatrix_NoPositionOffset.m[0];
-				newMatrices[counter + 1] = m_vpBlockParticlesList[i]->m_worldMatrix_NoPositionOffset.m[1];
-				newMatrices[counter + 2] = m_vpBlockParticlesList[i]->m_worldMatrix_NoPositionOffset.m[2];
-				newMatrices[counter + 3] = m_vpBlockParticlesList[i]->m_worldMatrix_NoPositionOffset.m[3];
-				newMatrices[counter + 4] = m_vpBlockParticlesList[i]->m_worldMatrix_NoPositionOffset.m[4];
-				newMatrices[counter + 5] = m_vpBlockParticlesList[i]->m_worldMatrix_NoPositionOffset.m[5];
-				newMatrices[counter + 6] = m_vpBlockParticlesList[i]->m_worldMatrix_NoPositionOffset.m[6];
-				newMatrices[counter + 7] = m_vpBlockParticlesList[i]->m_worldMatrix_NoPositionOffset.m[7];
-				newMatrices[counter + 8] = m_vpBlockParticlesList[i]->m_worldMatrix_NoPositionOffset.m[8];
-				newMatrices[counter + 9] = m_vpBlockParticlesList[i]->m_worldMatrix_NoPositionOffset.m[9];
-				newMatrices[counter + 10] = m_vpBlockParticlesList[i]->m_worldMatrix_NoPositionOffset.m[10];
-				newMatrices[counter + 11] = m_vpBlockParticlesList[i]->m_worldMatrix_NoPositionOffset.m[11];
-				newMatrices[counter + 12] = m_vpBlockParticlesList[i]->m_worldMatrix_NoPositionOffset.m[12];
-				newMatrices[counter + 13] = m_vpBlockParticlesList[i]->m_worldMatrix_NoPositionOffset.m[13];
-				newMatrices[counter + 14] = m_vpBlockParticlesList[i]->m_worldMatrix_NoPositionOffset.m[14];
-				newMatrices[counter + 15] = m_vpBlockParticlesList[i]->m_worldMatrix_NoPositionOffset.m[15];
+				newMatrices[counter + 0] = pParticle->m_worldMatrix_NoPositionOffset.m[0];
+				newMatrices[counter + 1] = pParticle->m_worldMatrix_NoPositionOffset.m[1];
+				newMatrices[counter + 2] = pParticle->m_worldMatrix_NoPositionOffset.m[2];
+				newMatrices[counter + 3] = pParticle->m_worldMatrix_NoPositionOffset.m[3];
+				newMatrices[counter + 4] = pParticle->m_worldMatrix_NoPositionOffset.m[4];
+				newMatrices[counter + 5] = pParticle->m_worldMatrix_NoPositionOffset.m[5];
+				newMatrices[counter + 6] = pParticle->m_worldMatrix_NoPositionOffset.m[6];
+				newMatrices[counter + 7] = pParticle->m_worldMatrix_NoPositionOffset.m[7];
+				newMatrices[counter + 8] = pParticle->m_worldMatrix_NoPositionOffset.m[8];
+				newMatrices[counter + 9] = pParticle->m_worldMatrix_NoPositionOffset.m[9];
+				newMatrices[counter + 10] = pParticle->m_worldMatrix_NoPositionOffset.m[10];
+				newMatrices[counter + 11] = pParticle->m_worldMatrix_NoPositionOffset.m[11];
+				newMatrices[counter + 12] = pParticle->m_worldMatrix_NoPositionOffset.m[12];
+				newMatrices[counter + 13] = pParticle->m_worldMatrix_NoPositionOffset.m[13];
+				newMatrices[counter + 14] = pParticle->m_worldMatrix_NoPositionOffset.m[14];
+				newMatrices[counter + 15] = pParticle->m_worldMatrix_NoPositionOffset.m[15];
 			}
 			else
 			{
-				newMatrices[counter + 0] = m_vpBlockParticlesList[i]->m_worldMatrix.m[0];
-				newMatrices[counter + 1] = m_vpBlockParticlesList[i]->m_worldMatrix.m[1];
-				newMatrices[counter + 2] = m_vpBlockParticlesList[i]->m_worldMatrix.m[2];
-				newMatrices[counter + 3] = m_vpBlockParticlesList[i]->m_worldMatrix.m[3];
-				newMatrices[counter + 4] = m_vpBlockParticlesList[i]->m_worldMatrix.m[4];
-				newMatrices[counter + 5] = m_vpBlockParticlesList[i]->m_worldMatrix.m[5];
-				newMatrices[counter + 6] = m_vpBlockParticlesList[i]->m_worldMatrix.m[6];
-				newMatrices[counter + 7] = m_vpBlockParticlesList[i]->m_worldMatrix.m[7];
-				newMatrices[counter + 8] = m_vpBlockParticlesList[i]->m_worldMatrix.m[8];
-				newMatrices[counter + 9] = m_vpBlockParticlesList[i]->m_worldMatrix.m[9];
-				newMatrices[counter + 10] = m_vpBlockParticlesList[i]->m_worldMatrix.m[10];
-				newMatrices[counter + 11] = m_vpBlockParticlesList[i]->m_worldMatrix.m[11];
-				newMatrices[counter + 12] = m_vpBlockParticlesList[i]->m_worldMatrix.m[12];
-				newMatrices[counter + 13] = m_vpBlockParticlesList[i]->m_worldMatrix.m[13];
-				newMatrices[counter + 14] = m_vpBlockParticlesList[i]->m_worldMatrix.m[14];
-				newMatrices[counter + 15] = m_vpBlockParticlesList[i]->m_worldMatrix.m[15];
+				newMatrices[counter + 0] = pParticle->m_worldMatrix.m[0];
+				newMatrices[counter + 1] = pParticle->m_worldMatrix.m[1];
+				newMatrices[counter + 2] = pParticle->m_worldMatrix.m[2];
+				newMatrices[counter + 3] = pParticle->m_worldMatrix.m[3];
+				newMatrices[counter + 4] = pParticle->m_worldMatrix.m[4];
+				newMatrices[counter + 5] = pParticle->m_worldMatrix.m[5];
+				newMatrices[counter + 6] = pParticle->m_worldMatrix.m[6];
+				newMatrices[counter + 7] = pParticle->m_worldMatrix.m[7];
+				newMatrices[counter + 8] = pParticle->m_worldMatrix.m[8];
+				newMatrices[counter + 9] = pParticle->m_worldMatrix.m[9];
+				newMatrices[counter + 10] = pParticle->m_worldMatrix.m[10];
+				newMatrices[counter + 11] = pParticle->m_worldMatrix.m[11];
+				newMatrices[counter + 12] = pParticle->m_worldMatrix.m[12];
+				newMatrices[counter + 13] = pParticle->m_worldMatrix.m[13];
+				newMatrices[counter + 14] = pParticle->m_worldMatrix.m[14];
+				newMatrices[counter + 15] = pParticle->m_worldMatrix.m[15];
 			}
 			counter += 16;
 		}
@@ -1096,11 +1102,11 @@ void BlockParticleManager::RenderInstanced(bool noWorldOffset)
 	glUniformMatrix4fv(viewMatrixLoc, 1, false, viewMat.m);
 
 	GLint in_light_position = glGetUniformLocation(pShader->GetProgramObject(), "in_light_position");
-	GLint in_light_const_a = glGetUniformLocation(pShader->GetProgramObject(), "in_light_const_a");
+	/*GLint in_light_const_a = glGetUniformLocation(pShader->GetProgramObject(), "in_light_const_a");
 	GLint in_light_linear_a = glGetUniformLocation(pShader->GetProgramObject(), "in_light_linear_a");
 	GLint in_light_quad_a = glGetUniformLocation(pShader->GetProgramObject(), "in_light_quad_a");
 	GLint in_light_ambient = glGetUniformLocation(pShader->GetProgramObject(), "in_light_ambient");
-	GLint in_light_diffuse = glGetUniformLocation(pShader->GetProgramObject(), "in_light_diffuse");
+	GLint in_light_diffuse = glGetUniformLocation(pShader->GetProgramObject(), "in_light_diffuse");*/
 
 	if (m_renderWireFrame)
 	{

@@ -44,15 +44,15 @@ public:
 
 	void ClearParticleChunkCacheForChunk(Chunk* pChunk);
 
-	unsigned int GetInstanceShaderIndex();
+	unsigned int GetInstanceShaderIndex() const;
 
 	void SetupGLBuffers();
 
 	// Accessors
-	int GetNumBlockParticleEffects();
-	int GetNumBlockParticleEmitters();
-	int GetNumBlockParticles();
-	int GetNumRenderableParticles(bool noWorldOffset);
+	int GetNumBlockParticleEffects() const;
+	int GetNumBlockParticleEmitters() const;
+	int GetNumBlockParticles() const;
+	int GetNumRenderableParticles(bool noWorldOffset) const;
 
 	// Creation
 	BlockParticle* CreateBlockParticleFromEmitterParams(BlockParticleEmitter* pEmitter);
@@ -76,8 +76,8 @@ public:
 	void UpdateParticleEffectPosition(unsigned int particleEffectId, vec3 position, vec3 position_noWorldOffset);
 	void SetRenderNoWoldOffsetViewport(unsigned int particleEffectId, bool renderNoWoldOffsetViewport);
 
-	void ExplodeQubicleBinary(QubicleBinary* pQubicleBinary, float scale, int particleSpawnChance);
-	void ExplodeQubicleMatrix(QubicleMatrix* pMatrix, float scale, int particleSpawnChance, bool allSameColour, float sameR, float sameG, float sameB, float sameA);
+	void ExplodeQubicleBinary(const QubicleBinary* pQubicleBinary, float scale, int particleSpawnChance);
+	void ExplodeQubicleMatrix(const QubicleMatrix* pMatrix, float scale, int particleSpawnChance, bool allSameColour, float sameR, float sameG, float sameB, float sameA);
 
 	// Rendering modes
 	void SetWireFrameRender(bool wireframe);

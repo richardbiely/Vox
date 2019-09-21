@@ -75,19 +75,19 @@ public:
 
 	// Character scale
 	void SetCharacterScale(float scale);
-	float GetCharacterScale();
+	float GetCharacterScale() const;
 
 	// Character alpha
-	float GetCharacterAlpha();
+	float GetCharacterAlpha() const;
 
 	// Upper body and head tilt look, for camera rotation
 	void SetHeadAndUpperBodyLookRotation(float lookRotationAngle, float zLookTranslate);
-	float GetHeadAndUpperBodyLookRotation();
-	float GetHeadAndUpperBodyLookzTranslate();
+	float GetHeadAndUpperBodyLookRotation() const;
+	float GetHeadAndUpperBodyLookzTranslate() const;
 
 	void SetCharacterMatrixRenderParams(const char* matrixName, float scale, float xOffset, float yOffset, float zOffset);
-	float GetBoneMatrixRenderScale(const char* matrixName);
-	vec3 GetBoneMatrixRenderOffset(const char* matrixName);
+	float GetBoneMatrixRenderScale(const char* matrixName) const;
+	vec3 GetBoneMatrixRenderOffset(const char* matrixName) const;
 
 	// Weapons
 	void LoadRightWeapon(const char *weaponFilename);
@@ -96,20 +96,20 @@ public:
 	VoxelWeapon* GetLeftWeapon();
 	void UnloadRightWeapon();
 	void UnloadLeftWeapon();
-	bool IsRightWeaponLoaded();
-	bool IsLeftWeaponLoaded();
+	bool IsRightWeaponLoaded() const;
+	bool IsLeftWeaponLoaded() const;
 
 	// Setup animator and bones
 	void SetUpdateAnimator(bool update);
-	Matrix4x4 GetBoneMatrix(AnimationSections section, int index);
-	Matrix4x4 GetBoneMatrix(AnimationSections section, const char* boneName);
-	Matrix4x4 GetBoneMatrixPaperdoll(int index, bool left);
-	int GetBoneIndex(const char* boneName);
-	int GetMatrixIndexForName(const char* matrixName);
-	MS3DModel* GetMS3DModel();
-	MS3DAnimator* GetMS3DAnimator(AnimationSections section);
-	QubicleBinary* GetQubicleModel();
-	vec3 GetBoneScale();
+	Matrix4x4 GetBoneMatrix(AnimationSections section, int index) const;
+	Matrix4x4 GetBoneMatrix(AnimationSections section, const char* boneName) const;
+	Matrix4x4 GetBoneMatrixPaperdoll(int index, bool left) const;
+	int GetBoneIndex(const char* boneName) const;
+	int GetMatrixIndexForName(const char* matrixName) const;
+	const MS3DModel* GetMS3DModel() const;
+	const MS3DAnimator* GetMS3DAnimator(AnimationSections section) const;
+	const QubicleBinary* GetQubicleModel() const;
+	vec3 GetBoneScale() const;
 	void SetBoneScale(float scale);
 
 	// Rendering modes
@@ -121,88 +121,88 @@ public:
 
 	// Breathing animation
 	void SetBreathingAnimationEnabled(bool enable);
-	bool IsBreathingAnimationEnabled();
-	bool IsBreathingAnimationStarted();
+	bool IsBreathingAnimationEnabled() const;
+	bool IsBreathingAnimationStarted() const;
 	void StartBreathAnimation();
-	float GetBreathingAnimationOffsetForBone(int boneIndex);
+	float GetBreathingAnimationOffsetForBone(int boneIndex) const;
 
 	// Facial expressions
 	int GetNumFacialExpressions() const;
-	const char* GetFacialExpressionName(const int index);
-	vec3 GetEyesOffset();
-	vec3 GetMouthOffset();
+	const char* GetFacialExpressionName(const int index) const;
+	vec3 GetEyesOffset() const;
+	vec3 GetMouthOffset() const;
 	void SetEyesOffset(vec3 offset);
 	void SetMouthOffset(vec3 offset);
 	void PlayFacialExpression(const char *lFacialExpressionName);
 	void PlayFacialExpression(int facialAnimationIndex);
-	int GetCurrentFacialAnimation();
+	int GetCurrentFacialAnimation() const;
 	void SetEyesBone(string eyesBoneName);
 	void SetMouthBone(string mouthBoneName);
-	string GetEyesBoneName();
-	string GetMouthBoneName();
-	int GetEyesBone();
-	int GetMouthBone();
-	int GetEyesMatrixIndex();
-	int GetMouthMatrixIndex();
+	string GetEyesBoneName() const;
+	string GetMouthBoneName() const;
+	int GetEyesBone() const;
+	int GetMouthBone() const;
+	int GetEyesMatrixIndex()const;
+	int GetMouthMatrixIndex() const;
 	void SetEyesTextureSize(float width, float height);
 	void SetMouthTextureSize(float width, float height);
-	float GetEyeTextureWidth();
-	float GetEyeTextureHeight();
-	float GetMouthTextureWidth();
-	float GetMouthTextureHeight();
+	float GetEyeTextureWidth()const;
+	float GetEyeTextureHeight()const;
+	float GetMouthTextureWidth() const;
+	float GetMouthTextureHeight() const;
 
 	// Face looking
-	vec3 GetFaceLookingDirection();
+	vec3 GetFaceLookingDirection() const;
 	void SetFaceLookingDirection(vec3 looking);
-	vec3 GetFaceTargetDirection();
+	vec3 GetFaceTargetDirection() const;
 	void SetFaceTargetDirection(vec3 target);
-	float GetFaceLookToTargetSpeedMultiplier();
+	float GetFaceLookToTargetSpeedMultiplier() const;
 	void SetFaceLookToTargetSpeedMultiplier(float speedMultiplier);
-	int GetHeadBoneIndex();
-	int GetBodyBoneIndex();
-	int GetLeftShoulderBoneIndex();
-	int GetLeftHandBoneIndex();
-	int GetRightShoulderBoneIndex();
-	int GetRightHandBoneIndex();
-	int GetLegsBoneIndex();
-	int GetRightFootBoneIndex();
-	int GetLeftFootBoneIndex();
+	int GetHeadBoneIndex() const;
+	int GetBodyBoneIndex() const;
+	int GetLeftShoulderBoneIndex() const;
+	int GetLeftHandBoneIndex() const;
+	int GetRightShoulderBoneIndex() const;
+	int GetRightHandBoneIndex() const;
+	int GetLegsBoneIndex() const;
+	int GetRightFootBoneIndex() const;
+	int GetLeftFootBoneIndex() const;
 	void SetRandomLookDirection(bool enable);
-	bool IsRandomLookDirectionEnabled();
+	bool IsRandomLookDirectionEnabled() const;
 
 	// Wink animation
 	void SetWinkAnimationEnabled(bool enable);
-	bool IsWinkAnimationEnabled();
+	bool IsWinkAnimationEnabled() const;
 	void UpdateWinkAnimation(float dt);
 
 	// Talking animation
 	void SetTalkingAnimationEnabled(bool enable);
-	bool IsTalkingAnimationEnabled();
+	bool IsTalkingAnimationEnabled() const;
 	void SetRandomMouthSelection(bool random);
-	bool IsRandomMouthSelectionEnabled();
+	bool IsRandomMouthSelectionEnabled() const;
 	void UpdateTalkingAnimation(float dt);
 
 	// Animations
-	int GetNumAnimations();
-	const char* GetAnimationName(int index);
+	int GetNumAnimations() const;
+	const char* GetAnimationName(int index) const;
 	void PlayAnimation(AnimationSections section, bool waitForComplete, AnimationSections syncWithSection, const char *lAnimationName);
 	int GetCurrentAnimationIndex(AnimationSections section);
 	void SetBlendAnimation(AnimationSections section, bool waitForComplete, AnimationSections syncWithSection, const char *lStartAnimationName, const char *lEndAnimationName, float blendTime);
 	void BlendIntoAnimation(AnimationSections section, bool waitForComplete, AnimationSections syncWithSection, const char *lAnimationName, float blendTime);
-	bool HasAnimationFinished(AnimationSections section);
-	bool HasAnimationLooped(AnimationSections section);
+	bool HasAnimationFinished(AnimationSections section) const;
+	bool HasAnimationLooped(AnimationSections section)const;
 	void StepAnimationFrame(float dt);
-	int GetStartFrame(const char *lAnimationName);
-	int GetEndFrame(const char *lAnimationName);
-	int GetCurrentFrame();
-	int GetNumJoints();
-	Joint* GetJoint(int index);
-	Joint* GetJoint(const char* jointName);
+	int GetStartFrame(const char *lAnimationName) const;
+	int GetEndFrame(const char *lAnimationName) const;
+	int GetCurrentFrame() const;
+	int GetNumJoints() const;
+	const Joint* GetJoint(int index) const;
+	const Joint* GetJoint(const char* jointName) const;
 	void PlayAnimationOnPaperDoll(const char *lAnimationName, bool left);
 
 	// Matrices
-	int GetNumModelMatrices();
-	const char* GetModelMatrixName(int index);
+	int GetNumModelMatrices() const;
+	const char* GetModelMatrixName(int index) const;
 
 	// Swapping and adding new matrices
 	void SwapBodyPart(const char* bodyPartName, QubicleMatrix* pMatrix, bool copyMatrixParams);
@@ -211,7 +211,7 @@ public:
 	void SetQubicleMatrixRender(const char* matrixName, bool render);
 
 	// Sub selection of individual body parts
-	string GetSubSelectionName(int pickingId);
+	string GetSubSelectionName(int pickingId) const;
 
 	// Update
 	void Update(float dt, float animationSpeed[AnimationSections_NUMSECTIONS]);

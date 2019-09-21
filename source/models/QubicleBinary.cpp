@@ -47,7 +47,7 @@ QubicleBinary::~QubicleBinary()
 	Reset();
 }
 
-void QubicleBinary::SetNullLinkage(QubicleBinary *pBinary)
+void QubicleBinary::SetNullLinkage(const QubicleBinary *pBinary)
 {
 	for (int i = 0; i < (int)m_vpMatrices.size(); i++)
 	{
@@ -113,12 +113,12 @@ void QubicleBinary::Reset()
 	m_renderWireFrame = false;
 }
 
-string QubicleBinary::GetFileName()
+string QubicleBinary::GetFileName() const
 {
 	return m_fileName;
 }
 
-unsigned int QubicleBinary::GetMaterial()
+unsigned int QubicleBinary::GetMaterial() const
 {
 	return m_materialID;
 }
@@ -133,7 +133,7 @@ Matrix4x4 QubicleBinary::GetModelMatrix(int qubicleMatrixIndex)
 	return m_vpMatrices[qubicleMatrixIndex]->m_modelMatrix;
 }
 
-int QubicleBinary::GetMatrixIndexForName(const char* matrixName)
+int QubicleBinary::GetMatrixIndexForName(const char* matrixName) const
 {
 	for(unsigned int i = 0; i < m_numMatrices; i++)
 	{
@@ -146,7 +146,7 @@ int QubicleBinary::GetMatrixIndexForName(const char* matrixName)
 	return -1;
 }
 
-void QubicleBinary::GetMatrixPosition(int index, int* aX, int* aY, int* aZ)
+void QubicleBinary::GetMatrixPosition(int index, int* aX, int* aY, int* aZ) const
 {
 	*aX = m_vpMatrices[index]->m_matrixPosX;
 	*aY = m_vpMatrices[index]->m_matrixPosY;
@@ -401,7 +401,7 @@ bool QubicleBinary::Export(const char* fileName)
 	return false;
 }
 
-void QubicleBinary::GetColour(int matrixIndex, int x, int y, int z, float* r, float* g, float* b, float* a)
+void QubicleBinary::GetColour(int matrixIndex, int x, int y, int z, float* r, float* g, float* b, float* a) const
 {
 	if(m_singleMeshColour)
 	{
@@ -418,14 +418,14 @@ void QubicleBinary::GetColour(int matrixIndex, int x, int y, int z, float* r, fl
 	}	
 }
 
-unsigned int QubicleBinary::GetColourCompact(int matrixIndex, int x, int y, int z)
+unsigned int QubicleBinary::GetColourCompact(int matrixIndex, int x, int y, int z) const
 {
 	QubicleMatrix* pMatrix = m_vpMatrices[matrixIndex];
 
 	return pMatrix->GetColourCompact(x, y, z);
 }
 
-bool QubicleBinary::GetSingleMeshColour(float* r, float* g, float* b, float* a)
+bool QubicleBinary::GetSingleMeshColour(float* r, float* g, float* b, float* a) const
 {
 	*r = m_meshSingleColourR;
 	*g = m_meshSingleColourG;
@@ -435,7 +435,7 @@ bool QubicleBinary::GetSingleMeshColour(float* r, float* g, float* b, float* a)
 	return m_singleMeshColour;
 }
 
-bool QubicleBinary::GetActive(int matrixIndex, int x, int y, int z)
+bool QubicleBinary::GetActive(int matrixIndex, int x, int y, int z) const
 {
 	QubicleMatrix* pMatrix = m_vpMatrices[matrixIndex];
 
@@ -1096,17 +1096,22 @@ void QubicleBinary::UpdateMergedSide(int *merged, int matrixIndex, int blockx, i
 	}
 }
 
-int QubicleBinary::GetNumMatrices()
+int QubicleBinary::GetNumMatrices() const
 {
 	return m_numMatrices;
 }
 
-QubicleMatrix* QubicleBinary::GetQubicleMatrix(int index)
+const QubicleMatrix* QubicleBinary::GetQubicleMatrix(int index) const
 {
 	return m_vpMatrices[index];
 }
 
-QubicleMatrix* QubicleBinary::GetQubicleMatrix(const char* matrixName)
+QubicleMatrix* QubicleBinary::SetQubicleMatrix(int index)
+{
+	return m_vpMatrices[index];
+}
+
+const QubicleMatrix* QubicleBinary::GetQubicleMatrix(const char* matrixName) const
 {
 	for(unsigned int i = 0; i < m_numMatrices; i++)
 	{
@@ -1119,17 +1124,30 @@ QubicleMatrix* QubicleBinary::GetQubicleMatrix(const char* matrixName)
 	return NULL;
 }
 
-const char* QubicleBinary::GetMatrixName(int index)
+QubicleMatrix* QubicleBinary::SetQubicleMatrix(const char* matrixName)
+{
+	for (unsigned int i = 0; i < m_numMatrices; i++)
+	{
+		if (strcmp(m_vpMatrices[i]->m_name, matrixName) == 0)
+		{
+			return SetQubicleMatrix(i);
+		}
+	}
+
+	return NULL;
+}
+
+const char* QubicleBinary::GetMatrixName(int index) const
 {
 	return m_vpMatrices[index]->m_name;
 }
 
-float QubicleBinary::GetMatrixScale(int index)
+float QubicleBinary::GetMatrixScale(int index) const
 {
 	return m_vpMatrices[index]->m_scale;
 }
 
-vec3 QubicleBinary::GetMatrixOffset(int index)
+vec3 QubicleBinary::GetMatrixOffset(int index) const
 {
 	return vec3(m_vpMatrices[index]->m_offsetX, m_vpMatrices[index]->m_offsetY, m_vpMatrices[index]->m_offsetZ);
 }
@@ -1161,7 +1179,7 @@ void QubicleBinary::SetScaleAndOffsetForMatrix(const char* matrixName, float sca
 	}
 }
 
-float QubicleBinary::GetScale(const char* matrixName)
+float QubicleBinary::GetScale(const char* matrixName) const
 {
 	for(unsigned int i = 0; i < m_numMatrices; i++)
 	{
@@ -1174,7 +1192,7 @@ float QubicleBinary::GetScale(const char* matrixName)
 	return 1.0f;
 }
 
-vec3 QubicleBinary::GetOffset(const char* matrixName)
+vec3 QubicleBinary::GetOffset(const char* matrixName) const
 {
 	for(unsigned int i = 0; i < m_numMatrices; i++)
 	{
@@ -1212,7 +1230,7 @@ void QubicleBinary::SwapMatrix(const char* matrixName, QubicleMatrix* pMatrix, b
 void QubicleBinary::AddQubicleMatrix(QubicleMatrix* pNewMatrix, bool copyMatrixParams)
 {
 	// First check if this matrix already exists
-	QubicleMatrix* pExistingMatrix = GetQubicleMatrix(pNewMatrix->m_name);
+	const QubicleMatrix* pExistingMatrix = GetQubicleMatrix(pNewMatrix->m_name);
 	if(pExistingMatrix != NULL)
 	{
 		// Replace existing matrix
@@ -1254,7 +1272,7 @@ void QubicleBinary::SetQubicleMatrixRender(const char* matrixName, bool render)
 }
 
 // Sub selection
-string QubicleBinary::GetSubSelectionName(int pickingId)
+string QubicleBinary::GetSubSelectionName(int pickingId) const
 {
 	int index = pickingId - SUBSELECTION_NAMEPICKING_OFFSET;
 

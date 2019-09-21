@@ -70,7 +70,7 @@ public:
 
 	OpenGLTriangleMesh* m_pMesh;
 
-	void GetColour(int x, int y, int z, float* r, float* g, float* b, float* a)
+	void GetColour(int x, int y, int z, float* r, float* g, float* b, float* a) const
 	{
 		unsigned colour = m_pColour[x + m_matrixSizeX * (y + m_matrixSizeY * z)];
 		unsigned int alpha = (colour & 0xFF000000) >> 24;
@@ -85,12 +85,12 @@ public:
 		*a = 1.0f;
 	}
 
-	unsigned int GetColourCompact(int x, int y, int z)
+	unsigned int GetColourCompact(int x, int y, int z) const
 	{
 		return m_pColour[x + m_matrixSizeX * (y + m_matrixSizeY * z)];
 	}
 
-	bool GetActive(int x, int y, int z)
+	bool GetActive(int x, int y, int z) const
 	{
 		unsigned colour = m_pColour[x + m_matrixSizeX * (y + m_matrixSizeY * z)];
 		unsigned int alpha = (colour & 0xFF000000) >> 24;
@@ -117,29 +117,29 @@ public:
 	QubicleBinary(Renderer* pRenderer);
 	~QubicleBinary();
 
-	void SetNullLinkage(QubicleBinary *pBinary);
+	void SetNullLinkage(const QubicleBinary *pBinary);
 
 	void Unload();
 	void ClearMatrices();
 
 	void Reset();
 
-	string GetFileName();
+	string GetFileName() const;
 
-	unsigned int GetMaterial();
+	unsigned int GetMaterial() const;
 
 	Matrix4x4 GetModelMatrix(int qubicleMatrixIndex);
 
-	int GetMatrixIndexForName(const char* matrixName);
-	void GetMatrixPosition(int index, int* aX, int* aY, int* aZ);
+	int GetMatrixIndexForName(const char* matrixName) const;
+	void GetMatrixPosition(int index, int* aX, int* aY, int* aZ) const;
 
 	bool Import(const char* fileName, bool faceMerging);
 	bool Export(const char* fileName);
 
-	void GetColour(int matrixIndex, int x, int y, int z, float* r, float* g, float* b, float* a);
-	unsigned int GetColourCompact(int matrixIndex, int x, int y, int z);
-	bool GetSingleMeshColour(float* r, float* g, float* b, float* a);
-	bool GetActive(int matrixIndex, int x, int y, int z);
+	void GetColour(int matrixIndex, int x, int y, int z, float* r, float* g, float* b, float* a) const;
+	unsigned int GetColourCompact(int matrixIndex, int x, int y, int z) const;
+	bool GetSingleMeshColour(float* r, float* g, float* b, float* a) const;
+	bool GetActive(int matrixIndex, int x, int y, int z) const;
 
 	void SetMeshAlpha(float alpha);
 	void SetMeshSingleColour(float r, float g, float b);
@@ -148,18 +148,20 @@ public:
 	void RebuildMesh(bool lDoFaceMerging);
 	void UpdateMergedSide(int *merged, int matrixIndex, int blockx, int blocky, int blockz, int width, int height, vec3 *p1, vec3 *p2, vec3 *p3, vec3 *p4, int startX, int startY, int maxX, int maxY, bool positive, bool zFace, bool xFace, bool yFace);
 
-	int GetNumMatrices();
-	QubicleMatrix* GetQubicleMatrix(int index);
-	QubicleMatrix* GetQubicleMatrix(const char* matrixName);
-	const char* GetMatrixName(int index);
-	float GetMatrixScale(int index);
-	vec3 GetMatrixOffset(int index);
+	int GetNumMatrices() const;
+	QubicleMatrix* SetQubicleMatrix(int index);
+	const QubicleMatrix* GetQubicleMatrix(int index) const;
+	QubicleMatrix* SetQubicleMatrix(const char* matrixName);
+	const QubicleMatrix* GetQubicleMatrix(const char* matrixName) const;
+	const char* GetMatrixName(int index) const;
+	float GetMatrixScale(int index) const;
+	vec3 GetMatrixOffset(int index) const;
 
 	void SetupMatrixBones(MS3DAnimator* pSkeleton);
 	
 	void SetScaleAndOffsetForMatrix(const char* matrixName, float scale, float xOffset, float yOffset, float zOffset);
-	float GetScale(const char* matrixName);
-	vec3 GetOffset(const char* matrixName);
+	float GetScale(const char* matrixName) const;
+	vec3 GetOffset(const char* matrixName) const;
 
 	void SwapMatrix(const char* matrixName, QubicleMatrix* pMatrix, bool copyMatrixParams);
 	void AddQubicleMatrix(QubicleMatrix* pNewMatrix, bool copyMatrixParams);
@@ -167,7 +169,7 @@ public:
 	void SetQubicleMatrixRender(const char* matrixName, bool render);
 
 	// Sub selection
-	string GetSubSelectionName(int pickingId);
+	string GetSubSelectionName(int pickingId) const;
 
 	// Rendering modes
 	void SetWireFrameRender(bool wireframe);

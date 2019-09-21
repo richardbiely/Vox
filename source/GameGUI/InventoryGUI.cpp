@@ -896,7 +896,7 @@ void InventoryGUI::EquipItem(InventoryItem* pInventoryItem, int inventoryX, int 
 	m_pPlayer->EquipItem(pInventoryItem);
 
 	// If we already have an item in this equipment slot, switch it out
-	if(m_pEquippedItems[pInventoryItem->m_equipSlot] != "")
+	if(m_pEquippedItems[pInventoryItem->m_equipSlot].empty())
 	{
 		m_pActionBar->UpdateActionBarSlots(m_pEquippedItems[pInventoryItem->m_equipSlot], inventoryX, inventoryY);
 	}
@@ -919,7 +919,7 @@ void InventoryGUI::EquipItem(InventorySlotItem* pInventoryItem)
 	m_pPlayer->EquipItem(pInventoryItem->m_pInventoryItem);
 
 	// If we already have an item in this equipment slot, switch it out
-	if(m_pEquippedItems[pInventoryItem->m_pInventoryItem->m_equipSlot] != "")
+	if(m_pEquippedItems[pInventoryItem->m_pInventoryItem->m_equipSlot].empty())
 	{
 		m_pActionBar->UpdateActionBarSlots(m_pEquippedItems[pInventoryItem->m_pInventoryItem->m_equipSlot], pInventoryItem->m_slotX, pInventoryItem->m_slotY);
 	}
@@ -934,7 +934,7 @@ void InventoryGUI::EquipItem(InventorySlotItem* pInventoryItem)
 
 void InventoryGUI::UnequipItem(EquipSlot equipSlot, bool left, bool right)
 {
-	m_pEquippedItems[equipSlot] = "";
+	m_pEquippedItems[equipSlot].clear();
 
 	m_pPlayer->UnequipItem(equipSlot, left, right);
 }

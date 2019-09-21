@@ -26,6 +26,9 @@ MS3DModel::MS3DModel(Renderer *lpRenderer)
 	pJoints = NULL;
 
 	mbStatic = false;
+
+	mAnimationFPS = 0.0f;
+	mStaticRenderBuffers = NULL;
 }
 
 MS3DModel::~MS3DModel()
@@ -555,12 +558,12 @@ void MS3DModel::CalculateBoundingBox()
 	}
 }
 
-BoundingBox* MS3DModel::GetBoundingBox()
+const BoundingBox* MS3DModel::GetBoundingBox() const
 {
 	return &m_BoundingBox;
 }
 
-int MS3DModel::GetBoneIndex(const char* boneName)
+int MS3DModel::GetBoneIndex(const char* boneName) const
 {
 	for ( int i = 0; i < numJoints; i++ )
 	{
@@ -573,17 +576,17 @@ int MS3DModel::GetBoneIndex(const char* boneName)
 	return -1;
 }
 
-const char* MS3DModel::GetNameFromBoneIndex(int boneIndex)
+const char* MS3DModel::GetNameFromBoneIndex(int boneIndex) const
 {
 	return pJoints[boneIndex].name;
 }
 
-int MS3DModel::GetNumJoints()
+int MS3DModel::GetNumJoints() const
 {
 	return numJoints;
 }
 
-Joint* MS3DModel::GetJoint(const char* jointName)
+const Joint* MS3DModel::GetJoint(const char* jointName) const
 {
 	for(int i = 0; i < numJoints; i++)
 	{
@@ -596,7 +599,7 @@ Joint* MS3DModel::GetJoint(const char* jointName)
 	return NULL;
 }
 
-Joint* MS3DModel::GetJoint(int index)
+const Joint* MS3DModel::GetJoint(int index) const
 {
 	return &pJoints[index];
 }

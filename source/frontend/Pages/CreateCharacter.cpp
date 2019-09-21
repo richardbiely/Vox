@@ -1259,7 +1259,7 @@ void CreateCharacter::SavedNewPresetModel(string modelToLoadToCharacter)
 
 	QubicleBinary* pNewFile = new QubicleBinary(m_pRenderer);
 	pNewFile->Import(modelFile, true);
-	m_pCustomCreationNPC->GetVoxelCharacter()->SwapBodyPart(presetName.c_str(), pNewFile->GetQubicleMatrix(0), true);
+	m_pCustomCreationNPC->GetVoxelCharacter()->SwapBodyPart(presetName.c_str(), pNewFile->SetQubicleMatrix(0), true);
 }
 
 void CreateCharacter::UpdateCustomCounter(int incrementValue)
@@ -1985,8 +1985,8 @@ void CreateCharacter::CreateCustomPressed()
 	case PresetSection_LeftFoot: { presetName = "Left_Foot"; } break;
 	}
 
-	QubicleBinary* pQubicleModel = m_pCustomCreationNPC->GetVoxelCharacter()->GetQubicleModel();
-	QubicleMatrix* pMatrix = pQubicleModel->GetQubicleMatrix(presetName.c_str());
+	//const QubicleBinary* pQubicleModel = m_pCustomCreationNPC->GetVoxelCharacter()->GetQubicleModel();
+	//const QubicleMatrix* pMatrix = pQubicleModel->GetQubicleMatrix(presetName.c_str());
 	// TODO : Voxel editor GUI
 	//m_pFrontendManager->GetGameWindow()->GetChunkManager()->ClearVoxelEditorChunks();
 	//m_pFrontendManager->GetGameWindow()->GetChunkManager()->ImportQubicleBinaryMatrix(pMatrix, vec3(0.0f, 0.0f, 0.0f), QubicleImportDirection_Normal, true);
@@ -2050,7 +2050,7 @@ void CreateCharacter::PresetButtonPressed(PresetButtonData* presetButtonData)
 
 	QubicleBinary* pNewFile = new QubicleBinary(m_pRenderer);
 	pNewFile->Import(presetFile, true);
-	m_pCustomCreationNPC->GetVoxelCharacter()->SwapBodyPart(presetName.c_str(), pNewFile->GetQubicleMatrix(0), true);
+	m_pCustomCreationNPC->GetVoxelCharacter()->SwapBodyPart(presetName.c_str(), pNewFile->SetQubicleMatrix(0), true);
 
 	// Load the default settings file
 	char defaultFile[128];
