@@ -258,7 +258,7 @@ void SelectCharacter::LoadSelectionCharacters()
 	float zPosition = 0.0f;
 
 	char importDirectory[128];
-	sprintf(importDirectory, "saves/characters/*.*");
+	strcpy(importDirectory, "saves/characters/*.*");
 
 	vector<string> listFiles;
 	listFiles = listFilesInDirectory(importDirectory);
@@ -306,7 +306,7 @@ void SelectCharacter::LoadSelectionCharacters()
 int SelectCharacter::GetNumCreatedCharacters()
 {
 	char importDirectory[128];
-	sprintf(importDirectory, "saves/characters/*.*");
+	strcpy(importDirectory, "saves/characters/*.*");
 
 	vector<string> listFiles;
 	listFiles = listFilesInDirectory(importDirectory);
@@ -566,7 +566,7 @@ void SelectCharacter::_DeleteCharacterPressed(void *apData)
 void SelectCharacter::DeleteCharacterPressed()
 {
 	char popupTitle[256];
-	sprintf(popupTitle, "Delete");
+	strcpy(popupTitle, "Delete");
 
 	char popupText[256];
 	sprintf(popupText, "Are you sure you want to delete [C=Custom(00A2E8)]%s[C=White]?", m_pSelectedNPC->GetName().c_str());

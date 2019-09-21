@@ -500,7 +500,7 @@ void VoxGame::UpdateCharactersPulldown()
 	m_pMainWindow->RemoveComponent(m_pCharacterPulldown);
 
 	char importDirectory[128];
-	sprintf(importDirectory, "media/gamedata/models/Human/*.*");
+	strcpy(importDirectory, "media/gamedata/models/Human/*.*");
 
 	vector<string> listFiles;
 	listFiles = listFilesInDirectory(importDirectory);

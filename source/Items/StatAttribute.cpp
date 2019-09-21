@@ -56,13 +56,13 @@ string StatAttribute::GetString()
 	char colourModifier[16];
 	if(m_modifyAmount > 0)
 	{
-		sprintf(signModifier, "+");
-		sprintf(colourModifier, "Green");
+		strcpy(signModifier, "+");
+		strcpy(colourModifier, "Green");
 	}
 	else
 	{
-		sprintf(signModifier, "");
-		sprintf(colourModifier, "Red");
+		strcpy(signModifier, "");
+		strcpy(colourModifier, "Red");
 	}
 	switch (m_type)
 	{

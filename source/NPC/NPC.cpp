@@ -195,7 +195,7 @@ NPC::NPC(Renderer* pRenderer, ChunkManager* pChunkManager, Player* pPlayer, Ligh
 
 	if(characterSelectScreen)
 	{
-		sprintf(characterBaseFolder, "media/gamedata/models");
+		strcpy(characterBaseFolder, "media/gamedata/models");
 		sprintf(qbFilename, "saves/characters/%s/%s.qb", modelName.c_str(), modelName.c_str());
 		sprintf(ms3dFilename, "media/gamedata/models/%s/%s.ms3d", m_type.c_str(), m_type.c_str());
 		sprintf(animListFilename, "media/gamedata/models/%s/%s.animlist", m_type.c_str(), m_type.c_str());
@@ -204,7 +204,7 @@ NPC::NPC(Renderer* pRenderer, ChunkManager* pChunkManager, Player* pPlayer, Ligh
 	}
 	else
 	{
-		sprintf(characterBaseFolder, "media/gamedata/models");
+		strcpy(characterBaseFolder, "media/gamedata/models");
 		sprintf(qbFilename, "media/gamedata/models/%s/%s.qb", m_type.c_str(), modelName.c_str());
 		sprintf(ms3dFilename, "media/gamedata/models/%s/%s.ms3d", m_type.c_str(), m_type.c_str());
 		sprintf(animListFilename, "media/gamedata/models/%s/%s.animlist", m_type.c_str(), m_type.c_str());

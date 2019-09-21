@@ -81,17 +81,17 @@ public:
 	void ShowTooltip(CharacterSlotItem* pCharacterItem);
 	void HideTooltip();
 
-	void GetPlayerPortraitDimensions(int* x, int* y, int* width, int* height);
-	void GetPlayerWeaponLeftDimensions(int* x, int* y, int* width, int* height);
-	void GetPlayerWeaponRightDimensions(int* x, int* y, int* width, int* height);
-	void GetPlayerHeadDimensions(int* x, int* y, int* width, int* height);
-	void GetPlayerShoulderDimensions(int* x, int* y, int* width, int* height);
-	void GetPlayerBodyDimensions(int* x, int* y, int* width, int* height);
-	void GetPlayerLegsDimensions(int* x, int* y, int* width, int* height);
-	void GetPlayerHandDimensions(int* x, int* y, int* width, int* height);
-	void GetPlayerFeetDimensions(int* x, int* y, int* width, int* height);
-	void GetPlayerAccessory1Dimensions(int* x, int* y, int* width, int* height);
-	void GetPlayerAccessory2Dimensions(int* x, int* y, int* width, int* height);
+	void GetPlayerPortraitDimensions(int* x, int* y, int* width, int* height) const;
+	void GetPlayerWeaponLeftDimensions(int* x, int* y, int* width, int* height) const;
+	void GetPlayerWeaponRightDimensions(int* x, int* y, int* width, int* height) const;
+	void GetPlayerHeadDimensions(int* x, int* y, int* width, int* height) const;
+	void GetPlayerShoulderDimensions(int* x, int* y, int* width, int* height) const;
+	void GetPlayerBodyDimensions(int* x, int* y, int* width, int* height) const;
+	void GetPlayerLegsDimensions(int* x, int* y, int* width, int* height) const;
+	void GetPlayerHandDimensions(int* x, int* y, int* width, int* height) const;
+	void GetPlayerFeetDimensions(int* x, int* y, int* width, int* height) const;
+	void GetPlayerAccessory1Dimensions(int* x, int* y, int* width, int* height) const;
+	void GetPlayerAccessory2Dimensions(int* x, int* y, int* width, int* height) const;
 
 	void UpdatePlayerStats();
 

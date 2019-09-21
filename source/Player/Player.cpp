@@ -400,7 +400,7 @@ void Player::LoadCharacter(string characterName, bool fromCharacterSelectScreen)
 
 	if (fromCharacterSelectScreen)
 	{
-		sprintf(characterBaseFolder, "media/gamedata/models");
+		strcpy(characterBaseFolder, "media/gamedata/models");
 		sprintf(qbFilename, "saves/characters/%s/%s.qb", characterName.c_str(), characterName.c_str());
 		sprintf(ms3dFilename, "media/gamedata/models/%s/%s.ms3d", m_type.c_str(), m_type.c_str());
 		sprintf(animListFilename, "media/gamedata/models/%s/%s.animlist", m_type.c_str(), m_type.c_str());
@@ -409,7 +409,7 @@ void Player::LoadCharacter(string characterName, bool fromCharacterSelectScreen)
 	}
 	else
 	{
-		sprintf(characterBaseFolder, "media/gamedata/models");
+		strcpy(characterBaseFolder, "media/gamedata/models");
 		sprintf(qbFilename, "media/gamedata/models/%s/%s.qb", m_type.c_str(), m_modelName.c_str());
 		sprintf(ms3dFilename, "media/gamedata/models/%s/%s.ms3d", m_type.c_str(), m_type.c_str());
 		sprintf(animListFilename, "media/gamedata/models/%s/%s.animlist", m_type.c_str(), m_type.c_str());
@@ -1950,13 +1950,13 @@ string Player::GetStrengthModifierString()
 	}
 	else if (m_strengthModifier > 0)
 	{
-		sprintf(signModifier, "+");
-		sprintf(colourModifier, "Green");
+		strcpy(signModifier, "+");
+		strcpy(colourModifier, "Green");
 	}
 	else
 	{
-		sprintf(signModifier, "-");
-		sprintf(colourModifier, "Red");
+		strcpy(signModifier, "-");
+		strcpy(colourModifier, "Red");
 	}
 
 	sprintf(returnString, "[C=%s]%s %i", colourModifier, signModifier, abs(m_strengthModifier));
@@ -1975,13 +1975,13 @@ string Player::GetDexterityModifierString()
 	}
 	else if (m_dexterityModifier > 0)
 	{
-		sprintf(signModifier, "+");
-		sprintf(colourModifier, "Green");
+		strcpy(signModifier, "+");
+		strcpy(colourModifier, "Green");
 	}
 	else
 	{
-		sprintf(signModifier, "-");
-		sprintf(colourModifier, "Red");
+		strcpy(signModifier, "-");
+		strcpy(colourModifier, "Red");
 	}
 
 	sprintf(returnString, "[C=%s]%s %i", colourModifier, signModifier, abs(m_dexterityModifier));
@@ -2000,13 +2000,13 @@ string Player::GetIntelligenceModifierString()
 	}
 	else if (m_intelligenceModifier > 0)
 	{
-		sprintf(signModifier, "+");
-		sprintf(colourModifier, "Green");
+		strcpy(signModifier, "+");
+		strcpy(colourModifier, "Green");
 	}
 	else
 	{
-		sprintf(signModifier, "-");
-		sprintf(colourModifier, "Red");
+		strcpy(signModifier, "-");
+		strcpy(colourModifier, "Red");
 	}
 
 	sprintf(returnString, "[C=%s]%s %i", colourModifier, signModifier, abs(m_intelligenceModifier));
@@ -2025,13 +2025,13 @@ string Player::GetVitalityModifierString()
 	}
 	else if (m_vitalityModifier > 0)
 	{
-		sprintf(signModifier, "+");
-		sprintf(colourModifier, "Green");
+		strcpy(signModifier, "+");
+		strcpy(colourModifier, "Green");
 	}
 	else
 	{
-		sprintf(signModifier, "-");
-		sprintf(colourModifier, "Red");
+		strcpy(signModifier, "-");
+		strcpy(colourModifier, "Red");
 	}
 
 	sprintf(returnString, "[C=%s]%s %i", colourModifier, signModifier, abs(m_vitalityModifier));
@@ -2050,13 +2050,13 @@ string Player::GetArmorModifierString()
 	}
 	else if (m_armorModifier > 0)
 	{
-		sprintf(signModifier, "+");
-		sprintf(colourModifier, "Green");
+		strcpy(signModifier, "+");
+		strcpy(colourModifier, "Green");
 	}
 	else
 	{
-		sprintf(signModifier, "-");
-		sprintf(colourModifier, "Red");
+		strcpy(signModifier, "-");
+		strcpy(colourModifier, "Red");
 	}
 
 	sprintf(returnString, "[C=%s]%s %i", colourModifier, signModifier, abs(m_armorModifier));
@@ -2075,13 +2075,13 @@ string Player::GetLuckModifierString()
 	}
 	else if (m_luckModifier > 0)
 	{
-		sprintf(signModifier, "+");
-		sprintf(colourModifier, "Green");
+		strcpy(signModifier, "+");
+		strcpy(colourModifier, "Green");
 	}
 	else
 	{
-		sprintf(signModifier, "-");
-		sprintf(colourModifier, "Red");
+		strcpy(signModifier, "-");
+		strcpy(colourModifier, "Red");
 	}
 
 	sprintf(returnString, "[C=%s]%s %i", colourModifier, signModifier, abs(m_luckModifier));

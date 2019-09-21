@@ -459,7 +459,7 @@ void ModMenu::CreateGameplayModButtons()
 	int buttonY = m_modWindowHeight - buttonHeight - 17;
 
 	char importDirectory[128];
-	sprintf(importDirectory, "media/mods/gameplay/*.*");
+	strcpy(importDirectory, "media/mods/gameplay/*.*");
 
 	vector<string> listFiles;
 	listFiles = listFilesInDirectory(importDirectory);
@@ -562,7 +562,7 @@ void ModMenu::CreateGraphicsModButtons()
 	int buttonY = m_modWindowHeight - buttonHeight - 17;
 
 	char importDirectory[128];
-	sprintf(importDirectory, "media/graphics/*.*");
+	strcpy(importDirectory, "media/graphics/*.*");
 
 	vector<string> listFiles;
 	listFiles = listFilesInDirectory(importDirectory);
@@ -665,7 +665,7 @@ void ModMenu::CreateSoundModButtons()
 	int buttonY = m_modWindowHeight - buttonHeight - 17;
 
 	char importDirectory[128];
-	sprintf(importDirectory, "media/audio/*.*");
+	strcpy(importDirectory, "media/audio/*.*");
 
 	vector<string> listFiles;
 	listFiles = listFilesInDirectory(importDirectory);
@@ -768,7 +768,7 @@ void ModMenu::CreateHUDModButtons()
 	int buttonY = m_modWindowHeight - buttonHeight - 17;
 
 	char importDirectory[128];
-	sprintf(importDirectory, "media/textures/gui/*.*");
+	strcpy(importDirectory, "media/textures/gui/*.*");
 
 	vector<string> listFiles;
 	listFiles = listFilesInDirectory(importDirectory);
@@ -871,7 +871,7 @@ void ModMenu::CreateMiscModButtons()
 	int buttonY = m_modWindowHeight - buttonHeight - 17;
 
 	char importDirectory[128];
-	sprintf(importDirectory, "media/mods/misc/*.*");
+	strcpy(importDirectory, "media/mods/misc/*.*");
 
 	vector<string> listFiles;
 	listFiles = listFilesInDirectory(importDirectory);

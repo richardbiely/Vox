@@ -1375,7 +1375,7 @@ void CreateCharacter::UpdatePresetsPulldown()
 	m_pCustomizeWindow->RemoveComponent(m_pPresetsPulldown);
 
 	char importDirectory[128];
-	sprintf(importDirectory, "media/gamedata/models/createcharacter/presets/full_presets/*.*");
+	strcpy(importDirectory, "media/gamedata/models/createcharacter/presets/full_presets/*.*");
 
 	vector<string> listFiles;
 	listFiles = listFilesInDirectory(importDirectory);
@@ -1882,9 +1882,9 @@ void CreateCharacter::PresetsPulldownChanged()
 			char facesFilename[128];
 			char characterFilename[128];
 
-			sprintf(characterBaseFolder, "media/gamedata/models");
-			sprintf(ms3dFilename, "media/gamedata/models/Human/Human.ms3d");
-			sprintf(animListFilename, "media/gamedata/models/Human/Human.animlist");
+			strcpy(characterBaseFolder, "media/gamedata/models");
+			strcpy(ms3dFilename, "media/gamedata/models/Human/Human.ms3d");
+			strcpy(animListFilename, "media/gamedata/models/Human/Human.animlist");
 			sprintf(facesFilename, "media/gamedata/models/Human/%s.faces", pPreset->GetLabel().GetText().c_str());
 			sprintf(characterFilename, "media/gamedata/models/createcharacter/presets/full_presets/%s.character", pPreset->GetLabel().GetText().c_str());
 			sprintf(presetModelFilename, "media/gamedata/models/createcharacter/presets/full_presets/%s.qb", pPreset->GetLabel().GetText().c_str());

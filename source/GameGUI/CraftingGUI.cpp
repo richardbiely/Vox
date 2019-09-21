@@ -1061,16 +1061,16 @@ void CraftingGUI::ShowTooltip(RecipeSlotItem* pRecipeItem)
 	char slotText[32];
 	switch(pRecipeItem->m_pInventoryItem->m_equipSlot)
 	{
-	case EquipSlot_NoSlot: { sprintf(slotText, ""); break; }
+	case EquipSlot_NoSlot: { strcpy(slotText, ""); break; }
 	case EquipSlot_LeftHand:
 		{
 			if(pRecipeItem->m_pInventoryItem->m_right)
 			{
-				sprintf(slotText, "Two Handed");
+				strcpy(slotText, "Two Handed");
 			}
 			else
 			{
-				sprintf(slotText, "Left Hand");
+				strcpy(slotText, "Left Hand");
 			}
 
 			break;
@@ -1079,23 +1079,23 @@ void CraftingGUI::ShowTooltip(RecipeSlotItem* pRecipeItem)
 		{
 			if(pRecipeItem->m_pInventoryItem->m_left)
 			{
-				sprintf(slotText, "Two Handed");
+				strcpy(slotText, "Two Handed");
 			}
 			else
 			{
-				sprintf(slotText, "Right Hand");
+				strcpy(slotText, "Right Hand");
 			}
 
 			break;
 		}
-	case EquipSlot_Head: { sprintf(slotText, "Head"); break; }
-	case EquipSlot_Shoulders: { sprintf(slotText, "Shoulders"); break; }
-	case EquipSlot_Body: { sprintf(slotText, "Body"); break; }
-	case EquipSlot_Legs: { sprintf(slotText, "Legs"); break; }
-	case EquipSlot_Hand: { sprintf(slotText, "Hand"); break; }
-	case EquipSlot_Feet: { sprintf(slotText, "Feet"); break; }
-	case EquipSlot_Accessory1: { sprintf(slotText, "Accessory 1"); break; }
-	case EquipSlot_Accessory2: { sprintf(slotText, "Accessory 2"); break; }
+	case EquipSlot_Head: { strcpy(slotText, "Head"); break; }
+	case EquipSlot_Shoulders: { strcpy(slotText, "Shoulders"); break; }
+	case EquipSlot_Body: { strcpy(slotText, "Body"); break; }
+	case EquipSlot_Legs: { strcpy(slotText, "Legs"); break; }
+	case EquipSlot_Hand: { strcpy(slotText, "Hand"); break; }
+	case EquipSlot_Feet: { strcpy(slotText, "Feet"); break; }
+	case EquipSlot_Accessory1: { strcpy(slotText, "Accessory 1"); break; }
+	case EquipSlot_Accessory2: { strcpy(slotText, "Accessory 2"); break; }
 	}
 	m_pTooltipSlotLabel->SetText(slotText);
 
@@ -1104,11 +1104,11 @@ void CraftingGUI::ShowTooltip(RecipeSlotItem* pRecipeItem)
 	Colour qualityColour;
 	switch(pRecipeItem->m_pInventoryItem->m_itemQuality)
 	{
-	case ItemQuality_Common :  { sprintf(qualityText, "Common"); qualityColour = Colour(0.5f, 0.5f, 0.5f, 1.0f); break; }
-	case ItemQuality_Uncommon :  { sprintf(qualityText, "Uncommon"); qualityColour = Colour(0.95f, 1.0f, 0.2f, 1.0f); break; }
-	case ItemQuality_Magical :  { sprintf(qualityText, "Magical"); qualityColour = Colour(0.0f, 1.0f, 0.0f, 1.0f); break; }
-	case ItemQuality_Rare :  { sprintf(qualityText, "Rare"); qualityColour = Colour(0.0f, 0.5f, 1.0f, 1.0f); break; }
-	case ItemQuality_Epic :  { sprintf(qualityText, "Epic"); qualityColour = Colour(0.64f, 0.2f, 0.93f, 1.0f); break; }
+	case ItemQuality_Common :  { strcpy(qualityText, "Common"); qualityColour = Colour(0.5f, 0.5f, 0.5f, 1.0f); break; }
+	case ItemQuality_Uncommon :  { strcpy(qualityText, "Uncommon"); qualityColour = Colour(0.95f, 1.0f, 0.2f, 1.0f); break; }
+	case ItemQuality_Magical :  { strcpy(qualityText, "Magical"); qualityColour = Colour(0.0f, 1.0f, 0.0f, 1.0f); break; }
+	case ItemQuality_Rare :  { strcpy(qualityText, "Rare"); qualityColour = Colour(0.0f, 0.5f, 1.0f, 1.0f); break; }
+	case ItemQuality_Epic :  { strcpy(qualityText, "Epic"); qualityColour = Colour(0.64f, 0.2f, 0.93f, 1.0f); break; }
 	}
 	m_pTooltipQualityLabel->SetText(qualityText);
 	m_pTooltipQualityLabel->SetColour(qualityColour);
@@ -1186,16 +1186,16 @@ void CraftingGUI::ShowTooltip(IngredientsSlotItem* pIngredientItem)
 	char slotText[32];
 	switch(pIngredientItem->m_pInventoryItem->m_equipSlot)
 	{
-	case EquipSlot_NoSlot: { sprintf(slotText, ""); break; }
+	case EquipSlot_NoSlot: { strcpy(slotText, ""); break; }
 	case EquipSlot_LeftHand:
 		{
 			if(pIngredientItem->m_pInventoryItem->m_right)
 			{
-				sprintf(slotText, "Two Handed");
+				strcpy(slotText, "Two Handed");
 			}
 			else
 			{
-				sprintf(slotText, "Left Hand");
+				strcpy(slotText, "Left Hand");
 			}
 
 			break;
@@ -1204,23 +1204,23 @@ void CraftingGUI::ShowTooltip(IngredientsSlotItem* pIngredientItem)
 		{
 			if(pIngredientItem->m_pInventoryItem->m_left)
 			{
-				sprintf(slotText, "Two Handed");
+				strcpy(slotText, "Two Handed");
 			}
 			else
 			{
-				sprintf(slotText, "Right Hand");
+				strcpy(slotText, "Right Hand");
 			}
 
 			break;
 		}
-	case EquipSlot_Head: { sprintf(slotText, "Head"); break; }
-	case EquipSlot_Shoulders: { sprintf(slotText, "Shoulders"); break; }
-	case EquipSlot_Body: { sprintf(slotText, "Body"); break; }
-	case EquipSlot_Legs: { sprintf(slotText, "Legs"); break; }
-	case EquipSlot_Hand: { sprintf(slotText, "Hand"); break; }
-	case EquipSlot_Feet: { sprintf(slotText, "Feet"); break; }
-	case EquipSlot_Accessory1: { sprintf(slotText, "Accessory 1"); break; }
-	case EquipSlot_Accessory2: { sprintf(slotText, "Accessory 2"); break; }
+	case EquipSlot_Head: { strcpy(slotText, "Head"); break; }
+	case EquipSlot_Shoulders: { strcpy(slotText, "Shoulders"); break; }
+	case EquipSlot_Body: { strcpy(slotText, "Body"); break; }
+	case EquipSlot_Legs: { strcpy(slotText, "Legs"); break; }
+	case EquipSlot_Hand: { strcpy(slotText, "Hand"); break; }
+	case EquipSlot_Feet: { strcpy(slotText, "Feet"); break; }
+	case EquipSlot_Accessory1: { strcpy(slotText, "Accessory 1"); break; }
+	case EquipSlot_Accessory2: { strcpy(slotText, "Accessory 2"); break; }
 	}
 	m_pTooltipSlotLabel->SetText(slotText);
 
@@ -1229,11 +1229,11 @@ void CraftingGUI::ShowTooltip(IngredientsSlotItem* pIngredientItem)
 	Colour qualityColour;
 	switch(pIngredientItem->m_pInventoryItem->m_itemQuality)
 	{
-	case ItemQuality_Common :  { sprintf(qualityText, "Common"); qualityColour = Colour(0.5f, 0.5f, 0.5f, 1.0f); break; }
-	case ItemQuality_Uncommon :  { sprintf(qualityText, "Uncommon"); qualityColour = Colour(0.95f, 1.0f, 0.2f, 1.0f); break; }
-	case ItemQuality_Magical :  { sprintf(qualityText, "Magical"); qualityColour = Colour(0.0f, 1.0f, 0.0f, 1.0f); break; }
-	case ItemQuality_Rare :  { sprintf(qualityText, "Rare"); qualityColour = Colour(0.0f, 0.5f, 1.0f, 1.0f); break; }
-	case ItemQuality_Epic :  { sprintf(qualityText, "Epic"); qualityColour = Colour(0.64f, 0.2f, 0.93f, 1.0f); break; }
+	case ItemQuality_Common :  { strcpy(qualityText, "Common"); qualityColour = Colour(0.5f, 0.5f, 0.5f, 1.0f); break; }
+	case ItemQuality_Uncommon :  { strcpy(qualityText, "Uncommon"); qualityColour = Colour(0.95f, 1.0f, 0.2f, 1.0f); break; }
+	case ItemQuality_Magical :  { strcpy(qualityText, "Magical"); qualityColour = Colour(0.0f, 1.0f, 0.0f, 1.0f); break; }
+	case ItemQuality_Rare :  { strcpy(qualityText, "Rare"); qualityColour = Colour(0.0f, 0.5f, 1.0f, 1.0f); break; }
+	case ItemQuality_Epic :  { strcpy(qualityText, "Epic"); qualityColour = Colour(0.64f, 0.2f, 0.93f, 1.0f); break; }
 	}
 	m_pTooltipQualityLabel->SetText(qualityText);
 	m_pTooltipQualityLabel->SetColour(qualityColour);

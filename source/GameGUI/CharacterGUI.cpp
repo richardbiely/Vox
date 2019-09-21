@@ -989,16 +989,16 @@ void CharacterGUI::ShowTooltip(CharacterSlotItem* pCharacterItem)
 	char slotText[32];
 	switch(pCharacterItem->m_pInventoryItem->m_equipSlot)
 	{
-	case EquipSlot_NoSlot: { sprintf(slotText, ""); break; }
+	case EquipSlot_NoSlot: { strcpy(slotText, ""); break; }
 	case EquipSlot_LeftHand:
 		{
 			if(pCharacterItem->m_pInventoryItem->m_right)
 			{
-				sprintf(slotText, "Two Handed");
+				strcpy(slotText, "Two Handed");
 			}
 			else
 			{
-				sprintf(slotText, "Left Hand");
+				strcpy(slotText, "Left Hand");
 			}
 
 			break;
@@ -1007,23 +1007,23 @@ void CharacterGUI::ShowTooltip(CharacterSlotItem* pCharacterItem)
 		{
 			if(pCharacterItem->m_pInventoryItem->m_left)
 			{
-				sprintf(slotText, "Two Handed");
+				strcpy(slotText, "Two Handed");
 			}
 			else
 			{
-				sprintf(slotText, "Right Hand");
+				strcpy(slotText, "Right Hand");
 			}
 
 			break;
 		}
-	case EquipSlot_Head: { sprintf(slotText, "Head"); break; }
-	case EquipSlot_Shoulders: { sprintf(slotText, "Shoulders"); break; }
-	case EquipSlot_Body: { sprintf(slotText, "Body"); break; }
-	case EquipSlot_Legs: { sprintf(slotText, "Legs"); break; }
-	case EquipSlot_Hand: { sprintf(slotText, "Hand"); break; }
-	case EquipSlot_Feet: { sprintf(slotText, "Feet"); break; }
-	case EquipSlot_Accessory1: { sprintf(slotText, "Accessory 1"); break; }
-	case EquipSlot_Accessory2: { sprintf(slotText, "Accessory 2"); break; }
+	case EquipSlot_Head: { strcpy(slotText, "Head"); break; }
+	case EquipSlot_Shoulders: { strcpy(slotText, "Shoulders"); break; }
+	case EquipSlot_Body: { strcpy(slotText, "Body"); break; }
+	case EquipSlot_Legs: { strcpy(slotText, "Legs"); break; }
+	case EquipSlot_Hand: { strcpy(slotText, "Hand"); break; }
+	case EquipSlot_Feet: { strcpy(slotText, "Feet"); break; }
+	case EquipSlot_Accessory1: { strcpy(slotText, "Accessory 1"); break; }
+	case EquipSlot_Accessory2: { strcpy(slotText, "Accessory 2"); break; }
 	}
 	m_pTooltipSlotLabel->SetText(slotText);
 
@@ -1032,11 +1032,11 @@ void CharacterGUI::ShowTooltip(CharacterSlotItem* pCharacterItem)
 	Colour qualityColour;
 	switch(pCharacterItem->m_pInventoryItem->m_itemQuality)
 	{
-	case ItemQuality_Common :  { sprintf(qualityText, "Common"); qualityColour = Colour(0.5f, 0.5f, 0.5f, 1.0f); break; }
-	case ItemQuality_Uncommon :  { sprintf(qualityText, "Uncommon"); qualityColour = Colour(0.95f, 1.0f, 0.2f, 1.0f); break; }
-	case ItemQuality_Magical :  { sprintf(qualityText, "Magical"); qualityColour = Colour(0.0f, 1.0f, 0.0f, 1.0f); break; }
-	case ItemQuality_Rare :  { sprintf(qualityText, "Rare"); qualityColour = Colour(0.0f, 0.5f, 1.0f, 1.0f); break; }
-	case ItemQuality_Epic :  { sprintf(qualityText, "Epic"); qualityColour = Colour(0.64f, 0.2f, 0.93f, 1.0f); break; }
+	case ItemQuality_Common :  { strcpy(qualityText, "Common"); qualityColour = Colour(0.5f, 0.5f, 0.5f, 1.0f); break; }
+	case ItemQuality_Uncommon :  { strcpy(qualityText, "Uncommon"); qualityColour = Colour(0.95f, 1.0f, 0.2f, 1.0f); break; }
+	case ItemQuality_Magical :  { strcpy(qualityText, "Magical"); qualityColour = Colour(0.0f, 1.0f, 0.0f, 1.0f); break; }
+	case ItemQuality_Rare :  { strcpy(qualityText, "Rare"); qualityColour = Colour(0.0f, 0.5f, 1.0f, 1.0f); break; }
+	case ItemQuality_Epic :  { strcpy(qualityText, "Epic"); qualityColour = Colour(0.64f, 0.2f, 0.93f, 1.0f); break; }
 	}
 	m_pTooltipQualityLabel->SetText(qualityText);
 	m_pTooltipQualityLabel->SetColour(qualityColour);
@@ -1124,7 +1124,7 @@ void CharacterGUI::HideTooltip()
 	m_toolTipVisible = false;
 }
 
-void CharacterGUI::GetPlayerPortraitDimensions(int* x, int* y, int* width, int* height)
+void CharacterGUI::GetPlayerPortraitDimensions(int* x, int* y, int* width, int* height) const
 {
 	*x = m_paperDoll_X;
 	*y = m_paperDoll_Y;
@@ -1133,7 +1133,7 @@ void CharacterGUI::GetPlayerPortraitDimensions(int* x, int* y, int* width, int* 
 	*height = m_paperDollHeight;
 }
 
-void CharacterGUI::GetPlayerWeaponLeftDimensions(int* x, int* y, int* width, int* height)
+void CharacterGUI::GetPlayerWeaponLeftDimensions(int* x, int* y, int* width, int* height) const
 {
 	*x = 157;
 	*y = 18;
@@ -1142,7 +1142,7 @@ void CharacterGUI::GetPlayerWeaponLeftDimensions(int* x, int* y, int* width, int
 	*height = 64;
 }
 
-void CharacterGUI::GetPlayerWeaponRightDimensions(int* x, int* y, int* width, int* height)
+void CharacterGUI::GetPlayerWeaponRightDimensions(int* x, int* y, int* width, int* height) const
 {
 	*x = 84;
 	*y = 18;
@@ -1151,7 +1151,7 @@ void CharacterGUI::GetPlayerWeaponRightDimensions(int* x, int* y, int* width, in
 	*height = 64;
 }
 
-void CharacterGUI::GetPlayerHeadDimensions(int* x, int* y, int* width, int* height)
+void CharacterGUI::GetPlayerHeadDimensions(int* x, int* y, int* width, int* height) const
 {
 	*x = 4;
 	*y = 213;
@@ -1160,7 +1160,7 @@ void CharacterGUI::GetPlayerHeadDimensions(int* x, int* y, int* width, int* heig
 	*height = 64;
 }
 
-void CharacterGUI::GetPlayerShoulderDimensions(int* x, int* y, int* width, int* height)
+void CharacterGUI::GetPlayerShoulderDimensions(int* x, int* y, int* width, int* height) const
 {
 	*x = 236;
 	*y = 213;
@@ -1169,7 +1169,7 @@ void CharacterGUI::GetPlayerShoulderDimensions(int* x, int* y, int* width, int* 
 	*height = 64;
 }
 
-void CharacterGUI::GetPlayerBodyDimensions(int* x, int* y, int* width, int* height)
+void CharacterGUI::GetPlayerBodyDimensions(int* x, int* y, int* width, int* height) const
 {
 	*x = 4;
 	*y = 145;
@@ -1178,7 +1178,7 @@ void CharacterGUI::GetPlayerBodyDimensions(int* x, int* y, int* width, int* heig
 	*height = 64;
 }
 
-void CharacterGUI::GetPlayerLegsDimensions(int* x, int* y, int* width, int* height)
+void CharacterGUI::GetPlayerLegsDimensions(int* x, int* y, int* width, int* height) const
 {
 	*x = 236;
 	*y = 145;
@@ -1187,7 +1187,7 @@ void CharacterGUI::GetPlayerLegsDimensions(int* x, int* y, int* width, int* heig
 	*height = 64;
 }
 
-void CharacterGUI::GetPlayerHandDimensions(int* x, int* y, int* width, int* height)
+void CharacterGUI::GetPlayerHandDimensions(int* x, int* y, int* width, int* height) const
 {
 	*x = 4;
 	*y = 77;
@@ -1196,7 +1196,7 @@ void CharacterGUI::GetPlayerHandDimensions(int* x, int* y, int* width, int* heig
 	*height = 64;
 }
 
-void CharacterGUI::GetPlayerFeetDimensions(int* x, int* y, int* width, int* height)
+void CharacterGUI::GetPlayerFeetDimensions(int* x, int* y, int* width, int* height) const
 {
 	*x = 236;
 	*y = 77;
@@ -1205,7 +1205,7 @@ void CharacterGUI::GetPlayerFeetDimensions(int* x, int* y, int* width, int* heig
 	*height = 64;
 }
 
-void CharacterGUI::GetPlayerAccessory1Dimensions(int* x, int* y, int* width, int* height)
+void CharacterGUI::GetPlayerAccessory1Dimensions(int* x, int* y, int* width, int* height) const
 {
 	*x = 4;
 	*y = 8;
@@ -1214,7 +1214,7 @@ void CharacterGUI::GetPlayerAccessory1Dimensions(int* x, int* y, int* width, int
 	*height = 64;
 }
 
-void CharacterGUI::GetPlayerAccessory2Dimensions(int* x, int* y, int* width, int* height)
+void CharacterGUI::GetPlayerAccessory2Dimensions(int* x, int* y, int* width, int* height) const
 {
 	*x = 236;
 	*y = 8;

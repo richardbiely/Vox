@@ -359,7 +359,7 @@ void Credits::Render2D()
 		float yText = m_windowHeight - pCreditsLine->m_screenHeightDifference;
 
 		char displayText[256];
-		sprintf(displayText, "%s", pCreditsLine->m_text.c_str());
+		strcpy(displayText, pCreditsLine->m_text.c_str());
 
 		unsigned int fontId = pCreditsLine->m_fontId;
 		unsigned int outlineFontId = pCreditsLine->m_outlineFontId;

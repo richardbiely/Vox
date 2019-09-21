@@ -704,11 +704,11 @@ void Player::Explode()
 	char tombstoneFilename[64];
 	if (GetRandomNumber(0, 100) > 35)
 	{
-		sprintf(tombstoneFilename, "media/gamedata/items/Tombstone/Tombstone1.item");
+		strcpy(tombstoneFilename, "media/gamedata/items/Tombstone/Tombstone1.item");
 	}
 	else
 	{
-		sprintf(tombstoneFilename, "media/gamedata/items/Tombstone/Tombstone2.item");
+		strcpy(tombstoneFilename, "media/gamedata/items/Tombstone/Tombstone2.item");
 	}
 	Item* pTombstone = m_pItemManager->CreateItem(GetCenter(), vec3(0.0f, 0.0f, 0.0f), vec3(0.0f, 0.0f, 0.0f), tombstoneFilename, eItem_Tombstone, "Tombstone", false, false, 0.08f);
 	pTombstone->SetVelocity(vec3(0.0f, 10.0f, 0.0f));

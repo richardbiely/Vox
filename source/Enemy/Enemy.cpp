@@ -179,7 +179,7 @@ Enemy::Enemy(Renderer* pRenderer, ChunkManager* pChunkManager, Player* pPlayer, 
 
 	SetupEnemyForType();
 
-	sprintf(characterBaseFolder, "media/gamedata/models");
+	strcpy(characterBaseFolder, "media/gamedata/models");
 	sprintf(qbFilename, "media/gamedata/models/%s/%s.qb", m_typeString.c_str(), m_modelNameString.c_str());
 	sprintf(ms3dFilename, "media/gamedata/models/%s/%s.ms3d", m_typeString.c_str(), m_typeString.c_str());
 	sprintf(animListFilename, "media/gamedata/models/%s/%s.animlist", m_typeString.c_str(), m_typeString.c_str());
