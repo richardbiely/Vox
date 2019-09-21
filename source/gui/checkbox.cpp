@@ -18,7 +18,7 @@
 #include "directdrawrectangle.h"
 #include "multitextureicon.h"
 #include "guiwindow.h"
-
+#include "icon.h"
 
 CheckBox::CheckBox(Renderer* pRenderer, unsigned int GUIFont, const std::string &label)
   : AbstractButton(pRenderer, GUIFont, label),

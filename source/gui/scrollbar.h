@@ -46,8 +46,8 @@ public:
 
 	virtual ~ScrollBar();
 
-	void AddEventListeners();
-	void RemoveEventListeners();
+	void AddEventListeners() override;
+	void RemoveEventListeners() override;
 
 	void RemoveIcon(RenderRectangle *pRemoveIcon);
 	void SetDefaultIcons(Renderer* pRenderer);
@@ -65,8 +65,8 @@ public:
 	void SetScrollbarDisabledIcon(RenderRectangle *icon);
 	void SetBackbarIcon(RenderRectangle *icon);
 
-	void SetDimensions(int x, int y, int width, int height);
-	void SetDimensions(const Dimensions& r);
+	void SetDimensions(int x, int y, int width, int height) override;
+	void SetDimensions(const Dimensions& r) override;
 
 	void SetArrowDimensions(int width, int height);
 
@@ -105,7 +105,7 @@ public:
 	bool IsHoverLeft() const;
 	bool IsDisabled() const;
 
-	EComponentType GetComponentType() const;
+	EComponentType GetComponentType() const override;
 
 	void SetValueChangedCallback(FunctionCallback lFunction);
 	void SetValueChangedCallBackData(void *lpData);
@@ -115,12 +115,12 @@ public:
 
 protected:
 	/* Protected methods */
-	void MouseEntered(const MouseEvent& lEvent);
-	void MouseExited(const MouseEvent& lEvent);
-	void MousePressed(const MouseEvent& lEvent);
-	void MouseReleased(const MouseEvent& lEvent);
+	void MouseEntered(const MouseEvent& lEvent) override;
+	void MouseExited(const MouseEvent& lEvent) override;
+	void MousePressed(const MouseEvent& lEvent) override;
+	void MouseReleased(const MouseEvent& lEvent) override;
 	void MouseReleasedOutside(const MouseEvent& lEvent);
-	void MouseClicked(const MouseEvent& lEvent);
+	void MouseClicked(const MouseEvent& lEvent) override;
 	void MouseDragged(const MouseEvent& lEvent);
 	void MouseDraggedOutside(const MouseEvent& lEvent);
 	void MouseMotion(const MouseEvent& lEvent);
@@ -139,8 +139,8 @@ protected:
 
 	virtual void OnValueChanged();
 
-	void DrawChildren();
-	void DrawSelf();
+	void DrawChildren() override;
+	void DrawSelf() override;
 
 private:
 	/* Private methods */

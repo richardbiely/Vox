@@ -35,11 +35,11 @@ public:
 
 	~MultiLineTextBox();
 
-	void AddEventListeners();
-	void RemoveEventListeners();
+	void AddEventListeners() override;
+	void RemoveEventListeners() override;
 
-	void SetDimensions(int x, int y, int width, int height);
-	void SetDimensions(const Dimensions& r);
+	void SetDimensions(int x, int y, int width, int height) override;
+	void SetDimensions(const Dimensions& r) override;
 
 	void SetTextColour(Colour lColour);
 
@@ -68,7 +68,7 @@ public:
 	void SetCallBackFunction_OnReturnPressed(FunctionCallback lFunction);
 	void SetCallBackData_OnReturnPressed(void *lpData);
 
-	EComponentType GetComponentType() const;
+	EComponentType GetComponentType() const override;
 
 	void UpdateText();
 
@@ -92,8 +92,8 @@ protected:
 
 	void ClearLabels();
 
-	void DrawChildren();
-	void DrawSelf();
+	void DrawChildren() override;
+	void DrawSelf() override;
 
 private:
 	/* Private methods */

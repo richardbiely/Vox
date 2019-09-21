@@ -67,17 +67,17 @@ public:
 	void SetNodeVisible(TreeNode* pNode, bool visible);
 	void SetNodeDimensions(TreeNode* pNode, int x, int y, int width, int height, int *additionalYOffset);
 
-	void SetDimensions(int x, int y, int width, int height);
-	void SetDimensions(const Dimensions& r);
+	void SetDimensions(int x, int y, int width, int height) override;
+	void SetDimensions(const Dimensions& r) override;
 
-	EComponentType GetComponentType() const;
+	EComponentType GetComponentType() const override;
 
 	void UpdateScrollbar();
 
 protected:
 	/* Protected methods */
-	void DrawChildren();
-	void DrawSelf();
+	void DrawChildren() override;
+	void DrawSelf() override;
 
 private:
 	/* Private methods */

@@ -1,6 +1,6 @@
 #include "renderrectangle.h"
 #include "icon.h"
-
+#include "label.h"
 
 RenderRectangle::RenderRectangle(Renderer* pRenderer)
   :  Container(pRenderer)

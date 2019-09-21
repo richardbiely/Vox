@@ -33,8 +33,8 @@ public:
 	void AddText(Renderer* pRenderer, unsigned int GUIFont, unsigned int OutlineGUIFont, const std::string &label, Colour colour, int xOffset, int yOffset, bool outline = false, Colour outlineColour = Colour(1.0f, 1.0f, 1.0f, 1.0f));
 	void AddIcon(Renderer* pRenderer, const std::string &fileName, int texWidth, int texHeight, int width, int height, int xOffset, int yOffset, float depth);
 
-	void SetDimensions(int x, int y, int width, int height);
-	void SetDimensions(const Dimensions& r);
+	void SetDimensions(int x, int y, int width, int height) override;
+	void SetDimensions(const Dimensions& r) override;
 
 	void SetLabelOffset(int x, int y);
 	
@@ -42,23 +42,23 @@ public:
 
 	void SetNormalLabelColour(Colour normal);
 	void SetHoverLabelColour(Colour hover);
-	void SetPressedLabelColour(Colour pressed);	
+	void SetPressedLabelColour(Colour pressed);
 
 	void SetLabelColour(Colour colour);
 	void SetLabelOutlineColour(Colour colour);
 
-	void AddEventListeners();
-	void RemoveEventListeners();
+	void AddEventListeners() override;
+	void RemoveEventListeners() override;
 
-	EComponentType GetComponentType() const;
+	EComponentType GetComponentType() const override;
 
 protected:
 	/* Protected methods */
-	void MouseEntered(const MouseEvent& lEvent);
-	void MouseExited(const MouseEvent& lEvent);
-	void MousePressed(const MouseEvent& lEvent);
-	void MouseReleased(const MouseEvent& lEvent);
-	void MouseClicked(const MouseEvent& lEvent);
+	void MouseEntered(const MouseEvent& lEvent) override;
+	void MouseExited(const MouseEvent& lEvent) override;
+	void MousePressed(const MouseEvent& lEvent) override;
+	void MouseReleased(const MouseEvent& lEvent) override;
+	void MouseClicked(const MouseEvent& lEvent) override;
 
 	virtual void OnMouseEnter();
 	virtual void OnMouseExit();
@@ -66,7 +66,7 @@ protected:
 	virtual void OnMouseReleased();
 	virtual void OnMouseClicked();
 
-	void DrawSelf();
+	void DrawSelf() override;
 
 private: 
 	/* Private methods */

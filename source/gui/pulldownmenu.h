@@ -18,8 +18,6 @@
 
 #include "container.h"
 #include "renderrectangle.h"
-#include "icon.h"
-#include "multitextureicon.h"
 #include "menu.h"
 #include "menuitem.h"
 #include "scrollbar.h"
@@ -51,11 +49,11 @@ public:
 
 	unsigned int GetGUIFont();
 
-	void SetDimensions(int x, int y, int width, int height);
-	void SetDimensions(const Dimensions& r);
+	void SetDimensions(int x, int y, int width, int height) override;
+	void SetDimensions(const Dimensions& r) override;
 
-	void AddEventListeners();
-	void RemoveEventListeners();
+	void AddEventListeners() override;
+	void RemoveEventListeners() override;
 
 	void AddPulldownItem(const std::string &label);
 	int GetNumItems() const;
@@ -95,7 +93,7 @@ public:
 	bool ChildHasFocus();
 	bool MenuChildHasFocus();
 
-	EComponentType GetComponentType() const;
+	EComponentType GetComponentType() const override;
 
 	ScrollBar* GetPulldownScrollBar();
 
@@ -106,12 +104,12 @@ public:
 
 protected:
 	/* Protected methods */
-	void MouseEntered(const MouseEvent& lEvent);
-	void MouseExited(const MouseEvent& lEvent);
-	void MousePressed(const MouseEvent& lEvent);
-	void MouseReleased(const MouseEvent& lEvent);
+	void MouseEntered(const MouseEvent& lEvent) override;
+	void MouseExited(const MouseEvent& lEvent) override;
+	void MousePressed(const MouseEvent& lEvent) override;
+	void MouseReleased(const MouseEvent& lEvent) override;
 	void MouseReleasedOutside(const MouseEvent& lEvent);
-	void MouseClicked(const MouseEvent& lEvent);
+	void MouseClicked(const MouseEvent& lEvent) override;
 
 	void FocusLost(const FocusEvent& lEvent);
 	void FocusGained(const FocusEvent& lEvent);
@@ -122,8 +120,8 @@ protected:
 	virtual void OnMouseReleased();
 	virtual void OnMouseClicked();
 
-	void DrawChildren();
-	void DrawSelf();
+	void DrawChildren() override;
+	void DrawSelf() override;
 
 private:
 	/* Private methods */

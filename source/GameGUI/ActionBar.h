@@ -24,6 +24,7 @@ class ActionBar;
 class InventoryGUI;
 class LootGUI;
 class CharacterGUI;
+class Icon;
 
 enum ActionBarItemType
 {

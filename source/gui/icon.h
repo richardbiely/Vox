@@ -36,7 +36,7 @@ public:
 
 	std::string GetFileName();
 
-	void SetDimensions(int x, int y, int width, int height);
+	void SetDimensions(int x, int y, int width, int height) override;
 
 	void SetIcon(RenderRectangle *icon);
 	void SetIcon(const std::string &fileName);
@@ -53,11 +53,11 @@ public:
 	int GetTextureWidthPower2();
 	int GetTextureHeightPower2();
 
-	EComponentType GetComponentType() const;
+	EComponentType GetComponentType() const override;
 
 protected:
 	/* Protected methods */
-	void DrawSelf();
+	void DrawSelf() override;
 
 private:
 	/* Private methods */

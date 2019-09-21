@@ -90,9 +90,9 @@ public:
 	virtual ~Component();
 
 	virtual void SetVisible(bool Visible);
-	virtual bool IsVisible() const;
+	bool IsVisible() const;
 
-	void SetEnabled(bool enabled);
+	virtual void SetEnabled(bool enabled);
 	bool IsEnabled() const;
 
 	bool IsParentVisible() const;
@@ -111,6 +111,7 @@ public:
 
 	virtual void SetLocation(int x, int y);
 	virtual void SetLocation(const Point& p);
+
 	void SetX(int x);
 	void SetY(int y);
 	void GetLocation(int& x, int& y) const;
@@ -154,8 +155,8 @@ public:
 	bool HasFocus() const;
 	void SetFocus(bool enable);
 
-    virtual void SetAudio(bool set);
-    virtual void SetAudioVolume(float volume);
+  virtual void SetAudio(bool set);
+  virtual void SetAudioVolume(float volume);
 
 	virtual bool IsContainer() const;
 	virtual bool IsRootContainer() const;
@@ -188,8 +189,8 @@ protected:
 
 	float m_depth;
 
-    bool m_audio;
-    float m_audioVolume;
+	float m_audioVolume;
+  bool m_audio;  
 
 private:
 	/* Private members */

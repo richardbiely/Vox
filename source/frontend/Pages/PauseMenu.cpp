@@ -12,8 +12,8 @@
 #include "PauseMenu.h"
 #include "../FrontendManager.h"
 #include "../../gui/openglgui.h"
+#include "../../gui/icon.h"
 #include "../../VoxGame.h"
-
 
 PauseMenu::PauseMenu(Renderer* pRenderer, OpenGLGUI* pGUI, FrontendManager* pFrontendManager, int windowWidth, int windowHeight)
 	: FrontendPage(pRenderer, pGUI, pFrontendManager, FrontendScreen_PauseMenu, windowWidth, windowHeight)

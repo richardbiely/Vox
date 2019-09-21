@@ -49,11 +49,11 @@ public:
 	ModMenu(Renderer* pRenderer, OpenGLGUI* pGUI, FrontendManager* pFrontPageManager, int windowWidth, int windowHeight);
 	~ModMenu();
 
-	void Reset();
+	void Reset() override;
 
 	void ClearModButtonData();
 
-	void SetWindowDimensions(int windowWidth, int windowHeight);
+	void SetWindowDimensions(int windowWidth, int windowHeight) override;
 
 	// Pre-tick the already loaded mods and set them as toggled
 	void SelectLoadedMods();
@@ -62,12 +62,12 @@ public:
 	void SetReturnToMainMenu(bool mainMenu);
 
 	// Skinning
-	void SkinGUI();
-	void UnSkinGUI();
+	void SkinGUI() override;
+	void UnSkinGUI() override;
 
 	// Load unload
-	void Load();
-	void Unload();
+	void Load() override;
+	void Unload() override;
 
 	void CreateGameplayModButtons();
 	void RemoveGameplayModButtons();
@@ -90,11 +90,11 @@ public:
 	void HideTooltip();
 
 	// Update
-	void Update(float dt);
+	void Update(float dt) override;
 
 	// Render
-	void Render();
-	void Render2D();
+	void Render() override;
+	void Render2D() override;
 
 protected:
 	/* Protected methods */

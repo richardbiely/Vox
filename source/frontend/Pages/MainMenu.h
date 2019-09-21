@@ -28,20 +28,20 @@ public:
 	MainMenu(Renderer* pRenderer, OpenGLGUI* pGUI, FrontendManager* pFrontPageManager, int windowWidth, int windowHeight);
 	~MainMenu();
 
-	void Reset();
+	void Reset() override;
 
-	void SetWindowDimensions(int width, int height);
+	void SetWindowDimensions(int width, int height) override;
 
-	void SkinGUI();
-	void UnSkinGUI();
+	void SkinGUI() override;
+	void UnSkinGUI() override;
 
-	void Load();
-	void Unload();
+	void Load() override;
+	void Unload() override;
 
-	void Update(float dt);
+	void Update(float dt) override;
 
-	void Render();
-	void Render2D();
+	void Render() override;
+	void Render2D() override;
 
 protected:
 	/* Protected methods */

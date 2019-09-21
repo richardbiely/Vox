@@ -68,17 +68,16 @@ public:
 	CreateCharacter(Renderer* pRenderer, OpenGLGUI* pGUI, FrontendManager* pFrontendManager, int windowWidth, int windowHeight);
 	~CreateCharacter();
 
-	void Reset();
-
-	void SetWindowDimensions(int windowWidth, int windowHeight);
+	void Reset() override;
+	void SetWindowDimensions(int windowWidth, int windowHeight) override;
 
 	// Skinning the GUI
-	void SkinGUI();
-	void UnSkinGUI();
+	void SkinGUI() override;
+	void UnSkinGUI() override;
 
 	// Loading
-	void Load();
-	void Unload();
+	void Load() override;
+	void Unload() override;
 
 	bool LoadDefaultSettings(string defaultFile, PresetSection m_section);
 
@@ -99,10 +98,10 @@ public:
 
 	void UpdatePresetsPulldown();
 	void UpdateEyeTexturePulldown();
-	void Update(float dt);
+	void Update(float dt) override;
 
-	void Render();
-	void Render2D();
+	void Render() override;
+	void Render2D() override;
 
 protected:
 	/* Protected methods */

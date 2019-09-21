@@ -29,18 +29,18 @@ public:
 
 	~MenuItem();
 
-	void AddEventListeners();
-	void RemoveEventListeners();
+	void AddEventListeners() override;
+	void RemoveEventListeners() override;
 
-	void SetDimensions(int x, int y, int width, int height);
-	void SetDimensions(const Dimensions& r);
+	void SetDimensions(int x, int y, int width, int height) override;
+	void SetDimensions(const Dimensions& r) override;
 	void SetWidth(int width);
 	void SetHeight(int height);
 
 	void SetOnlyShowSelectedIcons(bool lShow);
 	bool IsOnlyShowSelectedIcons() const;
 
-	EComponentType GetComponentType() const;
+	EComponentType GetComponentType() const override;
 
 	bool IsParentMenuOpen();
 
@@ -48,12 +48,12 @@ public:
 
 protected:
 	/* Protected methods */
-	void MouseEntered(const MouseEvent& lEvent);
-	void MouseExited(const MouseEvent& lEvent);
-	void MousePressed(const MouseEvent& lEvent);
-	void MouseReleased(const MouseEvent& lEvent);
+	void MouseEntered(const MouseEvent& lEvent) override;
+	void MouseExited(const MouseEvent& lEvent) override;
+	void MousePressed(const MouseEvent& lEvent) override;
+	void MouseReleased(const MouseEvent& lEvent) override;
 	void MouseReleasedOutside(const MouseEvent& lEvent);
-	void MouseClicked(const MouseEvent& lEvent);
+	void MouseClicked(const MouseEvent& lEvent) override;
 
 	void MenuItemPressed();
 
@@ -66,7 +66,7 @@ protected:
 	virtual void OnMouseReleased();
 	virtual void OnMouseClicked();
 
-	void DrawSelf();
+	void DrawSelf() override;
 
 private:
 	/* Private methods */

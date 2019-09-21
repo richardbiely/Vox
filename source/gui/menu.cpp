@@ -19,7 +19,7 @@
 #include "directdrawrectangle.h"
 #include "guiwindow.h"
 #include "menuitem.h"
-
+#include "icon.h"
 
 Menu::Menu(Renderer* pRenderer, unsigned int GUIFont, const std::string &label, bool lShowTopLevelMenu)
   : AbstractButton(pRenderer, GUIFont, label),

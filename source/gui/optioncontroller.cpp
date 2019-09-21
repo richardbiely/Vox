@@ -72,11 +72,6 @@ void OptionController::SetVisible(bool Visible)
 	}
 }
 
-bool OptionController::IsVisible() const
-{
-	return Component::IsVisible();
-}
-
 void OptionController::SetDimensions(int x, int y, int width, int height)
 {
 	Component::SetDimensions(x, y, width, height);

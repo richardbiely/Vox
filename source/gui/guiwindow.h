@@ -31,19 +31,19 @@ class GUIWindow : public Container, public MouseListener
 {
 public:
 	/* Public methods */
-	GUIWindow(Renderer* pRenderer, unsigned int GUIFont, const std::string &title);
+	GUIWindow(Renderer* pRenderer, unsigned int GUIFont, const std::string& title);
 
 	GUIWindow(Renderer* pRenderer, unsigned int GUIFont, TitleBar* ptitleBar);
 
 	~GUIWindow();
 
-	void AddEventListeners();
-	void RemoveEventListeners();
+	void AddEventListeners() override;
+	void RemoveEventListeners() override;
 
-	virtual bool IsRootContainer() const;
+	virtual bool IsRootContainer() const override;
 
-	void AddGUIWindow(GUIWindow *window);
-	void RemoveGUIWindow(GUIWindow *window);
+	void AddGUIWindow(GUIWindow* window);
+	void RemoveGUIWindow(GUIWindow* window);
 	void RemoveAllGUIWindows();
 
 	const GUIWindowList& GetGUIWindows() const;
@@ -52,48 +52,48 @@ public:
 
 	void SetTitleBarDimensions(int xOffset, int yOffset, int width, int height);
 	void SetTitleOffset(int xOffset, int yOffset);
-	void SetTitlebarBackgroundIcon(RenderRectangle *icon);
+	void SetTitlebarBackgroundIcon(RenderRectangle* icon);
 
-	void SetBackgroundIcon(RenderRectangle *icon);
+	void SetBackgroundIcon(RenderRectangle* icon);
 
 	void AddComponent(Component* component);
-	void RemoveComponent(Component *component);
+	void RemoveComponent(Component* component);
 
-	void SetDimensions(int x, int y, int width, int height);
-	void SetDimensions(const Dimensions& r);
+	void SetDimensions(int x, int y, int width, int height) override;
+	void SetDimensions(const Dimensions& r) override;
 
-    void SetLocation(int x, int y);
-    void SetLocation(const Point& p);
+	void SetLocation(int x, int y) override;
+	void SetLocation(const Point& p) override;
 
-	void SetTitle(const std::string &title);
+	void SetTitle(const std::string& title);
 	const std::string GetTitle() const;
 
 	void SetDebugRender(bool debug);
 	void SetOutlineRender(bool outline);
 
 	void Show();
-	void Hide();	
+	void Hide();
 
 	bool GetMinimized() const;
 	void SetMinimized(bool minimized);
 
-	void SetMinimizedDefaultIcon(RenderRectangle *icon);
-	void SetMinimizedSelectedIcon(RenderRectangle *icon);
-	void SetMinimizedHoverIcon(RenderRectangle *icon);
-	void SetMinimizedDisabledIcon(RenderRectangle *icon);
+	void SetMinimizedDefaultIcon(RenderRectangle* icon);
+	void SetMinimizedSelectedIcon(RenderRectangle* icon);
+	void SetMinimizedHoverIcon(RenderRectangle* icon);
+	void SetMinimizedDisabledIcon(RenderRectangle* icon);
 
-	void SetCloseDefaultIcon(RenderRectangle *icon);
-	void SetCloseSelectedIcon(RenderRectangle *icon);
-	void SetCloseHoverIcon(RenderRectangle *icon);
-	void SetCloseDisabledIcon(RenderRectangle *icon);
+	void SetCloseDefaultIcon(RenderRectangle* icon);
+	void SetCloseSelectedIcon(RenderRectangle* icon);
+	void SetCloseHoverIcon(RenderRectangle* icon);
+	void SetCloseDisabledIcon(RenderRectangle* icon);
 
 	void AllowMoving(bool val);
 	void AllowClosing(bool val);
 	void AllowMinimizing(bool val);
 	void AllowScrolling(bool val);
-    void SnapToApplication(bool val);
+	void SnapToApplication(bool val);
 
-    void SetApplicationDimensions(int width, int height);
+	void SetApplicationDimensions(int width, int height);
 
 	void SetApplicationBorder(int left, int right, int top, int bottom);
 
@@ -102,7 +102,7 @@ public:
 
 	void DepthSortGUIWindowChildren();
 
-	EComponentType GetComponentType() const;
+	EComponentType GetComponentType() const override;
 
 	void SetGUIParent(OpenGLGUI* pParent);
 	void SetFocusWindow();
@@ -110,16 +110,16 @@ public:
 	void Update(float deltaTime);
 
 	// < Operator (Used for GUIWindow depth sorting)
-	bool operator<(const GUIWindow &w) const;
-	static bool DepthLessThan(const GUIWindow *lhs, const GUIWindow *rhs);
+	bool operator<(const GUIWindow& w) const;
+	static bool DepthLessThan(const GUIWindow* lhs, const GUIWindow* rhs);
 
 protected:
 	/* Protected methods */
-	void MousePressed(const MouseEvent& lEvent);
+	void MousePressed(const MouseEvent& lEvent) override;
 
-	void DrawSelf();
+	void DrawSelf() override;
 	void DrawChildrenFirst();
-	void DrawChildren();
+	void DrawChildren() override;
 
 private:
 	/* Private methods */
@@ -145,17 +145,17 @@ private:
 	bool m_bAllowClosing;
 	bool m_bAllowMinimizing;
 	bool m_bAllowScrolling;
-    bool m_bSnapToWindow;
+	bool m_bSnapToWindow;
 
 	bool m_bRenderTitleBar;
 	bool m_bRenderWindowBackground;
 
 	bool mb_ownsTitleBar;
 
-    int m_applicationWidth;
-    int m_applicationHeight;
+	int m_applicationWidth;
+	int m_applicationHeight;
 
-	RenderRectangle	*m_pBackgroundIcon;
+	RenderRectangle* m_pBackgroundIcon;
 
 	bool m_outlineRender;
 

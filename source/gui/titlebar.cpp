@@ -17,7 +17,8 @@
 
 #include "titlebar.h"
 #include "guiwindow.h"
-
+#include "multitextureicon.h"
+#include "icon.h"
 
 TitleBar::TitleBar(Renderer* pRenderer, unsigned int GUIFont, const std::string &title)
   : Container(pRenderer),

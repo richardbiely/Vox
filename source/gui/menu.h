@@ -34,8 +34,8 @@ public:
 
 	void ResetMenu();
 
-	void AddEventListeners();
-	void RemoveEventListeners();
+	void AddEventListeners() override;
+	void RemoveEventListeners() override;
 
 	void SetPullDownMenuParent(PulldownMenu* pPullDownMenuParent);
 	PulldownMenu* GetPullDownMenuParent();
@@ -46,8 +46,8 @@ public:
 
 	void SetAutoSizeMenuWidth(bool lAutoSize);
 
-	void SetDimensions(int x, int y, int width, int height);
-	void SetDimensions(const Dimensions& r);
+	void SetDimensions(int x, int y, int width, int height) override;
+	void SetDimensions(const Dimensions& r) override;
 	void SetWidth(int width);
 	void SetHeight(int height);
 	void ResetToTextWidth();
@@ -67,16 +67,16 @@ public:
 
 	bool ChildHasFocus();
 
-	EComponentType GetComponentType() const;
+	EComponentType GetComponentType() const override;
 
 protected:
 	/* Protected methods */
-	void MouseEntered(const MouseEvent& lEvent);
-	void MouseExited(const MouseEvent& lEvent);
-	void MousePressed(const MouseEvent& lEvent);
-	void MouseReleased(const MouseEvent& lEvent);
+	void MouseEntered(const MouseEvent& lEvent) override;
+	void MouseExited(const MouseEvent& lEvent) override;
+	void MousePressed(const MouseEvent& lEvent) override;
+	void MouseReleased(const MouseEvent& lEvent) override;
 	void MouseReleasedOutside(const MouseEvent& lEvent);
-	void MouseClicked(const MouseEvent& lEvent);
+	void MouseClicked(const MouseEvent& lEvent) override;
 
 	void FocusLost(const FocusEvent& lEvent);
 	void FocusGained(const FocusEvent& lEvent);
@@ -87,7 +87,7 @@ protected:
 	virtual void OnMouseReleased();
 	virtual void OnMouseClicked();
 
-	void DrawSelf();
+	void DrawSelf() override;
 
 private:
 	/* Private methods */

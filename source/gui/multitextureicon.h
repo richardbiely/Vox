@@ -50,11 +50,11 @@ public:
 
 	void CreateDrawBuffer();
 
-	EComponentType GetComponentType() const;
+	EComponentType GetComponentType() const override;
 
 protected:
 	/* Protected methods */
-	void DrawSelf();
+	void DrawSelf() override;
 
 private:
 	/* Private methods */

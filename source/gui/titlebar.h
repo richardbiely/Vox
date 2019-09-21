@@ -22,7 +22,6 @@
 #include "guiwindowclosebutton.h"
 #include "guiwindowminimizebutton.h"
 
-
 class TitleBar : public Container, public MouseListener
 {
 public:
@@ -33,16 +32,16 @@ public:
 
 	~TitleBar();
 
-	void AddEventListeners();
-	void RemoveEventListeners();
+	void AddEventListeners() override;
+	void RemoveEventListeners() override;
 
 	GUIWindowCloseButton* GetCloseButton() const;
 	GUIWindowMinimizeButton* GetMinimizeButton() const;
 
 	void SetGUIWindowParent(GUIWindow* pParent);
 
-	void SetDimensions(int x, int y, int width, int height);
-	void SetDimensions(const Dimensions& r);
+	void SetDimensions(int x, int y, int width, int height) override;
+	void SetDimensions(const Dimensions& r) override;
 
 	void SetTitleOffset(int xOffset, int yOffset);
 
@@ -56,15 +55,15 @@ public:
 	void AllowMinimizing(bool val);
 	void AllowClosing(bool val);
 
-	EComponentType GetComponentType() const;
+	EComponentType GetComponentType() const override;
 
 protected:
 	/* Protected methods */
-	void MouseEntered(const MouseEvent& lEvent);
-	void MouseExited(const MouseEvent& lEvent);
-	void MousePressed(const MouseEvent& lEvent);
-	void MouseReleased(const MouseEvent& lEvent);
-	void MouseClicked(const MouseEvent& lEvent);
+	void MouseEntered(const MouseEvent& lEvent) override;
+	void MouseExited(const MouseEvent& lEvent) override;
+	void MousePressed(const MouseEvent& lEvent) override;
+	void MouseReleased(const MouseEvent& lEvent) override;
+	void MouseClicked(const MouseEvent& lEvent) override;
 	void MouseDragged(const MouseEvent& lEvent);
 	void MouseDraggedOutside(const MouseEvent& lEvent);
 
@@ -76,7 +75,7 @@ protected:
 	virtual void OnMouseDragged();
 	virtual void OnMouseDraggedOutside();
 
-	void DrawSelf();
+	void DrawSelf() override;
 
 private:
 	/* Private methods */

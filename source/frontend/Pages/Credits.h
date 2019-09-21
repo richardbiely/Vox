@@ -37,7 +37,7 @@ public:
 	Credits(Renderer* pRenderer, OpenGLGUI* pGUI, FrontendManager* pFrontendManager, int windowWidth, int windowHeight);
 	~Credits();
 
-	void Reset();
+	void Reset() override;
 
 	void CreateCreditTextLinesForPage(int pageIndex);
 	void ClearCreditTextLines();
@@ -45,22 +45,22 @@ public:
 	void CreateCreditsNPCForPage(int pageIndex);
 	void ClearCreditsNPC();
 
-	void SetWindowDimensions(int windowWidth, int windowHeight);
+	void SetWindowDimensions(int windowWidth, int windowHeight) override;
 
 	// Skinning the GUI
-	void SkinGUI();
-	void UnSkinGUI();
+	void SkinGUI() override;
+	void UnSkinGUI() override;
 
 	// Loading
-	void Load();
-	void Unload();
+	void Load() override;
+	void Unload() override;
 
 	void GotoNextCreditPage();
 
-	void Update(float dt);
+	void Update(float dt) override;
 
-	void Render();
-	void Render2D();
+	void Render() override;
+	void Render2D() override;
 
 protected:
 	/* Protected methods */

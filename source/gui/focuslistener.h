@@ -26,7 +26,7 @@ class FocusListener : public EventListener
 public:
 	/* Public methods */
 	FocusListener();
-	~FocusListener();
+	virtual ~FocusListener();
 
 	virtual void FocusLost(const FocusEvent& lEvent) {}
 	virtual void FocusGained(const FocusEvent& lEvent) {}

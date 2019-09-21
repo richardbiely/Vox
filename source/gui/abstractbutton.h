@@ -20,12 +20,8 @@
 #include "container.h"
 #include "label.h"
 #include "renderrectangle.h"
-#include "icon.h"
-#include "multitextureicon.h"
-#include "directdrawrectangle.h"
 
 typedef void(*FunctionCallback)(void *lpData);
-
 
 class AbstractButton : public Container
 {
@@ -40,6 +36,7 @@ public:
 	virtual void RemoveIcon(RenderRectangle *pRemoveIcon);
 	virtual void RemoveIcon(const std::string &fileName);
 	virtual void SetDefaultIcons(Renderer* pRenderer);
+
 	void SetDefaultIcon(RenderRectangle *icon);
 	void SetSelectedIcon(RenderRectangle *icon);
 	void SetHoverIcon(RenderRectangle *icon);
@@ -72,7 +69,7 @@ public:
 	void SetExitCallBackFunction(FunctionCallback lFunction);
 	void SetExitCallBackData(void *lpData);
 
-	EComponentType GetComponentType() const;
+	EComponentType GetComponentType() const override;
 
 protected:
 	/* Protected methods */

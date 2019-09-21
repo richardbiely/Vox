@@ -19,7 +19,7 @@
 #include "directdrawrectangle.h"
 #include "multitextureicon.h"
 #include "guiwindow.h"
-
+#include "icon.h"
 
 Button::Button(Renderer* pRenderer, unsigned int GUIFont, const std::string &label)
   : AbstractButton(pRenderer, GUIFont, label)

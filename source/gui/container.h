@@ -31,20 +31,20 @@ public:
 
 	virtual ~Container();
 
-	virtual void AddEventListeners();
-	virtual void RemoveEventListeners();
+	void AddEventListeners() override;
+	void RemoveEventListeners() override;
 
-	bool IsContainer() const;
-	virtual bool IsRootContainer() const;
+	bool IsContainer() const override;
+	bool IsRootContainer() const override;
 
 	bool HasChildren() const;
 
 	void SetEnabled(bool enable);
 
-	virtual void SetDebugRender(bool debug);
+	void SetDebugRender(bool debug);
 
-	virtual void Add(Component* component);
-	virtual void Remove(Component* component);
+	void Add(Component* component);
+	void Remove(Component* component);
 	void RemoveAll();
 
 	const ComponentList& GetChildren() const;
@@ -53,17 +53,17 @@ public:
 
 	void DepthSortComponentChildren();
 
-	EComponentType GetComponentType() const;
+	EComponentType GetComponentType() const override;
 
-    virtual void SetAudio(bool set);
-    virtual void SetAudioVolume(float volume);
+	virtual void SetAudio(bool set);
+	virtual void SetAudioVolume(float volume);
 
 	virtual void Update(float deltaTime);
 
 protected:
 	/* Protected methods */
-	virtual void DrawSelf();
-	virtual void DrawChildren();
+	void DrawSelf() override;
+	void DrawChildren() override;
 
 private:
 	/* Private methods */

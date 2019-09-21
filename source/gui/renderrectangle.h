@@ -18,8 +18,8 @@
 #pragma once
 
 #include "container.h"
-#include "label.h"
 
+class Renderer;
 
 class RenderRectangle : public Container
 {
@@ -32,12 +32,12 @@ public:
 	void AddText(Renderer* pRenderer, unsigned int GUIFont, unsigned int OutlineGUIFont, const std::string &label, Colour colour, int xOffset, int yOffset, bool outline = false, Colour outlineColour = Colour(1.0f, 1.0f, 1.0f, 1.0f));
 	void AddIcon(Renderer* pRenderer, const std::string &fileName, int texWidth, int texHeight, int width, int height, int xOffset, int yOffset, float depth);
 
-	EComponentType GetComponentType() const;
+	EComponentType GetComponentType() const override;
 
 protected:
 	/* Protected methods */
-	virtual void DrawSelf();
-	virtual void DrawChildren();
+	void DrawSelf() override;
+	void DrawChildren() override;
 
 private:
 	/* Private methods */

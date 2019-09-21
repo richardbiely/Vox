@@ -16,18 +16,19 @@
 // ******************************************************************************
 
 #include "abstractbutton.h"
-
+#include "multitextureicon.h"
+#include "icon.h"
 
 AbstractButton::AbstractButton(Renderer* pRenderer, unsigned int GUIFont, const std::string &label)
   : Container(pRenderer),
     m_label(pRenderer, GUIFont, label, Colour(1.0f, 1.0f, 1.0f)),
     m_pDefaultIcon(0),
     m_pSelectedIcon(0),
-	m_pHoverIcon(0),
-	m_pDisabledIcon(0),
-	m_bSelected(false),
-	m_bHover(false),
-	m_bDisabled(false)
+		m_pHoverIcon(0),
+		m_pDisabledIcon(0),
+		m_bSelected(false),
+		m_bHover(false),
+		m_bDisabled(false)
 {
 	m_bDisplayLabel = true;
 

@@ -29,11 +29,9 @@ public:
 
 	~OptionController();
 
-	void SetVisible(bool Visible);
-	bool IsVisible() const;
-
-	void SetDimensions(int x, int y, int width, int height);
-	void SetDimensions(const Dimensions& r);
+	void SetVisible(bool Visible) override;
+	void SetDimensions(int x, int y, int width, int height) override;
+	void SetDimensions(const Dimensions& r) override;
 
 	void SetDisplayLabel(bool display);
 	void SetDisplayBorder(bool display);
@@ -43,11 +41,11 @@ public:
 
 	void ResetAllOptions();
 
-	EComponentType GetComponentType() const;
+	EComponentType GetComponentType() const override;
 
 protected:
 	/* Protected methods */
-	void DrawSelf();
+	void DrawSelf() override;
 
 private:
 	/* Private methods */

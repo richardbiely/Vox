@@ -48,14 +48,14 @@ public:
 	void SetProgressFiller(RenderRectangle *icon);
 	void SetProgressBackground(RenderRectangle *icon);
 
-	EComponentType GetComponentType() const;
+	EComponentType GetComponentType() const override;
 
 protected:
 	/* Protected methods */
 	virtual void OnMinValueReached();
 	virtual void OnMaxValueReached();
 
-	void DrawSelf();
+	void DrawSelf() override;
 
 private:
 	/* Private methods */

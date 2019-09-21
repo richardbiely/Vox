@@ -30,18 +30,18 @@ public:
 
 	~CheckBox();
 
-	void AddEventListeners();
-	void RemoveEventListeners();
+	void AddEventListeners() override;
+	void RemoveEventListeners() override;
 
-	void RemoveIcon(RenderRectangle *pRemoveIcon);
-	void SetDefaultIcons(Renderer* pRenderer);
+	void RemoveIcon(RenderRectangle *pRemoveIcon) override;
+	void SetDefaultIcons(Renderer* pRenderer) override;
 	void SetToggledIcon(RenderRectangle *icon);
 	void SetToggledSelectedIcon(RenderRectangle *icon);
 	void SetToggledHoverIcon(RenderRectangle *icon);
 	void SetToggledDisabledIcon(RenderRectangle *icon);
 
-	void SetDimensions(int x, int y, int width, int height);
-	void SetDimensions(const Dimensions& r);
+	void SetDimensions(int x, int y, int width, int height) override;
+	void SetDimensions(const Dimensions& r) override;
 
 	void SetPressedOffset(int x, int y);
 
@@ -53,15 +53,15 @@ public:
 	bool GetToggled() const;
 	void SetToggled(bool toggle);
 
-	EComponentType GetComponentType() const;
+	EComponentType GetComponentType() const override;
 
 protected:
 	/* Protected methods */
-	void MouseEntered(const MouseEvent& lEvent);
-	void MouseExited(const MouseEvent& lEvent);
-	void MousePressed(const MouseEvent& lEvent);
-	void MouseReleased(const MouseEvent& lEvent);
-	void MouseClicked(const MouseEvent& lEvent);
+	void MouseEntered(const MouseEvent& lEvent) override;
+	void MouseExited(const MouseEvent& lEvent) override;
+	void MousePressed(const MouseEvent& lEvent) override;
+	void MouseReleased(const MouseEvent& lEvent) override;
+	void MouseClicked(const MouseEvent& lEvent) override;
 
 	virtual void OnMouseEnter();
 	virtual void OnMouseExit();
@@ -69,7 +69,7 @@ protected:
 	virtual void OnMouseReleased();
 	virtual void OnMouseClicked();
 
-	void DrawSelf();
+	void DrawSelf() override;
 
 private: 
 	/* Private methods */

@@ -39,8 +39,8 @@ public:
 
 	virtual ~Slider();
 
-	void AddEventListeners();
-	void RemoveEventListeners();
+	void AddEventListeners() override;
+	void RemoveEventListeners() override;
 
 	void SetScrollerDefaultIcon(RenderRectangle *icon);
 	void SetScrollerHoverIcon(RenderRectangle *icon);
@@ -57,8 +57,8 @@ public:
 	void SetScrollBackbarDecrementIconPressed(RenderRectangle *icon);
 	void SetScrollBackbarDecrementIconDisabled(RenderRectangle *icon);
 
-	void SetDimensions(int x, int y, int width, int height);
-	void SetDimensions(const Dimensions& r);
+	void SetDimensions(int x, int y, int width, int height) override;
+	void SetDimensions(const Dimensions& r) override;
 
 	void SetShowValue(bool lShow);
 	void SetValuePrecision(int lPresision);
@@ -90,19 +90,19 @@ public:
 
 	void SetDisabled(bool val);
 
-	EComponentType GetComponentType() const;
+	EComponentType GetComponentType() const override;
 
     void SetVaueChangedCallBackFunction(FunctionCallback lFunction);
     void SetVaueChangedCallBackData(void *lpData);
 
 protected:
 	/* Protected methods */
-	void MouseEntered(const MouseEvent& lEvent);
-	void MouseExited(const MouseEvent& lEvent);
-	void MousePressed(const MouseEvent& lEvent);
-	void MouseReleased(const MouseEvent& lEvent);
+	void MouseEntered(const MouseEvent& lEvent) override;
+	void MouseExited(const MouseEvent& lEvent) override;
+	void MousePressed(const MouseEvent& lEvent) override;
+	void MouseReleased(const MouseEvent& lEvent) override;
 	void MouseReleasedOutside(const MouseEvent& lEvent);
-	void MouseClicked(const MouseEvent& lEvent);
+	void MouseClicked(const MouseEvent& lEvent) override;
 	void MouseDragged(const MouseEvent& lEvent);
 	void MouseDraggedOutside(const MouseEvent& lEvent);
 	void MouseMotion(const MouseEvent& lEvent);
@@ -115,7 +115,7 @@ protected:
 
 	virtual void OnValueChanged();
 
-	void DrawSelf();
+	void DrawSelf() override;
 
 private:
 	/* Private methods */

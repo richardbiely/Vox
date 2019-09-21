@@ -47,14 +47,14 @@ public:
 	void SetHorizontalAlignment(EHorizontalAlignment alignment);
 	EHorizontalAlignment GetHorizontalAlignment() const;
 
-	EComponentType GetComponentType() const;
+	EComponentType GetComponentType() const override;
 
 	void Insert(int index, char* character);
 	void Erase(int start, int num);
 
 protected:
 	/* Protected methods */
-	void DrawSelf();
+	void DrawSelf() override;
 
 private:
 	/* Private methods */

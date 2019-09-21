@@ -27,34 +27,34 @@ public:
 	OptionsMenu(Renderer* pRenderer, OpenGLGUI* pGUI, FrontendManager* pFrontPageManager, int windowWidth, int windowHeight);
 	~OptionsMenu();
 
-	void Reset();
+	void Reset() override;
 
-	void SetWindowDimensions(int windowWidth, int windowHeight);
+	void SetWindowDimensions(int windowWidth, int windowHeight) override;
 
 	// Are we returning to the main menu, or are we in the game?
 	void SetReturnToMainMenu(bool mainMenu);
 
 	// Skinning
-	void SkinGUI();
-	void UnSkinGUI();
+	void SkinGUI() override;
+	void UnSkinGUI() override;
 
 	// Loading and saving options to file
 	void LoadOptions();
 	void SaveOptions();
 
 	// Load unload
-	void Load();
-	void Unload();
+	void Load() override;
+	void Unload() override;
 
 	// Disable options
 	void DisableShadowOption();
 
 	// Update
-	void Update(float dt);
+	void Update(float dt) override;
 
 	// Render
-	void Render();
-	void Render2D();
+	void Render() override;
+	void Render2D() override;
 
 protected:
 	/* Protected methods */

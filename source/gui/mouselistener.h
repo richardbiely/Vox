@@ -26,7 +26,7 @@ class MouseListener : public EventListener
 public:
 	/* Public methods */
 	MouseListener();
-	~MouseListener();
+	virtual ~MouseListener();
 
 	virtual void MouseClicked(const MouseEvent& lEvent) {}  // Pressed AND released
 	virtual void MousePressed(const MouseEvent& lEvent) {}
