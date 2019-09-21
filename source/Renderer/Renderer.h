@@ -32,10 +32,8 @@ using namespace glm;
 #pragma comment (lib, "glu32")
 
 #include <vector>
+#include <mutex>
 using namespace std;
-
-#include "../tinythread/tinythread.h"
-using namespace tthread;
 
 #include "viewport.h"
 #include "frustum.h"

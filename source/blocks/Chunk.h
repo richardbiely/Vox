@@ -23,10 +23,8 @@
 #include "../Renderer/camera.h"
 
 #include <vector>
+#include <mutex>
 using namespace std;
-
-#include "../tinythread/tinythread.h"
-using namespace tthread;
 
 class ChunkManager;
 class Player;

@@ -21,11 +21,10 @@
 #include "Chunk.h"
 #include "BlocksEnum.h"
 
+#include <thread>
+#include <mutex>
 #include <map>
 using namespace std;
-
-#include "../tinythread/tinythread.h"
-using namespace tthread;
 
 class Player;
 class NPCManager;
@@ -164,15 +163,15 @@ public:
 	void InitializeChunkCreation();
 
 	// Chunk rendering material
-	unsigned int GetChunkMaterialID();
+	unsigned int GetChunkMaterialID() const;
 
 	// Chunk counters
-	int GetNumChunksLoaded();
-	int GetNumChunksRender();
+	int GetNumChunksLoaded() const;
+	int GetNumChunksRender() const;
 
 	// Loader radius
 	void SetLoaderRadius(float radius);
-	float GetLoaderRadius();
+	float GetLoaderRadius() const;
 
 	// Step update
 	void SetStepLockEnabled(bool enabled);
@@ -216,13 +215,13 @@ public:
 
 	// Water
 	void SetWaterHeight(float height);
-	float GetWaterHeight();
-	bool IsUnderWater(vec3 position);
+	float GetWaterHeight() const;
+	bool IsUnderWater(vec3 position) const;
 
 	// Rendering modes
 	void SetWireframeRender(bool wireframe);
 	void SetFaceMerging(bool faceMerge);
-	bool GetFaceMerging();
+	bool GetFaceMerging() const;
 
 	// Updating
 	void Update(float dt);
@@ -292,7 +291,7 @@ private:
 	int m_numChunksRender;
 
 	// Threading
-	thread* m_pUpdatingChunksThread;
+	thread m_pUpdatingChunksThread;
 	mutex m_ChunkMapMutexLock;
 	bool m_updateThreadActive;
 	mutex m_updateThreadFlagLock;

@@ -22,7 +22,8 @@
 #include "../models/QubicleBinaryManager.h"
 
 #include <algorithm>
-
+#include <thread>
+#include <chrono>
 
 ChunkManager::ChunkManager(Renderer* pRenderer, VoxSettings* pVoxSettings, QubicleBinaryManager* pQubicleBinaryManager)
 {
@@ -74,8 +75,7 @@ ChunkManager::ChunkManager(Renderer* pRenderer, VoxSettings* pVoxSettings, Qubic
 
 	// Threading
 	m_updateThreadActive = true;
-	m_updateThreadFinished = false;
-	m_pUpdatingChunksThread = new thread(_UpdatingChunksThread, this);
+	m_pUpdatingChunksThread = thread(_UpdatingChunksThread, this);
 }
 
 ChunkManager::~ChunkManager()
@@ -93,19 +93,10 @@ ChunkManager::~ChunkManager()
 	m_updateThreadFlagLock.lock();
 	m_updateThreadActive = false;
 	m_updateThreadFlagLock.unlock();
-	while (m_updateThreadFinished == false)
-	{
-#ifdef _WIN32
-    		Sleep(200);
-#else
-    		usleep(200000);
-#endif
-	}
-#ifdef _WIN32
-	Sleep(200);
-#else
-	usleep(200000);
-#endif
+	
+	if (m_pUpdatingChunksThread.joinable())
+		m_pUpdatingChunksThread.join();
+	std::this_thread::sleep_for(std::chrono::milliseconds(200));
 }
 
 // Linkage
@@ -154,17 +145,17 @@ void ChunkManager::InitializeChunkCreation()
 }
 
 // Chunk rendering material
-unsigned int ChunkManager::GetChunkMaterialID()
+unsigned int ChunkManager::GetChunkMaterialID() const
 {
 	return m_chunkMaterialID;
 }
 
-int ChunkManager::GetNumChunksLoaded()
+int ChunkManager::GetNumChunksLoaded() const
 {
 	return m_numChunksLoaded;
 }
 
-int ChunkManager::GetNumChunksRender()
+int ChunkManager::GetNumChunksRender() const
 {
 	return m_numChunksRender;
 }
@@ -175,7 +166,7 @@ void ChunkManager::SetLoaderRadius(float radius)
 	m_loaderRadius = radius;
 }
 
-float ChunkManager::GetLoaderRadius()
+float ChunkManager::GetLoaderRadius() const
 {
 	return m_loaderRadius;
 }
@@ -1023,12 +1014,12 @@ void ChunkManager::SetWaterHeight(float height)
 	m_waterHeight = height;
 }
 
-float ChunkManager::GetWaterHeight()
+float ChunkManager::GetWaterHeight() const
 {
 	return m_waterHeight;
 }
 
-bool ChunkManager::IsUnderWater(vec3 position)
+bool ChunkManager::IsUnderWater(vec3 position) const
 {
 	if (m_pVoxSettings->m_waterRendering == false)
 	{
@@ -1059,7 +1050,7 @@ void ChunkManager::SetFaceMerging(bool faceMerge)
 	m_faceMerging = faceMerge;
 }
 
-bool ChunkManager::GetFaceMerging()
+bool ChunkManager::GetFaceMerging() const
 {
 	return m_faceMerging;
 }
@@ -1082,20 +1073,12 @@ void ChunkManager::UpdatingChunksThread()
 	{
 		while (m_pPlayer == nullptr)
 		{
-#ifdef _WIN32
-			Sleep(100);
-#else
-			usleep(100000);
-#endif
+			std::this_thread::sleep_for(std::chrono::milliseconds(100));
 		}
 
 		while (m_stepLockEnabled == true && m_updateStepLock == true)
 		{
-#ifdef _WIN32
-			Sleep(100);
-#else
-			usleep(100000);
-#endif
+			std::this_thread::sleep_for(std::chrono::milliseconds(100));
 		}
 
 		ChunkList updateChunkList;
@@ -1338,11 +1321,7 @@ void ChunkManager::UpdatingChunksThread()
 			m_updateStepLock = true;
 		}
 
-#ifdef _WIN32
-		Sleep(10);
-#else
-		usleep(10000);
-#endif
+		std::this_thread::sleep_for(std::chrono::milliseconds(100));
 	}
 
 	m_updateThreadFinished = true;

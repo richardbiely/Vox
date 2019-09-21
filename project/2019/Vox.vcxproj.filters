@@ -16,9 +16,6 @@
     <Filter Include="source\extern\libnoise">
       <UniqueIdentifier>{69395420-00af-44da-bb81-fa2a7d8757c7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="source\extern\tinythread">
-      <UniqueIdentifier>{97c8d190-9329-4b36-b69c-16f3d4b07a46}</UniqueIdentifier>
-    </Filter>
     <Filter Include="source\extern\glm">
       <UniqueIdentifier>{4b37c1c6-24f5-4c4c-ae88-3a8a66956f54}</UniqueIdentifier>
     </Filter>
@@ -488,9 +485,6 @@
     </ClCompile>
     <ClCompile Include="..\..\source\simplex\simplextextures.cpp">
       <Filter>source\extern\simplex</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\tinythread\tinythread.cpp">
-      <Filter>source\extern\tinythread</Filter>
     </ClCompile>
     <ClCompile Include="..\..\source\Skybox\Skybox.cpp">
       <Filter>source\game\Skybox</Filter>
@@ -1501,12 +1495,6 @@
     </ClInclude>
     <ClInclude Include="..\..\source\simplex\simplextextures.h">
       <Filter>source\extern\simplex</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\tinythread\fast_mutex.h">
-      <Filter>source\extern\tinythread</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\tinythread\tinythread.h">
-      <Filter>source\extern\tinythread</Filter>
     </ClInclude>
     <ClInclude Include="..\..\source\Skybox\Skybox.h">
       <Filter>source\game\Skybox</Filter>

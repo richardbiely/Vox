@@ -181,7 +181,6 @@
     <ClCompile Include="..\..\source\Skybox\Skybox.cpp" />
     <ClCompile Include="..\..\source\TextEffects\AnimatedText.cpp" />
     <ClCompile Include="..\..\source\TextEffects\TextEffectsManager.cpp" />
-    <ClCompile Include="..\..\source\tinythread\tinythread.cpp" />
     <ClCompile Include="..\..\source\utils\CountdownTimer.cpp" />
     <ClCompile Include="..\..\source\utils\FileUtils.cpp" />
     <ClCompile Include="..\..\source\utils\Interpolator.cpp" />
@@ -521,8 +520,6 @@
     <ClInclude Include="..\..\source\Skybox\Skybox.h" />
     <ClInclude Include="..\..\source\TextEffects\AnimatedText.h" />
     <ClInclude Include="..\..\source\TextEffects\TextEffectsManager.h" />
-    <ClInclude Include="..\..\source\tinythread\fast_mutex.h" />
-    <ClInclude Include="..\..\source\tinythread\tinythread.h" />
     <ClInclude Include="..\..\source\utils\CountdownTimer.h" />
     <ClInclude Include="..\..\source\utils\FileUtils.h" />
     <ClInclude Include="..\..\source\utils\Interpolator.h" />

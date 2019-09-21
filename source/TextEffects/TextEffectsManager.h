@@ -4,11 +4,9 @@
 #include "Renderer/Renderer.h"
 #include "Renderer/camera.h"
 
-#include "../tinythread/tinythread.h"
-using namespace tthread;
-
 #include <vector>
 #include <string>
+#include <mutex>
 using namespace std;
 
 typedef vector<AnimatedText*> AnimatedTextList;
