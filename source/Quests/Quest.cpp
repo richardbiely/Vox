@@ -225,16 +225,16 @@ void Quest::ExportQuest()
 			}
 			else
 			{
-				exportFile << "nullptr" << "|";
-				exportFile << "nullptr" << "|";
+				exportFile << "NULL" << "|";
+				exportFile << "NULL" << "|";
 				exportFile << 0 << "|";
 				exportFile << 0 << "|";
 				exportFile << 0 << "|";
 				exportFile << 0 << "|";
 				exportFile << 0 << "|";
 				exportFile << 0 << "|";
-				exportFile << "nullptr" << "|";
-				exportFile << "nullptr" << "|";
+				exportFile << "NULL" << "|";
+				exportFile << "NULL" << "|";
 				exportFile << 0 << "|";
 				exportFile << 0 << "|";
 				exportFile << 0 << "|";
@@ -393,7 +393,7 @@ void Quest::ImportQuest(const char* filename)
 			int quantity = strtol(input, &pEnd, 10);
 
 			// Create the new inventory item		
-			if(strcmp(filename, "nullptr") != 0)
+			if(strcmp(filename, "NULL") != 0)
 			{
 				pNewItem = new InventoryItem();
 
