@@ -14,6 +14,7 @@
 #include "Projectile.h"
 
 #include <algorithm>
+#include <cstring>
 
 #include "../utils/Interpolator.h"
 #include "../utils/Random.h"
@@ -638,7 +639,7 @@ void Projectile::Update(float dt)
 			Chunk* pChunk = GetCachedGridChunkOrFromPosition(m_position);
 			bool active = m_pChunkManager->GetBlockActiveFrom3DPosition(m_position.x, m_position.y, m_position.z, &blockPos, &blockX, &blockY, &blockZ, &pChunk);
 
-			if (pChunk != false && active == true)
+			if (pChunk != nullptr && active == true)
 			{
 				if (m_returnToPlayer)
 				{
