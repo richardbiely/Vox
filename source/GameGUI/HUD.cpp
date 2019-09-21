@@ -589,7 +589,7 @@ void HUD::PlayerDied()
 	float deathHeaderWait = 0.5f;
 	FloatInterpolation* lDeathAlpha1 = Interpolator::GetInstance()->CreateFloatInterpolation(&m_deathHeaderAlpha, 0.0f, 0.0f, deathHeaderDelay, 100.0f);
 	FloatInterpolation* lDeathAlpha2 = Interpolator::GetInstance()->CreateFloatInterpolation(&m_deathHeaderAlpha, 0.0f, 1.0f, deathHeaderTimeIn, 100.0f);
-	FloatInterpolation* lDeathAlpha3 = Interpolator::GetInstance()->CreateFloatInterpolation(&m_deathHeaderAlpha, 1.0f, 1.0f, deathHeaderWait, 100.0f, NULL, _DeathTextFinished, this);
+	FloatInterpolation* lDeathAlpha3 = Interpolator::GetInstance()->CreateFloatInterpolation(&m_deathHeaderAlpha, 1.0f, 1.0f, deathHeaderWait, 100.0f, nullptr, _DeathTextFinished, this);
 	Interpolator::GetInstance()->LinkFloatInterpolation(lDeathAlpha1, lDeathAlpha2);
 	Interpolator::GetInstance()->LinkFloatInterpolation(lDeathAlpha2, lDeathAlpha3);
 	Interpolator::GetInstance()->AddFloatInterpolation(lDeathAlpha1);
@@ -620,7 +620,7 @@ void HUD::LevelUp()
 	FloatInterpolation* llevelUpAlpha1 = Interpolator::GetInstance()->CreateFloatInterpolation(&m_levelUpAlpha, 0.0f, 0.0f, levelUpDelay, 100.0f);
 	FloatInterpolation* llevelUpAlpha2 = Interpolator::GetInstance()->CreateFloatInterpolation(&m_levelUpAlpha, 0.0f, 1.0f, levelUpTimeIn, 100.0f);
 	FloatInterpolation* llevelUpAlpha3 = Interpolator::GetInstance()->CreateFloatInterpolation(&m_levelUpAlpha, 1.0f, 1.0f, levelUpWait, 100.0f);
-	FloatInterpolation* llevelUpAlpha4 = Interpolator::GetInstance()->CreateFloatInterpolation(&m_levelUpAlpha, 1.0f, 0.0f, levelUpTimeOut, 100.0f, NULL, _LevelUpTextFinished, this);
+	FloatInterpolation* llevelUpAlpha4 = Interpolator::GetInstance()->CreateFloatInterpolation(&m_levelUpAlpha, 1.0f, 0.0f, levelUpTimeOut, 100.0f, nullptr, _LevelUpTextFinished, this);
 	Interpolator::GetInstance()->LinkFloatInterpolation(llevelUpAlpha1, llevelUpAlpha2);
 	Interpolator::GetInstance()->LinkFloatInterpolation(llevelUpAlpha2, llevelUpAlpha3);
 	Interpolator::GetInstance()->LinkFloatInterpolation(llevelUpAlpha3, llevelUpAlpha4);

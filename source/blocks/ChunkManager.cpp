@@ -27,7 +27,7 @@
 ChunkManager::ChunkManager(Renderer* pRenderer, VoxSettings* pVoxSettings, QubicleBinaryManager* pQubicleBinaryManager)
 {
 	m_pRenderer = pRenderer;
-	m_pPlayer = NULL;
+	m_pPlayer = nullptr;
 	m_pVoxSettings = pVoxSettings;
 	m_pQubicleBinaryManager = pQubicleBinaryManager;
 
@@ -84,7 +84,7 @@ ChunkManager::~ChunkManager()
 	for (unsigned int i = 0; i < m_vpBlockColourTypeMatchList.size(); i++)
 	{
 		delete m_vpBlockColourTypeMatchList[i];
-		m_vpBlockColourTypeMatchList[i] = NULL;
+		m_vpBlockColourTypeMatchList[i] = nullptr;
 	}
 	m_vpBlockColourTypeMatchList.clear();
 
@@ -240,7 +240,7 @@ void ChunkManager::UpdateChunkNeighbours(Chunk* pChunk, int x, int y, int z)
 	{
 		pChunk->SetNumNeighbours(pChunk->GetNumNeighbours() + 1);
 		pChunk->SetxMinus(pChunkXMinus);
-		if (pChunkXMinus->GetxPlus() == NULL)
+		if (pChunkXMinus->GetxPlus() == nullptr)
 		{
 			pChunkXMinus->SetNumNeighbours(pChunkXMinus->GetNumNeighbours() + 1);
 			pChunkXMinus->SetxPlus(pChunk);
@@ -250,7 +250,7 @@ void ChunkManager::UpdateChunkNeighbours(Chunk* pChunk, int x, int y, int z)
 	{
 		pChunk->SetNumNeighbours(pChunk->GetNumNeighbours() + 1);
 		pChunk->SetxPlus(pChunkXPlus);
-		if (pChunkXPlus->GetxMinus() == NULL)
+		if (pChunkXPlus->GetxMinus() == nullptr)
 		{
 			pChunkXPlus->SetNumNeighbours(pChunkXPlus->GetNumNeighbours() + 1);
 			pChunkXPlus->SetxMinus(pChunk);
@@ -260,7 +260,7 @@ void ChunkManager::UpdateChunkNeighbours(Chunk* pChunk, int x, int y, int z)
 	{
 		pChunk->SetNumNeighbours(pChunk->GetNumNeighbours() + 1);
 		pChunk->SetyMinus(pChunkYMinus);
-		if (pChunkYMinus->GetyPlus() == NULL)
+		if (pChunkYMinus->GetyPlus() == nullptr)
 		{
 			pChunkYMinus->SetNumNeighbours(pChunkYMinus->GetNumNeighbours() + 1);
 			pChunkYMinus->SetyPlus(pChunk);
@@ -270,7 +270,7 @@ void ChunkManager::UpdateChunkNeighbours(Chunk* pChunk, int x, int y, int z)
 	{
 		pChunk->SetNumNeighbours(pChunk->GetNumNeighbours() + 1);
 		pChunk->SetyPlus(pChunkYPlus);
-		if (pChunkYPlus->GetyMinus() == NULL)
+		if (pChunkYPlus->GetyMinus() == nullptr)
 		{
 			pChunkYPlus->SetNumNeighbours(pChunkYPlus->GetNumNeighbours() + 1);
 			pChunkYPlus->SetyMinus(pChunk);
@@ -280,7 +280,7 @@ void ChunkManager::UpdateChunkNeighbours(Chunk* pChunk, int x, int y, int z)
 	{
 		pChunk->SetNumNeighbours(pChunk->GetNumNeighbours() + 1);
 		pChunk->SetzMinus(pChunkZMinus);
-		if (pChunkZMinus->GetzPlus() == NULL)
+		if (pChunkZMinus->GetzPlus() == nullptr)
 		{
 			pChunkZMinus->SetNumNeighbours(pChunkZMinus->GetNumNeighbours() + 1);
 			pChunkZMinus->SetzPlus(pChunk);
@@ -290,7 +290,7 @@ void ChunkManager::UpdateChunkNeighbours(Chunk* pChunk, int x, int y, int z)
 	{
 		pChunk->SetNumNeighbours(pChunk->GetNumNeighbours() + 1);
 		pChunk->SetzPlus(pChunkZPlus);
-		if (pChunkZPlus->GetzMinus() == NULL)
+		if (pChunkZPlus->GetzMinus() == nullptr)
 		{
 			pChunkZPlus->SetNumNeighbours(pChunkZPlus->GetNumNeighbours() + 1);
 			pChunkZPlus->SetzMinus(pChunk);
@@ -317,7 +317,7 @@ void ChunkManager::UnloadChunk(Chunk* pChunk)
 		if (pChunkXMinus->GetxPlus())
 		{
 			pChunkXMinus->SetNumNeighbours(pChunkXMinus->GetNumNeighbours() - 1);
-			pChunkXMinus->SetxPlus(NULL);
+			pChunkXMinus->SetxPlus(nullptr);
 		}
 	}
 	if (pChunkXPlus)
@@ -325,7 +325,7 @@ void ChunkManager::UnloadChunk(Chunk* pChunk)
 		if (pChunkXPlus->GetxMinus())
 		{
 			pChunkXPlus->SetNumNeighbours(pChunkXPlus->GetNumNeighbours() - 1);
-			pChunkXPlus->SetxMinus(NULL);
+			pChunkXPlus->SetxMinus(nullptr);
 		}
 	}
 	if (pChunkYMinus)
@@ -333,7 +333,7 @@ void ChunkManager::UnloadChunk(Chunk* pChunk)
 		if (pChunkYMinus->GetyPlus())
 		{
 			pChunkYMinus->SetNumNeighbours(pChunkYMinus->GetNumNeighbours() - 1);
-			pChunkYMinus->SetyPlus(NULL);
+			pChunkYMinus->SetyPlus(nullptr);
 		}
 	}
 	if (pChunkYPlus)
@@ -341,7 +341,7 @@ void ChunkManager::UnloadChunk(Chunk* pChunk)
 		if (pChunkYPlus->GetyMinus())
 		{
 			pChunkYPlus->SetNumNeighbours(pChunkYPlus->GetNumNeighbours() - 1);
-			pChunkYPlus->SetyMinus(NULL);
+			pChunkYPlus->SetyMinus(nullptr);
 		}
 	}
 	if (pChunkZMinus)
@@ -349,7 +349,7 @@ void ChunkManager::UnloadChunk(Chunk* pChunk)
 		if (pChunkZMinus->GetzPlus())
 		{
 			pChunkZMinus->SetNumNeighbours(pChunkZMinus->GetNumNeighbours() - 1);
-			pChunkZMinus->SetzPlus(NULL);
+			pChunkZMinus->SetzPlus(nullptr);
 		}
 	}
 	if (pChunkZPlus)
@@ -357,7 +357,7 @@ void ChunkManager::UnloadChunk(Chunk* pChunk)
 		if (pChunkZPlus->GetzMinus())
 		{
 			pChunkZPlus->SetNumNeighbours(pChunkZPlus->GetNumNeighbours() - 1);
-			pChunkZPlus->SetzMinus(NULL);
+			pChunkZPlus->SetzMinus(nullptr);
 		}
 	}
 
@@ -374,11 +374,11 @@ void ChunkManager::UnloadChunk(Chunk* pChunk)
 	m_updateThreadFlagLock.lock();
 	if (m_updateThreadActive)
 	{
-		if (m_pPlayer != NULL)
+		if (m_pPlayer != nullptr)
 		{
 			m_pPlayer->ClearChunkCacheForChunk(pChunk);
 		}
-		if (m_pNPCManager != NULL)
+		if (m_pNPCManager != nullptr)
 		{
 			m_pNPCManager->ClearNPCChunkCacheForChunk(pChunk);
 		}
@@ -446,7 +446,7 @@ Chunk* ChunkManager::GetChunk(int aX, int aY, int aZ)
 	}
 	m_ChunkMapMutexLock.unlock();
 
-	return NULL;
+	return nullptr;
 }
 
 bool ChunkManager::FindClosestFloor(vec3 position, vec3* floorPosition)
@@ -460,10 +460,10 @@ bool ChunkManager::FindClosestFloor(vec3 position, vec3* floorPosition)
 	{
 		vec3 testPos = position - (vec3(0.0f, Chunk::BLOCK_RENDER_SIZE, 0.0f) * (float)iterations);
 
-		Chunk* pChunk = NULL;
+		Chunk* pChunk = nullptr;
 		bool active = GetBlockActiveFrom3DPosition(testPos.x, testPos.y, testPos.z, &blockPos, &blockX, &blockY, &blockZ, &pChunk);
 
-		if (pChunk != NULL && pChunk->IsSetup() && pChunk->NeedsRebuild() == false && active == true)
+		if (pChunk != nullptr && pChunk->IsSetup() && pChunk->NeedsRebuild() == false && active == true)
 		{
 			collides = true;
 
@@ -483,11 +483,11 @@ bool ChunkManager::FindClosestFloor(vec3 position, vec3* floorPosition)
 // Getting the active block state given a position and chunk information
 bool ChunkManager::GetBlockActiveFrom3DPosition(float x, float y, float z, vec3 *blockPos, int* blockX, int* blockY, int* blockZ, Chunk** pChunk)
 {
-	if (*pChunk == NULL)
+	if (*pChunk == nullptr)
 	{
 		*pChunk = GetChunkFromPosition(x, y, z);
 
-		if (*pChunk == NULL)
+		if (*pChunk == nullptr)
 		{
 			return false;
 		}
@@ -621,7 +621,7 @@ ChunkStorageLoader* ChunkManager::GetChunkStorage(int aX, int aY, int aZ, bool C
 		return pNewStorage;
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 void ChunkManager::RemoveChunkStorageLoader(ChunkStorageLoader* pChunkStorage)
@@ -635,7 +635,7 @@ void ChunkManager::RemoveChunkStorageLoader(ChunkStorageLoader* pChunkStorage)
 	m_chunkStorageListLock.unlock();
 
 	delete pChunkStorage;
-	pChunkStorage = NULL;
+	pChunkStorage = nullptr;
 }
 
 
@@ -788,10 +788,10 @@ void ChunkManager::ImportQubicleBinaryMatrix(const QubicleMatrix* pMatrix, vec3 
 
 					vec3 blockPosition;
 					int blockX, blockY, blockZ;
-					Chunk* pChunk = NULL;
+					Chunk* pChunk = nullptr;
 					bool blockActive = GetBlockActiveFrom3DPosition(blockPos.x, blockPos.y, blockPos.z, &blockPosition, &blockX, &blockY, &blockZ, &pChunk);
 
-					if (pChunk != NULL)
+					if (pChunk != nullptr)
 					{
 						// Set the block colour (and also set the block type since we are importing a world scenery object)
 						pChunk->SetColour(blockX, blockY, blockZ, colour, true);
@@ -820,7 +820,7 @@ void ChunkManager::ImportQubicleBinaryMatrix(const QubicleMatrix* pMatrix, vec3 
 						GetGridFromPosition(blockPos, &gridX, &gridY, &gridZ);
 						ChunkStorageLoader* pStorage = GetChunkStorage(gridX, gridY, gridZ, true);
 
-						if (pStorage != NULL)
+						if (pStorage != nullptr)
 						{
 							GetBlockGridFrom3DPositionChunkStorage(blockPos.x, blockPos.y, blockPos.z, &blockX, &blockY, &blockZ, pStorage);
 
@@ -871,12 +871,12 @@ const QubicleBinary* ChunkManager::ImportQubicleBinary(const QubicleBinary* qubi
 const QubicleBinary* ChunkManager::ImportQubicleBinary(const char* filename, vec3 position, QubicleImportDirection direction)
 {
 	QubicleBinary* qubicleBinaryFile = m_pQubicleBinaryManager->GetQubicleBinaryFile(filename, true);
-	if (qubicleBinaryFile != NULL)
+	if (qubicleBinaryFile != nullptr)
 	{
 		return ImportQubicleBinary(qubicleBinaryFile, position, direction);
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 // Explosions
@@ -903,7 +903,7 @@ void ChunkManager::CreateBlockDestroyParticleEffect(float r, float g, float b, f
 		BlockParticle* pParticle = m_pBlockParticleManager->CreateBlockParticle(blockPosition + addition, blockPosition + addition, gravityDir, 2.5f, pointOrigin, scale, 0.0f, scale, 0.0f,
 			r, g, b, a, 0.0f, 0.0f, 0.0f, 0.0f, r, g, b, a, 0.0f, 0.0f, 0.0f, 0.0f, lifeTime, 0.0f, 0.0f, 0.0f, vec3(0.0f, 7.0f, 0.0f),
 			vec3(3.0f, 2.0f, 3.0f), vec3(GetRandomNumber(-360, 360, 2), GetRandomNumber(-360, 360, 2), GetRandomNumber(-360, 360, 2)),
-			vec3(180.0f, 180.0f, 180.0f), 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, true, vec3(0.0f, 0.0f, 0.0f), true, false, false, false, NULL);
+			vec3(180.0f, 180.0f, 180.0f), 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, true, vec3(0.0f, 0.0f, 0.0f), true, false, false, false, nullptr);
 	}
 }
 
@@ -926,12 +926,12 @@ void ChunkManager::ExplodeSphere(vec3 position, float radius)
 			{
 				vec3 blockPosition;
 				int blockX, blockY, blockZ;
-				Chunk* pChunk = NULL;
+				Chunk* pChunk = nullptr;
 				bool active = GetBlockActiveFrom3DPosition(x, y, z, &blockPosition, &blockX, &blockY, &blockZ, &pChunk);
 
 				float distance = length(blockPosition - position);
 
-				if (pChunk != NULL)
+				if (pChunk != nullptr)
 				{
 					if (distance <= radius)
 					{
@@ -991,14 +991,14 @@ void ChunkManager::ExplodeSphere(vec3 position, float radius)
 // Collectible block objects
 void ChunkManager::CreateCollectibleBlock(BlockType blockType, vec3 blockPos)
 {
-	Item* pItem = NULL;
+	Item* pItem = nullptr;
 
 	ItemSubSpawnData *pItemSubSpawnData = m_pItemManager->GetItemSubSpawnData(blockType);
-	if (pItemSubSpawnData != NULL)
+	if (pItemSubSpawnData != nullptr)
 	{
 		pItem = m_pItemManager->CreateItem(blockPos, vec3(0.0f, 0.0f, 0.0f), vec3(0.0f, 0.0f, 0.0f), pItemSubSpawnData->m_spawnedItemFilename.c_str(), pItemSubSpawnData->m_spawnedItem, pItemSubSpawnData->m_spawnedItemTitle.c_str(), pItemSubSpawnData->m_interactable, pItemSubSpawnData->m_collectible, pItemSubSpawnData->m_scale);
 
-		if (pItem != NULL)
+		if (pItem != nullptr)
 		{
 			float radius = 1.5f;
 			float angle = DegToRad((float)GetRandomNumber(0, 360, 2));
@@ -1080,7 +1080,7 @@ void ChunkManager::UpdatingChunksThread()
 {
 	while (m_updateThreadActive)
 	{
-		while (m_pPlayer == NULL)
+		while (m_pPlayer == nullptr)
 		{
 #ifdef _WIN32
 			Sleep(100);
@@ -1121,7 +1121,7 @@ void ChunkManager::UpdatingChunksThread()
 		{
 			Chunk* pChunk = updateChunkList[i];
 
-			if (pChunk != NULL)
+			if (pChunk != nullptr)
 			{
 				pChunk->Update(0.01f);
 
@@ -1148,7 +1148,7 @@ void ChunkManager::UpdatingChunksThread()
 						// Check neighbours
 						if (pChunk->GetNumNeighbours() < 6 && (pChunk->IsEmpty() == false) || (gridY == 0))
 						{
-							if (pChunk->GetxMinus() == NULL)
+							if (pChunk->GetxMinus() == nullptr)
 							{
 								ChunkCoordKeys coordKey;
 								coordKey.x = gridX - 1;
@@ -1168,7 +1168,7 @@ void ChunkManager::UpdatingChunksThread()
 									numAddedChunks++;
 								}
 							}
-							if (pChunk->GetxPlus() == NULL)
+							if (pChunk->GetxPlus() == nullptr)
 							{
 								ChunkCoordKeys coordKey;
 								coordKey.x = gridX + 1;
@@ -1188,7 +1188,7 @@ void ChunkManager::UpdatingChunksThread()
 									numAddedChunks++;
 								}
 							}
-							if (pChunk->GetyMinus() == NULL)
+							if (pChunk->GetyMinus() == nullptr)
 							{
 								ChunkCoordKeys coordKey;
 								coordKey.x = gridX;
@@ -1208,7 +1208,7 @@ void ChunkManager::UpdatingChunksThread()
 									numAddedChunks++;
 								}
 							}
-							if (pChunk->GetyPlus() == NULL)
+							if (pChunk->GetyPlus() == nullptr)
 							{
 								ChunkCoordKeys coordKey;
 								coordKey.x = gridX;
@@ -1228,7 +1228,7 @@ void ChunkManager::UpdatingChunksThread()
 									numAddedChunks++;
 								}
 							}
-							if (pChunk->GetzMinus() == NULL)
+							if (pChunk->GetzMinus() == nullptr)
 							{
 								ChunkCoordKeys coordKey;
 								coordKey.x = gridX;
@@ -1248,7 +1248,7 @@ void ChunkManager::UpdatingChunksThread()
 									numAddedChunks++;
 								}
 							}
-							if (pChunk->GetzPlus() == NULL)
+							if (pChunk->GetzPlus() == nullptr)
 							{
 								ChunkCoordKeys coordKey;
 								coordKey.x = gridX;
@@ -1281,7 +1281,7 @@ void ChunkManager::UpdatingChunksThread()
 			ChunkCoordKeys coordKey = addChunkList[i];
 			Chunk* pChunk = GetChunk(coordKey.x, coordKey.y, coordKey.z);
 
-			if (pChunk == NULL)
+			if (pChunk == nullptr)
 			{
 				CreateNewChunk(coordKey.x, coordKey.y, coordKey.z);
 			}
@@ -1307,7 +1307,7 @@ void ChunkManager::UpdatingChunksThread()
 		{
 			Chunk* pChunk = iterator->second;
 
-			if (pChunk != NULL)
+			if (pChunk != nullptr)
 			{
 				if (pChunk->NeedsRebuild())
 				{
@@ -1378,7 +1378,7 @@ void ChunkManager::Render(bool shadowRender)
 		{
 			Chunk* pChunk = iterator->second;
 
-			if (pChunk != NULL && pChunk->IsCreated() && pChunk->IsSetup() && pChunk->IsUnloading() == false && pChunk->IsEmpty() == false && pChunk->IsSurrounded() == false)
+			if (pChunk != nullptr && pChunk->IsCreated() && pChunk->IsSetup() && pChunk->IsUnloading() == false && pChunk->IsEmpty() == false && pChunk->IsSurrounded() == false)
 			{
 				vec3 chunkCenter = pChunk->GetPosition() + vec3((Chunk::CHUNK_SIZE * Chunk::BLOCK_RENDER_SIZE) - Chunk::BLOCK_RENDER_SIZE, (Chunk::CHUNK_SIZE * Chunk::BLOCK_RENDER_SIZE) - Chunk::BLOCK_RENDER_SIZE, (Chunk::CHUNK_SIZE * Chunk::BLOCK_RENDER_SIZE) - Chunk::BLOCK_RENDER_SIZE);
 
@@ -1451,7 +1451,7 @@ void ChunkManager::RenderDebug()
 	{
 		Chunk* pChunk = iterator->second;
 
-		if (pChunk != NULL && pChunk->IsCreated())
+		if (pChunk != nullptr && pChunk->IsCreated())
 		{
 			pChunk->RenderDebug();
 		}
@@ -1467,7 +1467,7 @@ void ChunkManager::Render2D(Camera* pCamera, unsigned int viewport, unsigned int
 	{
 		Chunk* pChunk = iterator->second;
 
-		if (pChunk != NULL && pChunk->IsCreated())
+		if (pChunk != nullptr && pChunk->IsCreated())
 		{
 			pChunk->Render2D(pCamera, viewport, font);
 		}

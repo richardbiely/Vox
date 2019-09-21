@@ -25,7 +25,7 @@
 SelectCharacter::SelectCharacter(Renderer* pRenderer, OpenGLGUI* pGUI, FrontendManager* pFrontPageManager, int windowWidth, int windowHeight)
   : FrontendPage(pRenderer, pGUI, pFrontPageManager, FrontendScreen_SelectCharacter, windowWidth, windowHeight)
 {
-	m_pSelectedNPC = NULL;
+	m_pSelectedNPC = nullptr;
 
 	m_toolTipVisible = false;
 
@@ -209,8 +209,8 @@ void SelectCharacter::Load()
 
 	LoadSelectionCharacters();
 
-	m_pHoverSelectionNPC = NULL;
-	m_pSelectedNPC = NULL;
+	m_pHoverSelectionNPC = nullptr;
+	m_pSelectedNPC = nullptr;
 
 	m_nameTextFadeInAlpha = 0.0f;
 	m_nameTextFadeInFadeInTime = 2.5f;
@@ -289,7 +289,7 @@ void SelectCharacter::LoadSelectionCharacters()
 		pCharacter1->SetPushingCollisionEnabled(false);
 		pCharacter1->SetFrontEndNPC(true);
 
-		PlayerStats playerStats(NULL);
+		PlayerStats playerStats(nullptr);
 		playerStats.ImportStats(listFiles[i].c_str());
 		pCharacter1->SetPlayerClass(playerStats.GetClass());
 
@@ -336,7 +336,7 @@ void SelectCharacter::SetHoverNPC(NPC* pHoverNPC)
 
 void SelectCharacter::SetSelectedNPC(NPC* pSelectedNPC)
 {
-	if(m_pSelectedNPC != NULL && pSelectedNPC == NULL)
+	if(m_pSelectedNPC != nullptr && pSelectedNPC == nullptr)
 	{
 		// If we are resetting the selected character, make sure to set the current selected character back to normal
 		m_pSelectedNPC->GetVoxelCharacter()->PlayFacialExpression("Normal");
@@ -347,7 +347,7 @@ void SelectCharacter::SetSelectedNPC(NPC* pSelectedNPC)
 
 	m_pSelectedNPC = pSelectedNPC;
 
-	if(m_pSelectedNPC != NULL)
+	if(m_pSelectedNPC != nullptr)
 	{
 		vec2 screenPos = m_pSelectedNPC->GetScreenPosition();
 		screenPos.y -= 250;
@@ -355,12 +355,12 @@ void SelectCharacter::SetSelectedNPC(NPC* pSelectedNPC)
 
 		//ShowTooltip((int)screenPos.x, (int)screenPos.y);
 
-		if(m_pGUI->GetComponent(m_pSelectCharacterButton) == NULL)
+		if(m_pGUI->GetComponent(m_pSelectCharacterButton) == nullptr)
 		{
 			m_pGUI->AddComponent(m_pSelectCharacterButton);
 		}
 
-		if(m_pGUI->GetComponent(m_pDeleteCharacterButton) == NULL)
+		if(m_pGUI->GetComponent(m_pDeleteCharacterButton) == nullptr)
 		{
 			m_pGUI->AddComponent(m_pDeleteCharacterButton);
 		}
@@ -376,7 +376,7 @@ void SelectCharacter::SetSelectedNPC(NPC* pSelectedNPC)
 
 void SelectCharacter::ShowTooltip(int x, int y)
 {
-	if(m_pSelectedNPC != NULL)
+	if(m_pSelectedNPC != nullptr)
 	{
 		m_pTooltipNameLabel->SetText(m_pSelectedNPC->GetName());
 
@@ -490,7 +490,7 @@ void SelectCharacter::Render2D()
 {
 	FrontendPage::Render2D();
 
-	if(m_pHoverSelectionNPC != NULL && m_pHoverSelectionNPC != m_pSelectedNPC)
+	if(m_pHoverSelectionNPC != nullptr && m_pHoverSelectionNPC != m_pSelectedNPC)
 	{
 		vec2 screenPos = m_pHoverSelectionNPC->GetScreenPosition();
 		char characterName[32];
@@ -513,7 +513,7 @@ void SelectCharacter::Render2D()
 		m_pRenderer->PopMatrix();
 	}
 
-	if(m_pSelectedNPC != NULL)
+	if(m_pSelectedNPC != nullptr)
 	{
 		vec2 screenPos = m_pSelectedNPC->GetScreenPosition();
 		char characterName[32];
@@ -550,7 +550,7 @@ void SelectCharacter::SelectCharacterPressed()
 	VoxGame::GetInstance()->GetPlayer()->SetClass(m_pSelectedNPC->GetPlayerClass());
 	VoxGame::GetInstance()->GetPlayer()->LoadCharacter(characterName.c_str(), true);
 
-	m_pSelectedNPC = NULL;
+	m_pSelectedNPC = nullptr;
 
 	//m_pFrontendManager->SetFrontendScreen(FrontendScreen_SelectWorld);
 
@@ -573,7 +573,7 @@ void SelectCharacter::DeleteCharacterPressed()
 
 	OpenPopup(popupTitle, popupText);
 
-	if(m_pSelectedNPC != NULL)
+	if(m_pSelectedNPC != nullptr)
 	{
 		m_pSelectedNPC->GetVoxelCharacter()->PlayFacialExpression("Cry");
 		m_pSelectedNPC->GetVoxelCharacter()->BlendIntoAnimation(AnimationSections_FullBody, false, AnimationSections_FullBody, "Cry", 0.5f);
@@ -655,7 +655,7 @@ void SelectCharacter::PopupConfirmPressed()
 
 	m_pSelectedNPC->Explode();
 	VoxGame::GetInstance()->GetNPCManager()->DeleteNPC(m_pSelectedNPC->GetName());
-	m_pSelectedNPC = NULL;
+	m_pSelectedNPC = nullptr;
 
 	HideTooltip();
 	m_pGUI->RemoveComponent(m_pSelectCharacterButton);
@@ -674,7 +674,7 @@ void SelectCharacter::PopupCancelPressed()
 {
 	ClosePopup();
 
-	if(m_pSelectedNPC != NULL)
+	if(m_pSelectedNPC != nullptr)
 	{
 		m_pSelectedNPC->GetVoxelCharacter()->PlayFacialExpression("Normal");
 		m_pSelectedNPC->GetVoxelCharacter()->BlendIntoAnimation(AnimationSections_FullBody, false, AnimationSections_FullBody, "BindPose", 0.25f);

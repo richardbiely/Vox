@@ -19,7 +19,7 @@ Credits::Credits(Renderer* pRenderer, OpenGLGUI* pGUI, FrontendManager* pFronten
 {
 	SetWindowDimensions(m_windowWidth, m_windowHeight);
 
-	m_pCreditsNPC = NULL;
+	m_pCreditsNPC = nullptr;
 
 	m_clickToNextTimer = 0.0f;
 }
@@ -262,10 +262,10 @@ void Credits::CreateCreditsNPCForPage(int pageIndex)
 
 void Credits::ClearCreditsNPC()
 {
-	if(m_pCreditsNPC != NULL)
+	if(m_pCreditsNPC != nullptr)
 	{
 		VoxGame::GetInstance()->GetNPCManager()->DeleteNPC(m_pCreditsNPC->GetName());
-		m_pCreditsNPC = NULL;
+		m_pCreditsNPC = nullptr;
 	}
 }
 
@@ -292,7 +292,7 @@ void Credits::Load()
 
 	SetTitleAndSubtitle("CREDITS", "See who made this wonderful game.");
 
-	m_pCreditsNPC = NULL;
+	m_pCreditsNPC = nullptr;
 
 	GotoNextCreditPage();
 }

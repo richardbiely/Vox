@@ -81,13 +81,13 @@ vector<string> listFilesInDirectory(string directoryName)
 	vector<string> listFileNames;
 	DIR *dp;
 	struct dirent *dirp;
-	if((dp  = opendir(directoryName.c_str())) == NULL)
+	if((dp  = opendir(directoryName.c_str())) == nullptr)
 	{
 		cout << "Error(" << errno << ") opening " << directoryName << endl;
 		return listFileNames;
 	}
 
-	while ((dirp = readdir(dp)) != NULL)
+	while ((dirp = readdir(dp)) != nullptr)
 	{
 		listFileNames.push_back(string(dirp->d_name));
 	}

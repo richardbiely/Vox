@@ -201,7 +201,7 @@ Label* FormattedLabel::GetLabel(const char *lpText)
 	}
 
 	// We couldn't find the label we was looking for
-	return NULL;
+	return nullptr;
 }
 
 int FormattedLabel::GetNumberOfLines() const

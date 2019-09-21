@@ -34,7 +34,7 @@ Chunk::Chunk(Renderer* pRenderer, ChunkManager* pChunkManager, VoxSettings* pVox
 {
 	m_pRenderer = pRenderer;
 	m_pChunkManager = pChunkManager;
-	m_pPlayer = NULL;
+	m_pPlayer = nullptr;
 	m_pVoxSettings = pVoxSettings;
 
 	Initialize();
@@ -71,12 +71,12 @@ void Chunk::Initialize()
 {
 	// Neighbours
 	m_numNeighbours = 0;
-	m_pxMinus = NULL;
-	m_pxPlus = NULL;
-	m_pyMinus = NULL;
-	m_pyPlus = NULL;
-	m_pzMinus = NULL;
-	m_pzPlus = NULL;
+	m_pxMinus = nullptr;
+	m_pxPlus = nullptr;
+	m_pyMinus = nullptr;
+	m_pyPlus = nullptr;
+	m_pzMinus = nullptr;
+	m_pzPlus = nullptr;
 
 	// Flag for change during a batch update
 	m_chunkChangedDuringBatchUpdate = false;
@@ -109,8 +109,8 @@ void Chunk::Initialize()
 	m_numRebuilds = 0;
 
 	// Mesh
-	m_pMesh = NULL;
-	m_pCachedMesh = NULL;
+	m_pMesh = nullptr;
+	m_pCachedMesh = nullptr;
 
 	// Blocks data
 	m_colour = new unsigned int[CHUNK_SIZE_CUBED];
@@ -137,10 +137,10 @@ void Chunk::Unload()
 {
 	m_isUnloading = true;
 
-	if (m_pMesh != NULL)
+	if (m_pMesh != nullptr)
 	{
 		m_pRenderer->ClearMesh(m_pMesh);
-		m_pMesh = NULL;
+		m_pMesh = nullptr;
 	}
 
 	if (m_setup == true)
@@ -153,17 +153,17 @@ void Chunk::Unload()
 		Chunk* pChunkZMinus = m_pChunkManager->GetChunk(m_gridX, m_gridY, m_gridZ - 1);
 		Chunk* pChunkZPlus = m_pChunkManager->GetChunk(m_gridX, m_gridY, m_gridZ + 1);
 
-		if (pChunkXMinus != NULL && pChunkXMinus->IsSetup() == true)
+		if (pChunkXMinus != nullptr && pChunkXMinus->IsSetup() == true)
 			pChunkXMinus->UpdateSurroundedFlag();
-		if (pChunkXPlus != NULL && pChunkXPlus->IsSetup() == true)
+		if (pChunkXPlus != nullptr && pChunkXPlus->IsSetup() == true)
 			pChunkXPlus->UpdateSurroundedFlag();
-		if (pChunkYMinus != NULL && pChunkYMinus->IsSetup() == true)
+		if (pChunkYMinus != nullptr && pChunkYMinus->IsSetup() == true)
 			pChunkYMinus->UpdateSurroundedFlag();
-		if (pChunkYPlus != NULL && pChunkYPlus->IsSetup() == true)
+		if (pChunkYPlus != nullptr && pChunkYPlus->IsSetup() == true)
 			pChunkYPlus->UpdateSurroundedFlag();
-		if (pChunkZMinus != NULL && pChunkZMinus->IsSetup() == true)
+		if (pChunkZMinus != nullptr && pChunkZMinus->IsSetup() == true)
 			pChunkZMinus->UpdateSurroundedFlag();
-		if (pChunkZPlus != NULL && pChunkZPlus->IsSetup() == true)
+		if (pChunkZPlus != nullptr && pChunkZPlus->IsSetup() == true)
 			pChunkZPlus->UpdateSurroundedFlag();
 	}
 
@@ -207,7 +207,7 @@ void Chunk::Setup()
 			{
 				float yPosition = m_position.y + y;
 
-				if (pChunkStorage != NULL && pChunkStorage->m_blockSet[x][y][z] == true)
+				if (pChunkStorage != nullptr && pChunkStorage->m_blockSet[x][y][z] == true)
 				{
 					SetColour(x, y, z, pChunkStorage->m_colour[x][y][z]);
 				}
@@ -290,7 +290,7 @@ void Chunk::Setup()
 	}
 
 	// Remove the chunk storage loader since we no longer need it
-	if (pChunkStorage != NULL)
+	if (pChunkStorage != nullptr)
 	{
 		m_pChunkManager->RemoveChunkStorageLoader(pChunkStorage);
 	}
@@ -497,7 +497,7 @@ void Chunk::RemoveItems()
 	m_itemMutexLock.lock();
 	for (unsigned int i = 0; i < m_vpItemList.size(); i++)
 	{
-		m_vpItemList[i]->SetChunk(NULL);
+		m_vpItemList[i]->SetChunk(nullptr);
 		m_vpItemList[i]->SetErase(true);
 	}
 	m_vpItemList.clear();
@@ -679,7 +679,7 @@ void Chunk::UpdateWallFlags()
 
 bool Chunk::UpdateSurroundedFlag()
 {
-	if (m_pChunkManager == NULL)
+	if (m_pChunkManager == nullptr)
 	{
 		return false;
 	}
@@ -692,12 +692,12 @@ bool Chunk::UpdateSurroundedFlag()
 	Chunk* pChunkZPlus = m_pChunkManager->GetChunk(m_gridX, m_gridY, m_gridZ + 1);
 
 	// Check our neighbor chunks
-	if (pChunkXMinus != NULL && pChunkXMinus->IsSetup() == true && pChunkXMinus->m_x_plus_full &&
-	    pChunkXPlus != NULL && pChunkXPlus->IsSetup() == true && pChunkXPlus->m_x_minus_full &&
-	    pChunkYMinus != NULL && pChunkYMinus->IsSetup() == true && pChunkYMinus->m_y_plus_full &&
-	    pChunkYPlus != NULL && pChunkYPlus->IsSetup() == true && pChunkYPlus->m_y_minus_full &&
-	    pChunkZMinus != NULL && pChunkZMinus->IsSetup() == true && pChunkZMinus->m_z_plus_full &&
-	    pChunkZPlus != NULL && pChunkZPlus->IsSetup() == true && pChunkZPlus->m_z_minus_full)
+	if (pChunkXMinus != nullptr && pChunkXMinus->IsSetup() == true && pChunkXMinus->m_x_plus_full &&
+	    pChunkXPlus != nullptr && pChunkXPlus->IsSetup() == true && pChunkXPlus->m_x_minus_full &&
+	    pChunkYMinus != nullptr && pChunkYMinus->IsSetup() == true && pChunkYMinus->m_y_plus_full &&
+	    pChunkYPlus != nullptr && pChunkYPlus->IsSetup() == true && pChunkYPlus->m_y_minus_full &&
+	    pChunkZMinus != nullptr && pChunkZMinus->IsSetup() == true && pChunkZMinus->m_z_plus_full &&
+	    pChunkZPlus != nullptr && pChunkZPlus->IsSetup() == true && pChunkZPlus->m_z_minus_full)
 	{
 		m_surroundedChunk = true;
 	}
@@ -729,7 +729,7 @@ void Chunk::UpdateEmptyFlag()
 // Create mesh
 void Chunk::CreateMesh()
 {
-	if (m_pMesh == NULL)
+	if (m_pMesh == nullptr)
 	{
 		m_pMesh = m_pRenderer->CreateMesh(OGLMeshType_Textured);
 	}
@@ -791,9 +791,9 @@ void Chunk::CreateMesh()
 						if ((z == CHUNK_SIZE - 1))
 						{
 							Chunk* pChunk = m_pChunkManager->GetChunk(m_gridX, m_gridY, m_gridZ + 1);
-							if (pChunk == NULL || pChunk->IsSetup())
+							if (pChunk == nullptr || pChunk->IsSetup())
 							{
-								addSide = pChunk != NULL && (pChunk->GetActive(x, y, 0) == false);
+								addSide = pChunk != nullptr && (pChunk->GetActive(x, y, 0) == false);
 							}
 						}
 
@@ -839,9 +839,9 @@ void Chunk::CreateMesh()
 						if ((z == 0))
 						{
 							Chunk* pChunk = m_pChunkManager->GetChunk(m_gridX, m_gridY, m_gridZ - 1);
-							if (pChunk == NULL || pChunk->IsSetup())
+							if (pChunk == nullptr || pChunk->IsSetup())
 							{
-								addSide = pChunk != NULL && (pChunk->GetActive(x, y, CHUNK_SIZE - 1) == false);
+								addSide = pChunk != nullptr && (pChunk->GetActive(x, y, CHUNK_SIZE - 1) == false);
 							}
 						}
 
@@ -887,9 +887,9 @@ void Chunk::CreateMesh()
 						if ((x == CHUNK_SIZE - 1))
 						{
 							Chunk* pChunk = m_pChunkManager->GetChunk(m_gridX + 1, m_gridY, m_gridZ);
-							if (pChunk == NULL || pChunk->IsSetup())
+							if (pChunk == nullptr || pChunk->IsSetup())
 							{
-								addSide = pChunk != NULL && (pChunk->GetActive(0, y, z) == false);
+								addSide = pChunk != nullptr && (pChunk->GetActive(0, y, z) == false);
 							}
 						}
 
@@ -935,9 +935,9 @@ void Chunk::CreateMesh()
 						if ((x == 0))
 						{
 							Chunk* pChunk = m_pChunkManager->GetChunk(m_gridX - 1, m_gridY, m_gridZ);
-							if (pChunk == NULL || pChunk->IsSetup())
+							if (pChunk == nullptr || pChunk->IsSetup())
 							{
-								addSide = pChunk != NULL && (pChunk->GetActive(CHUNK_SIZE - 1, y, z) == false);
+								addSide = pChunk != nullptr && (pChunk->GetActive(CHUNK_SIZE - 1, y, z) == false);
 							}
 						}
 
@@ -983,9 +983,9 @@ void Chunk::CreateMesh()
 						if ((y == CHUNK_SIZE - 1))
 						{
 							Chunk* pChunk = m_pChunkManager->GetChunk(m_gridX, m_gridY + 1, m_gridZ);
-							if (pChunk == NULL || pChunk->IsSetup())
+							if (pChunk == nullptr || pChunk->IsSetup())
 							{
-								addSide = pChunk != NULL && (pChunk->GetActive(x, 0, z) == false);
+								addSide = pChunk != nullptr && (pChunk->GetActive(x, 0, z) == false);
 							}
 						}
 
@@ -1031,9 +1031,9 @@ void Chunk::CreateMesh()
 						if ((y == 0))
 						{
 							Chunk* pChunk = m_pChunkManager->GetChunk(m_gridX, m_gridY - 1, m_gridZ);
-							if (pChunk == NULL || pChunk->IsSetup())
+							if (pChunk == nullptr || pChunk->IsSetup())
 							{
-								addSide = pChunk != NULL && (pChunk->GetActive(x, CHUNK_SIZE - 1, z) == false);
+								addSide = pChunk != nullptr && (pChunk->GetActive(x, CHUNK_SIZE - 1, z) == false);
 							}
 						}
 
@@ -1426,10 +1426,10 @@ void Chunk::UpdateMergedSide(int *merged, int blockx, int blocky, int blockz, in
 void Chunk::RebuildMesh()
 {
 	m_isRebuildingMesh = true;
-	if (m_pMesh != NULL)
+	if (m_pMesh != nullptr)
 	{
 		m_pRenderer->ClearMesh(m_pMesh);
-		m_pMesh = NULL;
+		m_pMesh = nullptr;
 	}
 
 	CreateMesh();
@@ -1445,33 +1445,33 @@ void Chunk::RebuildMesh()
 	Chunk* pChunkZMinus = m_pChunkManager->GetChunk(m_gridX, m_gridY, m_gridZ - 1);
 	Chunk* pChunkZPlus = m_pChunkManager->GetChunk(m_gridX, m_gridY, m_gridZ + 1);
 
-	if (pChunkXMinus != NULL && pChunkXMinus->IsSetup() == true)
+	if (pChunkXMinus != nullptr && pChunkXMinus->IsSetup() == true)
 		pChunkXMinus->UpdateSurroundedFlag();
-	if (pChunkXPlus != NULL && pChunkXPlus->IsSetup() == true)
+	if (pChunkXPlus != nullptr && pChunkXPlus->IsSetup() == true)
 		pChunkXPlus->UpdateSurroundedFlag();
-	if (pChunkYMinus != NULL && pChunkYMinus->IsSetup() == true)
+	if (pChunkYMinus != nullptr && pChunkYMinus->IsSetup() == true)
 		pChunkYMinus->UpdateSurroundedFlag();
-	if (pChunkYPlus != NULL && pChunkYPlus->IsSetup() == true)
+	if (pChunkYPlus != nullptr && pChunkYPlus->IsSetup() == true)
 		pChunkYPlus->UpdateSurroundedFlag();
-	if (pChunkZMinus != NULL && pChunkZMinus->IsSetup() == true)
+	if (pChunkZMinus != nullptr && pChunkZMinus->IsSetup() == true)
 		pChunkZMinus->UpdateSurroundedFlag();
-	if (pChunkZPlus != NULL && pChunkZPlus->IsSetup() == true)
+	if (pChunkZPlus != nullptr && pChunkZPlus->IsSetup() == true)
 		pChunkZPlus->UpdateSurroundedFlag();
 
 	// Rebuild neighbours
 	if (m_rebuildNeighours)
 	{
-		if (pChunkXMinus != NULL && pChunkXMinus->IsSetup() == true)
+		if (pChunkXMinus != nullptr && pChunkXMinus->IsSetup() == true)
 			pChunkXMinus->SetNeedsRebuild(true, false);
-		if (pChunkXPlus != NULL && pChunkXPlus->IsSetup() == true)
+		if (pChunkXPlus != nullptr && pChunkXPlus->IsSetup() == true)
 			pChunkXPlus->SetNeedsRebuild(true, false);
-		if (pChunkYMinus != NULL && pChunkYMinus->IsSetup() == true)
+		if (pChunkYMinus != nullptr && pChunkYMinus->IsSetup() == true)
 			pChunkYMinus->SetNeedsRebuild(true, false);
-		if (pChunkYPlus != NULL && pChunkYPlus->IsSetup() == true)
+		if (pChunkYPlus != nullptr && pChunkYPlus->IsSetup() == true)
 			pChunkYPlus->SetNeedsRebuild(true, false);
-		if (pChunkZMinus != NULL && pChunkZMinus->IsSetup() == true)
+		if (pChunkZMinus != nullptr && pChunkZMinus->IsSetup() == true)
 			pChunkZMinus->SetNeedsRebuild(true, false);
-		if (pChunkZPlus != NULL && pChunkZPlus->IsSetup() == true)
+		if (pChunkZPlus != nullptr && pChunkZPlus->IsSetup() == true)
 			pChunkZPlus->SetNeedsRebuild(true, false);
 
 		m_rebuildNeighours = false;
@@ -1500,7 +1500,7 @@ bool Chunk::IsRebuildingMesh() const
 void Chunk::SwitchToCachedMesh()
 {
 	m_pCachedMesh = m_pMesh;
-	m_pMesh = NULL;
+	m_pMesh = nullptr;
 }
 
 void Chunk::UndoCachedMesh()
@@ -1518,12 +1518,12 @@ void Chunk::Update(float dt)
 void Chunk::Render()
 {
 	OpenGLTriangleMesh* pMeshToUse = m_pMesh;
-	if (m_pCachedMesh != NULL)
+	if (m_pCachedMesh != nullptr)
 	{
 		pMeshToUse = m_pCachedMesh;
 	}
 
-	if (pMeshToUse != NULL)
+	if (pMeshToUse != nullptr)
 	{
 		m_pRenderer->PushMatrix();
 			m_pRenderer->TranslateWorldMatrix(m_position.x, m_position.y, m_position.z);
@@ -1548,10 +1548,10 @@ void Chunk::Render()
 
 	if (m_deleteCachedMesh)
 	{
-		if (m_pCachedMesh != NULL)
+		if (m_pCachedMesh != nullptr)
 		{
 			m_pRenderer->ClearMesh(m_pCachedMesh);
-			m_pCachedMesh = NULL;
+			m_pCachedMesh = nullptr;
 		}
 
 		m_deleteCachedMesh = false;
@@ -1669,7 +1669,7 @@ bool Chunk::operator<(const Chunk &w) const
 	int playerX = 0;
 	int playerY = 0;
 	int playerZ = 0;
-	if (m_pPlayer != NULL)
+	if (m_pPlayer != nullptr)
 	{
 		playerX = m_pPlayer->GetGridX();
 		playerY = m_pPlayer->GetGridY();

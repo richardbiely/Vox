@@ -36,14 +36,14 @@ InstanceManager::InstanceManager(Renderer* pRenderer)
 	{
 		vec3 pos = vec3(GetRandomNumber(-50, 50, 2), 7.5f, GetRandomNumber(-50, 50, 2));
 		vec3 rot = vec3(0.0f, GetRandomNumber(0, 360, 2), 0.0f);
-		AddInstanceObject("media/gamedata/terrain/plains/flower1.qb", pos, rot, 0.08f, NULL, 0, 0, 0);
+		AddInstanceObject("media/gamedata/terrain/plains/flower1.qb", pos, rot, 0.08f, nullptr, 0, 0, 0);
 	}
 
 	for(int i = 0; i < 100; i++)
 	{
 		vec3 pos = vec3(GetRandomNumber(-50, 50, 2), 7.5f, GetRandomNumber(-50, 50, 2));
 		vec3 rot = vec3(0.0f, GetRandomNumber(0, 360, 2), 0.0f);
-		AddInstanceObject("media/gamedata/terrain/plains/smalltree2.qb", pos, rot, 0.1f, NULL, 0, 0, 0);
+		AddInstanceObject("media/gamedata/terrain/plains/smalltree2.qb", pos, rot, 0.1f, nullptr, 0, 0, 0);
 	}
 	*/
 }
@@ -230,14 +230,14 @@ InstanceParent* InstanceManager::GetInstanceParent(string modelName)
 		}
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 InstanceObject* InstanceManager::AddInstanceObject(string modelName, vec3 position, vec3 rotation, float instanceScale, Chunk* pOwningChunk, int voxelX, int voxelY, int voxelZ)
 {
 	InstanceParent* pNewInstanceParent = GetInstanceParent(modelName);
 	
-	if(pNewInstanceParent == NULL)
+	if(pNewInstanceParent == nullptr)
 	{
 		// Add new instance parent
 		pNewInstanceParent = new InstanceParent();
@@ -272,7 +272,7 @@ bool instance_object_needs_erasing(InstanceObject* pInstanceObject)
 
 	if(needsErase == true)
 	{
-		if(pInstanceObject->m_pOwningChunk != NULL)
+		if(pInstanceObject->m_pOwningChunk != nullptr)
 		{
 			// TODO : Add functionality back in, when chunks own instances
 			//pInstanceObject->m_pOwningChunk->RemoveInstanceObjectFromList(pInstanceObject);
@@ -312,7 +312,7 @@ void InstanceManager::Update(float dt)
 					continue;
 				}
 
-				if(pInstanceObject->m_pOwningChunk != NULL)
+				if(pInstanceObject->m_pOwningChunk != nullptr)
 				{
 					bool active = pInstanceObject->m_pOwningChunk->GetActive(pInstanceObject->m_voxelX, pInstanceObject->m_voxelY, pInstanceObject->m_voxelZ);
 

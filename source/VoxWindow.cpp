@@ -88,7 +88,7 @@ void VoxWindow::Create()
 	memset(m_joysticks, 0, sizeof(m_joysticks));
 
 	/* Create a windowed mode window and it's OpenGL context */
-	m_pWindow = glfwCreateWindow(m_windowWidth, m_windowHeight, "Vox", NULL, NULL);
+	m_pWindow = glfwCreateWindow(m_windowWidth, m_windowHeight, "Vox", nullptr, nullptr);
 	if (!m_pWindow)
 	{
 		glfwTerminate();
@@ -355,7 +355,7 @@ void VoxWindow::ToggleFullScreen(bool fullscreen)
 	}
 
 	// Create new window
-	GLFWwindow* newWindow = glfwCreateWindow(m_windowWidth, m_windowHeight, "Vox", fullscreen ? glfwGetPrimaryMonitor() : NULL, m_pWindow);
+	GLFWwindow* newWindow = glfwCreateWindow(m_windowWidth, m_windowHeight, "Vox", fullscreen ? glfwGetPrimaryMonitor() : nullptr, m_pWindow);
 
 	/* Initialize this new window object */
 	InitializeWindowContext(newWindow);

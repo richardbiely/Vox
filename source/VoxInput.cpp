@@ -508,7 +508,7 @@ void VoxGame::MouseScroll(double x, double y)
 	{
 		if (m_bPaused == false)
 		{
-			if (m_pPlayer->GetTargetEnemy() == NULL) // Don't allow mouse zooming when we are an enemy target.
+			if (m_pPlayer->GetTargetEnemy() == nullptr) // Don't allow mouse zooming when we are an enemy target.
 			{
 				if (IsCursorOn() == false || !m_pGUI->IsMouseInteractingWithGUIComponent(false))
 				{

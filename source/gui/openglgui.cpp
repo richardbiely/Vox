@@ -33,9 +33,9 @@ OpenGLGUI::OpenGLGUI(Renderer* pRenderer)
 
 	m_bDegubRender = false;
 
-	m_pFocusedWindow = NULL;
+	m_pFocusedWindow = nullptr;
 
-	m_pDraggingComponentPriority = NULL;
+	m_pDraggingComponentPriority = nullptr;
 
 	m_audio = true;
 	m_audioVolume = 1.0f;
@@ -80,7 +80,7 @@ Component* OpenGLGUI::GetCurrentMouseInteractionComponent() const
 		return lCurrentComponent;
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 void OpenGLGUI::AddWindow(GUIWindow* window)
@@ -111,7 +111,7 @@ void OpenGLGUI::RemoveWindow(GUIWindow* window)
 {
 	window->RemoveEventListeners();
 
-	window->SetGUIParent(NULL);
+	window->SetGUIParent(nullptr);
 
 	m_vpGUIWindowList.erase(std::remove(m_vpGUIWindowList.begin(), m_vpGUIWindowList.end(), window), m_vpGUIWindowList.end());
 
@@ -197,7 +197,7 @@ Component* OpenGLGUI::GetComponent(Component *component)
 		}
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 void OpenGLGUI::SetDraggingComponentPriority(Component* pDraggingComponentPriority)
@@ -255,7 +255,7 @@ void OpenGLGUI::Render()
 	}
 
 	// Draw the dragging icon with priority last, due to transparency issues with windows that are drawn before.
-	if(m_pDraggingComponentPriority != NULL)
+	if(m_pDraggingComponentPriority != nullptr)
 	{
 		m_pDraggingComponentPriority->Draw();
 	}

@@ -249,7 +249,7 @@ Enemy* EnemyManager::GetCursorEnemy(Camera* pGameCamera, int cursorX, int cursor
 		increments += Chunk::BLOCK_RENDER_SIZE;
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 // Rendering Helpers
@@ -482,7 +482,7 @@ void EnemyManager::UpdateEnemyProjectileCheck(float dt)
 		{
 			Projectile* pProjectile = m_pProjectileManager->GetProjectile(j);
 
-			if(pProjectile != NULL && pProjectile->GetErase() == false)
+			if(pProjectile != nullptr && pProjectile->GetErase() == false)
 			{
 				pEnemy->CheckProjectileDamageRadius(pProjectile);
 			}

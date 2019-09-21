@@ -83,7 +83,7 @@ void ProjectileManager::ClearProjectileOwnerForEnemy(Enemy* pEnemy)
 	{
 		if(m_vpProjectileList[i]->GetEnemyOwner() == pEnemy)
 		{
-			m_vpProjectileList[i]->SetOwner(NULL, NULL, NULL);
+			m_vpProjectileList[i]->SetOwner(nullptr, nullptr, nullptr);
 		}
 	}
 	m_projectileMutex.unlock();
@@ -96,7 +96,7 @@ void ProjectileManager::ClearProjectileOwnerForNPC(NPC* pNPC)
 	{
 		if(m_vpProjectileList[i]->GetNPCOwner() == pNPC)
 		{
-			m_vpProjectileList[i]->SetOwner(NULL, NULL, NULL);
+			m_vpProjectileList[i]->SetOwner(nullptr, nullptr, nullptr);
 		}
 	}
 	m_projectileMutex.unlock();

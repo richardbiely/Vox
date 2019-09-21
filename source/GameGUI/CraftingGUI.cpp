@@ -190,9 +190,9 @@ CraftingGUI::CraftingGUI(Renderer* pRenderer, OpenGLGUI* pGUI, FrontendManager* 
 	m_craftingTime = 2.5f;
 	m_craftingTimer = 0.0f;
 
-	m_pRecipeSlotItemSelected = NULL;
+	m_pRecipeSlotItemSelected = nullptr;
 
-	m_pInteractionItem = NULL;
+	m_pInteractionItem = nullptr;
 
 	// Load delay
 	m_loadDelay = false;
@@ -391,9 +391,9 @@ void CraftingGUI::Load(bool loadDelay, float loadDelayTime)
 
 	m_pSearchBox->SetText("");
 
-	m_pRecipeSlotItemSelected = NULL;
+	m_pRecipeSlotItemSelected = nullptr;
 
-	m_pInteractionItem = NULL;
+	m_pInteractionItem = nullptr;
 
 	CreateRecipeButtons();
 	UpdateFilteredRecipes();
@@ -433,7 +433,7 @@ void CraftingGUI::Unload()
 	m_pPlayer->SetCraftingItem(false);
 	m_pPlayer->DisableMoveToTargetPosition();
 
-	if(m_pInteractionItem != NULL)
+	if(m_pInteractionItem != nullptr)
 	{
 		m_pInteractionItem->SetCollisionEnabled(true);
 	}
@@ -492,7 +492,7 @@ void CraftingGUI::CraftingComplete()
 			vec3 vel = vec3(GetRandomNumber(-1, 1, 2), 0.0f, GetRandomNumber(-1, 1, 2)) * GetRandomNumber(2, 3, 2);
 
 			Item* pItem = VoxGame::GetInstance()->GetItemManager()->CreateItem(m_pInteractionItem->GetCenter(), vec3(0.0f, 0.0f, 0.0f), vec3(0.0f, 0.0f, 0.0f), pInventoryItem->m_filename.c_str(), eItem_DroppedItem, pInventoryItem->m_title.c_str(), true, false, 0.08f);
-			if (pItem != NULL)
+			if (pItem != nullptr)
 			{
 				pItem->SetGravityDirection(vec3(0.0f, -1.0f, 0.0f));
 				pItem->SetVelocity(normalize(vel)*4.5f + vec3(0.0f, 9.5f + GetRandomNumber(3, 6, 2), 0.0f));
@@ -541,7 +541,7 @@ void CraftingGUI::SetInteractionitem(Item* pInteractionItem)
 {
 	m_pInteractionItem = pInteractionItem;
 
-	if(m_pInteractionItem != NULL)
+	if(m_pInteractionItem != nullptr)
 	{
 		m_pInteractionItem->SetCollisionEnabled(false);
 	}
@@ -850,7 +850,7 @@ void CraftingGUI::CreateIngredientsButtons()
 {
 	DeleteIngredientsButtons();
 
-	if(m_pRecipeSlotItemSelected == NULL)
+	if(m_pRecipeSlotItemSelected == nullptr)
 	{
 		return;
 	}
@@ -976,14 +976,14 @@ void CraftingGUI::DeleteIngredientsButtons()
 bool CraftingGUI::CanCraftRecipe()
 {
 	bool canCraft = true;
-	if(m_pRecipeSlotItemSelected != NULL)
+	if(m_pRecipeSlotItemSelected != nullptr)
 	{
 		CraftingRecipe* pRecipe = m_pRecipeSlotItemSelected->m_pCraftingReceipe;
 		for (unsigned int i = 0; i < pRecipe->m_vpCraftingItems.size() && canCraft == true; i++)
 		{
 			InventoryItem* pIntentoryItem = m_pInventoryManager->GetInventoryItemWithTitle(pRecipe->m_vpCraftingItems[i]->m_title);
 
-			if(pIntentoryItem == NULL)
+			if(pIntentoryItem == nullptr)
 			{
 				canCraft = false;
 			}
@@ -1444,7 +1444,7 @@ void CraftingGUI::UpdateFilteredRecipes()
 
 		m_pResultsScrollbar->AddScrollAreaItem(m_vpRecipeSlotItem_Filtered[i]->m_pResultsIcon);
 
-		if(m_pRecipeSlotItemSelected != NULL)
+		if(m_pRecipeSlotItemSelected != nullptr)
 		{
 			if(strcmp(m_pRecipeSlotItemSelected->m_pCraftingReceipe->m_pResultItem->m_title.c_str(), m_vpRecipeSlotItem_Filtered[i]->m_recipeName.c_str()) == 0)
 			{
@@ -1456,7 +1456,7 @@ void CraftingGUI::UpdateFilteredRecipes()
 	if(stillContainsSelected == false)
 	{
 		// Reset pressed button
-		ResultsItemPressed(NULL);
+		ResultsItemPressed(nullptr);
 	}
 }
 
@@ -1556,7 +1556,7 @@ void CraftingGUI::_ResultsItemPressed(void *apData)
 void CraftingGUI::ResultsItemPressed(RecipeSlotItem* pRecipeButtonData)
 {
 	// First reset previous selected
-	if(m_pRecipeSlotItemSelected != NULL)
+	if(m_pRecipeSlotItemSelected != nullptr)
 	{
 		m_pRecipeSlotItemSelected->m_pResultsIcon->SetDefaultIcon(m_pRecipeButton_Icon);
 		m_pRecipeSlotItemSelected->m_pResultsIcon->SetHoverIcon(m_pRecipeButton_Hover_Icon);
@@ -1570,7 +1570,7 @@ void CraftingGUI::ResultsItemPressed(RecipeSlotItem* pRecipeButtonData)
 	// Assign new
 	m_pRecipeSlotItemSelected = pRecipeButtonData;
 
-	if(m_pRecipeSlotItemSelected != NULL)
+	if(m_pRecipeSlotItemSelected != nullptr)
 	{
 		m_pRecipeSlotItemSelected->m_pResultsIcon->SetDefaultIcon(m_pRecipeButton_Selected_Icon);
 		m_pRecipeSlotItemSelected->m_pResultsIcon->SetHoverIcon(m_pRecipeButton_Selected_Icon);

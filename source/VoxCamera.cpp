@@ -324,7 +324,7 @@ void VoxGame::UpdateCameraClipping(float dt)
 
 			vec3 playerRight = m_pPlayer->GetRightVector() * 0.25f;
 			testPos = basePos + playerRight;
-			Chunk* pChunk = NULL;
+			Chunk* pChunk = nullptr;
 			active = m_pChunkManager->GetBlockActiveFrom3DPosition(testPos.x, testPos.y, testPos.z, &blockPos, &blockX, &blockY, &blockZ, &pChunk);
 			if (active)
 			{
@@ -333,7 +333,7 @@ void VoxGame::UpdateCameraClipping(float dt)
 
 			playerRight = m_pPlayer->GetRightVector() * -0.25f;
 			testPos = basePos + playerRight;
-			pChunk = NULL;
+			pChunk = nullptr;
 			active = m_pChunkManager->GetBlockActiveFrom3DPosition(testPos.x, testPos.y, testPos.z, &blockPos, &blockX, &blockY, &blockZ, &pChunk);
 			if (active)
 			{
@@ -342,7 +342,7 @@ void VoxGame::UpdateCameraClipping(float dt)
 
 			vec3 playerUp = m_pPlayer->GetUpVector() * -0.25f;
 			testPos = basePos + playerUp;
-			pChunk = NULL;
+			pChunk = nullptr;
 			active = m_pChunkManager->GetBlockActiveFrom3DPosition(testPos.x, testPos.y, testPos.z, &blockPos, &blockX, &blockY, &blockZ, &pChunk);
 			if (active)
 			{
@@ -351,7 +351,7 @@ void VoxGame::UpdateCameraClipping(float dt)
 
 			playerUp = m_pPlayer->GetUpVector() * 0.25f;
 			testPos = basePos + playerUp;
-			pChunk = NULL;
+			pChunk = nullptr;
 			active = m_pChunkManager->GetBlockActiveFrom3DPosition(testPos.x, testPos.y, testPos.z, &blockPos, &blockX, &blockY, &blockZ, &pChunk);
 			if (active)
 			{

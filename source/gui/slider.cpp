@@ -159,8 +159,8 @@ Slider::Slider(Renderer* pRenderer, unsigned int GUIFont, const std::string &lab
 	Add(&m_value);
 	Add(&m_name);
 
-    m_ValueChangedCallback = NULL;
-    m_pValueChangedCallbackData = NULL;
+    m_ValueChangedCallback = nullptr;
+    m_pValueChangedCallbackData = nullptr;
 
 	ValueChanged();
 }
@@ -315,8 +315,8 @@ Slider::Slider(Renderer* pRenderer, unsigned int GUIFont, unsigned int OutlineGU
 	m_name.SetOutlineFont(OutlineGUIFont);
 	Add(&m_name);
 
-	m_ValueChangedCallback = NULL;
-	m_pValueChangedCallbackData = NULL;
+	m_ValueChangedCallback = nullptr;
+	m_pValueChangedCallbackData = nullptr;
 
 	ValueChanged();
 }
@@ -359,7 +359,7 @@ void Slider::SetScrollerDefaultIcon(RenderRectangle *icon)
 		Remove(m_pScrollerDefault);
 
 		delete m_pScrollerDefault;
-		m_pScrollerDefault = NULL;
+		m_pScrollerDefault = nullptr;
 	}
 
 	// Check what type of render rectangle we have been given, and then assign our new data
@@ -391,7 +391,7 @@ void Slider::SetScrollerHoverIcon(RenderRectangle *icon)
 		Remove(m_pScrollerHover);
 
 		delete m_pScrollerHover;
-		m_pScrollerHover = NULL;
+		m_pScrollerHover = nullptr;
 	}
 
 	// Check what type of render rectangle we have been given, and then assign our new data
@@ -423,7 +423,7 @@ void Slider::SetScrollerDraggingIcon(RenderRectangle *icon)
 		Remove(m_pScrollerDragging);
 
 		delete m_pScrollerDragging;
-		m_pScrollerDragging = NULL;
+		m_pScrollerDragging = nullptr;
 	}
 
 	// Check what type of render rectangle we have been given, and then assign our new data
@@ -455,7 +455,7 @@ void Slider::SetScrollerDisabledIcon(RenderRectangle *icon)
 		Remove(m_pScrollerDisabled);
 
 		delete m_pScrollerDisabled;
-		m_pScrollerDisabled = NULL;
+		m_pScrollerDisabled = nullptr;
 	}
 
 	// Check what type of render rectangle we have been given, and then assign our new data
@@ -487,7 +487,7 @@ void Slider::SetScrollBackbarDefault(RenderRectangle *icon)
 		Remove(m_pScrollBackbarDefault);
 
 		delete m_pScrollBackbarDefault;
-		m_pScrollBackbarDefault = NULL;
+		m_pScrollBackbarDefault = nullptr;
 	}
 
 	// Check what type of render rectangle we have been given, and then assign our new data
@@ -519,7 +519,7 @@ void Slider::SetScrollBackbarPressed(RenderRectangle *icon)
 		Remove(m_pScrollBackbarPressed);
 
 		delete m_pScrollBackbarPressed;
-		m_pScrollBackbarPressed = NULL;
+		m_pScrollBackbarPressed = nullptr;
 	}
 
 	// Check what type of render rectangle we have been given, and then assign our new data
@@ -867,7 +867,7 @@ void Slider::MousePressed(const MouseEvent& lEvent)
 	}
 
 	// If our parent is a GUIWindow, then makew this window have focus in the GUI, used to make it's depth the highest
-	if(GetParent() != NULL && GetParent()->GetComponentType() == EComponentType_GUIWindow)
+	if(GetParent() != nullptr && GetParent()->GetComponentType() == EComponentType_GUIWindow)
 	{
 		GUIWindow* lpParentWindow = (GUIWindow *)GetParent();
 		lpParentWindow->SetFocusWindow();

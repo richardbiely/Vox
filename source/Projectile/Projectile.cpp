@@ -44,9 +44,9 @@ Projectile::Projectile(Renderer* pRenderer, ChunkManager* pChunkManager, Qubicle
 	m_gridPositionY = 0;
 	m_gridPositionZ = 0;
 
-	m_pCachedGridChunk = NULL;
+	m_pCachedGridChunk = nullptr;
 
-	m_pVoxeProjectile = NULL;
+	m_pVoxeProjectile = nullptr;
 	LoadItem(objectFilename);
 
 	// World collision flag
@@ -69,9 +69,9 @@ Projectile::Projectile(Renderer* pRenderer, ChunkManager* pChunkManager, Qubicle
 	m_rightCurve = true;
 	m_returningDirectToPlayer = false;
 
-	m_pOwnedPlayer = NULL;
-	m_pOwnedNPC = NULL;
-	m_pOwnedEnemy = NULL;
+	m_pOwnedPlayer = nullptr;
+	m_pOwnedNPC = nullptr;
+	m_pOwnedEnemy = nullptr;
 
 	m_pVoxeProjectile->StartWeaponTrails();
 }
@@ -82,7 +82,7 @@ Projectile::~Projectile()
 
 	UnloadEffectsAndLights();
 
-	if(m_pVoxeProjectile != NULL)
+	if(m_pVoxeProjectile != nullptr)
 	{
 		delete m_pVoxeProjectile;
 	}
@@ -181,12 +181,12 @@ void Projectile::SetErase(bool erase)
 // Setup
 void Projectile::LoadItem(const char* objectFilename)
 {
-	if(m_pVoxeProjectile == NULL)
+	if(m_pVoxeProjectile == nullptr)
 	{
 		m_pVoxeProjectile = new VoxelWeapon(m_pRenderer, m_pQubicleBinaryManager);
 	}
 
-	m_pVoxeProjectile->SetVoxelCharacterParent(NULL);
+	m_pVoxeProjectile->SetVoxelCharacterParent(nullptr);
 	m_pVoxeProjectile->LoadWeapon(objectFilename, false);
 
 	// Lights
@@ -350,7 +350,7 @@ void Projectile::SetProjectileCurveParams(vec3 forward, vec3 target, float curve
 	m_curveTimer = curveTime;
 	m_rightCurve = true;
 
-	Interpolator::GetInstance()->AddFloatInterpolation(&m_curveTimer, m_curveTime, 0.0f, m_curveTime, 0.0f, NULL, _RightCurveTimerFinished, this);
+	Interpolator::GetInstance()->AddFloatInterpolation(&m_curveTimer, m_curveTime, 0.0f, m_curveTime, 0.0f, nullptr, _RightCurveTimerFinished, this);
 }
 
 void Projectile::SetWorldCollisionEnabled(bool enabled)
@@ -440,7 +440,7 @@ void Projectile::Explode()
 {
 	CalculateWorldTransformMatrix();
 
-	if(m_pVoxeProjectile != NULL)
+	if(m_pVoxeProjectile != nullptr)
 	{
 		for(int animatedSectionsIndex = 0; animatedSectionsIndex < m_pVoxeProjectile->GetNumAimatedSections(); animatedSectionsIndex++)
 		{
@@ -472,7 +472,7 @@ void Projectile::UpdateGridPosition()
 	if(m_position.z <= -0.5f)
 		gridPositionZ -= 1;
 
-	if(gridPositionX != m_gridPositionX || gridPositionY != m_gridPositionY || gridPositionZ != m_gridPositionZ || m_pCachedGridChunk == NULL)
+	if(gridPositionX != m_gridPositionX || gridPositionY != m_gridPositionY || gridPositionZ != m_gridPositionZ || m_pCachedGridChunk == nullptr)
 	{
 		m_gridPositionX = gridPositionX;
 		m_gridPositionY = gridPositionY;
@@ -498,7 +498,7 @@ Chunk* Projectile::GetCachedGridChunkOrFromPosition(vec3 pos)
 
 	if(gridPositionX != m_gridPositionX || gridPositionY != m_gridPositionY || gridPositionZ != m_gridPositionZ)
 	{
-		return NULL;
+		return nullptr;
 	}
 	else
 	{
@@ -546,7 +546,7 @@ void Projectile::CalculateWorldTransformMatrix()
 // Updating
 void Projectile::Update(float dt)
 {
-	if(m_pVoxeProjectile != NULL)
+	if(m_pVoxeProjectile != nullptr)
 	{
 		CalculateWorldTransformMatrix();
 
@@ -681,7 +681,7 @@ void Projectile::UpdateProjectileLights(float dt)
 		return;
 	}
 
-	if(m_pVoxeProjectile != NULL)
+	if(m_pVoxeProjectile != nullptr)
 	{
 		for(int i = 0; i < m_pVoxeProjectile->GetNumLights(); i++)
 		{
@@ -732,7 +732,7 @@ void Projectile::UpdateProjectileParticleEffects(float dt)
 		return;
 	}
 
-	if(m_pVoxeProjectile != NULL)
+	if(m_pVoxeProjectile != nullptr)
 	{
 		for(int i = 0; i < m_pVoxeProjectile->GetNumParticleEffects(); i++)
 		{
@@ -779,7 +779,7 @@ void Projectile::Render()
 		return;
 	}
 
-	if(m_pVoxeProjectile != NULL)
+	if(m_pVoxeProjectile != nullptr)
 	{
 		Colour OutlineColour(1.0f, 1.0f, 0.0f, 1.0f);
 

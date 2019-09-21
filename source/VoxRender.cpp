@@ -27,7 +27,7 @@ void VoxGame::PreRender()
 
 void VoxGame::BeginShaderRender()
 {
-	glShader* pShader = NULL;
+	glShader* pShader = nullptr;
 
 	if (m_pVoxSettings->m_shadows)
 	{

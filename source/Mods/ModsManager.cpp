@@ -54,10 +54,10 @@ void ModsManager::LoadMods()
 	// Gameplay mods
 	string gameplayMods = reader.Get("Gameplay", "LoadedGameplayMods", "");
 	char * pch = strtok(&gameplayMods[0], ";");
-	while (pch != NULL)
+	while (pch != nullptr)
 	{
 		AddMod(pch, true, false, false, false, false);
-		pch = strtok(NULL, ";");
+		pch = strtok(nullptr, ";");
 	}
 
 	// Graphics pack
@@ -75,10 +75,10 @@ void ModsManager::LoadMods()
 	// Misc mods
 	string miscMods = reader.Get("Misc", "LoadedMiscMods", "");
 	pch = strtok(&miscMods[0], ";");
-	while (pch != NULL)
+	while (pch != nullptr)
 	{
 		AddMod(pch, false, false, false, false, true);
-		pch = strtok(NULL, ";");
+		pch = strtok(nullptr, ";");
 	}
 }
 

@@ -35,7 +35,7 @@ using namespace std;
 CreateCharacter::CreateCharacter(Renderer* pRenderer, OpenGLGUI* pGUI, FrontendManager* pFrontendManager, int windowWidth, int windowHeight)
   : FrontendPage(pRenderer, pGUI, pFrontendManager, FrontendScreen_CreateCharacter, windowWidth, windowHeight)
 {
-	m_pSelectedNPC = NULL;
+	m_pSelectedNPC = nullptr;
 
 	m_toolTipVisible = false;
 
@@ -675,14 +675,14 @@ void CreateCharacter::Load()
 	LoadSelectionCharacters();
 
 	Item* pCampFire = VoxGame::GetInstance()->GetItemManager()->CreateItem(vec3(25.0f, 0.5f, 3.5f), vec3(0.0f, 0.0f, 0.0f), vec3(0.0f, 45.0f, 0.0f), "media/gamedata/items/CampFire/CampFire.item", eItem_CampFire, "CreateScreen Camp Fire", true, false, 0.06f);
-	if (pCampFire != NULL)
+	if (pCampFire != nullptr)
 	{
 		pCampFire->SetCreateDyingLights(false);
 	}
 
-	m_pHoverCreatioNPC = NULL;
-	m_pSelectedNPC = NULL;
-	m_pCustomCreationNPC = NULL;
+	m_pHoverCreatioNPC = nullptr;
+	m_pSelectedNPC = nullptr;
+	m_pCustomCreationNPC = nullptr;
 
 	m_classTextFadeInAlpha = 0.0f;
 	m_classTextFadeInFadeInTime = 2.5f;
@@ -732,10 +732,10 @@ void CreateCharacter::Unload()
 	}
 	m_vpCharacterLineUp.clear();
 
-	if(m_pCustomCreationNPC != NULL)
+	if(m_pCustomCreationNPC != nullptr)
 	{
 		VoxGame::GetInstance()->GetNPCManager()->DeleteNPC(m_pCustomCreationNPC->GetName());
-		m_pCustomCreationNPC = NULL;
+		m_pCustomCreationNPC = nullptr;
 	}
 
 	VoxGame::GetInstance()->GetItemManager()->RemoveItem("CreateScreen Camp Fire");
@@ -910,7 +910,7 @@ void CreateCharacter::SetSelectedNPC(NPC* pSelectedNPC)
 		{
 			vec3 centralPoint = vec3(25.0f, 1.0f, 3.0f);
 
-			if(m_pSelectedNPC != NULL)
+			if(m_pSelectedNPC != nullptr)
 			{
 				m_pSelectedNPC->SetTargetPosition(m_selectionNPCOriginPoint);
 				m_pSelectedNPC->SetMoveBackToPosition(m_selectionNPCOriginPoint);
@@ -918,7 +918,7 @@ void CreateCharacter::SetSelectedNPC(NPC* pSelectedNPC)
 			}
 
 			m_pSelectedNPC = pSelectedNPC;
-			if(m_pSelectedNPC != NULL)
+			if(m_pSelectedNPC != nullptr)
 			{
 				if(pSelectedNPC->HasReachedTargetPosition())
 				{
@@ -935,7 +935,7 @@ void CreateCharacter::SetSelectedNPC(NPC* pSelectedNPC)
 
 					//ShowTooltip((int)screenPos.x, (int)screenPos.y);
 
-					if(m_pGUI->GetComponent(m_pNextButton) == NULL)
+					if(m_pGUI->GetComponent(m_pNextButton) == nullptr)
 					{
 						m_pGUI->AddComponent(m_pNextButton);
 					}
@@ -1184,7 +1184,7 @@ void CreateCharacter::DeletePresetButtons()
 
 void CreateCharacter::ShowTooltip(int x, int y)
 {
-	if(m_pSelectedNPC != NULL)
+	if(m_pSelectedNPC != nullptr)
 	{
 		m_pTooltipNameLabel->SetText(m_pSelectedNPC->GetName());
 
@@ -1497,7 +1497,7 @@ void CreateCharacter::Update(float dt)
 	}
 
 	// Character sliders
-	if(m_pCustomCreationNPC != NULL)
+	if(m_pCustomCreationNPC != nullptr)
 	{
 		m_pCustomCreationNPC->GetVoxelCharacter()->SetCharacterScale(m_pCharacterSizeSlider->GetCurrentValue()*0.08f);
 		m_pCustomCreationNPC->UpdateRadius();
@@ -1538,7 +1538,7 @@ void CreateCharacter::Update(float dt)
 	// Arrow rotations
 	if(m_rightArrowPressed)
 	{
-		if(m_pCustomCreationNPC != NULL)
+		if(m_pCustomCreationNPC != nullptr)
 		{
 			float rotation = m_pCustomCreationNPC->GetRotation() + 150.0f * dt;
 			m_pCustomCreationNPC->SetRotation(rotation);
@@ -1548,7 +1548,7 @@ void CreateCharacter::Update(float dt)
 	}
 	if(m_leftArrowPressed)
 	{
-		if(m_pCustomCreationNPC != NULL)
+		if(m_pCustomCreationNPC != nullptr)
 		{
 			float rotation = m_pCustomCreationNPC->GetRotation() - 150.0f * dt;
 			m_pCustomCreationNPC->SetRotation(rotation);
@@ -1575,7 +1575,7 @@ void CreateCharacter::Render2D()
 {
 	FrontendPage::Render2D();
 
-	if(m_pHoverCreatioNPC != NULL && m_pHoverCreatioNPC != m_pSelectedNPC)
+	if(m_pHoverCreatioNPC != nullptr && m_pHoverCreatioNPC != m_pSelectedNPC)
 	{
 		vec2 screenPos = m_pHoverCreatioNPC->GetScreenPosition();
 		char className[32];
@@ -1598,7 +1598,7 @@ void CreateCharacter::Render2D()
 		m_pRenderer->PopMatrix();
 	}
 
-	if(m_pSelectedNPC != NULL)
+	if(m_pSelectedNPC != nullptr)
 	{
 		vec2 screenPos = m_pSelectedNPC->GetScreenPosition();
 		char className[32];
@@ -1714,8 +1714,8 @@ void CreateCharacter::SelectPressed()
 			m_pCustomCreationNPC->GetVoxelCharacter()->SetCharacterMatrixRenderParams(presetName.c_str(), scale, offset.x, offset.y, offset.z);
 		}
 
-		m_pHoverCreatioNPC = NULL;
-		m_pSelectedNPC = NULL;
+		m_pHoverCreatioNPC = nullptr;
+		m_pSelectedNPC = nullptr;
 
 		// Remove the other NPCs lineup
 		for(unsigned int i = 0; i < m_vpCharacterLineUp.size(); i++)
@@ -1729,7 +1729,7 @@ void CreateCharacter::SelectPressed()
 		}
 		m_vpCharacterLineUp.clear();
 
-		if(m_pCustomCreationNPC != NULL)
+		if(m_pCustomCreationNPC != nullptr)
 		{
 			m_pCustomCreationNPC->SetSubSelectionRender(true);
 		}
@@ -1778,7 +1778,7 @@ void CreateCharacter::CreatePressed()
 			sprintf(characterFilename, "saves/characters/%s/%s.character", type.c_str(), modelName.c_str());
 
 			// Save character
-			if(m_pCustomCreationNPC != NULL)
+			if(m_pCustomCreationNPC != nullptr)
 			{
 				m_pCustomCreationNPC->GetVoxelCharacter()->SaveVoxelCharacter(qbFilename, facesFilename, characterFilename);
 
@@ -1789,7 +1789,7 @@ void CreateCharacter::CreatePressed()
 
 				VoxGame::GetInstance()->GetNPCManager()->DeleteNPC(m_pCustomCreationNPC->GetName());
 
-				m_pCustomCreationNPC = NULL;
+				m_pCustomCreationNPC = nullptr;
 			}
 
 			m_pFrontendManager->SetFrontendScreen(FrontendScreen_SelectCharacter);
@@ -1815,10 +1815,10 @@ void CreateCharacter::BackPressed()
 	{
 		m_creatingCustom = false;
 		
-		if(m_pCustomCreationNPC != NULL)
+		if(m_pCustomCreationNPC != nullptr)
 		{
 			VoxGame::GetInstance()->GetNPCManager()->DeleteNPC(m_pCustomCreationNPC->GetName());
-			m_pCustomCreationNPC = NULL;
+			m_pCustomCreationNPC = nullptr;
 		}
 
 		LoadSelectionCharacters();
@@ -1852,10 +1852,10 @@ void CreateCharacter::_EyesTexturesPulldownChanged(void *pData)
 
 void CreateCharacter::EyesTexturesPulldownChanged()
 {
-	if(m_pCustomCreationNPC != NULL)
+	if(m_pCustomCreationNPC != nullptr)
 	{
 		MenuItem* pEyesTexture = m_pEyesTexturesPulldown->GetSelectedMenuItem();
-		if(pEyesTexture != NULL)
+		if(pEyesTexture != nullptr)
 		{
 			m_pCustomCreationNPC->GetVoxelCharacter()->ModifyEyesTextures("media/gamedata/models", "Human", pEyesTexture->GetLabel().GetText().c_str());
 		}
@@ -1870,10 +1870,10 @@ void CreateCharacter::_PresetsPulldownChanged(void *pData)
 
 void CreateCharacter::PresetsPulldownChanged()
 {
-	if (m_pCustomCreationNPC != NULL)
+	if (m_pCustomCreationNPC != nullptr)
 	{
 		MenuItem* pPreset = m_pPresetsPulldown->GetSelectedMenuItem();
-		if (pPreset != NULL)
+		if (pPreset != nullptr)
 		{
 			char characterBaseFolder[128];
 			char presetModelFilename[256];

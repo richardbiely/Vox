@@ -28,16 +28,16 @@ VoxelWeapon::VoxelWeapon(Renderer* pRenderer, QubicleBinaryManager* pQubicleBina
 	Reset(); 
 
 	m_numLights = 0;
-	m_pLights = NULL;
+	m_pLights = nullptr;
 
 	m_numAnimatedSections = 0;
-	m_pAnimatedSections = NULL;
+	m_pAnimatedSections = nullptr;
 
 	m_numParticleEffects = 0;
-	m_pParticleEffects = NULL;
+	m_pParticleEffects = nullptr;
 
 	m_numWeaponTrails = 0;
-	m_pWeaponTrails = NULL;
+	m_pWeaponTrails = nullptr;
 }
 
 VoxelWeapon::~VoxelWeapon()
@@ -48,7 +48,7 @@ VoxelWeapon::~VoxelWeapon()
 
 void VoxelWeapon::Reset()
 {
-	m_pParentCharacter = NULL;
+	m_pParentCharacter = nullptr;
 
 	m_boneIndex = -1;
 
@@ -382,21 +382,21 @@ void VoxelWeapon::UnloadWeapon()
 	if(m_numLights > 0)
 	{
 		delete[] m_pLights;
-		m_pLights = NULL;
+		m_pLights = nullptr;
 		m_numLights = 0;
 	}
 
 	if(m_numAnimatedSections > 0)
 	{
 		delete[] m_pAnimatedSections;
-		m_pAnimatedSections = NULL;
+		m_pAnimatedSections = nullptr;
 		m_numAnimatedSections = 0;
 	}
 
 	if(m_numParticleEffects > 0)
 	{
 		delete[] m_pParticleEffects;
-		m_pParticleEffects = NULL;
+		m_pParticleEffects = nullptr;
 		m_numParticleEffects = 0;
 	}
 
@@ -405,11 +405,11 @@ void VoxelWeapon::UnloadWeapon()
 		for(int i = 0; i < m_numWeaponTrails; i++)
 		{
 			delete[] m_pWeaponTrails[i].m_pTrailPoints;
-			m_pWeaponTrails[i].m_pTrailPoints = NULL;
+			m_pWeaponTrails[i].m_pTrailPoints = nullptr;
 		}
 
 		delete[] m_pWeaponTrails;
-		m_pWeaponTrails = NULL;
+		m_pWeaponTrails = nullptr;
 		m_numWeaponTrails = 0;
 	}
 
@@ -425,7 +425,7 @@ void VoxelWeapon::SetVoxelCharacterParent(VoxelCharacter* pParentCharacter)
 
 void VoxelWeapon::SetBoneAttachment(const char* boneName)
 {
-	if(m_pParentCharacter != NULL)
+	if(m_pParentCharacter != nullptr)
 	{
 		m_boneIndex = m_pParentCharacter->GetBoneIndex(boneName);
 
@@ -536,7 +536,7 @@ void VoxelWeapon::GetLightParams(int lightIndex, unsigned int *lightId, vec3 *po
 
 	if(m_pLights[lightIndex].m_connectedToSectionIndex == -1)
 	{
-		if(m_pParentCharacter != NULL)
+		if(m_pParentCharacter != nullptr)
 		{
 			*position *= m_pParentCharacter->GetCharacterScale();
 		}
@@ -563,7 +563,7 @@ void VoxelWeapon::GetParticleEffectParams(int particleEffectIndex, unsigned int 
 
 	if(m_pParticleEffects[particleEffectIndex].m_connectedToSectionIndex == -1)
 	{
-		if(m_pParentCharacter != NULL)
+		if(m_pParentCharacter != nullptr)
 		{
 			*position *= m_pParentCharacter->GetCharacterScale();
 		}
@@ -659,7 +659,7 @@ void VoxelWeapon::CreateWeaponTrailPoint()
 			endPosition += (vec3(m_renderOffset.x, m_renderOffset.y, m_renderOffset.z) * m_renderScale);
 
 			// Rotation due to the weapon facing forwards for hand directions
-			if (m_pParentCharacter != NULL)
+			if (m_pParentCharacter != nullptr)
 			{
 				Matrix4x4 rotationMatrix;
 				rotationMatrix.SetRotation(DegToRad(90.0f), 0.0f, 0.0f);
@@ -677,7 +677,7 @@ void VoxelWeapon::CreateWeaponTrailPoint()
 			}
 
 			// Rotation due to 3dsmax export affecting the bone rotations
-			if (m_pParentCharacter != NULL)
+			if (m_pParentCharacter != nullptr)
 			{
 				Matrix4x4 rotationMatrix;
 				rotationMatrix.SetRotation(0.0f, 0.0f, DegToRad(-90.0f));
@@ -698,7 +698,7 @@ void VoxelWeapon::CreateWeaponTrailPoint()
 				endPosition = rotationMatrix * endPosition;
 			}
 
-			if (m_pParentCharacter != NULL)
+			if (m_pParentCharacter != nullptr)
 			{
 				if (m_boneIndex != -1)
 				{
@@ -1108,7 +1108,7 @@ void VoxelWeapon::Update(float dt)
 			vec3 lightPosition = m_pLights[i].m_lightOffset;
 
 			// Rotation due to the weapon facing forwards for hand directions
-			if(m_pParentCharacter != NULL)
+			if(m_pParentCharacter != nullptr)
 			{
 				Matrix4x4 rotationMatrix;
 				rotationMatrix.SetRotation(DegToRad(90.0f), 0.0f, 0.0f);
@@ -1130,7 +1130,7 @@ void VoxelWeapon::Update(float dt)
 		lightPosition += (vec3(m_renderOffset.x, m_renderOffset.y, m_renderOffset.z) * m_renderScale);
 
 		// Rotation due to the weapon facing forwards for hand directions
-		if(m_pParentCharacter != NULL)
+		if(m_pParentCharacter != nullptr)
 		{
 			Matrix4x4 rotationMatrix;
 			rotationMatrix.SetRotation(DegToRad(90.0f), 0.0f, 0.0f);
@@ -1146,7 +1146,7 @@ void VoxelWeapon::Update(float dt)
 		}
 
 		// Rotation due to 3dsmax export affecting the bone rotations
-		if(m_pParentCharacter != NULL)
+		if(m_pParentCharacter != nullptr)
 		{
 			Matrix4x4 rotationMatrix;
 			rotationMatrix.SetRotation(0.0f, 0.0f, DegToRad(-90.0f));
@@ -1168,7 +1168,7 @@ void VoxelWeapon::Update(float dt)
 		// Translate for initial block offset
 		//lightPosition -= vec3(0.5f, 0.5f, 0.5f);
 
-		if(m_pParentCharacter != NULL)
+		if(m_pParentCharacter != nullptr)
 		{
 			if(m_boneIndex != -1)
 			{
@@ -1247,7 +1247,7 @@ void VoxelWeapon::Update(float dt)
 			vec3 particleEffectPosition = m_pParticleEffects[i].m_positionOffset;
 
 			// Rotation due to the weapon facing forwards for hand directions
-			if(m_pParentCharacter != NULL)
+			if(m_pParentCharacter != nullptr)
 			{
 				Matrix4x4 rotationMatrix;
 				rotationMatrix.SetRotation(DegToRad(90.0f), 0.0f, 0.0f);
@@ -1268,7 +1268,7 @@ void VoxelWeapon::Update(float dt)
 		particleEffectPosition += (vec3(m_renderOffset.x, m_renderOffset.y, m_renderOffset.z) * m_renderScale);
 
 		// Rotation due to the weapon facing forwards for hand directions
-		if(m_pParentCharacter != NULL)
+		if(m_pParentCharacter != nullptr)
 		{
 			Matrix4x4 rotationMatrix;
 			rotationMatrix.SetRotation(DegToRad(90.0f), 0.0f, 0.0f);
@@ -1284,7 +1284,7 @@ void VoxelWeapon::Update(float dt)
 		}
 
 		// Rotation due to 3dsmax export affecting the bone rotations
-		if(m_pParentCharacter != NULL)
+		if(m_pParentCharacter != nullptr)
 		{
 			Matrix4x4 rotationMatrix;
 			rotationMatrix.SetRotation(0.0f, 0.0f, DegToRad(-90.0f));
@@ -1306,7 +1306,7 @@ void VoxelWeapon::Update(float dt)
 		// Translate for initial block offset
 		//particleEffectPosition -= vec3(0.5f, 0.5f, 0.5f);
 
-		if(m_pParentCharacter != NULL)
+		if(m_pParentCharacter != nullptr)
 		{
 			if(m_boneIndex != -1)
 			{
@@ -1391,7 +1391,7 @@ void VoxelWeapon::Update(float dt)
 void VoxelWeapon::Render(bool renderOutline, bool reflection, bool silhouette, Colour OutlineColour)
 {
 	m_pRenderer->PushMatrix();
-		if(m_pParentCharacter != NULL)
+		if(m_pParentCharacter != nullptr)
 		{
 			if(m_boneIndex != -1)
 			{
@@ -1510,7 +1510,7 @@ void VoxelWeapon::Render(bool renderOutline, bool reflection, bool silhouette, C
 void VoxelWeapon::RenderPaperdoll()
 {
 	m_pRenderer->PushMatrix();
-		if(m_pParentCharacter != NULL)
+		if(m_pParentCharacter != nullptr)
 		{
 			if(m_boneIndex != -1)
 			{

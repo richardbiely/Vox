@@ -76,16 +76,16 @@ public:
 
 	void ClearInterpolators();
 
-	FloatInterpolation* CreateFloatInterpolation(float *val, float start, float end, float time, float easing, FloatInterpolation* aNext = NULL, FunctionCallback aCallback = NULL, void *aData = NULL);
+	FloatInterpolation* CreateFloatInterpolation(float *val, float start, float end, float time, float easing, FloatInterpolation* aNext = nullptr, FunctionCallback aCallback = nullptr, void *aData = nullptr);
 	void LinkFloatInterpolation(FloatInterpolation* aFirst, FloatInterpolation* aSecond);
 	void AddFloatInterpolation(FloatInterpolation* aInterpolation);
-	void AddFloatInterpolation(float *val, float start, float end, float time, float easing, FloatInterpolation* aNext = NULL, FunctionCallback aCallback = NULL, void *aData = NULL);
+	void AddFloatInterpolation(float *val, float start, float end, float time, float easing, FloatInterpolation* aNext = nullptr, FunctionCallback aCallback = nullptr, void *aData = nullptr);
 	void RemoveFloatInterpolationByVariable(float *val);
 
-	IntInterpolation* CreateIntInterpolation(int *val, int start, int end, float time, float easing, IntInterpolation* aNext = NULL, FunctionCallback aCallback = NULL, void *aData = NULL);
+	IntInterpolation* CreateIntInterpolation(int *val, int start, int end, float time, float easing, IntInterpolation* aNext = nullptr, FunctionCallback aCallback = nullptr, void *aData = nullptr);
 	void LinkIntInterpolation(IntInterpolation* aFirst, IntInterpolation* aSecond);
 	void AddIntInterpolation(IntInterpolation* aInterpolation);
-	void AddIntInterpolation(int *val, int start, int end, float time, float easing, IntInterpolation* aNext = NULL, FunctionCallback aCallback = NULL, void *aData = NULL);
+	void AddIntInterpolation(int *val, int start, int end, float time, float easing, IntInterpolation* aNext = nullptr, FunctionCallback aCallback = nullptr, void *aData = nullptr);
 	void RemoveIntInterpolationByVariable(int *val);
 
 	void SetPaused(bool pause);

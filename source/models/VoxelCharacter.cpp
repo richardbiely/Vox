@@ -59,15 +59,15 @@ void VoxelCharacter::Reset()
 
 	m_currentFrame = 0;
 
-	m_pVoxelModel = NULL;
-	m_pCharacterModel = NULL;
+	m_pVoxelModel = nullptr;
+	m_pCharacterModel = nullptr;
 	for(int i = 0; i < AnimationSections_NUMSECTIONS; i++)
 	{
-		m_pCharacterAnimator[i] = NULL;
+		m_pCharacterAnimator[i] = nullptr;
 	}	
 
-	m_pRightWeapon = NULL;
-	m_pLeftWeapon = NULL;
+	m_pRightWeapon = nullptr;
+	m_pLeftWeapon = nullptr;
 	m_rightWeaponLoaded = false;
 	m_leftWeaponLoaded = false;
 
@@ -82,7 +82,7 @@ void VoxelCharacter::Reset()
 
 	// Facial expressions
 	m_numFacialExpressions = 0;
-	m_pFacialExpressions = NULL;
+	m_pFacialExpressions = nullptr;
 	m_faceEyesTexture = -1;
 	m_faceMouthTexture = -1;	
 	m_eyesOffset = vec3(0.0f, 0.0f, 0.0f);
@@ -126,7 +126,7 @@ void VoxelCharacter::Reset()
 	// Talking animation
 	m_bTalkingAnimationEnabled = false;
 	m_numTalkingMouths = 0;
-	m_pTalkingAnimations = NULL;
+	m_pTalkingAnimations = nullptr;
 	m_currentTalkingTexture = 0;
 	m_talkingWaitTimer = 0.0f;
 	m_talkingWaitTime = 0.12f;
@@ -209,33 +209,33 @@ void VoxelCharacter::UnloadCharacter()
 			delete m_pVoxelModel;
 		}
 
-		m_pVoxelModel = NULL;
+		m_pVoxelModel = nullptr;
 		delete m_pCharacterModel;
-		m_pCharacterModel = NULL;
+		m_pCharacterModel = nullptr;
 		for(int i = 0; i < AnimationSections_NUMSECTIONS; i++)
 		{
 			delete m_pCharacterAnimator[i];
-			m_pCharacterAnimator[i] = NULL;
+			m_pCharacterAnimator[i] = nullptr;
 		}
 
 		delete m_pCharacterAnimatorPaperdoll_Left;
 		delete m_pCharacterAnimatorPaperdoll_Right;
 
 		delete[] m_pFacialExpressions;
-		m_pFacialExpressions = NULL;
+		m_pFacialExpressions = nullptr;
 		m_numFacialExpressions = 0;
 	}
 
-	if(m_pRightWeapon != NULL)
+	if(m_pRightWeapon != nullptr)
 	{
 		delete m_pRightWeapon;
-		m_pRightWeapon = NULL;
+		m_pRightWeapon = nullptr;
 		m_rightWeaponLoaded = false;		
 	}
-	if(m_pLeftWeapon != NULL)
+	if(m_pLeftWeapon != nullptr)
 	{
 		delete m_pLeftWeapon;
-		m_pLeftWeapon = NULL;
+		m_pLeftWeapon = nullptr;
 		m_leftWeaponLoaded = false;
 	}
 
@@ -250,11 +250,11 @@ void VoxelCharacter::RebuildVoxelModel(bool faceMerge)
 {
 	m_pVoxelModel->RebuildMesh(faceMerge);
 
-	if (m_pRightWeapon != NULL)
+	if (m_pRightWeapon != nullptr)
 	{
 		m_pRightWeapon->RebuildVoxelModel(faceMerge);
 	}
-	if (m_pLeftWeapon != NULL)
+	if (m_pLeftWeapon != nullptr)
 	{
 		m_pLeftWeapon->RebuildVoxelModel(faceMerge);
 	}
@@ -743,17 +743,17 @@ void VoxelCharacter::SetBoneScale(float scale)
 // Rendering modes
 void VoxelCharacter::SetWireFrameRender(bool wireframe)
 {
-	if(m_pVoxelModel != NULL)
+	if(m_pVoxelModel != nullptr)
 	{
 		m_pVoxelModel->SetWireFrameRender(wireframe);
 	}
 
-	if(m_pLeftWeapon != NULL && m_leftWeaponLoaded)
+	if(m_pLeftWeapon != nullptr && m_leftWeaponLoaded)
 	{
 		m_pLeftWeapon->SetWireFrameRender(wireframe);
 	}
 
-	if(m_pRightWeapon != NULL && m_rightWeaponLoaded)
+	if(m_pRightWeapon != nullptr && m_rightWeaponLoaded)
 	{
 		m_pRightWeapon->SetWireFrameRender(wireframe);
 	}
@@ -837,7 +837,7 @@ void VoxelCharacter::StartBreathAnimation()
 	FloatInterpolation* lBodyYInterpolation1 = pInterpolator->CreateFloatInterpolation(&m_breathingBodyYOffset, 0.0f, 0.35f, 1.5f, 100.0f);
 	FloatInterpolation* lBodyYInterpolation2 = pInterpolator->CreateFloatInterpolation(&m_breathingBodyYOffset, 0.35f, 0.35f, 0.175f, 0.0f);
 	FloatInterpolation* lBodyYInterpolation3 = pInterpolator->CreateFloatInterpolation(&m_breathingBodyYOffset, 0.35f, 0.0f, 1.5f, -100.0f);
-	FloatInterpolation* lBodyYInterpolation4 = pInterpolator->CreateFloatInterpolation(&m_breathingBodyYOffset, 0.0f, 0.0f, 0.05f, 0.0f, NULL, _BreathAnimationFinished, this);
+	FloatInterpolation* lBodyYInterpolation4 = pInterpolator->CreateFloatInterpolation(&m_breathingBodyYOffset, 0.0f, 0.0f, 0.05f, 0.0f, nullptr, _BreathAnimationFinished, this);
 	pInterpolator->LinkFloatInterpolation(lBodyYInterpolation1, lBodyYInterpolation2);
 	pInterpolator->LinkFloatInterpolation(lBodyYInterpolation2, lBodyYInterpolation3);
 	pInterpolator->LinkFloatInterpolation(lBodyYInterpolation3, lBodyYInterpolation4);
@@ -1261,7 +1261,7 @@ bool VoxelCharacter::IsRandomLookDirectionEnabled() const
 
 int VoxelCharacter::GetNumAnimations() const
 {
-	if(m_pCharacterAnimator[AnimationSections_FullBody] == NULL)
+	if(m_pCharacterAnimator[AnimationSections_FullBody] == nullptr)
 	{
 		return 0;
 	}
@@ -1271,7 +1271,7 @@ int VoxelCharacter::GetNumAnimations() const
 
 const char* VoxelCharacter::GetAnimationName(int index) const
 {
-	if(m_pCharacterAnimator[AnimationSections_FullBody] == NULL)
+	if(m_pCharacterAnimator[AnimationSections_FullBody] == nullptr)
 	{
 		return "";
 	}
@@ -1281,7 +1281,7 @@ const char* VoxelCharacter::GetAnimationName(int index) const
 
 void VoxelCharacter::PlayAnimation(AnimationSections section, bool waitForComplete, AnimationSections syncWithSection, const char *lAnimationName)
 {
-	if(m_pCharacterAnimator[AnimationSections_FullBody] == NULL)
+	if(m_pCharacterAnimator[AnimationSections_FullBody] == nullptr)
 	{
 		return;
 	}
@@ -1299,11 +1299,11 @@ void VoxelCharacter::PlayAnimation(AnimationSections section, bool waitForComple
 					m_pCharacterAnimator[i]->PlayAnimation(lAnimationName);
 
 					// Stop weapon trails
-					if (m_pRightWeapon != NULL)
+					if (m_pRightWeapon != nullptr)
 					{
 						m_pRightWeapon->StopWeaponTrails();
 					}
-					if (m_pLeftWeapon != NULL)
+					if (m_pLeftWeapon != nullptr)
 					{
 						m_pLeftWeapon->StopWeaponTrails();
 					}
@@ -1318,14 +1318,14 @@ void VoxelCharacter::PlayAnimation(AnimationSections section, bool waitForComple
 		// Stop weapon trails
 		if (section == AnimationSections_Right_Arm_Hand)
 		{
-			if (m_pRightWeapon != NULL)
+			if (m_pRightWeapon != nullptr)
 			{
 				m_pRightWeapon->StopWeaponTrails();
 			}
 		}
 		if (section == AnimationSections_Left_Arm_Hand)
 		{
-			if (m_pLeftWeapon != NULL)
+			if (m_pLeftWeapon != nullptr)
 			{
 				m_pLeftWeapon->StopWeaponTrails();
 			}
@@ -1335,7 +1335,7 @@ void VoxelCharacter::PlayAnimation(AnimationSections section, bool waitForComple
 
 int VoxelCharacter::GetCurrentAnimationIndex(AnimationSections section)
 {
-	if(m_pCharacterAnimator[AnimationSections_FullBody] == NULL)
+	if(m_pCharacterAnimator[AnimationSections_FullBody] == nullptr)
 	{
 		return -1;
 	}
@@ -1345,7 +1345,7 @@ int VoxelCharacter::GetCurrentAnimationIndex(AnimationSections section)
 
 void VoxelCharacter::SetBlendAnimation(AnimationSections section, bool waitForComplete, AnimationSections syncWithSection, const char *lStartAnimationName, const char *lEndAnimationName, float blendTime)
 {
-	if(m_pCharacterAnimator[AnimationSections_FullBody] == NULL)
+	if(m_pCharacterAnimator[AnimationSections_FullBody] == nullptr)
 	{
 		return;
 	}
@@ -1363,11 +1363,11 @@ void VoxelCharacter::SetBlendAnimation(AnimationSections section, bool waitForCo
 					m_pCharacterAnimator[i]->StartBlendAnimation(lStartAnimationName, lEndAnimationName, blendTime);
 
 					// Stop weapon trails
-					if (m_pRightWeapon != NULL)
+					if (m_pRightWeapon != nullptr)
 					{
 						m_pRightWeapon->StopWeaponTrails();
 					}
-					if (m_pLeftWeapon != NULL)
+					if (m_pLeftWeapon != nullptr)
 					{
 						m_pLeftWeapon->StopWeaponTrails();
 					}
@@ -1382,14 +1382,14 @@ void VoxelCharacter::SetBlendAnimation(AnimationSections section, bool waitForCo
 		// Stop weapon trails
 		if (section == AnimationSections_Right_Arm_Hand)
 		{
-			if (m_pRightWeapon != NULL)
+			if (m_pRightWeapon != nullptr)
 			{
 				m_pRightWeapon->StopWeaponTrails();
 			}
 		}
 		if (section == AnimationSections_Left_Arm_Hand)
 		{
-			if (m_pLeftWeapon != NULL)
+			if (m_pLeftWeapon != nullptr)
 			{
 				m_pLeftWeapon->StopWeaponTrails();
 			}
@@ -1399,7 +1399,7 @@ void VoxelCharacter::SetBlendAnimation(AnimationSections section, bool waitForCo
 
 void VoxelCharacter::BlendIntoAnimation(AnimationSections section, bool waitForComplete, AnimationSections syncWithSection, const char *lAnimationName, float blendTime)
 {
-	if(m_pCharacterAnimator[AnimationSections_FullBody] == NULL)
+	if(m_pCharacterAnimator[AnimationSections_FullBody] == nullptr)
 	{
 		return;
 	}
@@ -1417,11 +1417,11 @@ void VoxelCharacter::BlendIntoAnimation(AnimationSections section, bool waitForC
 					m_pCharacterAnimator[i]->BlendIntoAnimation(lAnimationName, blendTime);
 
 					// Stop weapon trails
-					if (m_pRightWeapon != NULL)
+					if (m_pRightWeapon != nullptr)
 					{
 						m_pRightWeapon->StopWeaponTrails();
 					}
-					if (m_pLeftWeapon != NULL)
+					if (m_pLeftWeapon != nullptr)
 					{
 						m_pLeftWeapon->StopWeaponTrails();
 					}
@@ -1440,14 +1440,14 @@ void VoxelCharacter::BlendIntoAnimation(AnimationSections section, bool waitForC
 				// Stop weapon trails
 				if (section == AnimationSections_Right_Arm_Hand)
 				{
-					if (m_pRightWeapon != NULL)
+					if (m_pRightWeapon != nullptr)
 					{
 						m_pRightWeapon->StopWeaponTrails();
 					}
 				}
 				if (section == AnimationSections_Left_Arm_Hand)
 				{
-					if (m_pLeftWeapon != NULL)
+					if (m_pLeftWeapon != nullptr)
 					{
 						m_pLeftWeapon->StopWeaponTrails();
 					}
@@ -1459,7 +1459,7 @@ void VoxelCharacter::BlendIntoAnimation(AnimationSections section, bool waitForC
 
 bool VoxelCharacter::HasAnimationFinished(AnimationSections section) const
 {
-	if(m_pCharacterAnimator[AnimationSections_FullBody] == NULL)
+	if(m_pCharacterAnimator[AnimationSections_FullBody] == nullptr)
 	{
 		return false;
 	}
@@ -1469,7 +1469,7 @@ bool VoxelCharacter::HasAnimationFinished(AnimationSections section) const
 
 bool VoxelCharacter::HasAnimationLooped(AnimationSections section) const
 {
-	if(m_pCharacterAnimator[AnimationSections_FullBody] == NULL)
+	if(m_pCharacterAnimator[AnimationSections_FullBody] == nullptr)
 	{
 		return false;
 	}
@@ -1481,7 +1481,7 @@ void VoxelCharacter::StepAnimationFrame(float dt)
 {
 	for(int i = 0; i < AnimationSections_NUMSECTIONS; i++)
 	{
-		if(m_pCharacterAnimator[i] != NULL)
+		if(m_pCharacterAnimator[i] != nullptr)
 		{
 			m_pCharacterAnimator[i]->Update(dt);
 		}
@@ -1578,7 +1578,7 @@ void VoxelCharacter::Update(float dt, float animationSpeed[AnimationSections_NUM
 	// Update skeleton animation
 	for(int i = 0; i < AnimationSections_NUMSECTIONS; i++)
 	{
-		if(m_pCharacterAnimator[i] != NULL)
+		if(m_pCharacterAnimator[i] != nullptr)
 		{
 			if(m_updateAnimator)
 			{
@@ -1590,11 +1590,11 @@ void VoxelCharacter::Update(float dt, float animationSpeed[AnimationSections_NUM
 	// Update paperdoll animator
 	if(m_updateAnimator)
 	{
-		if (m_pCharacterAnimatorPaperdoll_Left != NULL)
+		if (m_pCharacterAnimatorPaperdoll_Left != nullptr)
 		{
 			m_pCharacterAnimatorPaperdoll_Left->Update(dt);
 		}
-		if (m_pCharacterAnimatorPaperdoll_Right != NULL)
+		if (m_pCharacterAnimatorPaperdoll_Right != nullptr)
 		{
 			m_pCharacterAnimatorPaperdoll_Right->Update(dt);
 		}
@@ -1644,7 +1644,7 @@ void VoxelCharacter::Update(float dt, float animationSpeed[AnimationSections_NUM
 	}
 
 	// Animated weapons
-	if(m_pLeftWeapon != NULL)
+	if(m_pLeftWeapon != nullptr)
 	{
 		if(m_leftWeaponLoaded)
 		{
@@ -1652,7 +1652,7 @@ void VoxelCharacter::Update(float dt, float animationSpeed[AnimationSections_NUM
 		}
 	}
 
-	if(m_pRightWeapon != NULL)
+	if(m_pRightWeapon != nullptr)
 	{
 		if(m_rightWeaponLoaded)
 		{
@@ -1660,17 +1660,17 @@ void VoxelCharacter::Update(float dt, float animationSpeed[AnimationSections_NUM
 		}
 	}
 
-	if (m_pLeftWeapon != NULL)
+	if (m_pLeftWeapon != nullptr)
 	{
 		m_pLeftWeapon->CreateWeaponTrailPoint();
 	}
-	if (m_pRightWeapon != NULL)
+	if (m_pRightWeapon != nullptr)
 	{
 		m_pRightWeapon->CreateWeaponTrailPoint();
 	}
 
 	// Update the weapon trails, based on the animation frames
-	if (m_pCharacterAnimator[AnimationSections_Left_Arm_Hand] != NULL)
+	if (m_pCharacterAnimator[AnimationSections_Left_Arm_Hand] != nullptr)
 	{
 		bool leftWeaponTrailActive = m_pCharacterAnimator[AnimationSections_Left_Arm_Hand]->GetLeftWeaponTrailActive();
 		if (m_pLeftWeapon->IsWeaponTrailsActive() == false && leftWeaponTrailActive == true)
@@ -1682,7 +1682,7 @@ void VoxelCharacter::Update(float dt, float animationSpeed[AnimationSections_NUM
 			m_pLeftWeapon->StopWeaponTrails();
 		}
 	}
-	if (m_pCharacterAnimator[AnimationSections_Right_Arm_Hand] != NULL)
+	if (m_pCharacterAnimator[AnimationSections_Right_Arm_Hand] != nullptr)
 	{
 		bool rightWeaponTrailActive = m_pCharacterAnimator[AnimationSections_Right_Arm_Hand]->GetRightWeaponTrailActive();
 		if (m_pRightWeapon->IsWeaponTrailsActive() == false && rightWeaponTrailActive == true)
@@ -1698,7 +1698,7 @@ void VoxelCharacter::Update(float dt, float animationSpeed[AnimationSections_NUM
 
 void VoxelCharacter::SetWeaponTrailsOriginMatrix(float dt, Matrix4x4 originMatrix)
 {
-	if(m_pLeftWeapon != NULL)
+	if(m_pLeftWeapon != nullptr)
 	{
 		if(m_leftWeaponLoaded)
 		{
@@ -1706,7 +1706,7 @@ void VoxelCharacter::SetWeaponTrailsOriginMatrix(float dt, Matrix4x4 originMatri
 		}
 	}
 
-	if(m_pRightWeapon != NULL)
+	if(m_pRightWeapon != nullptr)
 	{
 		if(m_rightWeaponLoaded)
 		{
@@ -1718,7 +1718,7 @@ void VoxelCharacter::SetWeaponTrailsOriginMatrix(float dt, Matrix4x4 originMatri
 // Rendering
 void VoxelCharacter::Render(bool renderOutline, bool reflection, bool silhouette, Colour OutlineColour, bool subSelectionNamePicking)
 {
-	if(m_pVoxelModel != NULL)
+	if(m_pVoxelModel != nullptr)
 	{
 		m_pRenderer->PushMatrix();
 			m_pRenderer->ScaleWorldMatrix(m_characterScale, m_characterScale, m_characterScale);
@@ -1729,7 +1729,7 @@ void VoxelCharacter::Render(bool renderOutline, bool reflection, bool silhouette
 
 void VoxelCharacter::RenderSubSelection(string subSelection, bool renderOutline, bool silhouette, Colour OutlineColour)
 {
-	if(m_pVoxelModel != NULL)
+	if(m_pVoxelModel != nullptr)
 	{
 		m_pRenderer->PushMatrix();
 			m_pRenderer->ScaleWorldMatrix(m_characterScale, m_characterScale, m_characterScale);
@@ -1740,7 +1740,7 @@ void VoxelCharacter::RenderSubSelection(string subSelection, bool renderOutline,
 
 void VoxelCharacter::RenderBones()
 {
-	if(m_pVoxelModel != NULL)
+	if(m_pVoxelModel != nullptr)
 	{
 		m_pRenderer->PushMatrix();
 			m_pRenderer->ScaleWorldMatrix(m_boneScale.x, m_boneScale.y, m_boneScale.z);
@@ -1760,7 +1760,7 @@ void VoxelCharacter::RenderFace()
 		return;
 	}
 
-	if(m_pVoxelModel != NULL)
+	if(m_pVoxelModel != nullptr)
 	{
 		m_pRenderer->PushMatrix();
 			m_pRenderer->ScaleWorldMatrix(m_characterScale, m_characterScale, m_characterScale);
@@ -1771,7 +1771,7 @@ void VoxelCharacter::RenderFace()
 
 void VoxelCharacter::RenderFacingDebug()
 {
-	if(m_pVoxelModel != NULL)
+	if(m_pVoxelModel != nullptr)
 	{
 		m_pRenderer->PushMatrix();
 			m_pRenderer->ScaleWorldMatrix(m_characterScale, m_characterScale, m_characterScale);
@@ -1804,7 +1804,7 @@ void VoxelCharacter::RenderFacingDebug()
 
 void VoxelCharacter::RenderFaceTextures(bool eyesTexture, bool wireframe, bool transparency)
 {
-	if(m_pCharacterModel == NULL || m_pCharacterAnimator == NULL)
+	if(m_pCharacterModel == nullptr || m_pCharacterAnimator == nullptr)
 	{
 		return;
 	}
@@ -1903,7 +1903,7 @@ void VoxelCharacter::RenderFaceTextures(bool eyesTexture, bool wireframe, bool t
 
 void VoxelCharacter::RenderWeapons(bool renderOutline, bool reflection, bool silhouette, Colour OutlineColour)
 {
-	if(m_pLeftWeapon != NULL)
+	if(m_pLeftWeapon != nullptr)
 	{
 		if(m_leftWeaponLoaded && m_renderLeftWeapon)
 		{
@@ -1913,7 +1913,7 @@ void VoxelCharacter::RenderWeapons(bool renderOutline, bool reflection, bool sil
 			m_pRenderer->PopMatrix();
 		}
 	}
-	if(m_pRightWeapon != NULL)
+	if(m_pRightWeapon != nullptr)
 	{
 		if(m_rightWeaponLoaded && m_renderRightWeapon)
 		{
@@ -1927,7 +1927,7 @@ void VoxelCharacter::RenderWeapons(bool renderOutline, bool reflection, bool sil
 
 void VoxelCharacter::RenderWeaponTrails()
 {
-	if(m_pLeftWeapon != NULL)
+	if(m_pLeftWeapon != nullptr)
 	{
 		if(m_leftWeaponLoaded && m_renderLeftWeapon)
 		{
@@ -1936,7 +1936,7 @@ void VoxelCharacter::RenderWeaponTrails()
 			m_pRenderer->PopMatrix();
 		}
 	}
-	if(m_pRightWeapon != NULL)
+	if(m_pRightWeapon != nullptr)
 	{
 		if(m_rightWeaponLoaded && m_renderRightWeapon)
 		{
@@ -1949,7 +1949,7 @@ void VoxelCharacter::RenderWeaponTrails()
 
 void VoxelCharacter::RenderPaperdoll()
 {
-	if(m_pVoxelModel != NULL)
+	if(m_pVoxelModel != nullptr)
 	{
 		m_pRenderer->PushMatrix();
 			m_pRenderer->ScaleWorldMatrix(0.08f, 0.08f, 0.08f);
@@ -1960,7 +1960,7 @@ void VoxelCharacter::RenderPaperdoll()
 
 void VoxelCharacter::RenderPortrait()
 {
-	if(m_pVoxelModel != NULL)
+	if(m_pVoxelModel != nullptr)
 	{
 		Colour OulineColour(1.0f, 1.0f, 0.0f, 1.0f);
 
@@ -1979,7 +1979,7 @@ void VoxelCharacter::RenderFacePaperdoll()
 		return;
 	}
 
-	if(m_pVoxelModel != NULL)
+	if(m_pVoxelModel != nullptr)
 	{
 		m_pRenderer->PushMatrix();
 			m_pRenderer->ScaleWorldMatrix(0.08f, 0.08f, 0.08f);
@@ -1995,7 +1995,7 @@ void VoxelCharacter::RenderFacePortrait()
 		return;
 	}
 
-	if(m_pVoxelModel != NULL)
+	if(m_pVoxelModel != nullptr)
 	{
 		m_pRenderer->PushMatrix();
 			m_pRenderer->ScaleWorldMatrix(0.08f, 0.08f, 0.08f);
@@ -2007,7 +2007,7 @@ void VoxelCharacter::RenderFacePortrait()
 
 void VoxelCharacter::RenderWeaponsPaperdoll()
 {
-	if(m_pLeftWeapon != NULL)
+	if(m_pLeftWeapon != nullptr)
 	{
 		if(m_leftWeaponLoaded && m_renderLeftWeapon)
 		{
@@ -2020,7 +2020,7 @@ void VoxelCharacter::RenderWeaponsPaperdoll()
 		}
 	}
 
-	if(m_pRightWeapon != NULL)
+	if(m_pRightWeapon != nullptr)
 	{
 		if(m_rightWeaponLoaded && m_renderRightWeapon)
 		{

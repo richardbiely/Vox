@@ -90,8 +90,8 @@ ScrollBar::ScrollBar(Renderer* pRenderer)
 
 	m_eScrollDirection = EScrollBarDirection_Horizontal;
 
-	m_ValueChangedCallback = NULL;
-	m_pValueChangedCallbackData = NULL;
+	m_ValueChangedCallback = nullptr;
+	m_pValueChangedCallbackData = nullptr;
 }
 
 ScrollBar::ScrollBar(Renderer* pRenderer, const std::string &leftDefaultTexture, const std::string &leftPressedTexture, const std::string &leftHoverTexture, const std::string &leftDisabledTexture,
@@ -188,8 +188,8 @@ ScrollBar::ScrollBar(Renderer* pRenderer, const std::string &leftDefaultTexture,
 
 	m_eScrollDirection = EScrollBarDirection_Horizontal;
 
-	m_ValueChangedCallback = NULL;
-	m_pValueChangedCallbackData = NULL;
+	m_ValueChangedCallback = nullptr;
+	m_pValueChangedCallbackData = nullptr;
 }
 
 ScrollBar::~ScrollBar()
@@ -241,7 +241,7 @@ void ScrollBar::RemoveIcon(RenderRectangle *pRemoveIcon)
 	{
 		Remove(pRemoveIcon);
 		delete pRemoveIcon;
-		pRemoveIcon = NULL;
+		pRemoveIcon = nullptr;
 	}
 }
 
@@ -463,7 +463,7 @@ void ScrollBar::SetLeftArrowDefaultIcon(RenderRectangle *icon)
 		Remove(m_pLeftArrowDefault);
 
 		delete m_pLeftArrowDefault;
-		m_pLeftArrowDefault = NULL;
+		m_pLeftArrowDefault = nullptr;
 	}
 
 	// Check what type of render rectangle we have been given, and then assign our new data
@@ -496,7 +496,7 @@ void ScrollBar::SetLeftArrowHoverIcon(RenderRectangle *icon)
 		Remove(m_pLeftArrowHover);
 
 		delete m_pLeftArrowHover;
-		m_pLeftArrowHover = NULL;
+		m_pLeftArrowHover = nullptr;
 	}
 
 	// Check what type of render rectangle we have been given, and then assign our new data
@@ -529,7 +529,7 @@ void ScrollBar::SetLeftArrowSelectedIcon(RenderRectangle *icon)
 		Remove(m_pLeftArrowPressed);
 
 		delete m_pLeftArrowPressed;
-		m_pLeftArrowPressed = NULL;
+		m_pLeftArrowPressed = nullptr;
 	}
 
 	// Check what type of render rectangle we have been given, and then assign our new data
@@ -562,7 +562,7 @@ void ScrollBar::SetLeftArrowDisabledIcon(RenderRectangle *icon)
 		Remove(m_pLeftArrowDisabled);
 
 		delete m_pLeftArrowDisabled;
-		m_pLeftArrowDisabled = NULL;
+		m_pLeftArrowDisabled = nullptr;
 	}
 
 	// Check what type of render rectangle we have been given, and then assign our new data
@@ -595,7 +595,7 @@ void ScrollBar::SetRightArrowDefaultIcon(RenderRectangle *icon)
 		Remove(m_pRightArrowDefault);
 
 		delete m_pRightArrowDefault;
-		m_pRightArrowDefault = NULL;
+		m_pRightArrowDefault = nullptr;
 	}
 
 	// Check what type of render rectangle we have been given, and then assign our new data
@@ -628,7 +628,7 @@ void ScrollBar::SetRightArrowHoverIcon(RenderRectangle *icon)
 		Remove(m_pRightArrowHover);
 
 		delete m_pRightArrowHover;
-		m_pRightArrowHover = NULL;
+		m_pRightArrowHover = nullptr;
 	}
 
 	// Check what type of render rectangle we have been given, and then assign our new data
@@ -661,7 +661,7 @@ void ScrollBar::SetRightArrowSelectedIcon(RenderRectangle *icon)
 		Remove(m_pRightArrowPressed);
 
 		delete m_pRightArrowPressed;
-		m_pRightArrowPressed = NULL;
+		m_pRightArrowPressed = nullptr;
 	}
 
 	// Check what type of render rectangle we have been given, and then assign our new data
@@ -694,7 +694,7 @@ void ScrollBar::SetRightArrowDisabledIcon(RenderRectangle *icon)
 		Remove(m_pRightArrowDisabled);
 
 		delete m_pRightArrowDisabled;
-		m_pRightArrowDisabled = NULL;
+		m_pRightArrowDisabled = nullptr;
 	}
 
 	// Check what type of render rectangle we have been given, and then assign our new data
@@ -727,7 +727,7 @@ void ScrollBar::SetScrollbarDefaultIcon(RenderRectangle *icon)
 		Remove(m_pScrollbarDefault);
 
 		delete m_pScrollbarDefault;
-		m_pScrollbarDefault = NULL;
+		m_pScrollbarDefault = nullptr;
 	}
 
 	// Check what type of render rectangle we have been given, and then assign our new data
@@ -760,7 +760,7 @@ void ScrollBar::SetScrollbarHoverIcon(RenderRectangle *icon)
 		Remove(m_pScrollbarHover);
 
 		delete m_pScrollbarHover;
-		m_pScrollbarHover = NULL;
+		m_pScrollbarHover = nullptr;
 	}
 
 	// Check what type of render rectangle we have been given, and then assign our new data
@@ -790,7 +790,7 @@ void ScrollBar::SetScrollbarSelectedIcon(RenderRectangle *icon)
 		Remove(m_pScrollbarPressed);
 
 		delete m_pScrollbarPressed;
-		m_pScrollbarPressed = NULL;
+		m_pScrollbarPressed = nullptr;
 	}
 
 	// Check what type of render rectangle we have been given, and then assign our new data
@@ -820,7 +820,7 @@ void ScrollBar::SetScrollbarDisabledIcon(RenderRectangle *icon)
 		Remove(m_pScrollbarDisabled);
 
 		delete m_pScrollbarDisabled;
-		m_pScrollbarDisabled = NULL;
+		m_pScrollbarDisabled = nullptr;
 	}
 
 	// Check what type of render rectangle we have been given, and then assign our new data
@@ -850,7 +850,7 @@ void ScrollBar::SetBackbarIcon(RenderRectangle *icon)
 		Remove(m_pBackbar);
 
 		delete m_pBackbar;
-		m_pBackbar = NULL;
+		m_pBackbar = nullptr;
 	}
 
 	// Check what type of render rectangle we have been given, and then assign our new data
@@ -1317,7 +1317,7 @@ void ScrollBar::MousePressed(const MouseEvent& lEvent)
 
 	// If our parent is a GUIWindow, then make this window have focus in the GUI, used to make it's depth the highest
 	/*
-	if(GetParent() != NULL && GetParent()->GetComponentType() == EComponentType_GUIWindow)
+	if(GetParent() != nullptr && GetParent()->GetComponentType() == EComponentType_GUIWindow)
 	{
 		GUIWindow* lpParentWindow = (GUIWindow *)GetParent();
 		lpParentWindow->SetFocusWindow();
@@ -1817,7 +1817,7 @@ void ScrollBar::DrawChildren()
 	*/
 
 	Dimensions lScrollbarParent;
-	if(GetParent() != NULL)
+	if(GetParent() != nullptr)
 	{
 		lScrollbarParent = GetParent()->GetDimensions();
 	}

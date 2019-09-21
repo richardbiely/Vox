@@ -139,7 +139,7 @@ void ActionBar::Load()
 		m_pGUI->AddComponent(m_vpActionLabels[i]);
 	}
 
-	m_pGUI->SetDraggingComponentPriority(NULL);
+	m_pGUI->SetDraggingComponentPriority(nullptr);
 
 	m_loaded = true;
 }
@@ -213,7 +213,7 @@ void ActionBar::ExportActionBar(string playerName)
 		{
 			ActionButtonItem* lpAction = GetActionButtonForSlot(i);
 
-			if(lpAction != NULL)
+			if(lpAction != nullptr)
 			{
 				InventoryItem* pInventoryItem = m_pInventoryManager->GetInventoryItemWithTitle(lpAction->m_itemTitle);
 
@@ -221,7 +221,7 @@ void ActionBar::ExportActionBar(string playerName)
 				exportFile << lpAction->m_inventoryX << "|";
 				exportFile << lpAction->m_inventoryY << "|";
 				exportFile << lpAction->m_equipSlot << "|";
-				exportFile << (pInventoryItem == NULL ? false : pInventoryItem->m_equipped) << "|";
+				exportFile << (pInventoryItem == nullptr ? false : pInventoryItem->m_equipped) << "|";
 			}
 		}
 
@@ -265,7 +265,7 @@ void ActionBar::ImportActionBar(string playerName)
 			importFile.getline(input, 128, '|');
 			int equipped = strtol(input, &pEnd, 10);
 
-			InventoryItem* pItem = NULL;
+			InventoryItem* pItem = nullptr;
 
 			if((bool)equipped == true)
 			{
@@ -273,10 +273,10 @@ void ActionBar::ImportActionBar(string playerName)
 			}
 			else
 			{
-				pItem = m_pInventoryGUI->GetInventorySlotItem(inventoryX, inventoryY) != NULL ? m_pInventoryGUI->GetInventorySlotItem(inventoryX, inventoryY)->m_pInventoryItem : NULL;
+				pItem = m_pInventoryGUI->GetInventorySlotItem(inventoryX, inventoryY) != nullptr ? m_pInventoryGUI->GetInventorySlotItem(inventoryX, inventoryY)->m_pInventoryItem : nullptr;
 			}
 
-			if(pItem != NULL)
+			if(pItem != nullptr)
 			{
 				AddItemToActionBar(pItem, slotIndex, inventoryX, inventoryY);
 			}
@@ -310,7 +310,7 @@ void ActionBar::AddItemToActionBar(InventoryItem* pInventoryItem, int slotIndex,
 {
 	// First check if any other action bar item already exists and remove it
 	ActionButtonItem* pBarItem = GetActionButtonForSlot(slotIndex);
-	if(pBarItem != NULL)
+	if(pBarItem != nullptr)
 	{
 		RemoveItemFromActionBar(pBarItem);
 	}
@@ -320,7 +320,7 @@ void ActionBar::AddItemToActionBar(InventoryItem* pInventoryItem, int slotIndex,
 	pActionButton->m_pActionBar = this;
 	//pActionButton->m_pInventorySlotItem = pItem;
 	//pActionButton->m_pItemIcon = pNewSlotItem;
-	pActionButton->m_pItemIcon = NULL;
+	pActionButton->m_pItemIcon = nullptr;
 	pActionButton->m_type = ActionBarItemType_Item;
 	pActionButton->m_itemTitle = pInventoryItem->m_title;
 	pActionButton->m_slotNum = slotIndex;
@@ -373,7 +373,7 @@ void ActionBar::SwitchItems(int slot1, int slot2)
 	ActionButtonItem* pSlot1 = GetActionButtonForSlot(slot1);
 	ActionButtonItem* pSlot2 = GetActionButtonForSlot(slot2);
 
-	if(pSlot1 != NULL)
+	if(pSlot1 != nullptr)
 	{
 		pSlot1->m_slotNum = slot2;
 
@@ -385,7 +385,7 @@ void ActionBar::SwitchItems(int slot1, int slot2)
 		pSlot1->m_pItemIcon->SetLocation(x, y);
 	}
 
-	if(pSlot2 != NULL)
+	if(pSlot2 != nullptr)
 	{
 		pSlot2->m_slotNum = slot1;
 
@@ -441,13 +441,13 @@ void ActionBar::UseActionBarslot(int slotIndex)
 	}
 
 	ActionButtonItem* pItem = GetActionButtonForSlot(slotIndex);
-	if(pItem != NULL && pItem->m_inventoryX != -1 && pItem->m_inventoryY != -1)
+	if(pItem != nullptr && pItem->m_inventoryX != -1 && pItem->m_inventoryY != -1)
 	{
 		if(pItem->m_type == ActionBarItemType_Item)
 		{
 			InventoryItem* pInventoryItem = m_pInventoryManager->GetInventoryItemWithTitle(pItem->m_itemTitle);
 
-			if(pInventoryItem != NULL)
+			if(pInventoryItem != nullptr)
 			{
 				if(pInventoryItem->m_itemType == InventoryType_Consumable)
 				{
@@ -464,7 +464,7 @@ void ActionBar::UseActionBarslot(int slotIndex)
 							if(pInventoryItem->m_equipSlot == EquipSlot_RightHand)
 							{
 								InventoryItem* pLeftHanded = m_pInventoryManager->GetInventoryItemForEquipSlot(EquipSlot_LeftHand);
-								if(pInventoryItem->m_left || (pLeftHanded != NULL && pLeftHanded->m_right))
+								if(pInventoryItem->m_left || (pLeftHanded != nullptr && pLeftHanded->m_right))
 								{
 									int slotX;
 									int slotY;
@@ -474,7 +474,7 @@ void ActionBar::UseActionBarslot(int slotIndex)
 									{
 										// We can't fit the other item in the inventory
 									}
-									else if(pLeftHanded != NULL)
+									else if(pLeftHanded != nullptr)
 									{
 										UpdateActionBarSlots(pLeftHanded, slotX, slotY);
 									}
@@ -483,7 +483,7 @@ void ActionBar::UseActionBarslot(int slotIndex)
 							if(pInventoryItem->m_equipSlot == EquipSlot_LeftHand)
 							{
 								InventoryItem* pRightHanded = m_pInventoryManager->GetInventoryItemForEquipSlot(EquipSlot_RightHand);
-								if(pInventoryItem->m_right || (pRightHanded != NULL && pRightHanded->m_left))
+								if(pInventoryItem->m_right || (pRightHanded != nullptr && pRightHanded->m_left))
 								{
 									int slotX;
 									int slotY;
@@ -493,7 +493,7 @@ void ActionBar::UseActionBarslot(int slotIndex)
 									{
 										// We can't fit the other item in the inventory
 									}
-									else if(pRightHanded != NULL)
+									else if(pRightHanded != nullptr)
 									{
 										UpdateActionBarSlots(pRightHanded, slotX, slotY);
 									}
@@ -516,7 +516,7 @@ void ActionBar::UseActionBarslot(int slotIndex)
 				// Try to see if we have an equipped consumable item that we need to consume,
 				InventoryItem* pEquippedItem = m_pInventoryManager->GetInventoryItemForEquipSlot(EquipSlot_LeftHand);
 
-				if(pEquippedItem != NULL)
+				if(pEquippedItem != nullptr)
 				{
 					if(strcmp(pItem->m_itemTitle.c_str(), pEquippedItem->m_title.c_str()) == 0)
 					{
@@ -542,7 +542,7 @@ void ActionBar::CreateActionButtonIcon(ActionButtonItem* pActionButton)
 	GetActionSlotDimensions(pActionButton->m_slotNum, &x, &y, &width, &height);
 
 	DraggableRenderRectangle* pNewSlotItem = new DraggableRenderRectangle(m_pRenderer);
-	InventoryItem* pInventoryItem = NULL;
+	InventoryItem* pInventoryItem = nullptr;
 	if(pActionButton->m_inventoryX == -1 && pActionButton->m_inventoryY == -1)
 	{
 		pInventoryItem = m_pInventoryManager->GetInventoryItemForEquipSlot(pActionButton->m_equipSlot);
@@ -623,7 +623,7 @@ void ActionBar::CreateActionButtons()
 {
 	for(unsigned int i = 0; i < m_vpActionSlotItems.size(); i++)
 	{
-		if(m_vpActionSlotItems[i]->m_pItemIcon == NULL)
+		if(m_vpActionSlotItems[i]->m_pItemIcon == nullptr)
 		{
 			CreateActionButtonIcon(m_vpActionSlotItems[i]);
 		}
@@ -634,11 +634,11 @@ void ActionBar::ClearActionButtons()
 {
 	for(unsigned int i = 0; i < m_vpActionSlotItems.size(); i++)
 	{
-		if(m_vpActionSlotItems[i]->m_pItemIcon != NULL)
+		if(m_vpActionSlotItems[i]->m_pItemIcon != nullptr)
 		{
 			m_pGUI->RemoveComponent(m_vpActionSlotItems[i]->m_pItemIcon);
 			delete m_vpActionSlotItems[i]->m_pItemIcon;
-			m_vpActionSlotItems[i]->m_pItemIcon = NULL;
+			m_vpActionSlotItems[i]->m_pItemIcon = nullptr;
 		}
 	}
 }
@@ -736,7 +736,7 @@ void ActionBar::RepositionActionSlots()
 	{
 		GetActionSlotDimensions(m_vpActionSlotItems[i]->m_slotNum, &x, &y, &width, &height);
 
-		if(m_vpActionSlotItems[i]->m_pItemIcon != NULL)
+		if(m_vpActionSlotItems[i]->m_pItemIcon != nullptr)
 		{
 			m_vpActionSlotItems[i]->m_pItemIcon->SetDimensions(x, y, width, height);
 		}
@@ -753,7 +753,7 @@ ActionButtonItem* ActionBar::GetActionButtonForSlot(int slotIndex)
 		}
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 void ActionBar::_ActionButtonPressed(void *apData)
@@ -784,14 +784,14 @@ void ActionBar::_ActionButtonReleased(void *apData)
 
 void ActionBar::ActionButtonReleased(ActionButtonItem* pActionButton)
 {
-	if(m_pPressedActionButtonItem == NULL)
+	if(m_pPressedActionButtonItem == nullptr)
 	{
 		return;
 	}
 
-	m_pPressedActionButtonItem = NULL;
+	m_pPressedActionButtonItem = nullptr;
 
-	m_pGUI->SetDraggingComponentPriority(NULL);
+	m_pGUI->SetDraggingComponentPriority(nullptr);
 
 	int x;
 	int y;

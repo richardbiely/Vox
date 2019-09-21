@@ -57,7 +57,7 @@ Item::Item(Renderer* pRenderer, ChunkManager* pChunkManager, QubicleBinaryManage
 
 	m_bCreateDyingLights = true;
 
-	m_droppedInventoryItem = NULL;
+	m_droppedInventoryItem = nullptr;
 
 	// Disappear animaton
 	m_disappear = false;
@@ -69,7 +69,7 @@ Item::Item(Renderer* pRenderer, ChunkManager* pChunkManager, QubicleBinaryManage
 	m_interactCount = 0;
 	m_maxInteractCount = 1;
 
-	m_pParentItemSpawner = NULL;
+	m_pParentItemSpawner = nullptr;
 
 	m_gridPositionX = 0;
 	m_gridPositionY = 0;
@@ -78,17 +78,17 @@ Item::Item(Renderer* pRenderer, ChunkManager* pChunkManager, QubicleBinaryManage
 	m_collisionEnabled = false;
 	m_collisionRadius = 1.0f;
 
-	m_pCachedGridChunk = NULL;
+	m_pCachedGridChunk = nullptr;
 
-	m_pOwningChunk = NULL;
+	m_pOwningChunk = nullptr;
 
-	m_pVoxelItem = NULL;
+	m_pVoxelItem = nullptr;
 }
 
 Item::~Item()
 {
 	// If we belong to a spawner, make sure we indicate that we were killed
-	if (m_pParentItemSpawner != NULL)
+	if (m_pParentItemSpawner != nullptr)
 	{
 		m_pParentItemSpawner->RemoveItemFromThisSpawner();
 	}
@@ -96,19 +96,19 @@ Item::~Item()
 	UnloadEffectsAndLights();
 
 	// Delete the voxel item
-	if(m_pVoxelItem != NULL)
+	if(m_pVoxelItem != nullptr)
 	{
 		delete m_pVoxelItem;
 	}
 
 	// Remove us from an owning chunk
-	if(m_pOwningChunk != NULL)
+	if(m_pOwningChunk != nullptr)
 	{
 		m_pOwningChunk->RemoveItem(this);
 	}
 
 	// Clear the dropped item
-	if(m_droppedInventoryItem != NULL)
+	if(m_droppedInventoryItem != nullptr)
 	{
 		delete m_droppedInventoryItem;
 	}
@@ -117,7 +117,7 @@ Item::~Item()
 	for(unsigned int i = 0; i < m_vpBoundingRegionList.size(); i++)
 	{
 		delete m_vpBoundingRegionList[i];
-		m_vpBoundingRegionList[i] = NULL;
+		m_vpBoundingRegionList[i] = nullptr;
 	}
 	m_vpBoundingRegionList.clear();
 }
@@ -229,17 +229,17 @@ VoxelWeapon* Item::GetVoxelItem()
 // Setup
 void Item::LoadItem(const char* objectFilename)
 {
-	if(m_pVoxelItem == NULL)
+	if(m_pVoxelItem == nullptr)
 	{
 		m_pVoxelItem = new VoxelWeapon(m_pRenderer, m_pQubicleBinaryManager);
 	}
 	
-	m_pVoxelItem->SetVoxelCharacterParent(NULL);
+	m_pVoxelItem->SetVoxelCharacterParent(nullptr);
 	m_pVoxelItem->LoadWeapon(objectFilename);
 
 	m_fileName = objectFilename;
 
-	if(m_pVoxelItem != NULL)
+	if(m_pVoxelItem != nullptr)
 	{
 		// Collision bounding region		
 		const QubicleMatrix* pMatrix = m_pVoxelItem->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->GetQubicleMatrix(0);
@@ -296,7 +296,7 @@ void Item::RemoveItemSpawner(ItemSpawner* pSpawner)
 {
 	if (m_pParentItemSpawner == pSpawner)
 	{
-		m_pParentItemSpawner = NULL;
+		m_pParentItemSpawner = nullptr;
 	}
 }
 
@@ -375,7 +375,7 @@ vec3 Item::GetCenter()
 // Inventory item params
 void Item::SetDroppedItem(const char* filename, const char* iconFilename, InventoryType itemType, eItem item, ItemStatus status, EquipSlot equipSlot, ItemQuality itemQuality, bool left, bool right, const char* title, const char* description, float r, float g, float b, int quantity)
 {
-	if(m_droppedInventoryItem == NULL)
+	if(m_droppedInventoryItem == nullptr)
 	{
 		m_droppedInventoryItem = new InventoryItem();
 	}
@@ -490,7 +490,7 @@ bool Item::IsOutlineRender()
 
 void Item::SetWireFrameRender(bool wireframe)
 {
-	if(m_pVoxelItem != NULL)
+	if(m_pVoxelItem != nullptr)
 	{
 		m_pVoxelItem->SetWireFrameRender(wireframe);
 	}
@@ -543,7 +543,7 @@ void Item::UpdateGridPosition()
 	if(m_position.z <= -0.5f)
 		gridPositionZ -= 1;
 
-	if(gridPositionX != m_gridPositionX || gridPositionY != m_gridPositionY || gridPositionZ != m_gridPositionZ || m_pCachedGridChunk == NULL)
+	if(gridPositionX != m_gridPositionX || gridPositionY != m_gridPositionY || gridPositionZ != m_gridPositionZ || m_pCachedGridChunk == nullptr)
 	{
 		m_gridPositionX = gridPositionX;
 		m_gridPositionY = gridPositionY;
@@ -569,7 +569,7 @@ Chunk* Item::GetCachedGridChunkOrFromPosition(vec3 pos)
 
 	if(gridPositionX != m_gridPositionX || gridPositionY != m_gridPositionY || gridPositionZ != m_gridPositionZ)
 	{
-		return NULL;
+		return nullptr;
 	}
 	else
 	{
@@ -590,7 +590,7 @@ InventoryItem* Item::GetLootItem(int index)
 
 InventoryItem* Item::AddLootItem(InventoryItem* pItem, int slotX, int slotY)
 {
-	if(pItem != NULL)
+	if(pItem != nullptr)
 	{
 		InventoryItem* pAddedLootItem = AddLootItem(pItem->m_filename.c_str(), pItem->m_Iconfilename.c_str(), pItem->m_itemType, pItem->m_item, pItem->m_status, pItem->m_equipSlot, pItem->m_itemQuality, pItem->m_title.c_str(), pItem->m_description.c_str(), pItem->m_left, pItem->m_right, pItem->m_placementR, pItem->m_placementG, pItem->m_placementB, pItem->m_quantity, slotX, slotY);
 
@@ -602,7 +602,7 @@ InventoryItem* Item::AddLootItem(InventoryItem* pItem, int slotX, int slotY)
 		return pAddedLootItem;
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 InventoryItem* Item::AddLootItem(const char* filename, const char* iconFilename, InventoryType itemType, eItem item, ItemStatus status, EquipSlot equipSlot, ItemQuality itemQuality, const char* title, const char* description, bool left, bool right, float r, float g, float b, int quantity, int slotX, int slotY)
@@ -665,7 +665,7 @@ InventoryItem* Item::AddLootItem(const char* filename, const char* iconFilename,
 		return pNewItem;
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 bool needs_erasing(InventoryItem* aI)
@@ -760,7 +760,7 @@ bool Item::CheckCollisions(vec3 positionCheck, vec3 previousPosition, vec3 *pNor
 
 					if (active == false)
 					{
-						if (pChunk == NULL || pChunk->IsSetup() == false)
+						if (pChunk == nullptr || pChunk->IsSetup() == false)
 						{
 							*pMovement = vec3(0.0f, 0.0f, 0.0f);
 							worldCollision = false;
@@ -942,7 +942,7 @@ void Item::Explode()
 {
 	CalculateWorldTransformMatrix();
 
-	if(m_pVoxelItem != NULL)
+	if(m_pVoxelItem != nullptr)
 	{
 		for(int animatedSectionsIndex = 0; animatedSectionsIndex < m_pVoxelItem->GetNumAimatedSections(); animatedSectionsIndex++)
 		{
@@ -1165,7 +1165,7 @@ void Item::Interact()
 		{
 			delete m_pVoxelItem;
 			m_pVoxelItem = new VoxelWeapon(m_pRenderer, m_pQubicleBinaryManager);
-			m_pVoxelItem->SetVoxelCharacterParent(NULL);
+			m_pVoxelItem->SetVoxelCharacterParent(nullptr);
 			m_pVoxelItem->LoadWeapon(itemFilename, false);
 		}
 	}
@@ -1229,8 +1229,8 @@ void Item::Interact()
 			vec3 pointOrigin = vec3(0.0f, 0.0f, 0.0f);
 			float r = 0.49f; float g = 0.44f; float b = 0.44f; float a = 1.0f;
 			vec3 spawnPos = GetCenter() + vec3(GetRandomNumber(-1, 1, 2)*0.5f, GetRandomNumber(-1, 1, 2)*0.5f, GetRandomNumber(-1, 1, 2)*0.5f);
-			BlockParticle* pParticle = m_pBlockParticleManager->CreateBlockParticle(spawnPos, spawnPos, gravity, 1.5f, pointOrigin, startScale, 0.0f, endScale, 0.0f, r, g, b, a, 0.0f, 0.0f, 0.0f, 0.0f, r, g, b, a, 0.0f, 0.0f, 0.0f, 0.0f, lifeTime, 0.0f, 0.0f, 0.0f, vec3(0.0f, 3.0f, 0.0f), vec3(1.85f, 3.0f, 1.85f), vec3(0.0f, 0.0f, 0.0f), vec3(180.0f, 180.0f, 180.0f), 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, true, vec3(0.0f, 0.0f, 0.0f), true, false, false, false, NULL);
-			if(pParticle != NULL)
+			BlockParticle* pParticle = m_pBlockParticleManager->CreateBlockParticle(spawnPos, spawnPos, gravity, 1.5f, pointOrigin, startScale, 0.0f, endScale, 0.0f, r, g, b, a, 0.0f, 0.0f, 0.0f, 0.0f, r, g, b, a, 0.0f, 0.0f, 0.0f, 0.0f, lifeTime, 0.0f, 0.0f, 0.0f, vec3(0.0f, 3.0f, 0.0f), vec3(1.85f, 3.0f, 1.85f), vec3(0.0f, 0.0f, 0.0f), vec3(180.0f, 180.0f, 180.0f), 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, true, vec3(0.0f, 0.0f, 0.0f), true, false, false, false, nullptr);
+			if(pParticle != nullptr)
 			{
 				pParticle->m_allowFloorSliding = true;
 			}
@@ -1282,13 +1282,13 @@ void Item::SpawnSubItems()
 
 		vec3 gravity = vec3(0.0f, -1.0f, 0.0f);
 		gravity = normalize(gravity);
-		Item* pItem = NULL;
+		Item* pItem = nullptr;
 		ItemSubSpawnData *pItemSubSpawnData = m_pItemManager->GetItemSubSpawnData(m_itemType);
-		if(pItemSubSpawnData != NULL)
+		if(pItemSubSpawnData != nullptr)
 		{
 			pItem = m_pItemManager->CreateItem(GetCenter(), vec3(0.0f, 0.0f, 0.0f), vec3(0.0f, 0.0f, 0.0f), pItemSubSpawnData->m_spawnedItemFilename.c_str(), pItemSubSpawnData->m_spawnedItem, pItemSubSpawnData->m_spawnedItemTitle.c_str(), pItemSubSpawnData->m_interactable, pItemSubSpawnData->m_collectible, pItemSubSpawnData->m_scale);
 
-			if(pItem != NULL)
+			if(pItem != nullptr)
 			{
 				pItem->SetGravityDirection(gravity);
 				vec3 vel = ItemPosition - GetCenter();
@@ -1335,7 +1335,7 @@ void Item::Update(float dt)
 		return;
 	}
 
-	if(m_pVoxelItem != NULL)
+	if(m_pVoxelItem != nullptr)
 	{
 		m_pVoxelItem->Update(dt);
 	}
@@ -1350,22 +1350,22 @@ void Item::Update(float dt)
 	UpdatePlayerMagnet(dt);
 
 	// If we don't belong to a chunk
-	if(m_pCachedGridChunk == NULL)
+	if(m_pCachedGridChunk == nullptr)
 	{
 		return;
 	}
 
 	// Make sure that an owning chunk knows about us
-	if(m_pOwningChunk == NULL || m_pOwningChunk->IsInsideChunk(m_position) == false)
+	if(m_pOwningChunk == nullptr || m_pOwningChunk->IsInsideChunk(m_position) == false)
 	{
-		if(m_pOwningChunk != NULL)
+		if(m_pOwningChunk != nullptr)
 		{
 			m_pOwningChunk->RemoveItem(this);
 		}
 
 		m_pOwningChunk = m_pChunkManager->GetChunkFromPosition(m_position.x, m_position.y, m_position.z);
 
-		if(m_pOwningChunk != NULL)
+		if(m_pOwningChunk != nullptr)
 		{
 			m_pOwningChunk->AddItem(this);
 		}
@@ -1438,7 +1438,7 @@ void Item::UpdatePhysics(float dt)
 		}
 
 		// Owning chunks
-		if (m_pOwningChunk != NULL && m_pOwningChunk->IsSetup() && m_pOwningChunk->IsInsideChunk(m_position))
+		if (m_pOwningChunk != nullptr && m_pOwningChunk->IsSetup() && m_pOwningChunk->IsInsideChunk(m_position))
 		{
 			Chunk* pChunk = GetCachedGridChunkOrFromPosition(m_position);
 			bool active = m_pChunkManager->GetBlockActiveFrom3DPosition(m_position.x, m_position.y, m_position.z, &blockPos, &blockX, &blockY, &blockZ, &pChunk);
@@ -1453,19 +1453,19 @@ void Item::UpdatePhysics(float dt)
 		}
 		else
 		{
-			if (m_pOwningChunk != NULL)
+			if (m_pOwningChunk != nullptr)
 			{
 				m_pOwningChunk->RemoveItem(this);
 			}
 
 			m_pOwningChunk = m_pChunkManager->GetChunkFromPosition(m_position.x, m_position.y, m_position.z);
 
-			if (m_pOwningChunk != NULL)
+			if (m_pOwningChunk != nullptr)
 			{
 				m_pOwningChunk->AddItem(this);
 			}
 
-			if (m_pOwningChunk == NULL)
+			if (m_pOwningChunk == nullptr)
 			{
 				m_position -= m_velocity * dt;
 				m_velocity = vec3(0.0f, 0.0f, 0.0f);
@@ -1519,7 +1519,7 @@ void Item::UpdatePlayerMagnet(float dt)
 			{
 				if(m_disappearAnimationStarted == false)
 				{
-					Interpolator::GetInstance()->AddFloatInterpolation(&m_disappearScale, m_disappearScale, 0.0f, 0.5f, -100.0f, NULL, _PickupAnimationFinished, this);
+					Interpolator::GetInstance()->AddFloatInterpolation(&m_disappearScale, m_disappearScale, 0.0f, 0.5f, -100.0f, nullptr, _PickupAnimationFinished, this);
 
 					m_disappearAnimationStarted = true;
 				}
@@ -1548,7 +1548,7 @@ void Item::UpdatePlayerMagnet(float dt)
 	{
 		if(IsCollectible())
 		{
-			if(m_droppedInventoryItem == NULL || m_pInventoryManager->CanAddInventoryItem(GetItemTitle(), GetItemType(), 1))
+			if(m_droppedInventoryItem == nullptr || m_pInventoryManager->CanAddInventoryItem(GetItemTitle(), GetItemType(), 1))
 			{
 				float yAdditionalMaagnetOffset = 0.5f;
 
@@ -1583,7 +1583,7 @@ void Item::UpdatePlayerMagnet(float dt)
 						m_pPlayer->GiveCoins(1);
 					}
 
-					if(m_droppedInventoryItem != NULL)
+					if(m_droppedInventoryItem != nullptr)
 					{
 						m_pInventoryManager->AddInventoryItem(m_droppedInventoryItem, -1, -1);
 					}
@@ -1600,7 +1600,7 @@ void Item::UpdateItemLights(float dt)
 		return;
 	}
 
-	if(m_pVoxelItem != NULL)
+	if(m_pVoxelItem != nullptr)
 	{
 		for(int i = 0; i < m_pVoxelItem->GetNumLights(); i++)
 		{
@@ -1651,7 +1651,7 @@ void Item::UpdateItemParticleEffects(float dt)
 		return;
 	}
 
-	if(m_pVoxelItem != NULL)
+	if(m_pVoxelItem != nullptr)
 	{
 		for(int i = 0; i < m_pVoxelItem->GetNumParticleEffects(); i++)
 		{
@@ -1698,12 +1698,12 @@ void Item::Render(bool outline, bool reflection, bool silhouette)
 		return;
 	}
 
-	if(m_pOwningChunk == NULL || m_pOwningChunk->IsUnloading())
+	if(m_pOwningChunk == nullptr || m_pOwningChunk->IsUnloading())
 	{
 		return;
 	}
 
-	if(m_pVoxelItem != NULL)
+	if(m_pVoxelItem != nullptr)
 	{
 		Colour OutlineColour(1.0f, 1.0f, 0.0f, 1.0f);
 
@@ -1722,7 +1722,7 @@ void Item::RenderDebug()
 		return;
 	}
 
-	if(m_pOwningChunk == NULL || m_pOwningChunk->IsUnloading())
+	if(m_pOwningChunk == nullptr || m_pOwningChunk->IsUnloading())
 	{
 		return;
 	}
@@ -1767,7 +1767,7 @@ void Item::RenderDebug()
 	m_pRenderer->PopMatrix();
 	
 	// Render link to owning chunk
-	if(m_pOwningChunk != NULL)
+	if(m_pOwningChunk != nullptr)
 	{
 		m_pRenderer->PushMatrix();
 			m_pRenderer->EnableImmediateMode(IM_LINES);

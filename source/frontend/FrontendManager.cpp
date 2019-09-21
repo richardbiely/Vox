@@ -36,7 +36,7 @@ FrontendManager::FrontendManager(Renderer* pRenderer, OpenGLGUI* pGUI)
 	m_pRenderer = pRenderer;
 	m_pGUI = pGUI;
 
-	m_pCamera = NULL;
+	m_pCamera = nullptr;
 
 	// Fonts
 	m_pRenderer->CreateFreeTypeFont("media/fonts/pf_ronda_seven.ttf", 26, &m_frontendFont_Large, true);
@@ -261,7 +261,7 @@ FrontendManager::FrontendManager(Renderer* pRenderer, OpenGLGUI* pGUI)
 
 	// Initial page
 	m_currentScreen = FrontendScreen_None;
-	m_currentPage = NULL;
+	m_currentPage = nullptr;
 	SetFrontendScreen(FrontendScreen_None);
 }
 
@@ -414,10 +414,10 @@ void FrontendManager::SetFrontendScreen(eFrontendScreen screen)
 	m_currentScreen = screen;
 
 	// Unload current page
-	if (m_currentPage != NULL)
+	if (m_currentPage != nullptr)
 	{
 		m_currentPage->Unload();
-		m_currentPage = NULL;
+		m_currentPage = nullptr;
 	}
 
 	// Find new page
@@ -431,7 +431,7 @@ void FrontendManager::SetFrontendScreen(eFrontendScreen screen)
 	}
 
 	// Load new page
-	if (m_currentPage != NULL)
+	if (m_currentPage != nullptr)
 	{
 		m_currentPage->Load();
 	}
@@ -825,7 +825,7 @@ float FrontendManager::GetToolTipAppearDelay()
 // Updating
 void FrontendManager::Update(float dt)
 {
-	if (m_currentPage != NULL)
+	if (m_currentPage != nullptr)
 	{
 		m_currentPage->Update(dt);
 	}
@@ -842,9 +842,9 @@ void FrontendManager::Update(float dt)
 // Updating
 void FrontendManager::UpdateFrontEndCamera(float dt)
 {
-	if (m_currentPage != NULL)
+	if (m_currentPage != nullptr)
 	{
-		if (m_pCamera != NULL)
+		if (m_pCamera != nullptr)
 		{
 			// Position
 			m_pCamera->SetFakePosition(m_currentPage->GetCameraPosition());
@@ -868,7 +868,7 @@ void FrontendManager::UpdateFrontEndCamera(float dt)
 // Rendering
 void FrontendManager::Render()
 {
-	if (m_currentPage != NULL)
+	if (m_currentPage != nullptr)
 	{
 		m_currentPage->Render();
 	}
@@ -876,7 +876,7 @@ void FrontendManager::Render()
 
 void FrontendManager::Render2D()
 {
-	if (m_currentPage != NULL)
+	if (m_currentPage != nullptr)
 	{
 		m_currentPage->Render2D();
 	}

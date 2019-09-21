@@ -13,10 +13,10 @@ OBJModel::OBJModel(Renderer *lpRenderer)
 	m_numNormals = 0;
 	m_numFaces = 0;
 
-	m_pVertices = NULL;
-	m_pTextureCoordinates = NULL;
-	m_pNormals = NULL;
-	m_pFaces = NULL;
+	m_pVertices = nullptr;
+	m_pTextureCoordinates = nullptr;
+	m_pNormals = nullptr;
+	m_pFaces = nullptr;
 
 	m_texture = -1;
 }
@@ -25,25 +25,25 @@ OBJModel::~OBJModel()
 {
 	// Delete the vertices
 	delete[] m_pVertices;
-	m_pVertices = NULL;
+	m_pVertices = nullptr;
 
 	// Delete the texture coordinates
 	delete[] m_pTextureCoordinates;
-	m_pTextureCoordinates = NULL;
+	m_pTextureCoordinates = nullptr;
 
 	// Delete the normals
 	delete[] m_pNormals;
-	m_pNormals = NULL;
+	m_pNormals = nullptr;
 
 	// Delete the indices from the polygon list
 	for(int i = 0; i < m_numFaces; i++) {
 		delete[] m_pFaces[i].pIndices;
-		m_pFaces[i].pIndices = NULL;
+		m_pFaces[i].pIndices = nullptr;
 	}
 
 	// Delete the faces
 	delete[] m_pFaces;
-	m_pFaces = NULL;
+	m_pFaces = nullptr;
 }
 
 
@@ -55,7 +55,7 @@ bool OBJModel::Load(const char *modelFileName, const char *textureFileName)
 	char buffer[256] = {0};
 
 	// Make sure that we have passed a filename
-	if(modelFileName == NULL)
+	if(modelFileName == nullptr)
 		return false;
 
 	// Open the file
@@ -174,9 +174,9 @@ bool OBJModel::Load(const char *modelFileName, const char *textureFileName)
 
 				// Loop through the line and get the number of times we see the search token
 				int count = 0;
-				for(count = 0; token != NULL; count++)
+				for(count = 0; token != nullptr; count++)
 				{
-					token = strtok(NULL, " ");
+					token = strtok(nullptr, " ");
 				}
 
 				m_pFaces[faceIndex].pIndices = new int[count * 3];

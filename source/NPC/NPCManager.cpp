@@ -118,7 +118,7 @@ NPC* NPCManager::CreateNPC(const char* name, string typeName, string modelName, 
 		if(m_vpNPCList[i]->GetName() == name)
 		{
 			m_NPCMutex.unlock();
-			return NULL; // Don't allow creation of 2 same named NPCs
+			return nullptr; // Don't allow creation of 2 same named NPCs
 		}
 	}
 	m_NPCMutex.unlock();
@@ -142,7 +142,7 @@ NPC* NPCManager::CreateNPC(const char* name, string typeName, string modelName, 
 
 void NPCManager::DeleteNPC(string name)
 {
-	NPC* pDeleteObject = NULL;
+	NPC* pDeleteObject = nullptr;
 
 	// Find
 	m_NPCMutex.lock();
@@ -164,7 +164,7 @@ void NPCManager::DeleteNPC(string name)
 	m_NPCMutex.unlock();
 
 	// Delete
-	if(pDeleteObject != NULL)
+	if(pDeleteObject != nullptr)
 	{
 		delete pDeleteObject;
 	}
@@ -194,7 +194,7 @@ NPC* NPCManager::GetNPCByName(string name)
 	}
 	m_NPCMutex.unlock();
 
-	return NULL;
+	return nullptr;
 }
 
 int NPCManager::GetNumNPCs()
@@ -292,7 +292,7 @@ NPC* NPCManager::CheckNPCPlayerInteraction()
 	}
 	m_NPCMutex.unlock();
 
-	return NULL;
+	return nullptr;
 }
 
 // Rendering Helpers
@@ -354,7 +354,7 @@ void NPCManager::UpdateNamePickingSelection(int pickingId)
 		// Character selection and creation screens
 		if(VoxGame::GetInstance()->GetGameMode() == GameMode_FrontEnd)
 		{
-			VoxGame::GetInstance()->GetFrontendManager()->SetSelectedNPC(NULL);
+			VoxGame::GetInstance()->GetFrontendManager()->SetSelectedNPC(nullptr);
 		}
 	}
 }
@@ -404,7 +404,7 @@ void NPCManager::UpdateHoverNamePickingSelection(int pickingId)
 		// Character selection and creation screens
 		if(VoxGame::GetInstance()->GetGameMode() == GameMode_FrontEnd)
 		{
-			VoxGame::GetInstance()->GetFrontendManager()->SetHoverNPC(NULL);
+			VoxGame::GetInstance()->GetFrontendManager()->SetHoverNPC(nullptr);
 		}
 	}
 }
@@ -579,7 +579,7 @@ void NPCManager::UpdateNPCProjectileCheck(float dt)
 		{
 			Projectile* pProjectile = m_pProjectileManager->GetProjectile(j);
 
-			if(pProjectile != NULL && pProjectile->GetErase() == false)
+			if(pProjectile != nullptr && pProjectile->GetErase() == false)
 			{
 				pNPC->CheckProjectileDamageRadius(pProjectile);
 			}

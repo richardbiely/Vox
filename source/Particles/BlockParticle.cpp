@@ -29,14 +29,14 @@ BlockParticle::BlockParticle()
 	m_gridPositionY = 0;
 	m_gridPositionZ = 0;
 
-	m_pCachedGridChunk = NULL;
+	m_pCachedGridChunk = nullptr;
 
-	m_pParent = NULL;
+	m_pParent = nullptr;
 
 	m_hasCollided = false;
 
 	m_createEmitters = false;
-	m_pCreatedEmitter = NULL;
+	m_pCreatedEmitter = nullptr;
 
 	m_freezeUpdateTimer = 0.0f;
 	m_waitAfterUpdateCompleteTimer = 0.0f;
@@ -44,9 +44,9 @@ BlockParticle::BlockParticle()
 
 BlockParticle::~BlockParticle()
 {
-	if(m_createEmitters == true && m_pCreatedEmitter != NULL)
+	if(m_createEmitters == true && m_pCreatedEmitter != nullptr)
 	{
-		m_pCreatedEmitter->m_pParentParticle = NULL;
+		m_pCreatedEmitter->m_pParentParticle = nullptr;
 		m_pCreatedEmitter->m_erase = true;
 	}
 }
@@ -55,7 +55,7 @@ void BlockParticle::ClearParticleChunkCacheForChunk(Chunk* pChunk)
 {
 	if (m_pCachedGridChunk == pChunk)
 	{
-		m_pCachedGridChunk = NULL;
+		m_pCachedGridChunk = nullptr;
 	}
 }
 
@@ -104,12 +104,12 @@ void BlockParticle::CalculateWorldTransformMatrix()
 	m_worldMatrix.SetRotation(DegToRad(m_rotation.x), DegToRad(m_rotation.y), DegToRad(m_rotation.z));
 
 	vec3 pos = m_position;
-	if(m_pParent != NULL && m_pParent->m_particlesFollowEmitter)
+	if(m_pParent != nullptr && m_pParent->m_particlesFollowEmitter)
 	{
 		// If we have a parent and we are locked to their position
 		pos += m_pParent->m_position;
 
-		if(m_pParent->m_pParent != NULL)
+		if(m_pParent->m_pParent != nullptr)
 		{
 			// If our emitter's parent effect has a position offset
 			pos += m_pParent->m_pParent->m_position;
@@ -130,12 +130,12 @@ void BlockParticle::CalculateWorldTransformMatrix()
 	m_worldMatrix_NoPositionOffset.SetRotation(DegToRad(m_rotation.x), DegToRad(m_rotation.y), DegToRad(m_rotation.z));
 
 	pos = m_position_NoWorldOffset;
-	if (m_pParent != NULL && m_pParent->m_particlesFollowEmitter)
+	if (m_pParent != nullptr && m_pParent->m_particlesFollowEmitter)
 	{
 		// If we have a parent and we are locked to their position
 		pos += m_pParent->m_position;
 
-		if (m_pParent->m_pParent != NULL)
+		if (m_pParent->m_pParent != nullptr)
 		{
 			// If our emitter's parent effect has a position offset
 			pos += m_pParent->m_pParent->m_position_NoWorldOffset;
@@ -162,7 +162,7 @@ void BlockParticle::UpdateGridPosition()
 	if (m_position.z <= -0.5f)
 		gridPositionZ -= 1;
 
-	if (gridPositionX != m_gridPositionX || gridPositionY != m_gridPositionY || gridPositionZ != m_gridPositionZ || m_pCachedGridChunk == NULL)
+	if (gridPositionX != m_gridPositionX || gridPositionY != m_gridPositionY || gridPositionZ != m_gridPositionZ || m_pCachedGridChunk == nullptr)
 	{
 		m_gridPositionX = gridPositionX;
 		m_gridPositionY = gridPositionY;
@@ -188,7 +188,7 @@ Chunk* BlockParticle::GetCachedGridChunkOrFromPosition(vec3 pos)
 
 	if (gridPositionX != m_gridPositionX || gridPositionY != m_gridPositionY || gridPositionZ != m_gridPositionZ)
 	{
-		return NULL;
+		return nullptr;
 	}
 	else
 	{
@@ -214,7 +214,7 @@ void BlockParticle::Update(float dt)
 		return;
 	}
 
-	if(m_pParent != NULL && m_pParent->m_paused == true)
+	if(m_pParent != nullptr && m_pParent->m_paused == true)
 	{
 		// If our parent emitter is paused, return
 		return;
@@ -236,7 +236,7 @@ void BlockParticle::Update(float dt)
 	{
 		UpdateGridPosition();
 
-		if (m_pCachedGridChunk == NULL)
+		if (m_pCachedGridChunk == nullptr)
 		{
 			m_hasCollided = true;
 
@@ -260,13 +260,13 @@ void BlockParticle::Update(float dt)
 
 	if(m_lifeTime > 0.0f)
 	{
-		if(m_pParent != NULL)
+		if(m_pParent != nullptr)
 		{
 			// Velocity towards point origin
 			vec3 pointOrigin = m_pointOrigin;
-			if(m_pParent != NULL && m_pParent->m_particlesFollowEmitter == false)
+			if(m_pParent != nullptr && m_pParent->m_particlesFollowEmitter == false)
 			{
-				if(m_pParent->m_pParent != NULL)
+				if(m_pParent->m_pParent != nullptr)
 				{
 					pointOrigin += m_pParent->m_pParent->m_position; // Add on parent's particle effect position
 				}
@@ -319,7 +319,7 @@ void BlockParticle::Update(float dt)
 			int blockX, blockY, blockZ;
 			vec3 blockPos;
 			vec3 particlePos = m_position;
-			if (m_pParent != NULL && m_pParent->m_particlesFollowEmitter)
+			if (m_pParent != nullptr && m_pParent->m_particlesFollowEmitter)
 			{
 				particlePos += m_pParent->m_position;
 			}
@@ -392,7 +392,7 @@ void BlockParticle::Update(float dt)
 	// Update scale
 	m_currentScale = m_startScale + ((m_endScale - m_startScale) * (1.0f - timeRatio));
 
-	if(m_createEmitters == true && m_pCreatedEmitter != NULL)
+	if(m_createEmitters == true && m_pCreatedEmitter != nullptr)
 	{
 		m_pCreatedEmitter->m_pParentParticle = this;
 		m_pCreatedEmitter->m_position = m_position;

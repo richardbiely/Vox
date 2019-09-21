@@ -66,7 +66,7 @@ GUIWindow::GUIWindow(Renderer* pRenderer, unsigned int GUIFont, const std::strin
 
 	m_outlineRender = false;
 
-	m_pParentGUI = NULL;
+	m_pParentGUI = nullptr;
 }
 
 GUIWindow::GUIWindow(Renderer* pRenderer, unsigned int GUIFont, TitleBar* ptitleBar)
@@ -110,7 +110,7 @@ GUIWindow::GUIWindow(Renderer* pRenderer, unsigned int GUIFont, TitleBar* ptitle
 	m_applicationBorderTop = 0;
 	m_applicationBorderBottom = 0;
 
-	m_pParentGUI = NULL;
+	m_pParentGUI = nullptr;
 
 	m_outlineRender = false;
 }
@@ -227,7 +227,7 @@ void GUIWindow::SetBackgroundIcon(RenderRectangle *icon)
 		Remove(m_pBackgroundIcon);
 
 		delete m_pBackgroundIcon;
-		m_pBackgroundIcon = NULL;
+		m_pBackgroundIcon = nullptr;
 	}
 
 	// Check what type of render rectangle we have been given, and then assign our new data

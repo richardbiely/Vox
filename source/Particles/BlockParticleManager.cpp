@@ -139,7 +139,7 @@ void BlockParticleManager::RemoveEmitterLinkage(BlockParticleEmitter* pEmitter)
 	{
 		if(m_vpBlockParticlesList[i]->m_pParent == pEmitter)
 		{
-			m_vpBlockParticlesList[i]->m_pParent = NULL;
+			m_vpBlockParticlesList[i]->m_pParent = nullptr;
 		}
 	}
 }
@@ -340,8 +340,8 @@ int BlockParticleManager::GetNumRenderableParticles(bool noWorldOffset) const
 		// If we are rendering the special viewport particles and our parent particle effect viewport flag isn't set, don't render.
 		if (noWorldOffset)
 		{
-			if (m_vpBlockParticlesList[i]->m_pParent == NULL ||
-				m_vpBlockParticlesList[i]->m_pParent->m_pParent == NULL ||
+			if (m_vpBlockParticlesList[i]->m_pParent == nullptr ||
+				m_vpBlockParticlesList[i]->m_pParent->m_pParent == nullptr ||
 				m_vpBlockParticlesList[i]->m_pParent->m_pParent->m_renderNoWoldOffsetViewport == false)
 			{
 				continue;
@@ -515,7 +515,7 @@ BlockParticle* BlockParticleManager::CreateBlockParticleFromEmitterParams(BlockP
 		posToSpawn = vec3(0.0f, 0.0f, 0.0f);
 		posToSpawn_NoWorldOffset = vec3(0.0f, 0.0f, 0.0f);
 	}
-	else if (pEmitter->m_pParent != NULL && pEmitter->m_pParentParticle == NULL)
+	else if (pEmitter->m_pParent != nullptr && pEmitter->m_pParentParticle == nullptr)
 	{
 		// If our emitter's parent effect has a position offset
 		posToSpawn += pEmitter->m_pParent->m_position;
@@ -523,8 +523,8 @@ BlockParticle* BlockParticleManager::CreateBlockParticleFromEmitterParams(BlockP
 	}
 
 	// Get the create emitter
-	BlockParticleEmitter* pCreateEmitterParam = NULL;
-	BlockParticleEmitter* pCreatedEmitter = NULL;
+	BlockParticleEmitter* pCreateEmitterParam = nullptr;
+	BlockParticleEmitter* pCreatedEmitter = nullptr;
 	if(pEmitter->m_createEmitters)
 	{
 		pCreateEmitterParam = pEmitter->m_pParent->GetEmitter(pEmitter->m_createEmitterName);
@@ -547,7 +547,7 @@ BlockParticle* BlockParticleManager::CreateBlockParticleFromEmitterParams(BlockP
 		pEmitter->m_randomStartRotation, pEmitter->m_startRotation, pEmitter->m_checkWorldCollisions, pEmitter->m_destoryOnCollision, pEmitter->m_startLifeDecayOnCollision,
 		pEmitter->m_createEmitters, pCreatedEmitter);
 
-	if(pBlockParticle != NULL)
+	if(pBlockParticle != nullptr)
 	{
 		// Set parent to emitter
 		pBlockParticle->m_pParent = pEmitter;
@@ -718,7 +718,7 @@ void BlockParticleManager::SetRenderNoWoldOffsetViewport(unsigned int particleEf
 
 void BlockParticleManager::ExplodeQubicleBinary(const QubicleBinary* pQubicleBinary, float scale, int particleSpawnChance)
 {
-	if(pQubicleBinary != NULL)
+	if(pQubicleBinary != nullptr)
 	{
 		for (int i = 0; i < pQubicleBinary->GetNumMatrices(); i++)
 		{
@@ -736,7 +736,7 @@ void BlockParticleManager::ExplodeQubicleBinary(const QubicleBinary* pQubicleBin
 
 void BlockParticleManager::ExplodeQubicleMatrix(const QubicleMatrix* pMatrix, float scale, int particleSpawnChance, bool allSameColour, float sameR, float sameG, float sameB, float sameA)
 {
-	if(pMatrix != NULL)
+	if(pMatrix != nullptr)
 	{
 		float r = 1.0f;
 		float g = 1.0f;
@@ -801,8 +801,8 @@ void BlockParticleManager::ExplodeQubicleMatrix(const QubicleMatrix* pMatrix, fl
 
 						vec3 gravity = vec3(0.0f, -1.0f, 0.0f);
 						vec3 pointOrigin = vec3(0.0f, 0.0f, 0.0f);
-						BlockParticle* pParticle = CreateBlockParticle(blockPosition, blockPosition, gravity, 1.5f, pointOrigin, startScale, 0.0f, endScale, 0.0f, r, g, b, a, 0.0f, 0.0f, 0.0f, 0.0f, r, g, b, a, 0.0f, 0.0f, 0.0f, 0.0f, lifeTime, 0.0f, 0.0f, 0.0f, -toOrigin+ vec3(0.0f, 2.0f, 0.0f), vec3(0.85f, 2.0f, 0.85f), vec3(0.0f, 0.0f, 0.0f), vec3(180.0f, 180.0f, 180.0f), 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, false, vec3(rotX, rotY, rotZ), true, false, false, false, NULL);
-						if(pParticle != NULL)
+						BlockParticle* pParticle = CreateBlockParticle(blockPosition, blockPosition, gravity, 1.5f, pointOrigin, startScale, 0.0f, endScale, 0.0f, r, g, b, a, 0.0f, 0.0f, 0.0f, 0.0f, r, g, b, a, 0.0f, 0.0f, 0.0f, 0.0f, lifeTime, 0.0f, 0.0f, 0.0f, -toOrigin+ vec3(0.0f, 2.0f, 0.0f), vec3(0.85f, 2.0f, 0.85f), vec3(0.0f, 0.0f, 0.0f), vec3(180.0f, 180.0f, 180.0f), 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, false, vec3(rotX, rotY, rotZ), true, false, false, false, nullptr);
+						if(pParticle != nullptr)
 						{
 							pParticle->m_allowFloorSliding = false;
 						}
@@ -964,8 +964,8 @@ void BlockParticleManager::RenderInstanced(bool noWorldOffset)
 			if (noWorldOffset)
 			{
 				if (
-					pParticle->m_pParent == NULL ||
-					pParticle->m_pParent->m_pParent == NULL ||
+					pParticle->m_pParent == nullptr ||
+					pParticle->m_pParent->m_pParent == nullptr ||
 					pParticle->m_pParent->m_pParent->m_renderNoWoldOffsetViewport == false)
 				{
 					continue;
@@ -999,8 +999,8 @@ void BlockParticleManager::RenderInstanced(bool noWorldOffset)
 			if (noWorldOffset)
 			{
 				if (
-					pParticle->m_pParent == NULL ||
-					pParticle->m_pParent->m_pParent == NULL ||
+					pParticle->m_pParent == nullptr ||
+					pParticle->m_pParent->m_pParent == nullptr ||
 					pParticle->m_pParent->m_pParent->m_renderNoWoldOffsetViewport == false)
 				{
 					continue;
@@ -1188,7 +1188,7 @@ void BlockParticleManager::RenderBlockParticle(BlockParticle* pBlockParticle, bo
 		m_pRenderer->PushMatrix();
 			m_pRenderer->SetPrimativeMode(PM_QUADS);
 			//m_pRenderer->EnableTransparency(BF_SRC_ALPHA, BF_ONE_MINUS_SRC_ALPHA);
-			m_pRenderer->RenderFromArray(VT_POSITION_NORMAL_COLOUR, m_blockMaterialID, 0, 24, 24, 0, &m_vertexBuffer, NULL, NULL);
+			m_pRenderer->RenderFromArray(VT_POSITION_NORMAL_COLOUR, m_blockMaterialID, 0, 24, 24, 0, &m_vertexBuffer, nullptr, nullptr);
 			//m_pRenderer->DisableTransparency();
 		m_pRenderer->PopMatrix();
 

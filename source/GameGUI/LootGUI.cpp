@@ -137,9 +137,9 @@ LootGUI::LootGUI(Renderer* pRenderer, OpenGLGUI* pGUI, FrontendManager* pFronten
 
 	m_pressedX = 0;
 	m_pressedY = 0;
-	m_pPressedLootSlotItem = NULL;
+	m_pPressedLootSlotItem = nullptr;
 
-	m_pStorageItem = NULL;
+	m_pStorageItem = nullptr;
 
 	// Load delay
 	m_loadDelay = false;
@@ -274,7 +274,7 @@ void LootGUI::Load(bool loadDelay, float loadDelayTime)
 
 	m_pressedX = 0;
 	m_pressedY = 0;
-	m_pPressedLootSlotItem = NULL;
+	m_pPressedLootSlotItem = nullptr;
 
 	m_toolTipVisible = false;
 	m_tooltipAppearDelayTimer = 0.0f;
@@ -295,7 +295,7 @@ void LootGUI::Unload()
 
 	m_pGUI->RemoveWindow(m_pLootWindow);
 
-	if(VoxGame::GetInstance()->GetInteractItem() != NULL && VoxGame::GetInstance()->GetInteractItem()->GetItemType() == eItem_Chest)
+	if(VoxGame::GetInstance()->GetInteractItem() != nullptr && VoxGame::GetInstance()->GetInteractItem()->GetItemType() == eItem_Chest)
 	{
 		VoxGame::GetInstance()->GetInteractItem()->Interact();
 	}
@@ -344,7 +344,7 @@ LootSlotItem* LootGUI::GetLootSlotItem(int x, int y)
 		}
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 void LootGUI::LoadItems(Item* pItem)
@@ -478,7 +478,7 @@ void LootGUI::CreateLootItems()
 	{
 		InventoryItem* pItem = m_vpLootSlotItems[i]->m_pInventoryItem;
 
-		if(pItem != NULL)
+		if(pItem != nullptr)
 		{
 			int x;
 			int y;
@@ -809,12 +809,12 @@ void LootGUI::_LootItemReleased(void *apData)
 
 void LootGUI::LootItemReleased(LootSlotItem* pLootItem)
 {
-	if(m_pPressedLootSlotItem == NULL)
+	if(m_pPressedLootSlotItem == nullptr)
 	{
 		return;
 	}
 
-	m_pPressedLootSlotItem = NULL;
+	m_pPressedLootSlotItem = nullptr;
 
 	int x;
 	int y;
@@ -844,7 +844,7 @@ void LootGUI::LootItemReleased(LootSlotItem* pLootItem)
 				}
 
 				// Switch the loot item in this slot to the pressed (previous) position
-				if(pLootSlotItem != NULL)
+				if(pLootSlotItem != nullptr)
 				{
 					pLootSlotItem->m_slotX = pLootItem->m_slotX;
 					pLootSlotItem->m_slotY = pLootItem->m_slotY;
@@ -884,7 +884,7 @@ void LootGUI::LootItemReleased(LootSlotItem* pLootItem)
 						int lootSlotY = pLootItem->m_slotY;
 
 						InventoryItem* pInventoryItem = m_pInventoryManager->GetInventoryItemForEquipSlot(pLootItem->m_pInventoryItem->m_equipSlot);
-						if(pInventoryItem != NULL)
+						if(pInventoryItem != nullptr)
 						{
 							m_pActionBar->RemoveInventoryItemFromActionBar(pInventoryItem->m_title);
 						}
@@ -901,7 +901,7 @@ void LootGUI::LootItemReleased(LootSlotItem* pLootItem)
 						pLootItem->m_erase = true;
 						m_vpLootSlotItems.erase( remove_if(m_vpLootSlotItems.begin(), m_vpLootSlotItems.end(), needs_erasing), m_vpLootSlotItems.end() );
 
-						if(pPreviousEquipped != NULL)
+						if(pPreviousEquipped != nullptr)
 						{
 							AddLootItemFromInventory(pPreviousEquipped, lootSlotX, lootSlotY);
 						}
@@ -942,7 +942,7 @@ void LootGUI::LootItemReleased(LootSlotItem* pLootItem)
 							int lootSlotY = pLootItem->m_slotY;
 
 							InventoryItem* pInventoryItem = m_pInventoryManager->GetInventoryItemForEquipSlot(pLootItem->m_pInventoryItem->m_equipSlot);
-							if(pInventoryItem != NULL)
+							if(pInventoryItem != nullptr)
 							{
 								m_pActionBar->RemoveInventoryItemFromActionBar(pInventoryItem->m_title);
 							}
@@ -959,7 +959,7 @@ void LootGUI::LootItemReleased(LootSlotItem* pLootItem)
 							pLootItem->m_erase = true;
 							m_vpLootSlotItems.erase( remove_if(m_vpLootSlotItems.begin(), m_vpLootSlotItems.end(), needs_erasing), m_vpLootSlotItems.end() );
 
-							if(pPreviousEquipped != NULL)
+							if(pPreviousEquipped != nullptr)
 							{
 								AddLootItemFromInventory(pPreviousEquipped, lootSlotX, lootSlotY);
 							}
@@ -993,7 +993,7 @@ void LootGUI::LootItemReleased(LootSlotItem* pLootItem)
 					{
 						// Check if another inventory item already exists in this slot
 						InventorySlotItem* pInventorySlotItem = m_pInventoryGUI->GetInventorySlotItem(j, i);
-						if(pInventorySlotItem == NULL)
+						if(pInventorySlotItem == nullptr)
 						{
 							m_pGUI->RemoveComponent(pLootItem->m_pInventoryIcon);
 

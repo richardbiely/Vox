@@ -186,7 +186,7 @@ InventoryGUI::InventoryGUI(Renderer* pRenderer, OpenGLGUI* pGUI, FrontendManager
 
 	SetWindowDimensions(m_windowWidth, m_windowHeight);
 
-	m_pInventoryItemToDelete = NULL;
+	m_pInventoryItemToDelete = nullptr;
 
 	// Load delay
 	m_loadDelay = false;
@@ -352,14 +352,14 @@ void InventoryGUI::Load(bool loadDelay, float loadDelayTime)
 
 	m_pressedX = 0;
 	m_pressedY = 0;
-	m_pPressedInventoryItem = NULL;
+	m_pPressedInventoryItem = nullptr;
 
 	m_toolTipVisible = false;
 	m_tooltipAppearDelayTimer = 0.0f;
 	m_toolTipComponentsAdded = false;
 	m_tooltipQuality = ItemQuality_Common;
 
-	m_pInventoryItemToDelete = NULL;
+	m_pInventoryItemToDelete = nullptr;
 
 	m_loaded = true;
 }
@@ -373,7 +373,7 @@ void InventoryGUI::Unload()
 
 	m_pGUI->RemoveWindow(m_pInventoryWindow);
 
-	if(m_pPressedInventoryItem != NULL)
+	if(m_pPressedInventoryItem != nullptr)
 	{
 		m_pPressedInventoryItem->m_pInventoryIcon->SetDepth(3.0f);
 		m_pInventoryWindow->DepthSortComponentChildren();
@@ -503,7 +503,7 @@ void InventoryGUI::CreateInventoryItems()
 		{
 			InventoryItem* pItem = m_pInventoryManager->GetInventoryItemForSlot(j, i);
 
-			if(pItem != NULL)
+			if(pItem != nullptr)
 			{
 				int x;
 				int y;
@@ -621,7 +621,7 @@ void InventoryGUI::UpdateActionBar()
 		{
 			ActionButtonItem* pActionBarItem = m_pActionBar->GetActionButtonForSlot(j);
 
-			if(pActionBarItem != NULL)
+			if(pActionBarItem != nullptr)
 			{
 				if(pActionBarItem->m_inventoryX == m_vpInventorySlotItems[i]->m_slotX && pActionBarItem->m_inventoryY == m_vpInventorySlotItems[i]->m_slotY)
 				{
@@ -864,14 +864,14 @@ InventorySlotItem* InventoryGUI::GetInventorySlotItem(int x, int y)
 		}
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 InventorySlotItem* InventoryGUI::GetInventorySlotItemEquipped(EquipSlot equipSlot)
 {
 	InventoryItem* pInventoryItem = m_pInventoryManager->GetInventoryItemForEquipSlot(equipSlot);
 
-	if(pInventoryItem != NULL)
+	if(pInventoryItem != nullptr)
 	{
 		for(unsigned int i = 0; i < m_vpInventorySlotItems.size(); i++)
 		{
@@ -882,7 +882,7 @@ InventorySlotItem* InventoryGUI::GetInventorySlotItemEquipped(EquipSlot equipSlo
 		}
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 void InventoryGUI::SetEquippedItem(EquipSlot equipSlot, string title)
@@ -1032,12 +1032,12 @@ void InventoryGUI::_InventoryItemReleased(void *apData)
 
 void InventoryGUI::InventoryItemReleased(InventorySlotItem* pInventoryItem)
 {
-	if(m_pPressedInventoryItem == NULL)
+	if(m_pPressedInventoryItem == nullptr)
 	{
 		return;
 	}
 
-	m_pPressedInventoryItem = NULL;
+	m_pPressedInventoryItem = nullptr;
 
 	if (m_pPlayer->IsCrafting())
 	{
@@ -1081,7 +1081,7 @@ void InventoryGUI::InventoryItemReleased(InventorySlotItem* pInventoryItem)
 				{
 					// Check if another inventory item already exists in this slot
 					InventorySlotItem* pInventorySlotItem = GetInventorySlotItem(j, i);
-					if(pInventorySlotItem == NULL)
+					if(pInventorySlotItem == nullptr)
 					{
 						// We are unquipping an item that is in one of the equipment slots
 						m_pInventoryManager->UnequipItem(j, i, pInventoryItem->m_pInventoryItem->m_equipSlot);
@@ -1123,7 +1123,7 @@ void InventoryGUI::InventoryItemReleased(InventorySlotItem* pInventoryItem)
 					InventorySlotItem* pInventorySlotItem = GetInventorySlotItem(j, i);
 
 					// Switch the inventory item in this slot to the pressed (previous) position
-					if(pInventorySlotItem != NULL)
+					if(pInventorySlotItem != nullptr)
 					{
 						pInventorySlotItem->m_slotX = pInventoryItem->m_slotX;
 						pInventorySlotItem->m_slotY = pInventoryItem->m_slotY;
@@ -1173,7 +1173,7 @@ void InventoryGUI::InventoryItemReleased(InventorySlotItem* pInventoryItem)
 						if(pInventoryItem->m_pInventoryItem->m_equipSlot == EquipSlot_RightHand)
 						{
 							InventoryItem* pLeftHanded = m_pInventoryManager->GetInventoryItemForEquipSlot(EquipSlot_LeftHand);
-							if(pInventoryItem->m_pInventoryItem->m_left || (pLeftHanded != NULL && pLeftHanded->m_right))
+							if(pInventoryItem->m_pInventoryItem->m_left || (pLeftHanded != nullptr && pLeftHanded->m_right))
 							{
 								int slotX;
 								int slotY;
@@ -1183,7 +1183,7 @@ void InventoryGUI::InventoryItemReleased(InventorySlotItem* pInventoryItem)
 								{
 									// We can't fit the other item in the inventory
 								}
-								else if(pLeftHanded != NULL)
+								else if(pLeftHanded != nullptr)
 								{
 									m_pActionBar->UpdateActionBarSlots(pLeftHanded, slotX, slotY);
 								}
@@ -1192,7 +1192,7 @@ void InventoryGUI::InventoryItemReleased(InventorySlotItem* pInventoryItem)
 						if(pInventoryItem->m_pInventoryItem->m_equipSlot == EquipSlot_LeftHand)
 						{
 							InventoryItem* pRightHanded = m_pInventoryManager->GetInventoryItemForEquipSlot(EquipSlot_RightHand);
-							if(pInventoryItem->m_pInventoryItem->m_right || (pRightHanded != NULL && pRightHanded->m_left))
+							if(pInventoryItem->m_pInventoryItem->m_right || (pRightHanded != nullptr && pRightHanded->m_left))
 							{
 								int slotX;
 								int slotY;
@@ -1202,7 +1202,7 @@ void InventoryGUI::InventoryItemReleased(InventorySlotItem* pInventoryItem)
 								{
 									// We can't fit the other item in the inventory
 								}
-								else if(pRightHanded != NULL)
+								else if(pRightHanded != nullptr)
 								{
 									m_pActionBar->UpdateActionBarSlots(pRightHanded, slotX, slotY);
 								}
@@ -1253,7 +1253,7 @@ void InventoryGUI::InventoryItemReleased(InventorySlotItem* pInventoryItem)
 							if(pInventoryItem->m_pInventoryItem->m_equipSlot == EquipSlot_RightHand)
 							{
 								InventoryItem* pLeftHanded = m_pInventoryManager->GetInventoryItemForEquipSlot(EquipSlot_LeftHand);
-								if(pInventoryItem->m_pInventoryItem->m_left || (pLeftHanded != NULL && pLeftHanded->m_right))
+								if(pInventoryItem->m_pInventoryItem->m_left || (pLeftHanded != nullptr && pLeftHanded->m_right))
 								{
 									int slotX;
 									int slotY;
@@ -1263,7 +1263,7 @@ void InventoryGUI::InventoryItemReleased(InventorySlotItem* pInventoryItem)
 									{
 										// We can't fit the other item in the inventory
 									}
-									else if(pLeftHanded != NULL)
+									else if(pLeftHanded != nullptr)
 									{
 										m_pActionBar->UpdateActionBarSlots(pLeftHanded, slotX, slotY);
 									}
@@ -1272,7 +1272,7 @@ void InventoryGUI::InventoryItemReleased(InventorySlotItem* pInventoryItem)
 							if(pInventoryItem->m_pInventoryItem->m_equipSlot == EquipSlot_LeftHand)
 							{
 								InventoryItem* pRightHanded = m_pInventoryManager->GetInventoryItemForEquipSlot(EquipSlot_RightHand);
-								if(pInventoryItem->m_pInventoryItem->m_right || (pRightHanded != NULL && pRightHanded->m_left))
+								if(pInventoryItem->m_pInventoryItem->m_right || (pRightHanded != nullptr && pRightHanded->m_left))
 								{
 									int slotX;
 									int slotY;
@@ -1282,7 +1282,7 @@ void InventoryGUI::InventoryItemReleased(InventorySlotItem* pInventoryItem)
 									{
 										// We can't fit the other item in the inventory
 									}
-									else if(pRightHanded != NULL)
+									else if(pRightHanded != nullptr)
 									{
 										m_pActionBar->UpdateActionBarSlots(pRightHanded, slotX, slotY);
 									}
@@ -1325,7 +1325,7 @@ void InventoryGUI::InventoryItemReleased(InventorySlotItem* pInventoryItem)
 						// Check if we released (mouse cursor) in the boundary of another slot
 						if(lMouse.x > pLootWindow->GetDimensions().m_x+x && lMouse.x < pLootWindow->GetDimensions().m_x+x+width && lMouse.y > pLootWindow->GetDimensions().m_y+y && lMouse.y < pLootWindow->GetDimensions().m_y+y+height)
 						{
-							if(m_pLootGUI->GetLootSlotItem(j, i) == NULL) // ONLY if an item doesn't already exist in the loot slot position
+							if(m_pLootGUI->GetLootSlotItem(j, i) == nullptr) // ONLY if an item doesn't already exist in the loot slot position
 							{
 								m_pLootGUI->AddLootItemFromInventory(pInventoryItem->m_pInventoryItem, j, i);
 
@@ -1386,7 +1386,7 @@ void InventoryGUI::InventoryItemReleased(InventorySlotItem* pInventoryItem)
 						vec3 vel = vec3(GetRandomNumber(-1, 1, 2), 0.0f, GetRandomNumber(-1, 1, 2)) * GetRandomNumber(2, 3, 2);
 
 						Item* pItem = m_pItemManager->CreateItem(m_pPlayer->GetCenter(), vec3(0.0f, 0.0f, 0.0f), vec3(0.0f, 0.0f, 0.0f), pInventoryItem->m_pInventoryItem->m_filename.c_str(), eItem_DroppedItem, pInventoryItem->m_pInventoryItem->m_title.c_str(), true, false, 0.08f);
-						if(pItem != NULL)
+						if(pItem != nullptr)
 						{
 							pItem->SetGravityDirection(vec3(0.0f, -1.0f, 0.0f));
 							pItem->SetVelocity(normalize(vel)*4.5f + vec3(0.0f, 9.5f+GetRandomNumber(3, 6, 2), 0.0f));
@@ -1448,7 +1448,7 @@ void InventoryGUI::InventoryItemReleased(InventorySlotItem* pInventoryItem)
 						}
 						else
 						{
-							if (pInventoryItem != NULL)
+							if (pInventoryItem != nullptr)
 							{
 								m_pInventoryManager->RemoveInventoryItem(pInventoryItem->m_slotX, pInventoryItem->m_slotY);
 
@@ -1550,7 +1550,7 @@ void InventoryGUI::_PopupConfirmPressed(void *apData)
 
 void InventoryGUI::PopupConfirmPressed()
 {
-	if(m_pInventoryItemToDelete != NULL)
+	if(m_pInventoryItemToDelete != nullptr)
 	{
 		m_pInventoryManager->RemoveInventoryItem(m_pInventoryItemToDelete->m_slotX, m_pInventoryItemToDelete->m_slotY);
 
@@ -1573,7 +1573,7 @@ void InventoryGUI::_PopupCancelPressed(void *apData)
 
 void InventoryGUI::PopupCancelPressed()
 {
-	m_pInventoryItemToDelete = NULL;
+	m_pInventoryItemToDelete = nullptr;
 
 	ClosePopup();
 }

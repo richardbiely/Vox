@@ -31,20 +31,20 @@ AbstractButton::AbstractButton(Renderer* pRenderer, unsigned int GUIFont, const 
 {
 	m_bDisplayLabel = true;
 
-	m_Callback = NULL;
-	m_pCallbackData = NULL;
+	m_Callback = nullptr;
+	m_pCallbackData = nullptr;
 
-	m_Callback_Pressed = NULL;
-	m_pCallbackData_Pressed = NULL;
+	m_Callback_Pressed = nullptr;
+	m_pCallbackData_Pressed = nullptr;
 
-	m_Callback_Released = NULL;
-	m_pCallbackData_Released = NULL;
+	m_Callback_Released = nullptr;
+	m_pCallbackData_Released = nullptr;
 
-	m_EnterCallback = NULL;
-	m_pEnterCallbackData = NULL;
+	m_EnterCallback = nullptr;
+	m_pEnterCallbackData = nullptr;
 
-	m_ExitCallback = NULL;
-	m_pExitCallbackData = NULL;
+	m_ExitCallback = nullptr;
+	m_pExitCallbackData = nullptr;
 
 	m_labelOffsetX = 0;
 	m_labelOffsetY = 0;
@@ -78,7 +78,7 @@ void AbstractButton::RemoveIcon(RenderRectangle *pRemoveIcon)
 	{
 		Remove(pRemoveIcon);
 		delete pRemoveIcon;
-		pRemoveIcon = NULL;
+		pRemoveIcon = nullptr;
 	}
 }
 
@@ -177,7 +177,7 @@ void AbstractButton::SetDefaultIcon(RenderRectangle *icon)
 		Remove(m_pDefaultIcon);
 
 		delete m_pDefaultIcon;
-		m_pDefaultIcon = NULL;
+		m_pDefaultIcon = nullptr;
 	}
 
 	// Check what type of render rectangle we have been given, and then assign our new data
@@ -213,7 +213,7 @@ void AbstractButton::SetSelectedIcon(RenderRectangle *icon)
 		Remove(m_pSelectedIcon);
 
 		delete m_pSelectedIcon;
-		m_pSelectedIcon = NULL;
+		m_pSelectedIcon = nullptr;
 	}
 
 	// Check what type of render rectangle we have been given, and then create a new copy of it
@@ -249,7 +249,7 @@ void AbstractButton::SetHoverIcon(RenderRectangle *icon)
 		Remove(m_pHoverIcon);
 
 		delete m_pHoverIcon;
-		m_pHoverIcon = NULL;
+		m_pHoverIcon = nullptr;
 	}
 
 	// Check what type of render rectangle we have been given, and then assign our new data
@@ -285,7 +285,7 @@ void AbstractButton::SetDisabledIcon(RenderRectangle *icon)
 		Remove(m_pDisabledIcon);
 
 		delete m_pDisabledIcon;
-		m_pDisabledIcon = NULL;
+		m_pDisabledIcon = nullptr;
 	}
 
 	// Check what type of render rectangle we have been given, and then assign our new data

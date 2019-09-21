@@ -26,13 +26,13 @@ Player::Player(Renderer* pRenderer, ChunkManager* pChunkManager, QubicleBinaryMa
 	m_pQubicleBinaryManager = pQubicleBinaryManager;
 	m_pLightingManager = pLightingManager;
 	m_pBlockParticleManager = pBlockParticleManager;
-	m_pInventoryManager = NULL;
-	m_pItemManager = NULL;
-	m_pInventoryGUI = NULL;
-	m_pCharacterGUI = NULL;
-	m_pCraftingGUI = NULL;
-	m_pLootGUI = NULL;
-	m_pActionBar = NULL;
+	m_pInventoryManager = nullptr;
+	m_pItemManager = nullptr;
+	m_pInventoryGUI = nullptr;
+	m_pCharacterGUI = nullptr;
+	m_pCraftingGUI = nullptr;
+	m_pLootGUI = nullptr;
+	m_pActionBar = nullptr;
 
 	// Create voxel character
 	m_pVoxelCharacter = new VoxelCharacter(m_pRenderer, m_pQubicleBinaryManager);
@@ -52,12 +52,12 @@ Player::~Player()
 
 	delete m_pPlayerStats;
 
-	if (m_pCharacterBackup != NULL)
+	if (m_pCharacterBackup != nullptr)
 	{
 		m_pCharacterBackup->SetNullLinkage(m_pVoxelCharacter->GetQubicleModel());
 	}
 	delete m_pVoxelCharacter;
-	if (m_pCharacterBackup != NULL)
+	if (m_pCharacterBackup != nullptr)
 	{
 		delete m_pCharacterBackup;
 	}
@@ -147,7 +147,7 @@ void Player::ResetPlayer()
 	m_gridPositionY = 0;
 	m_gridPositionZ = 0;
 
-	m_pCachedGridChunk = NULL;
+	m_pCachedGridChunk = nullptr;
 
 	// Ground check
 	m_bIsOnGround = false;
@@ -182,7 +182,7 @@ void Player::ResetPlayer()
 	m_hitFacialExpressionTimer = m_hitFacialExpressionTime;
 
 	// Target enemy
-	m_pTargetEnemy = NULL;
+	m_pTargetEnemy = nullptr;
 
 	// Idle flag
 	m_bIsIdle = true;
@@ -427,7 +427,7 @@ void Player::LoadCharacter(string characterName, bool fromCharacterSelectScreen)
 	m_pVoxelCharacter->SetWireFrameRender(false);
 	m_pVoxelCharacter->SetCharacterScale(0.08f);
 
-	if (m_pCharacterBackup != NULL)
+	if (m_pCharacterBackup != nullptr)
 	{
 		delete m_pCharacterBackup;
 		m_pCharacterBackup = new QubicleBinary(m_pRenderer);
@@ -443,7 +443,7 @@ void Player::LoadWeapon(bool left, string weaponFile)
 {
 	if (left)
 	{
-		if (m_pVoxelCharacter->GetLeftWeapon() != NULL)
+		if (m_pVoxelCharacter->GetLeftWeapon() != nullptr)
 		{
 			// Load the weapon file
 			m_pVoxelCharacter->LoadLeftWeapon(weaponFile.c_str());
@@ -451,7 +451,7 @@ void Player::LoadWeapon(bool left, string weaponFile)
 	}
 	else
 	{
-		if (m_pVoxelCharacter->GetRightWeapon() != NULL)
+		if (m_pVoxelCharacter->GetRightWeapon() != nullptr)
 		{
 			// Load the weapon file
 			m_pVoxelCharacter->LoadRightWeapon(weaponFile.c_str());
@@ -461,7 +461,7 @@ void Player::LoadWeapon(bool left, string weaponFile)
 
 void Player::UnloadWeapon(bool left)
 {
-	VoxelWeapon* pWeapon = NULL;
+	VoxelWeapon* pWeapon = nullptr;
 	bool isWeaponLoaded = false;
 	if (left)  // Left side
 	{
@@ -474,7 +474,7 @@ void Player::UnloadWeapon(bool left)
 		isWeaponLoaded = m_pVoxelCharacter->IsRightWeaponLoaded();
 	}
 
-	if (pWeapon != NULL)
+	if (pWeapon != nullptr)
 	{
 		if (isWeaponLoaded)
 		{
@@ -602,7 +602,7 @@ void Player::EquipItem(InventoryItem* pItem, bool supressAudio)
 		if (pItem->m_itemType == InventoryType_Weapon_Bow)
 		{
 			VoxelWeapon* pNewEquipment = new VoxelWeapon(m_pRenderer, m_pQubicleBinaryManager);
-			pNewEquipment->SetVoxelCharacterParent(NULL);
+			pNewEquipment->SetVoxelCharacterParent(nullptr);
 			pNewEquipment->LoadWeapon("media/gamedata/items/Quiver/Quiver.item", false);
 
 			auto* pAnimSection = pNewEquipment->GetAnimatedSection(0);
@@ -726,7 +726,7 @@ void Player::EquipItem(InventoryItem* pItem, bool supressAudio)
 		}
 
 		// Set new attack radius
-		if (m_pVoxelCharacter->GetRightWeapon() != NULL)
+		if (m_pVoxelCharacter->GetRightWeapon() != nullptr)
 		{
 			m_attackRadius = m_pVoxelCharacter->GetRightWeapon()->GetWeaponRadius();
 		}
@@ -736,10 +736,10 @@ void Player::EquipItem(InventoryItem* pItem, bool supressAudio)
 	break;
 	case EquipSlot_Head:
 	{
-		if (m_pVoxelCharacter != NULL)
+		if (m_pVoxelCharacter != nullptr)
 		{
 			VoxelWeapon* pNewEquipment = new VoxelWeapon(m_pRenderer, m_pQubicleBinaryManager);
-			pNewEquipment->SetVoxelCharacterParent(NULL);
+			pNewEquipment->SetVoxelCharacterParent(nullptr);
 			pNewEquipment->LoadWeapon(pItem->m_filename.c_str(), false);
 
 			pNewEquipment->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->SetScaleAndOffsetForMatrix("Helm", pNewEquipment->GetAnimatedSection(0)->m_renderScale, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.x, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.y, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.z);
@@ -751,10 +751,10 @@ void Player::EquipItem(InventoryItem* pItem, bool supressAudio)
 	break;
 	case EquipSlot_Shoulders:
 	{
-		if (m_pVoxelCharacter != NULL)
+		if (m_pVoxelCharacter != nullptr)
 		{
 			VoxelWeapon* pNewEquipment = new VoxelWeapon(m_pRenderer, m_pQubicleBinaryManager);
-			pNewEquipment->SetVoxelCharacterParent(NULL);
+			pNewEquipment->SetVoxelCharacterParent(nullptr);
 			pNewEquipment->LoadWeapon(pItem->m_filename.c_str(), false);
 
 			if (pItem->m_right)
@@ -777,10 +777,10 @@ void Player::EquipItem(InventoryItem* pItem, bool supressAudio)
 	break;
 	case EquipSlot_Body:
 	{
-		if (m_pVoxelCharacter != NULL)
+		if (m_pVoxelCharacter != nullptr)
 		{
 			VoxelWeapon* pNewEquipment = new VoxelWeapon(m_pRenderer, m_pQubicleBinaryManager);
-			pNewEquipment->SetVoxelCharacterParent(NULL);
+			pNewEquipment->SetVoxelCharacterParent(nullptr);
 			pNewEquipment->LoadWeapon(pItem->m_filename.c_str(), false);
 
 			pNewEquipment->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->SetScaleAndOffsetForMatrix("Body", pNewEquipment->GetAnimatedSection(0)->m_renderScale, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.x, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.y, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.z);
@@ -792,10 +792,10 @@ void Player::EquipItem(InventoryItem* pItem, bool supressAudio)
 	break;
 	case EquipSlot_Legs:
 	{
-		if (m_pVoxelCharacter != NULL)
+		if (m_pVoxelCharacter != nullptr)
 		{
 			VoxelWeapon* pNewEquipment = new VoxelWeapon(m_pRenderer, m_pQubicleBinaryManager);
-			pNewEquipment->SetVoxelCharacterParent(NULL);
+			pNewEquipment->SetVoxelCharacterParent(nullptr);
 			pNewEquipment->LoadWeapon(pItem->m_filename.c_str(), false);
 
 			pNewEquipment->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->SetScaleAndOffsetForMatrix("Legs", pNewEquipment->GetAnimatedSection(0)->m_renderScale, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.x, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.y, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.z);
@@ -807,10 +807,10 @@ void Player::EquipItem(InventoryItem* pItem, bool supressAudio)
 	break;
 	case EquipSlot_Hand:
 	{
-		if (m_pVoxelCharacter != NULL)
+		if (m_pVoxelCharacter != nullptr)
 		{
 			VoxelWeapon* pNewEquipment = new VoxelWeapon(m_pRenderer, m_pQubicleBinaryManager);
-			pNewEquipment->SetVoxelCharacterParent(NULL);
+			pNewEquipment->SetVoxelCharacterParent(nullptr);
 			pNewEquipment->LoadWeapon(pItem->m_filename.c_str(), false);
 
 			if (pItem->m_right)
@@ -833,10 +833,10 @@ void Player::EquipItem(InventoryItem* pItem, bool supressAudio)
 	break;
 	case EquipSlot_Feet:
 	{
-		if (m_pVoxelCharacter != NULL)
+		if (m_pVoxelCharacter != nullptr)
 		{
 			VoxelWeapon* pNewEquipment = new VoxelWeapon(m_pRenderer, m_pQubicleBinaryManager);
-			pNewEquipment->SetVoxelCharacterParent(NULL);
+			pNewEquipment->SetVoxelCharacterParent(nullptr);
 			pNewEquipment->LoadWeapon(pItem->m_filename.c_str(), false);
 
 			if (pItem->m_right)
@@ -908,7 +908,7 @@ void Player::UnequipItem(EquipSlot equipSlot, bool left, bool right)
 		SetTorch(false);
 
 		InventoryItem* pRightHand = m_pInventoryManager->GetInventoryItemForEquipSlot(EquipSlot_RightHand);
-		if (pRightHand == NULL || pRightHand->m_itemType != InventoryType_Weapon_SpellHands)
+		if (pRightHand == nullptr || pRightHand->m_itemType != InventoryType_Weapon_SpellHands)
 		{
 			SetSpellHands(false);
 		}
@@ -944,7 +944,7 @@ void Player::UnequipItem(EquipSlot equipSlot, bool left, bool right)
 		SetConsumable(false);
 
 		InventoryItem* pLeftHand = m_pInventoryManager->GetInventoryItemForEquipSlot(EquipSlot_LeftHand);
-		if (pLeftHand == NULL || pLeftHand->m_itemType != InventoryType_Weapon_SpellHands)
+		if (pLeftHand == nullptr || pLeftHand->m_itemType != InventoryType_Weapon_SpellHands)
 		{
 			SetSpellHands(false);
 		}
@@ -1059,7 +1059,7 @@ void Player::RefreshStatModifierCacheValues()
 	{
 		InventoryItem *pEquippedItem = m_pInventoryManager->GetInventoryItemForEquipSlot((EquipSlot)i);
 
-		if (pEquippedItem != NULL)
+		if (pEquippedItem != nullptr)
 		{
 			for (int j = 0; j < (int)pEquippedItem->m_vpStatAttributes.size(); j++)
 			{
@@ -1123,7 +1123,7 @@ bool Player::CheckCollisions(vec3 positionCheck, vec3 previousPosition, vec3 *pN
 
 					if (active == false)
 					{
-						if (pChunk == NULL || pChunk->IsSetup() == false)
+						if (pChunk == nullptr || pChunk->IsSetup() == false)
 						{
 							*pMovement = vec3(0.0f, 0.0f, 0.0f);
 							worldCollision = true;
@@ -1269,7 +1269,7 @@ bool Player::GetSelectionBlock(vec3 *blockPos, int* chunkIndex, int* blockX, int
 	{
 		vec3 testPos = GetCenter() + PLAYER_CENTER_OFFSET + normalize(m_cameraForward) * distance;
 
-		Chunk* pChunk = NULL;
+		Chunk* pChunk = nullptr;
 		bool active = m_pChunkManager->GetBlockActiveFrom3DPosition(testPos.x, testPos.y, testPos.z, blockPos, blockX, blockY, blockZ, &pChunk);
 		if (active == true)
 		{
@@ -1294,7 +1294,7 @@ bool Player::GetPlacementBlock(vec3 *blockPos, int* chunkIndex, int* blockX, int
 	{
 		vec3 testPos = GetCenter() + PLAYER_CENTER_OFFSET + normalize(m_cameraForward) * distance;
 
-		Chunk* pChunk = NULL;
+		Chunk* pChunk = nullptr;
 		bool active = m_pChunkManager->GetBlockActiveFrom3DPosition(testPos.x, testPos.y, testPos.z, blockPos, blockX, blockY, blockZ, &pChunk);
 		if (active == true)
 		{
@@ -1303,7 +1303,7 @@ bool Player::GetPlacementBlock(vec3 *blockPos, int* chunkIndex, int* blockX, int
 			bool active2 = m_pChunkManager->GetBlockActiveFrom3DPosition(EmptyPos.x, EmptyPos.y, EmptyPos.z, blockPos, blockX, blockY, blockZ, &pChunk);
 			Chunk* pChunk = m_pChunkManager->GetChunkFromPosition(EmptyPos.x, EmptyPos.y, EmptyPos.z);
 
-			if (pChunk != NULL && active2 == false)
+			if (pChunk != nullptr && active2 == false)
 			{
 				vec3 blockPosTest;
 				int blockXTest;
@@ -1350,7 +1350,7 @@ void Player::UpdateGridPosition()
 	if (m_position.z <= -0.5f)
 		gridPositionZ -= 1;
 
-	if (gridPositionX != m_gridPositionX || gridPositionY != m_gridPositionY || gridPositionZ != m_gridPositionZ || m_pCachedGridChunk == NULL)
+	if (gridPositionX != m_gridPositionX || gridPositionY != m_gridPositionY || gridPositionZ != m_gridPositionZ || m_pCachedGridChunk == nullptr)
 	{
 		m_gridPositionX = gridPositionX;
 		m_gridPositionY = gridPositionY;
@@ -1391,7 +1391,7 @@ Chunk* Player::GetCachedGridChunkOrFromPosition(vec3 pos)
 
 	if (gridPositionX != m_gridPositionX || gridPositionY != m_gridPositionY || gridPositionZ != m_gridPositionZ)
 	{
-		return NULL;
+		return nullptr;
 	}
 	else
 	{
@@ -1403,7 +1403,7 @@ void Player::ClearChunkCacheForChunk(Chunk* pChunk)
 {
 	if (m_pCachedGridChunk == pChunk)
 	{
-		m_pCachedGridChunk = NULL;
+		m_pCachedGridChunk = nullptr;
 	}
 }
 
@@ -1524,7 +1524,7 @@ vec3 Player::MoveAbsolute(vec3 direction, const float speed, bool shouldChangeFo
 							m_stepUpAnimationYAmount = 0.0f;
 							m_stepUpAnimationPrevious = 0.0f;
 							m_stepUpAnimationYOffset = 0.0f;
-							Interpolator::GetInstance()->AddFloatInterpolation(&m_stepUpAnimationYAmount, 0.0f, (Chunk::BLOCK_RENDER_SIZE*2.2f), 0.1f, 0.0f, NULL, _StepUpAnimationFinished, this);
+							Interpolator::GetInstance()->AddFloatInterpolation(&m_stepUpAnimationYAmount, 0.0f, (Chunk::BLOCK_RENDER_SIZE*2.2f), 0.1f, 0.0f, nullptr, _StepUpAnimationFinished, this);
 							Interpolator::GetInstance()->AddFloatInterpolation(&m_stepUpAnimationYOffset, (Chunk::BLOCK_RENDER_SIZE*2.2f), 0.0f, 0.125f, -100.0f);
 						}
 					}
@@ -1540,7 +1540,7 @@ vec3 Player::MoveAbsolute(vec3 direction, const float speed, bool shouldChangeFo
 	// Change to run animation
 	if (m_bIsChargingAttack == false)
 	{
-		if (m_pTargetEnemy == NULL)
+		if (m_pTargetEnemy == nullptr)
 		{
 			if (IsStaff())
 			{
@@ -1651,7 +1651,7 @@ void Player::StopMoving()
 
 			if (m_bIsChargingAttack == false)
 			{
-				if (m_pTargetEnemy == NULL)
+				if (m_pTargetEnemy == nullptr)
 				{
 					if (CanAttackLeft() && CanAttackRight())
 					{
@@ -1837,10 +1837,10 @@ void Player::CreateFloorParticles()
 
 		int blockX, blockY, blockZ;
 		vec3 blockPos;
-		Chunk* pChunk = NULL;
+		Chunk* pChunk = nullptr;
 		bool active = m_pChunkManager->GetBlockActiveFrom3DPosition(blockPosition.x, blockPosition.y, blockPosition.z, &blockPos, &blockX, &blockY, &blockZ, &pChunk);
 
-		if (active && pChunk != NULL)
+		if (active && pChunk != nullptr)
 		{
 			float r = 1.0f;
 			float g = 1.0f;
@@ -1854,7 +1854,7 @@ void Player::CreateFloorParticles()
 			m_pBlockParticleManager->CreateBlockParticle(spawnPosition, spawnPosition, vec3(0.0f, -1.0f, 0.0f), 1.0f, spawnPosition, 0.125f, 0.5f, 0.125f, 0.5f,
 				r, g, b, a, 0.0f, 0.0f, 0.0f, 0.0f, r, g, b, a, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.5f, 0.0f, 0.0f,
 				vec3(0.0f, 3.0f, 0.0f), vec3(2.0f, 1.0f, 2.0f), vec3(0.0f, 0.0f, 0.0f), vec3(0.0f, 0.0f, 0.0f), 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f,
-				true, vec3(0.0f, 0.0f, 0.0f), true, false, true, false, NULL);
+				true, vec3(0.0f, 0.0f, 0.0f), true, false, true, false, nullptr);
 		}
 	}
 
@@ -2116,7 +2116,7 @@ void Player::SetCraftingItem(bool crafting)
 		SetRandomLookMode();
 
 		InventoryItem* pInventoryItem = m_pInventoryManager->GetInventoryItemForEquipSlot(EquipSlot_RightHand);
-		if (pInventoryItem != NULL)
+		if (pInventoryItem != nullptr)
 		{
 			LoadWeapon(false, pInventoryItem->m_filename);
 		}
@@ -2604,7 +2604,7 @@ void Player::Update(float dt)
 
 void Player::UpdateAnimations(float dt)
 {
-	if (m_pVoxelCharacter != NULL)
+	if (m_pVoxelCharacter != nullptr)
 	{
 		for (int i = 0; i < AnimationSections_NUMSECTIONS; i++)
 		{
@@ -2823,7 +2823,7 @@ void Player::UpdateWorking(float dt)
 
 void Player::UpdateLookingAndForwardTarget(float dt)
 {
-	if (m_pTargetEnemy != NULL)
+	if (m_pTargetEnemy != nullptr)
 	{
 		LookAtPoint(m_pTargetEnemy->GetCenter());
 
@@ -2854,7 +2854,7 @@ void Player::UpdateLookingAndForwardTarget(float dt)
 		m_forward = normalize(m_forward);
 	}
 
-	if (m_pVoxelCharacter != NULL)
+	if (m_pVoxelCharacter != nullptr)
 	{
 		if (m_bLookAtPoint)
 		{
@@ -2985,7 +2985,7 @@ void Player::UpdateWeaponLights(float dt)
 {
 	for (int i = 0; i < 2; i++)
 	{
-		VoxelWeapon* pWeapon = NULL;
+		VoxelWeapon* pWeapon = nullptr;
 		bool isWeaponLoaded = false;
 		if (i == 0)  // Right side
 		{
@@ -2998,7 +2998,7 @@ void Player::UpdateWeaponLights(float dt)
 			isWeaponLoaded = m_pVoxelCharacter->IsLeftWeaponLoaded();
 		}
 
-		if (pWeapon != NULL)
+		if (pWeapon != nullptr)
 		{
 			if (isWeaponLoaded)
 			{
@@ -3050,7 +3050,7 @@ void Player::UpdateWeaponParticleEffects(float dt)
 {
 	for (int i = 0; i < 2; i++)
 	{
-		VoxelWeapon* pWeapon = NULL;
+		VoxelWeapon* pWeapon = nullptr;
 		bool isWeaponLoaded = false;
 		if (i == 0)  // Right side
 		{
@@ -3063,7 +3063,7 @@ void Player::UpdateWeaponParticleEffects(float dt)
 			isWeaponLoaded = m_pVoxelCharacter->IsLeftWeaponLoaded();
 		}
 
-		if (pWeapon != NULL)
+		if (pWeapon != nullptr)
 		{
 			if (isWeaponLoaded)
 			{
@@ -3166,7 +3166,7 @@ void Player::UpdateCombat(float dt)
 	{
 		Projectile* pProjectile = m_pProjectileManager->GetProjectile(j);
 
-		if (pProjectile != NULL && pProjectile->GetErase() == false)
+		if (pProjectile != nullptr && pProjectile->GetErase() == false)
 		{
 			CheckProjectileDamageRadius(pProjectile);
 		}
@@ -3178,7 +3178,7 @@ void Player::UpdateBlockSelection(float dt)
 	if (IsPickaxe())
 	{
 		Item* pInteractItem = VoxGame::GetInstance()->GetInteractItem();
-		if (pInteractItem == NULL) // Only show the mining selection block if we are not interacting with an item
+		if (pInteractItem == nullptr) // Only show the mining selection block if we are not interacting with an item
 		{
 			int chunkIndex;
 			int blockX, blockY, blockZ;

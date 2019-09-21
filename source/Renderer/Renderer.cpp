@@ -1066,7 +1066,7 @@ bool Renderer::RenderFreeTypeText(unsigned int fontID, float x, float y, float z
 	char		outText[8192];
 	va_list		ap;  // Pointer to list of arguments
 
-	if (inText == NULL)
+	if (inText == nullptr)
 		return false;  // Return fail if there is no text
 
 	// Loop through variable argument list and add them to the string
@@ -1097,7 +1097,7 @@ int Renderer::GetFreeTypeTextWidth(unsigned int fontID, const char *inText, ...)
 	char outText[8192];
 	va_list ap;
 
-	if (inText == NULL)
+	if (inText == nullptr)
 		return 0;
 
 	// Loop through variable argument list and add them to the string
@@ -1644,7 +1644,7 @@ bool Renderer::RenderStaticBuffer(unsigned int id)
 	VertexArray *pVertexArray = m_vertexArrays[id];
 
 	bool rendered = false;
-	if (pVertexArray != NULL)
+	if (pVertexArray != nullptr)
 	{
 		m_numRenderedVertices += pVertexArray->nVerts;
 		switch (m_primativeMode)
@@ -1755,7 +1755,7 @@ bool Renderer::RenderStaticBuffer_NoColour(unsigned int id)
 	VertexArray *pVertexArray = m_vertexArrays[id];
 
 	bool rendered = false;
-	if (pVertexArray != NULL)
+	if (pVertexArray != nullptr)
 	{
 		m_numRenderedVertices += pVertexArray->nVerts;
 		switch (m_primativeMode)
@@ -2016,7 +2016,7 @@ void Renderer::ClearMesh(OpenGLTriangleMesh* pMesh)
 	pMesh->m_staticMeshId = -1;
 
 	delete pMesh;
-	pMesh = NULL;
+	pMesh = nullptr;
 }
 
 unsigned int Renderer::AddVertexToMesh(vec3 p, vec3 n, float r, float g, float b, float a, OpenGLTriangleMesh* pMesh)
@@ -2035,7 +2035,7 @@ unsigned int Renderer::AddVertexToMesh(vec3 p, vec3 n, float r, float g, float b
 	pNewVertex->vertexColour[2] = b;
 	pNewVertex->vertexColour[3] = a;
 
-	if (pMesh != NULL)
+	if (pMesh != nullptr)
 	{
 		pMesh->m_vertices.push_back(pNewVertex);
 
@@ -2055,7 +2055,7 @@ unsigned int Renderer::AddTextureCoordinatesToMesh(float s, float t, OpenGLTrian
 	pNewTextureCoordinate->s = s;
 	pNewTextureCoordinate->t = t;
 
-	if (pMesh != NULL)
+	if (pMesh != nullptr)
 	{
 		pMesh->m_textureCoordinates.push_back(pNewTextureCoordinate);
 
@@ -2077,7 +2077,7 @@ unsigned int Renderer::AddTriangleToMesh(unsigned int vertexId1, unsigned int ve
 	pTri->vertexIndices[1] = vertexId2;
 	pTri->vertexIndices[2] = vertexId3;
 
-	if (pMesh != NULL)
+	if (pMesh != nullptr)
 	{
 		pMesh->m_triangles.push_back(pTri);
 
@@ -2215,11 +2215,11 @@ void Renderer::FinishMesh(unsigned int textureID, unsigned int materialID, OpenG
 	{
 		if (pMesh->m_staticMeshId == -1)
 		{
-			CreateStaticBuffer(VT_POSITION_NORMAL_COLOUR, pMesh->m_materialId, -1, numVertices, 0, numIndices, meshBuffer, NULL, indicesBuffer, &pMesh->m_staticMeshId);
+			CreateStaticBuffer(VT_POSITION_NORMAL_COLOUR, pMesh->m_materialId, -1, numVertices, 0, numIndices, meshBuffer, nullptr, indicesBuffer, &pMesh->m_staticMeshId);
 		}
 		else
 		{
-			RecreateStaticBuffer(pMesh->m_staticMeshId, VT_POSITION_NORMAL_COLOUR, pMesh->m_materialId, -1, numVertices, 0, numIndices, meshBuffer, NULL, indicesBuffer);
+			RecreateStaticBuffer(pMesh->m_staticMeshId, VT_POSITION_NORMAL_COLOUR, pMesh->m_materialId, -1, numVertices, 0, numIndices, meshBuffer, nullptr, indicesBuffer);
 		}
 	}
 	else if (pMesh->m_meshType == OGLMeshType_Textured)
@@ -2396,7 +2396,7 @@ int Renderer::CubeInFrustum(unsigned int frustumid, const vec3 &center, float x,
 // Frame buffers
 bool Renderer::CreateFrameBuffer(int idToResetup, bool diffuse, bool position, bool normal, bool depth, int width, int height, float viewportScale, string name, unsigned int *pId)
 {
-	FrameBuffer* pNewFrameBuffer = NULL;
+	FrameBuffer* pNewFrameBuffer = nullptr;
 	if (idToResetup == -1)
 	{
 		pNewFrameBuffer = new FrameBuffer();
@@ -2434,7 +2434,7 @@ bool Renderer::CreateFrameBuffer(int idToResetup, bool diffuse, bool position, b
 		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA16F_ARB, (int)(width*viewportScale), (int)(height*viewportScale), 0, GL_RGBA, GL_FLOAT, NULL);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA16F_ARB, (int)(width*viewportScale), (int)(height*viewportScale), 0, GL_RGBA, GL_FLOAT, nullptr);
 		glFramebufferTexture2DEXT(GL_FRAMEBUFFER_EXT, GL_COLOR_ATTACHMENT0_EXT, GL_TEXTURE_2D, pNewFrameBuffer->m_diffuseTexture, 0);
 	}
 
@@ -2446,7 +2446,7 @@ bool Renderer::CreateFrameBuffer(int idToResetup, bool diffuse, bool position, b
 		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA16F_ARB, (int)(width*viewportScale), (int)(height*viewportScale), 0, GL_RGBA, GL_FLOAT, NULL);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA16F_ARB, (int)(width*viewportScale), (int)(height*viewportScale), 0, GL_RGBA, GL_FLOAT, nullptr);
 		glFramebufferTexture2DEXT(GL_FRAMEBUFFER_EXT, GL_COLOR_ATTACHMENT1_EXT, GL_TEXTURE_2D, pNewFrameBuffer->m_positionTexture, 0);
 	}
 
@@ -2458,7 +2458,7 @@ bool Renderer::CreateFrameBuffer(int idToResetup, bool diffuse, bool position, b
 		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA16F_ARB, (int)(width*viewportScale), (int)(height*viewportScale), 0, GL_RGBA, GL_FLOAT, NULL);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA16F_ARB, (int)(width*viewportScale), (int)(height*viewportScale), 0, GL_RGBA, GL_FLOAT, nullptr);
 		glFramebufferTexture2DEXT(GL_FRAMEBUFFER_EXT, GL_COLOR_ATTACHMENT2_EXT, GL_TEXTURE_2D, pNewFrameBuffer->m_normalTexture, 0);
 	}
 
@@ -2472,7 +2472,7 @@ bool Renderer::CreateFrameBuffer(int idToResetup, bool diffuse, bool position, b
 		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_COMPARE_MODE, GL_NONE);
 		glTexParameterf(GL_TEXTURE_2D, GL_DEPTH_TEXTURE_MODE, GL_LUMINANCE);
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, (int)(width*viewportScale), (int)(height*viewportScale), 0, GL_DEPTH_COMPONENT, GL_UNSIGNED_BYTE, NULL);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, (int)(width*viewportScale), (int)(height*viewportScale), 0, GL_DEPTH_COMPONENT, GL_UNSIGNED_BYTE, nullptr);
 
 		// Instruct openGL that we won't bind a color texture with the currently binded FBO
 		glDrawBuffer(GL_NONE);
@@ -2524,7 +2524,7 @@ FrameBuffer* Renderer::GetFrameBuffer(string name)
 	}
 
 	if (foundIndex == -1)
-		return NULL;
+		return nullptr;
 
 	return GetFrameBuffer(foundIndex);
 }
@@ -2619,12 +2619,12 @@ int Renderer::GetNumRenderedFaces()
 // Shaders
 bool Renderer::LoadGLSLShader(const char* vertexFile, const char* fragmentFile, unsigned int *pID)
 {
-	glShader* lpShader = NULL;
+	glShader* lpShader = nullptr;
 
 	// Load the shader
 	lpShader = ShaderManager.loadfromFile(vertexFile, fragmentFile);  // load (and compile, link) from file
 
-	if (lpShader != NULL)
+	if (lpShader != nullptr)
 	{
 		// Push the vertex array onto the list
 		m_shaders.push_back(lpShader);

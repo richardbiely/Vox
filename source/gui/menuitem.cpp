@@ -307,7 +307,7 @@ bool MenuItem::IsParentMenuOpen()
 	Menu* lpParentMenu = (Menu* )GetParent();
 
 	// Check to see if our parent menu is currently open
-	if(lpParentMenu != NULL)
+	if(lpParentMenu != nullptr)
 	{
 		if(lpParentMenu->IsMenuOpen())
 		{
@@ -349,7 +349,7 @@ void MenuItem::MouseEntered(const MouseEvent& lEvent)
 	Menu* lpParentMenu = (Menu* )GetParent();
 
 	// Make sure that we are inside the bounds of the parent menu
-	if(lpParentMenu->GetPullDownMenuParent() != NULL)
+	if(lpParentMenu->GetPullDownMenuParent() != nullptr)
 	{
 		int lTextHeight = m_pRenderer->GetFreeTypeTextHeight(lpParentMenu->GetPullDownMenuParent()->GetGUIFont(), "%s", lpParentMenu->GetMenuTitle().c_str());
 		int lMenuHeight = lTextHeight + (lpParentMenu->GetMenuItemSpacer() * 2);
@@ -401,7 +401,7 @@ void MenuItem::MousePressed(const MouseEvent& lEvent)
 	}
 
 	// If our parent is a GUIWindow, then makew this window have focus in the GUI, used to make it's depth the highest
-	if(GetParent() != NULL && GetParent()->GetComponentType() == EComponentType_GUIWindow)
+	if(GetParent() != nullptr && GetParent()->GetComponentType() == EComponentType_GUIWindow)
 	{
 		GUIWindow* lpParentWindow = (GUIWindow *)GetParent();
 		lpParentWindow->SetFocusWindow();
@@ -422,7 +422,7 @@ void MenuItem::MouseReleased(const MouseEvent& lEvent)
 	Menu* lpParentMenu = (Menu* )GetParent();
 	
 	// Make sure that we are inside the bounds of the parent menu
-	if(lpParentMenu->GetPullDownMenuParent() != NULL)
+	if(lpParentMenu->GetPullDownMenuParent() != nullptr)
 	{
 		int lTextHeight = m_pRenderer->GetFreeTypeTextHeight(lpParentMenu->GetPullDownMenuParent()->GetGUIFont(), "%s", lpParentMenu->GetMenuTitle().c_str());
 		int lMenuHeight = lTextHeight + (lpParentMenu->GetMenuItemSpacer() * 2);
@@ -484,7 +484,7 @@ void MenuItem::MouseClicked(const MouseEvent& lEvent)
 	lpParentMenu->CloseMenu();
 
 	// Make sure that we are inside the bounds of the parent menu
-	if(lpParentMenu->GetPullDownMenuParent() != NULL)
+	if(lpParentMenu->GetPullDownMenuParent() != nullptr)
 	{
 		int lTextHeight = m_pRenderer->GetFreeTypeTextHeight(lpParentMenu->GetPullDownMenuParent()->GetGUIFont(), "%s", lpParentMenu->GetMenuTitle().c_str());
 		int lMenuHeight = lTextHeight + (lpParentMenu->GetMenuItemSpacer() * 2);

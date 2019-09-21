@@ -51,7 +51,7 @@ void Interpolator::ClearInterpolators()
 	for(unsigned int i = 0; i < m_vpFloatInterpolations.size(); i++)
 	{
 		FloatInterpolation* lpNext = m_vpFloatInterpolations[i]->m_pNextInterpolation;
-		while(lpNext != NULL)
+		while(lpNext != nullptr)
 		{
 			FloatInterpolation* lpThisOne = lpNext;
 			lpNext = lpNext->m_pNextInterpolation;
@@ -78,7 +78,7 @@ void Interpolator::ClearInterpolators()
 	for(unsigned int i = 0; i < m_vpCreateFloatInterpolations.size(); i++)
 	{
 		FloatInterpolation* lpNext = m_vpCreateFloatInterpolations[i]->m_pNextInterpolation;
-		while(lpNext != NULL)
+		while(lpNext != nullptr)
 		{
 			FloatInterpolation* lpThisOne = lpNext;
 			lpNext = lpNext->m_pNextInterpolation;
@@ -106,7 +106,7 @@ void Interpolator::ClearInterpolators()
 	for(unsigned int i = 0; i < m_vpIntInterpolations.size(); i++)
 	{
 		IntInterpolation* lpNext = m_vpIntInterpolations[i]->m_pNextInterpolation;
-		while(lpNext != NULL)
+		while(lpNext != nullptr)
 		{
 			IntInterpolation* lpThisOne = lpNext;
 			lpNext = lpNext->m_pNextInterpolation;
@@ -133,7 +133,7 @@ void Interpolator::ClearInterpolators()
 	for(unsigned int i = 0; i < m_vpCreateIntInterpolations.size(); i++)
 	{
 		IntInterpolation* lpNext = m_vpCreateIntInterpolations[i]->m_pNextInterpolation;
-		while(lpNext != NULL)
+		while(lpNext != nullptr)
 		{
 			IntInterpolation* lpThisOne = lpNext;
 			lpNext = lpNext->m_pNextInterpolation;
@@ -397,14 +397,14 @@ void Interpolator::UpdateFloatInterpolators(float delta)
 		for(unsigned int i = 0; i < (int)m_vpFloatInterpolations.size(); i++)
 		{
 			FloatInterpolation* pInterpolator = m_vpFloatInterpolations[i];
-			if(pInterpolator != NULL)
+			if(pInterpolator != nullptr)
 			{
-				FloatInterpolation* pNextInterpolationToAdd = NULL;
+				FloatInterpolation* pNextInterpolationToAdd = nullptr;
 
 				if(pInterpolator->m_elapsed < pInterpolator->m_time)
 				{
 					float* lVar = pInterpolator->m_variable;
-					if(lVar == NULL)
+					if(lVar == nullptr)
 					{
 						continue;
 					}
@@ -435,7 +435,7 @@ void Interpolator::UpdateFloatInterpolators(float delta)
 				else
 				{
 					float* lVar = pInterpolator->m_variable;
-					if(lVar == NULL)
+					if(lVar == nullptr)
 					{
 						continue;
 					}
@@ -443,13 +443,13 @@ void Interpolator::UpdateFloatInterpolators(float delta)
 					(*lVar) = pInterpolator->m_end;
 
 					// If we have a callback, do it
-					if(pInterpolator->m_Callback != NULL)
+					if(pInterpolator->m_Callback != nullptr)
 					{
 						pInterpolator->m_Callback(pInterpolator->m_pCallbackData);
 					}
 
 					// Are we chained to start another float interpolator?
-					if(pInterpolator->m_pNextInterpolation != NULL)
+					if(pInterpolator->m_pNextInterpolation != nullptr)
 					{
 						m_vpNextFloatInterpolationsAddList.push_back(pInterpolator->m_pNextInterpolation);
 					}
@@ -493,14 +493,14 @@ void Interpolator::UpdateIntInterpolators(float delta)
 		for(unsigned int i = 0; i < (int)m_vpIntInterpolations.size(); i++)
 		{
 			IntInterpolation* pInterpolator = m_vpIntInterpolations[i];
-			if(pInterpolator != NULL)
+			if(pInterpolator != nullptr)
 			{
-				IntInterpolation* pNextInterpolationToAdd = NULL;
+				IntInterpolation* pNextInterpolationToAdd = nullptr;
 
 				if(pInterpolator->m_elapsed < pInterpolator->m_time)
 				{
 					int* lVar = pInterpolator->m_variable;
-					if(lVar == NULL)
+					if(lVar == nullptr)
 					{
 						continue;
 					}
@@ -531,7 +531,7 @@ void Interpolator::UpdateIntInterpolators(float delta)
 				else
 				{
 					int* lVar = pInterpolator->m_variable;
-					if(lVar == NULL)
+					if(lVar == nullptr)
 					{
 						continue;
 					}
@@ -539,13 +539,13 @@ void Interpolator::UpdateIntInterpolators(float delta)
 					(*lVar) = pInterpolator->m_end;
 
 					// If we have a callback, do it
-					if(pInterpolator->m_Callback != NULL)
+					if(pInterpolator->m_Callback != nullptr)
 					{
 						pInterpolator->m_Callback(pInterpolator->m_pCallbackData);
 					}
 
 					// Are we chained to start another int interpolator?
-					if(pInterpolator->m_pNextInterpolation != NULL)
+					if(pInterpolator->m_pNextInterpolation != nullptr)
 					{
 						m_vpNextIntInterpolationsAddList.push_back(pInterpolator->m_pNextInterpolation);
 					}

@@ -62,7 +62,7 @@ Enemy::Enemy(Renderer* pRenderer, ChunkManager* pChunkManager, Player* pPlayer, 
 	}
 
 	// Parent spawner
-	m_pParentEnemySpawner = NULL;
+	m_pParentEnemySpawner = nullptr;
 
 	// Enemy name
 	m_enemyName = "Enemy";
@@ -103,7 +103,7 @@ Enemy::Enemy(Renderer* pRenderer, ChunkManager* pChunkManager, Player* pPlayer, 
 	m_sapped = false;
 	m_sappedTimer = 0.0f;
 	m_sappedParticleEffectId = -1;
-	m_pSappedParticleEffect = NULL;
+	m_pSappedParticleEffect = nullptr;
 
 	// Spawning
 	m_spawning = false;
@@ -125,7 +125,7 @@ Enemy::Enemy(Renderer* pRenderer, ChunkManager* pChunkManager, Player* pPlayer, 
 	m_enemyLightId = -1;
 
 	// Enemy particle effect
-	m_pEnemyParticleEffect = NULL;
+	m_pEnemyParticleEffect = nullptr;
 
 	// Charging attacks
 	m_bIsChargingAttack = false;
@@ -160,13 +160,13 @@ Enemy::Enemy(Renderer* pRenderer, ChunkManager* pChunkManager, Player* pPlayer, 
 	m_knockbackTime = 0.4f;
 	m_knockbackTimer = m_knockbackTime;
 
-	m_pTargetNPC = NULL;
+	m_pTargetNPC = nullptr;
 
 	m_gridPositionX = 0;
 	m_gridPositionY = 0;
 	m_gridPositionZ = 0;
 
-	m_pCachedGridChunk = NULL;
+	m_pCachedGridChunk = nullptr;
 
 	m_modelVariation = 1;
 
@@ -225,7 +225,7 @@ Enemy::Enemy(Renderer* pRenderer, ChunkManager* pChunkManager, Player* pPlayer, 
 Enemy::~Enemy()
 {
 	// If we belong to a spawner, make sure we indicate that we were killed
-	if(m_pParentEnemySpawner != NULL)
+	if(m_pParentEnemySpawner != nullptr)
 	{
 		m_pParentEnemySpawner->RemoveEnemyFromThisSpawner();
 	}
@@ -753,7 +753,7 @@ void Enemy::InitEnemyForType()
 
 			// Add a quiver item to the enemy ranger
 			VoxelWeapon* pNewEquipment = new VoxelWeapon(m_pRenderer, m_pQubicleBinaryManager);
-			pNewEquipment->SetVoxelCharacterParent(NULL);
+			pNewEquipment->SetVoxelCharacterParent(nullptr);
 			pNewEquipment->LoadWeapon("media/gamedata/items/Quiver/Quiver.item", false);
 
 			AnimatedSection* section = pNewEquipment->GetAnimatedSection(0);
@@ -1011,7 +1011,7 @@ void Enemy::LoadWeapon(bool left, string weaponFile)
 
 	if(left)
 	{
-		if(m_pVoxelCharacter->GetLeftWeapon() != NULL)
+		if(m_pVoxelCharacter->GetLeftWeapon() != nullptr)
 		{
 			if(m_pVoxelCharacter->IsLeftWeaponLoaded())
 				updateWeapon(m_pVoxelCharacter->GetLeftWeapon());
@@ -1019,7 +1019,7 @@ void Enemy::LoadWeapon(bool left, string weaponFile)
 	}
 	else
 	{
-		if(m_pVoxelCharacter->GetRightWeapon() != NULL)
+		if(m_pVoxelCharacter->GetRightWeapon() != nullptr)
 		{
 			if(m_pVoxelCharacter->IsRightWeaponLoaded())
 				updateWeapon(m_pVoxelCharacter->GetRightWeapon());
@@ -1028,7 +1028,7 @@ void Enemy::LoadWeapon(bool left, string weaponFile)
 			m_pVoxelCharacter->LoadRightWeapon(weaponFile.c_str());
 
 			// Weapon attack radius
-			if(m_pVoxelCharacter->GetRightWeapon() != NULL)
+			if(m_pVoxelCharacter->GetRightWeapon() != nullptr)
 			{
 				if(m_pVoxelCharacter->IsRightWeaponLoaded())
 				{
@@ -1041,7 +1041,7 @@ void Enemy::LoadWeapon(bool left, string weaponFile)
 
 void Enemy::UnloadWeapon(bool left)
 {
-	VoxelWeapon* pWeapon = NULL;
+	VoxelWeapon* pWeapon = nullptr;
 	bool isWeaponLoaded = false;
 	if (left)  // Left side
 	{
@@ -1054,7 +1054,7 @@ void Enemy::UnloadWeapon(bool left)
 		isWeaponLoaded = m_pVoxelCharacter->IsRightWeaponLoaded();
 	}
 
-	if (pWeapon != NULL)
+	if (pWeapon != nullptr)
 	{
 		if (isWeaponLoaded)
 		{
@@ -1136,7 +1136,7 @@ void Enemy::RemoveEnemySpawner(EnemySpawner* pSpawner)
 {
 	if(m_pParentEnemySpawner == pSpawner)
 	{
-		m_pParentEnemySpawner = NULL;
+		m_pParentEnemySpawner = nullptr;
 	}
 }
 
@@ -1233,7 +1233,7 @@ void Enemy::UpdateGridPosition()
 	if(m_position.z <= -0.5f)
 		gridPositionZ -= 1;
 
-	if(gridPositionX != m_gridPositionX || gridPositionY != m_gridPositionY || gridPositionZ != m_gridPositionZ || m_pCachedGridChunk == NULL)
+	if(gridPositionX != m_gridPositionX || gridPositionY != m_gridPositionY || gridPositionZ != m_gridPositionZ || m_pCachedGridChunk == nullptr)
 	{
 		m_gridPositionX = gridPositionX;
 		m_gridPositionY = gridPositionY;
@@ -1259,7 +1259,7 @@ Chunk* Enemy::GetCachedGridChunkOrFromPosition(vec3 pos)
 
 	if(gridPositionX != m_gridPositionX || gridPositionY != m_gridPositionY || gridPositionZ != m_gridPositionZ)
 	{
-		return NULL;
+		return nullptr;
 	}
 	else
 	{
@@ -1271,7 +1271,7 @@ void Enemy::ClearChunkCacheForChunk(Chunk* pChunk)
 {
 	if(m_pCachedGridChunk == pChunk)
 	{
-		m_pCachedGridChunk = NULL;
+		m_pCachedGridChunk = nullptr;
 
 		// Erase if the chunk we belonged to is unloaded
 		SetErase(true);
@@ -1312,7 +1312,7 @@ bool Enemy::CheckCollisions(vec3 positionCheck, vec3 previousPosition, vec3 *pNo
 
 					if (active == false)
 					{
-						if (pChunk == NULL || pChunk->IsSetup() == false)
+						if (pChunk == nullptr || pChunk->IsSetup() == false)
 						{
 							*pMovement = vec3(0.0f, 0.0f, 0.0f);
 							worldCollision = false;
@@ -2031,8 +2031,8 @@ void Enemy::CheckProjectileDamageRadius(Projectile* pProjectile)
 		Colour damageColour = Colour(1.0f, 1.0f, 1.0f);
 
 		// Set NPC target as attacker, if they owned the projectile
-		bool playerDamage = (pProjectile->GetPlayerOwner() != NULL);
-		if(pProjectile->GetNPCOwner() != NULL)
+		bool playerDamage = (pProjectile->GetPlayerOwner() != nullptr);
+		if(pProjectile->GetNPCOwner() != nullptr)
 		{
 			SetTargetNPC(pProjectile->GetNPCOwner());
 		}
@@ -2090,14 +2090,14 @@ void Enemy::Explode()
 
 	for(int explodeCounter = 0; explodeCounter < 3; explodeCounter++)
 	{
-		const QubicleBinary* pQubicleModel = NULL;
+		const QubicleBinary* pQubicleModel = nullptr;
 		if(explodeCounter == 0)
 		{
 			pQubicleModel = m_pVoxelCharacter->GetQubicleModel();
 		}
 		else if(explodeCounter == 1)
 		{
-			if(m_pVoxelCharacter->GetRightWeapon() != NULL)
+			if(m_pVoxelCharacter->GetRightWeapon() != nullptr)
 			{
 				if(m_pVoxelCharacter->IsRightWeaponLoaded())
 				{
@@ -2111,7 +2111,7 @@ void Enemy::Explode()
 		}
 		else if(explodeCounter == 2)
 		{
-			if(m_pVoxelCharacter->GetLeftWeapon() != NULL)
+			if(m_pVoxelCharacter->GetLeftWeapon() != nullptr)
 			{
 				if(m_pVoxelCharacter->IsLeftWeaponLoaded())
 				{
@@ -2124,7 +2124,7 @@ void Enemy::Explode()
 			}
 		}
 
-		if(pQubicleModel != NULL)
+		if(pQubicleModel != nullptr)
 		{
 			m_pBlockParticleManager->ExplodeQubicleBinary(pQubicleModel, m_pVoxelCharacter->GetCharacterScale(), 50);
 		}
@@ -2227,7 +2227,7 @@ void Enemy::SetNPCDied(NPC* pNPC)
 {
 	if(m_pTargetNPC == pNPC)
 	{
-		SetTargetNPC(NULL);
+		SetTargetNPC(nullptr);
 	}
 }
 
@@ -2252,7 +2252,7 @@ void Enemy::SetSapped(bool sapped)
 		// Turn off
 		m_pSappedParticleEffect->StopEffect();
 		m_pSappedParticleEffect->m_erase = true;
-		m_pSappedParticleEffect = NULL;
+		m_pSappedParticleEffect = nullptr;
 		m_sappedParticleEffectId = -1;
 		m_sappedTimer = 0.0f;
 	}
@@ -2346,8 +2346,8 @@ void Enemy::Attack()
 			m_attackEnabledTimer = 0.0f;
 			m_attackEnabledDelayTimer = 0.3f;
 			m_attackRotation = startRotation;
-			Interpolator::GetInstance()->AddFloatInterpolation(&m_attackEnabledTimer, 0.0f, attackTime, attackTime, 0.0f, NULL, _AttackEnabledTimerFinished, this);
-			Interpolator::GetInstance()->AddFloatInterpolation(&m_attackEnabledDelayTimer, m_attackEnabledDelayTimer, 0.0f, m_attackEnabledDelayTimer, 0.0f, NULL, _AttackEnabledDelayTimerFinished, this);
+			Interpolator::GetInstance()->AddFloatInterpolation(&m_attackEnabledTimer, 0.0f, attackTime, attackTime, 0.0f, nullptr, _AttackEnabledTimerFinished, this);
+			Interpolator::GetInstance()->AddFloatInterpolation(&m_attackEnabledDelayTimer, m_attackEnabledDelayTimer, 0.0f, m_attackEnabledDelayTimer, 0.0f, nullptr, _AttackEnabledDelayTimerFinished, this);
 			Interpolator::GetInstance()->AddFloatInterpolation(&m_attackRotation, startRotation, endRotation, attackTime, easingRotation);
 
 			doAttack = true;
@@ -2361,8 +2361,8 @@ void Enemy::Attack()
 
 			m_attackEnabledDelayTimer = 0.35f;
 			float attackTime = 0.60f;
-			Interpolator::GetInstance()->AddFloatInterpolation(&m_attackEnabledDelayTimer, m_attackEnabledDelayTimer, 0.0f, m_attackEnabledDelayTimer, 0.0f, NULL, _AttackEnabledDelayTimerFinished, this);
-			Interpolator::GetInstance()->AddFloatInterpolation(&m_attackEnabledTimer, 0.0f, attackTime, attackTime, 0.0f, NULL, _AttackEnabledTimerFinished, this);
+			Interpolator::GetInstance()->AddFloatInterpolation(&m_attackEnabledDelayTimer, m_attackEnabledDelayTimer, 0.0f, m_attackEnabledDelayTimer, 0.0f, nullptr, _AttackEnabledDelayTimerFinished, this);
+			Interpolator::GetInstance()->AddFloatInterpolation(&m_attackEnabledTimer, 0.0f, attackTime, attackTime, 0.0f, nullptr, _AttackEnabledTimerFinished, this);
 
 			doAttack = true;
 		}
@@ -2380,7 +2380,7 @@ void Enemy::Attack()
 			m_attackDelayTime = 1.0f;
 
 			m_attackEnabledDelayTimer = 0.15f;
-			Interpolator::GetInstance()->AddFloatInterpolation(&m_attackEnabledDelayTimer, m_attackEnabledDelayTimer, 0.0f, m_attackEnabledDelayTimer, 0.0f, NULL, _AttackEnabledDelayTimerFinished, this);
+			Interpolator::GetInstance()->AddFloatInterpolation(&m_attackEnabledDelayTimer, m_attackEnabledDelayTimer, 0.0f, m_attackEnabledDelayTimer, 0.0f, nullptr, _AttackEnabledDelayTimerFinished, this);
 
 			doAttack = true;
 		}
@@ -2391,7 +2391,7 @@ void Enemy::Attack()
 			m_attackDelayTime = 1.75f + GetRandomNumber(-50, 25, 2) * 0.005f;
 
 			m_attackEnabledDelayTimer = 0.15f;
-			Interpolator::GetInstance()->AddFloatInterpolation(&m_attackEnabledDelayTimer, m_attackEnabledDelayTimer, 0.0f, m_attackEnabledDelayTimer, 0.0f, NULL, _AttackEnabledDelayTimerFinished, this);
+			Interpolator::GetInstance()->AddFloatInterpolation(&m_attackEnabledDelayTimer, m_attackEnabledDelayTimer, 0.0f, m_attackEnabledDelayTimer, 0.0f, nullptr, _AttackEnabledDelayTimerFinished, this);
 
 			doAttack = true;
 		}
@@ -2402,7 +2402,7 @@ void Enemy::Attack()
 			m_attackDelayTime = 1.0f + GetRandomNumber(-100, 50, 2) * 0.005f;
 
 			m_attackEnabledDelayTimer = 0.15f;
-			Interpolator::GetInstance()->AddFloatInterpolation(&m_attackEnabledDelayTimer, m_attackEnabledDelayTimer, 0.0f, m_attackEnabledDelayTimer, 0.0f, NULL, _AttackEnabledDelayTimerFinished, this);
+			Interpolator::GetInstance()->AddFloatInterpolation(&m_attackEnabledDelayTimer, m_attackEnabledDelayTimer, 0.0f, m_attackEnabledDelayTimer, 0.0f, nullptr, _AttackEnabledDelayTimerFinished, this);
 
 			doAttack = true;
 		}
@@ -2486,8 +2486,8 @@ void Enemy::Attack()
 			m_attackEnabled = true;
 			m_attackEnabledTimer = 0.0f;
 			m_attackRotation = startRotation;
-			Interpolator::GetInstance()->AddFloatInterpolation(&m_attackEnabledTimer, 0.0f, attackTime, attackTime, 0.0f, NULL, _AttackEnabledTimerFinished, this);
-			Interpolator::GetInstance()->AddFloatInterpolation(&m_attackEnabledDelayTimer, m_attackEnabledDelayTimer, 0.0f, m_attackEnabledDelayTimer, 0.0f, NULL, _AttackEnabledDelayTimerFinished, this);
+			Interpolator::GetInstance()->AddFloatInterpolation(&m_attackEnabledTimer, 0.0f, attackTime, attackTime, 0.0f, nullptr, _AttackEnabledTimerFinished, this);
+			Interpolator::GetInstance()->AddFloatInterpolation(&m_attackEnabledDelayTimer, m_attackEnabledDelayTimer, 0.0f, m_attackEnabledDelayTimer, 0.0f, nullptr, _AttackEnabledDelayTimerFinished, this);
 			Interpolator::GetInstance()->AddFloatInterpolation(&m_attackRotation, startRotation, endRotation, attackTime, easingRotation);
 
 			// Start weapon trails
@@ -2520,7 +2520,7 @@ void Enemy::ReleaseAttack()
 
 		Projectile* pProjectile = m_pProjectileManager->CreateProjectile(m_chargeSpawnPosition, m_chargeSpawnVelocity, 0.0f, "media/gamedata/items/Arrow/arrow.item", 0.08f);	
 		pProjectile->SetProjectileType(false, true, true);
-		pProjectile->SetOwner(NULL, NULL, this);
+		pProjectile->SetOwner(nullptr, nullptr, this);
 
 		m_bIsChargingAttack = false;
 		m_chargeAmount = 0.0f;
@@ -2615,7 +2615,7 @@ void Enemy::SpawnLootItems()
 
 			Item* pItem = m_pItemManager->CreateItem(GetCenter(), vec3(0.0f, 0.0f, 0.0f), vec3(0.0f, 0.0f, 0.0f), GetItemFilenameForType(item).c_str(), eItem_DroppedItem, GetItemTitleForType(item).c_str(), true, false, 0.08f);
 
-			if (pItem != NULL)
+			if (pItem != nullptr)
 			{
 				pItem->SetGravityDirection(gravity);
 				vec3 vel = ItemPosition - GetCenter();
@@ -2639,7 +2639,7 @@ void Enemy::SpawnLootItems()
 		eEquipment equipment = eEquipment_None;
 		InventoryItem* pRandomLoot = VoxGame::GetInstance()->GetRandomLootManager()->GetRandomLootItem(&equipment);
 
-		if (pRandomLoot != NULL && equipment != eEquipment_None)
+		if (pRandomLoot != nullptr && equipment != eEquipment_None)
 		{
 			float radius = GetRadius();
 			float angle = DegToRad(GetRandomNumber(0, 360, 1));
@@ -2649,7 +2649,7 @@ void Enemy::SpawnLootItems()
 
 			Item* pItem = m_pItemManager->CreateItem(GetCenter(), vec3(0.0f, 0.0f, 0.0f), vec3(0.0f, 0.0f, 0.0f), GetEquipmentFilenameForType(equipment).c_str(), eItem_DroppedItem, GetEquipmentTitleForType(equipment).c_str(), true, false, 0.08f);
 
-			if (pItem != NULL)
+			if (pItem != nullptr)
 			{
 				pItem->SetGravityDirection(gravity);
 				vec3 vel = ItemPosition - GetCenter();
@@ -2683,7 +2683,7 @@ void Enemy::SpawnLootItems()
 
 		vec3 gravity = vec3(0.0f, -1.0f, 0.0f);
 		gravity = normalize(gravity);
-		Item* pItem = NULL;
+		Item* pItem = nullptr;
 		if(GetRandomNumber(0, 100) > 90)
 		{
 			pItem = m_pItemManager->CreateItem(GetCenter(), vec3(0.0f, 0.0f, 0.0f), vec3(0.0f, 0.0f, 0.0f), GetItemFilenameForType(eItem_Heart).c_str(), eItem_Heart, GetItemTitleForType(eItem_Heart).c_str(), false, true, 0.03f);
@@ -2693,7 +2693,7 @@ void Enemy::SpawnLootItems()
 			pItem = m_pItemManager->CreateItem(GetCenter(), vec3(0.0f, 0.0f, 0.0f), vec3(0.0f, 0.0f, 0.0f), GetItemFilenameForType(eItem_Coin).c_str(), eItem_Coin, GetItemTitleForType(eItem_Coin).c_str(), false, true, 0.0225f);
 		}
 
-		if(pItem != NULL)
+		if(pItem != nullptr)
 		{
 			pItem->SetGravityDirection(gravity);
 			vec3 vel = ItemPosition - GetCenter();
@@ -2726,7 +2726,7 @@ void Enemy::SpawnGibs()
 
 		vec3 gravity = vec3(0.0f, -1.0f, 0.0f);
 		gravity = normalize(gravity);
-		Item* pItem = NULL;
+		Item* pItem = nullptr;
 		if(i == 0)
 		{
 			pItem = m_pItemManager->CreateItem(GetCenter(), vec3(0.0f, 0.0f, 0.0f), vec3(0.0f, 0.0f, 0.0f), "media/gamedata/items/ZombieGibs/SpineGib.item", eItem_Gib, "Gib1", false, false, 0.08f);
@@ -2744,7 +2744,7 @@ void Enemy::SpawnGibs()
 			pItem = m_pItemManager->CreateItem(GetCenter(), vec3(0.0f, 0.0f, 0.0f), vec3(0.0f, 0.0f, 0.0f), "media/gamedata/items/ZombieGibs/LegsGib.item", eItem_Gib, "Gib4", false, false, 0.08f);
 		}
 
-		if(pItem != NULL)
+		if(pItem != nullptr)
 		{
 			pItem->SetGravityDirection(gravity);
 			vec3 vel = ItemPosition - GetCenter();
@@ -2800,7 +2800,7 @@ bool Enemy::GetOutlineRender()
 
 void Enemy::SetWireFrameRender(bool wireframe)
 {
-	if(m_pVoxelCharacter != NULL)
+	if(m_pVoxelCharacter != nullptr)
 	{
 		m_pVoxelCharacter->SetWireFrameRender(wireframe);
 	}
@@ -2811,7 +2811,7 @@ void Enemy::UpdateWeaponLights(float dt)
 {
 	for (int i = 0; i < 2; i++)
 	{
-		VoxelWeapon* pWeapon = NULL;
+		VoxelWeapon* pWeapon = nullptr;
 		bool isWeaponLoaded = false;
 		if (i == 0)  // Right side
 		{
@@ -2824,7 +2824,7 @@ void Enemy::UpdateWeaponLights(float dt)
 			isWeaponLoaded = m_pVoxelCharacter->IsLeftWeaponLoaded();
 		}
 
-		if (pWeapon != NULL)
+		if (pWeapon != nullptr)
 		{
 			if (isWeaponLoaded)
 			{
@@ -2876,7 +2876,7 @@ void Enemy::UpdateWeaponParticleEffects(float dt)
 {
 	for (int i = 0; i < 2; i++)
 	{
-		VoxelWeapon* pWeapon = NULL;
+		VoxelWeapon* pWeapon = nullptr;
 		bool isWeaponLoaded = false;
 		if (i == 0)  // Right side
 		{
@@ -2889,7 +2889,7 @@ void Enemy::UpdateWeaponParticleEffects(float dt)
 			isWeaponLoaded = m_pVoxelCharacter->IsLeftWeaponLoaded();
 		}
 
-		if (pWeapon != NULL)
+		if (pWeapon != nullptr)
 		{
 			if (isWeaponLoaded)
 			{
@@ -2962,7 +2962,7 @@ void Enemy::Update(float dt)
 	// Check for NPC attack damage
 	CheckNPCDamageRadius();
 
-	if(m_pVoxelCharacter != NULL)
+	if(m_pVoxelCharacter != nullptr)
 	{
 		m_pVoxelCharacter->Update(dt, m_animationSpeed);
 		m_pVoxelCharacter->SetWeaponTrailsOriginMatrix(dt, m_worldMatrix);
@@ -2977,7 +2977,7 @@ void Enemy::Update(float dt)
 	if(m_bCanAttack == false && (m_animationFinished[AnimationSections_Right_Arm_Hand] == true) || (m_eEnemyType == eEnemyType_Bee || m_eEnemyType == eEnemyType_Bat || m_eEnemyType == eEnemyType_Ghost || m_eEnemyType == eEnemyType_Doppelganger))
 	{
 		// Stop weapon trails
-		if(m_pVoxelCharacter != NULL)
+		if(m_pVoxelCharacter != nullptr)
 		{
 			if(m_pVoxelCharacter->GetRightWeapon())
 			{
@@ -3014,7 +3014,7 @@ void Enemy::Update(float dt)
 		{
 			// Player target
 			vec3 toTarget;
-			if(m_pTargetNPC != NULL)
+			if(m_pTargetNPC != nullptr)
 			{
 				toTarget = m_pTargetNPC->GetCenter() - GetCenter();
 			}
@@ -3172,7 +3172,7 @@ void Enemy::UpdateLookingAndForwardTarget(float dt)
 		m_forward = normalize(m_forward);
 	}
 
-	if(m_pVoxelCharacter != NULL)
+	if(m_pVoxelCharacter != nullptr)
 	{
 		if(m_bLookAtPoint)
 		{
@@ -3224,7 +3224,7 @@ void Enemy::UpdateCombat(float dt)
 	bool aggroCancel = false;
 	float radius = 0.0f;
 	vec3 center;
-	if(m_pTargetNPC != NULL)
+	if(m_pTargetNPC != nullptr)
 	{
 		aggroCancel = m_pTargetNPC->IsDead();
 		radius = m_pTargetNPC->GetRadius();
@@ -3311,7 +3311,7 @@ void Enemy::UpdateGameplay(float dt)
 {
 	if(m_sapped)
 	{
-		if(m_pSappedParticleEffect != NULL)
+		if(m_pSappedParticleEffect != nullptr)
 		{
 			m_pSappedParticleEffect->SetPosition(GetAboveHeadPosition());
 		}
@@ -3320,7 +3320,7 @@ void Enemy::UpdateGameplay(float dt)
 
 void Enemy::UpdateMeleeCombat(float dt)
 {
-	if(m_pTargetNPC != NULL)
+	if(m_pTargetNPC != nullptr)
 	{
 		if(m_pTargetNPC->IsDead())
 		{
@@ -3339,7 +3339,7 @@ void Enemy::UpdateMeleeCombat(float dt)
 	{
 		vec3 targetPos;
 		float radius = 0.0f;
-		if(m_pTargetNPC != NULL)
+		if(m_pTargetNPC != nullptr)
 		{
 			targetPos = m_pTargetNPC->GetCenter();
 			radius = m_pTargetNPC->GetRadius();
@@ -3375,7 +3375,7 @@ void Enemy::UpdateMeleeCombat(float dt)
 
 void Enemy::UpdateRangedCombat(float dt)
 {
-	if(m_pTargetNPC != NULL)
+	if(m_pTargetNPC != nullptr)
 	{
 		if(m_pTargetNPC->IsDead())
 		{
@@ -3411,7 +3411,7 @@ void Enemy::UpdateRangedCombat(float dt)
 
 void Enemy::UpdateTouchCombat(float dt)
 {
-	if(m_pTargetNPC != NULL)
+	if(m_pTargetNPC != nullptr)
 	{
 		if(m_pTargetNPC->IsDead())
 		{
@@ -3434,7 +3434,7 @@ void Enemy::UpdateTouchCombat(float dt)
 	float hitboxX = 0.0f;
 	float hitboxY = 0.0f;
 	float hitboxZ = 0.0f;
-	if(m_pTargetNPC != NULL)
+	if(m_pTargetNPC != nullptr)
 	{
 		targetPos = m_pTargetNPC->GetCenter();
 		radius = m_pTargetNPC->GetRadius();
@@ -3523,7 +3523,7 @@ void Enemy::UpdateTouchCombat(float dt)
 		Colour damageColour = Colour(1.0f, 1.0f, 1.0f);
 
 		float knockbackAmount = 16.0f;
-		if(m_pTargetNPC != NULL)
+		if(m_pTargetNPC != nullptr)
 		{
 			// Collision damage for NPC
 			m_pTargetNPC->SetTargetEnemy(this);
@@ -3566,7 +3566,7 @@ void Enemy::UpdateMovement(float dt)
 
 	if(m_aggro)
 	{
-		if(m_pTargetNPC != NULL)
+		if(m_pTargetNPC != nullptr)
 		{
 			targetPos = m_pTargetNPC->GetCenter();
 		}
@@ -3605,7 +3605,7 @@ void Enemy::UpdateMovement(float dt)
 	float lengthToTarget = length(toTarget);
 
 	bool lReachedTarget = false;
-	if(m_pTargetNPC != NULL)
+	if(m_pTargetNPC != nullptr)
 	{
 		lReachedTarget = (lengthToTarget < (m_attackRadius*0.99f) + m_pTargetNPC->GetRadius());
 	}
@@ -3886,7 +3886,7 @@ void Enemy::UpdateTimers(float dt)
 // Rendering
 void Enemy::Render(bool outline, bool reflection, bool silhouette)
 {
-	if(m_pVoxelCharacter != NULL)
+	if(m_pVoxelCharacter != nullptr)
 	{
 		m_pRenderer->PushMatrix();
 			m_pRenderer->MultiplyWorldMatrix(m_worldMatrix);
@@ -3910,7 +3910,7 @@ void Enemy::RenderFace()
 
 void Enemy::RenderWeaponTrails()
 {
-	if(m_pVoxelCharacter != NULL)
+	if(m_pVoxelCharacter != nullptr)
 	{
 		m_pRenderer->PushMatrix();
 			m_pVoxelCharacter->RenderWeaponTrails();
@@ -3948,7 +3948,7 @@ void Enemy::RenderDebug()
 	m_pRenderer->PopMatrix();
 	
 	// Bones
-	if(m_pVoxelCharacter != NULL)
+	if(m_pVoxelCharacter != nullptr)
 	{
 		m_pRenderer->PushMatrix();
 		m_pRenderer->MultiplyWorldMatrix(m_worldMatrix);
@@ -3991,7 +3991,7 @@ void Enemy::RenderForwardDebug()
 		m_pRenderer->DisableImmediateMode();
 	m_pRenderer->PopMatrix();
 
-	if(m_pVoxelCharacter != NULL)
+	if(m_pVoxelCharacter != nullptr)
 	{
 		m_pRenderer->PushMatrix();
 			m_pRenderer->MultiplyWorldMatrix(m_worldMatrix);
@@ -4199,7 +4199,7 @@ void Enemy::AttackEnabledDelayTimerFinished()
 		vec3 boneSpawnPosition = GetCenter() + (m_forward*0.75f) + (GetRightVector()*-0.4f) + (GetUpVector()*0.5f);
 
 		vec3 toTarget;
-		if(m_pTargetNPC != NULL)
+		if(m_pTargetNPC != nullptr)
 		{
 			toTarget = m_pTargetNPC->GetCenter() - GetCenter();
 		}
@@ -4212,7 +4212,7 @@ void Enemy::AttackEnabledDelayTimerFinished()
 
 		Projectile* pProjectile = m_pProjectileManager->CreateProjectile(boneSpawnPosition, boneSpawnVelocity, 0.0f, "media/gamedata/items/Bone/Bone.item", 0.04f);	
 		pProjectile->SetProjectileType(false, true, true);
-		pProjectile->SetOwner(NULL, NULL, this);
+		pProjectile->SetOwner(nullptr, nullptr, this);
 		pProjectile->SetGravityMultiplier(0.35f);
 	}
 	else if(m_eEnemyType == eEnemyType_MageSkeleton)
@@ -4221,7 +4221,7 @@ void Enemy::AttackEnabledDelayTimerFinished()
 
 		float powerAmount = 25.0f;
 		vec3 toTarget;
-		if(m_pTargetNPC != NULL)
+		if(m_pTargetNPC != nullptr)
 		{
 			toTarget = m_pTargetNPC->GetCenter() - GetCenter();
 		}
@@ -4233,7 +4233,7 @@ void Enemy::AttackEnabledDelayTimerFinished()
 
 		Projectile* pProjectile = m_pProjectileManager->CreateProjectile(fireballSpawnPosition, fireballSpawnVelocity, 0.0f, "media/gamedata/items/Fireball/Fireball.item", 0.04f);	
 		pProjectile->SetProjectileType(false, true, true);
-		pProjectile->SetOwner(NULL, NULL, this);
+		pProjectile->SetOwner(nullptr, nullptr, this);
 		pProjectile->SetGravityMultiplier(0.0f);
 	}
 	else if(m_eEnemyType == eEnemyType_IronGiant)
@@ -4242,7 +4242,7 @@ void Enemy::AttackEnabledDelayTimerFinished()
 
 		float powerAmount = 25.0f;
 		vec3 toTarget;
-		if(m_pTargetNPC != NULL)
+		if(m_pTargetNPC != nullptr)
 		{
 			toTarget = m_pTargetNPC->GetCenter() - fireballSpawnPosition;
 		}
@@ -4254,7 +4254,7 @@ void Enemy::AttackEnabledDelayTimerFinished()
 
 		Projectile* pProjectile = m_pProjectileManager->CreateProjectile(fireballSpawnPosition, fireballSpawnVelocity, 0.0f, "media/gamedata/items/Fireball/Fireball.item", 0.04f);	
 		pProjectile->SetProjectileType(false, true, true);
-		pProjectile->SetOwner(NULL, NULL, this);
+		pProjectile->SetOwner(nullptr, nullptr, this);
 		pProjectile->SetGravityMultiplier(0.0f);
 	}
 	else if(m_eEnemyType == eEnemyType_Bat)
@@ -4262,7 +4262,7 @@ void Enemy::AttackEnabledDelayTimerFinished()
 		vec3 boneSpawnPosition = GetCenter() + (m_forward*1.25f);
 
 		vec3 toTarget;
-		if(m_pTargetNPC != NULL)
+		if(m_pTargetNPC != nullptr)
 		{
 			toTarget = m_pTargetNPC->GetCenter() - GetCenter();
 		}
@@ -4274,7 +4274,7 @@ void Enemy::AttackEnabledDelayTimerFinished()
 
 		Projectile* pProjectile = m_pProjectileManager->CreateProjectile(boneSpawnPosition, boneSpawnVelocity, 0.0f, "media/gamedata/items/Batshot/Batshot.item", 0.06f);	
 		pProjectile->SetProjectileType(false, true, true);
-		pProjectile->SetOwner(NULL, NULL, this);
+		pProjectile->SetOwner(nullptr, nullptr, this);
 		pProjectile->SetGravityMultiplier(0.0f);
 	}
 }

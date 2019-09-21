@@ -57,7 +57,7 @@ void BlockParticleEffect::ClearEmitters()
 		if(m_vpBlockParticleEmittersList[i]->m_erase == false)
 		{
 			m_pBlockParticleManager->RemoveEmitterLinkage(m_vpBlockParticleEmittersList[i]);
-			m_vpBlockParticleEmittersList[i]->m_pParent = NULL; // Remove parent link, since we have deleted this effect
+			m_vpBlockParticleEmittersList[i]->m_pParent = nullptr; // Remove parent link, since we have deleted this effect
 			m_vpBlockParticleEmittersList[i]->m_erase = true;
 		}
 	}
@@ -406,7 +406,7 @@ void BlockParticleEffect::StopEffect()
 
 	for(unsigned int i = 0; i < m_vpBlockParticleEmittersList.size(); i++)
 	{
-		if(m_vpBlockParticleEmittersList[i]->m_pParentParticle != NULL)
+		if(m_vpBlockParticleEmittersList[i]->m_pParentParticle != nullptr)
 		{
 			// Don't stop emitters that are connected to a particle
 			continue;
@@ -462,7 +462,7 @@ BlockParticleEmitter* BlockParticleEffect::GetEmitter(string emitterName)
 		}
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 // Update

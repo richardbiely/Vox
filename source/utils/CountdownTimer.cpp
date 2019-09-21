@@ -20,8 +20,8 @@ CountdownTimer::CountdownTimer()
 	m_elapsedTime = 0.0f;
 	m_timeOutTime = 0.0f;
 
-	m_Callback = NULL;
-	m_pCallbackData = NULL;
+	m_Callback = nullptr;
+	m_pCallbackData = nullptr;
 
 	m_bStarted = false;
 

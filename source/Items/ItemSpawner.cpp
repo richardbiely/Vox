@@ -164,9 +164,9 @@ bool ItemSpawner::GetSpawnPosition(vec3* pSpawnPosition)
 
 		int blockX, blockY, blockZ;
 		vec3 blockPos;
-		Chunk* pChunk = NULL;
+		Chunk* pChunk = nullptr;
 		bool active = m_pChunkManager->GetBlockActiveFrom3DPosition(spawnPos.x, spawnPos.y, spawnPos.z, &blockPos, &blockX, &blockY, &blockZ, &pChunk);
-		if (pChunk != NULL && pChunk->IsSetup() && active == false)
+		if (pChunk != nullptr && pChunk->IsSetup() && active == false)
 		{
 			if (m_shouldSpawnOnGround)
 			{
@@ -231,7 +231,7 @@ void ItemSpawner::Update(float dt)
 						// Create random loot inside the chest
 						eEquipment equipment = eEquipment_None;
 						InventoryItem* pRandomLoot = VoxGame::GetInstance()->GetRandomLootManager()->GetRandomLootItem(&equipment);
-						if (pRandomLoot != NULL && equipment != eEquipment_None)
+						if (pRandomLoot != nullptr && equipment != eEquipment_None)
 						{
 							InventoryItem* pRandomLootItem = pItem->AddLootItem(pRandomLoot, xPos, yPos);
 							pRandomLootItem->m_scale = pRandomLoot->m_scale;

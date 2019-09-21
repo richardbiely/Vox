@@ -381,7 +381,7 @@ if (!useGLSL) return aGLSLStrings[0];
         free(linker_log);
         linker_log =0;
     }
-    if ((linker_log = (GLcharARB*)malloc(blen)) == NULL) 
+    if ((linker_log = (GLcharARB*)malloc(blen)) == nullptr) 
      {
         printf("ERROR: Could not allocate compiler_log buffer\n");
         return aGLSLStrings[3];
@@ -1434,7 +1434,7 @@ if (!useGLSL) return aGLSLStrings[0];
         free(compiler_log);
         compiler_log =0;
     }
-    if ((compiler_log = (GLcharARB*)malloc(blen)) == NULL) 
+    if ((compiler_log = (GLcharARB*)malloc(blen)) == nullptr) 
      {
         printf("ERROR: Could not allocate compiler_log buffer\n");
         return aGLSLStrings[3];

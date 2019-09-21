@@ -231,13 +231,13 @@ bool BiomeManager::IsInTown(vec3 position, ZoneData **pReturnTown)
 		}
 	}
 
-	*pReturnTown = NULL;
+	*pReturnTown = nullptr;
 	return false;
 }
 
 float BiomeManager::GetTowMultiplier(vec3 position)
 {
-	ZoneData *pTown = NULL;
+	ZoneData *pTown = nullptr;
 	if (IsInTown(position, &pTown))
 	{
 		vec3 toCenter = position - pTown->m_origin;
@@ -307,7 +307,7 @@ bool BiomeManager::IsInSafeZone(vec3 position, ZoneData **pReturnSafeZone)
 		}
 	}
 
-	*pReturnSafeZone = NULL;
+	*pReturnSafeZone = nullptr;
 	return false;
 }
 

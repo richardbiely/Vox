@@ -178,7 +178,7 @@ void VoxGame::UpdateKeyboardControls(float dt)
 							resetMovementVector = true;
 						}
 
-						if (m_pPlayer->GetTargetEnemy() == NULL)
+						if (m_pPlayer->GetTargetEnemy() == nullptr)
 						{
 							vec3 cameraRight = m_pGameCamera->GetRight();
 							vec3 playerUp = m_pPlayer->GetUpVector();
@@ -199,7 +199,7 @@ void VoxGame::UpdateKeyboardControls(float dt)
 							resetMovementVector = true;
 						}
 
-						if (m_pPlayer->GetTargetEnemy() == NULL)
+						if (m_pPlayer->GetTargetEnemy() == nullptr)
 						{
 							vec3 cameraRight = m_pGameCamera->GetRight();
 							vec3 playerUp = m_pPlayer->GetUpVector();
@@ -220,7 +220,7 @@ void VoxGame::UpdateKeyboardControls(float dt)
 							resetMovementVector = true;
 						}
 
-						if (m_pPlayer->GetTargetEnemy() == NULL)
+						if (m_pPlayer->GetTargetEnemy() == nullptr)
 						{
 							vec3 cameraRight = m_pGameCamera->GetRight();
 							vec3 moveDirection = -cameraRight;
@@ -246,7 +246,7 @@ void VoxGame::UpdateKeyboardControls(float dt)
 							resetMovementVector = true;
 						}
 
-						if (m_pPlayer->GetTargetEnemy() == NULL)
+						if (m_pPlayer->GetTargetEnemy() == nullptr)
 						{
 							vec3 cameraRight = m_pGameCamera->GetRight();
 							vec3 moveDirection = -cameraRight;
@@ -372,14 +372,14 @@ void VoxGame::UpdateGamePadControls(float dt)
 					{
 						if (m_bTargetEnemyPressed_Joystick)
 						{
-							if(m_pPlayer->GetTargetEnemy() == NULL)
+							if(m_pPlayer->GetTargetEnemy() == nullptr)
 							{
 								SetEnemyTarget();
 							}
 						}
 						if (m_bTargetEnemyReleased_Joystick)
 						{
-							if (m_pPlayer->GetTargetEnemy() != NULL)
+							if (m_pPlayer->GetTargetEnemy() != nullptr)
 							{
 								ReleaseEnemyTarget();
 							}
@@ -443,7 +443,7 @@ void VoxGame::UpdateGamePadControls(float dt)
 						}
 					}
 
-					if (m_pPlayer->GetTargetEnemy() == NULL)
+					if (m_pPlayer->GetTargetEnemy() == nullptr)
 					{
 						vec3 cameraRight = m_pGameCamera->GetRight();
 						vec3 playerUp = m_pPlayer->GetUpVector();

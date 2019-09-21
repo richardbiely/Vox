@@ -79,7 +79,7 @@ MultiLineTextBox::MultiLineTextBox(Renderer* pRenderer, unsigned int GUIFont, co
 	m_bHiddenText = false;
 	m_HideCharacter = '*';
 
-	m_Callback_OnReturnPressed = NULL;
+	m_Callback_OnReturnPressed = nullptr;
 
 	m_NumLines = 0;
 
@@ -154,7 +154,7 @@ void MultiLineTextBox::SetBackgroundIcon(RenderRectangle *icon)
 		Remove(m_pBackgroundIcon);
 
 		delete m_pBackgroundIcon;
-		m_pBackgroundIcon = NULL;
+		m_pBackgroundIcon = nullptr;
 	}
 
 	// Check what type of render rectangle we have been given, and then create a new copy of it
@@ -992,7 +992,7 @@ void MultiLineTextBox::DrawChildren()
 	// Do a scissor test here
 	int lScissorX = GetLocation().m_x - 1;
 	int lScissorY = GetLocation().m_y - 1;
-	if(GetParent() != NULL)
+	if(GetParent() != nullptr)
 	{
 		lScissorX = GetParent()->GetLocation().m_x + lScissorX;
 		lScissorY = GetParent()->GetLocation().m_y + lScissorY;
@@ -1027,7 +1027,7 @@ void MultiLineTextBox::DrawSelf()
 	// Do a scissor test here
 	int lScissorX = GetLocation().m_x - 1;
 	int lScissorY = GetLocation().m_y - 1;
-	if(GetParent() != NULL)
+	if(GetParent() != nullptr)
 	{
 		lScissorX = GetParent()->GetLocation().m_x + lScissorX;
 		lScissorY = GetParent()->GetLocation().m_y + lScissorY;

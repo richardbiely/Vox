@@ -26,10 +26,10 @@ ItemManager::ItemManager(Renderer* pRenderer, ChunkManager* pChunkManager, Playe
 	m_pRenderer = pRenderer;
 	m_pChunkManager = pChunkManager;
 	m_pPlayer = pPlayer;
-	m_pQubicleBinaryManager = NULL;
-	m_pInventoryManager = NULL;
-	m_pLightingManager = NULL;
-	m_pBlockParticleManager = NULL;
+	m_pQubicleBinaryManager = nullptr;
+	m_pInventoryManager = nullptr;
+	m_pLightingManager = nullptr;
+	m_pBlockParticleManager = nullptr;
 
 	m_numRenderItems = 0;
 
@@ -185,7 +185,7 @@ ItemSubSpawnData* ItemManager::GetItemSubSpawnData(eItem sourceItem)
 		}
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 ItemSubSpawnData* ItemManager::GetItemSubSpawnData(BlockType sourceBlockType)
@@ -198,7 +198,7 @@ ItemSubSpawnData* ItemManager::GetItemSubSpawnData(BlockType sourceBlockType)
 		}
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 // Creation
@@ -304,7 +304,7 @@ bool ItemManager::CheckCollisions(vec3 center, vec3 previousCenter, float radius
 // Player item interaction
 Item* ItemManager::CheckItemPlayerInteraction()
 {
-	Item* pInteractingItem = NULL;
+	Item* pInteractingItem = nullptr;
 	float maxDistance = 99.9f;
 	float maxDotProduct = 0.0f;
 
@@ -460,7 +460,7 @@ void ItemManager::UpdateItemParticleEffects(float dt)
 
 void ItemManager::UpdateHoverItems()
 {
-	Item* pHoverItem = NULL;
+	Item* pHoverItem = nullptr;
 	float maxDistance = 99.9f;
 	float maxDotProduct = 0.0f;
 
@@ -515,7 +515,7 @@ void ItemManager::UpdateHoverItems()
 		}
 	}
 
-	if(pHoverItem != NULL)
+	if(pHoverItem != nullptr)
 	{
 		pHoverItem->SetOutlineRender(true);
 	}

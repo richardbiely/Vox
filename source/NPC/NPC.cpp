@@ -64,7 +64,7 @@ NPC::NPC(Renderer* pRenderer, ChunkManager* pChunkManager, Player* pPlayer, Ligh
 	m_gridPositionY = 0;
 	m_gridPositionZ = 0;
 
-	m_pCachedGridChunk = NULL;
+	m_pCachedGridChunk = nullptr;
 
 	m_outlineRender = false;
 	m_hoverRender = false;
@@ -184,7 +184,7 @@ NPC::NPC(Renderer* pRenderer, ChunkManager* pChunkManager, Player* pPlayer, Ligh
 	// Is this NPC a credits NPC, if so, behave differently
 	m_isCreditsNPC = false;
 
-	m_pTargetEnemy = NULL;
+	m_pTargetEnemy = nullptr;
 		
 	char characterBaseFolder[128];
 	char qbFilename[128];
@@ -228,7 +228,7 @@ NPC::NPC(Renderer* pRenderer, ChunkManager* pChunkManager, Player* pPlayer, Ligh
 	UnloadWeapon(true);
 	UnloadWeapon(false);
 
-	if(m_pCharacterBackup != NULL)
+	if(m_pCharacterBackup != nullptr)
 	{
 		delete m_pCharacterBackup;
 		m_pCharacterBackup = new QubicleBinary(m_pRenderer);
@@ -248,12 +248,12 @@ NPC::~NPC()
 
 	m_pVoxelCharacter->RemoveQubicleMatrix("Quiver");
 
-	if (m_pCharacterBackup != NULL)
+	if (m_pCharacterBackup != nullptr)
 	{
 		m_pCharacterBackup->SetNullLinkage(m_pVoxelCharacter->GetQubicleModel());
 	}
 	delete m_pVoxelCharacter;
-	if (m_pCharacterBackup != NULL)
+	if (m_pCharacterBackup != nullptr)
 	{
 		delete m_pCharacterBackup;
 	}
@@ -424,7 +424,7 @@ void NPC::SetNPCCombatType(eNPCCombatType eNPCCombatType, bool setWeaponModel)
 
 				// Add a quiver item to the enemy ranger
 				VoxelWeapon* pNewEquipment = new VoxelWeapon(m_pRenderer, m_pQubicleBinaryManager);
-				pNewEquipment->SetVoxelCharacterParent(NULL);
+				pNewEquipment->SetVoxelCharacterParent(nullptr);
 				pNewEquipment->LoadWeapon("media/gamedata/items/Quiver/Quiver.item", false);
 
 				pNewEquipment->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->SetScaleAndOffsetForMatrix("Quiver", pNewEquipment->GetAnimatedSection(0)->m_renderScale, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.x, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.y, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.z);
@@ -453,7 +453,7 @@ void NPC::LoadWeapon(bool left, string weaponFile)
 {
 	if(left)
 	{
-		if(m_pVoxelCharacter->GetLeftWeapon() != NULL)
+		if(m_pVoxelCharacter->GetLeftWeapon() != nullptr)
 		{
 			if(m_pVoxelCharacter->IsLeftWeaponLoaded())
 			{
@@ -498,7 +498,7 @@ void NPC::LoadWeapon(bool left, string weaponFile)
 	}
 	else
 	{
-		if(m_pVoxelCharacter->GetRightWeapon() != NULL)
+		if(m_pVoxelCharacter->GetRightWeapon() != nullptr)
 		{
 			if(m_pVoxelCharacter->IsRightWeaponLoaded())
 			{
@@ -541,7 +541,7 @@ void NPC::LoadWeapon(bool left, string weaponFile)
 			m_pVoxelCharacter->LoadRightWeapon(weaponFile.c_str());
 
 			// Weapon attack radius
-			if(m_pVoxelCharacter->GetRightWeapon() != NULL)
+			if(m_pVoxelCharacter->GetRightWeapon() != nullptr)
 			{
 				if(m_pVoxelCharacter->IsRightWeaponLoaded())
 				{
@@ -554,7 +554,7 @@ void NPC::LoadWeapon(bool left, string weaponFile)
 
 void NPC::UnloadWeapon(bool left)
 {
-	VoxelWeapon* pWeapon = NULL;
+	VoxelWeapon* pWeapon = nullptr;
 	bool isWeaponLoaded = false;
 	if (left)  // Left side
 	{
@@ -567,7 +567,7 @@ void NPC::UnloadWeapon(bool left)
 		isWeaponLoaded = m_pVoxelCharacter->IsRightWeaponLoaded();
 	}
 
-	if (pWeapon != NULL)
+	if (pWeapon != nullptr)
 	{
 		if (isWeaponLoaded)
 		{
@@ -849,10 +849,10 @@ void NPC::EquipItem(EquipSlot equipSlot, const char* itemFilename, bool left, bo
 		break;
 	case EquipSlot_Head:
 		{
-			if(m_pVoxelCharacter != NULL)
+			if(m_pVoxelCharacter != nullptr)
 			{
 				VoxelWeapon* pNewEquipment = new VoxelWeapon(m_pRenderer, m_pQubicleBinaryManager);
-				pNewEquipment->SetVoxelCharacterParent(NULL);
+				pNewEquipment->SetVoxelCharacterParent(nullptr);
 				pNewEquipment->LoadWeapon(itemFilename, false);
 
 				pNewEquipment->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->SetScaleAndOffsetForMatrix("Helm", pNewEquipment->GetAnimatedSection(0)->m_renderScale, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.x, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.y, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.z);
@@ -864,10 +864,10 @@ void NPC::EquipItem(EquipSlot equipSlot, const char* itemFilename, bool left, bo
 		break;
 	case EquipSlot_Shoulders:
 		{
-			if(m_pVoxelCharacter != NULL)
+			if(m_pVoxelCharacter != nullptr)
 			{
 				VoxelWeapon* pNewEquipment = new VoxelWeapon(m_pRenderer, m_pQubicleBinaryManager);
-				pNewEquipment->SetVoxelCharacterParent(NULL);
+				pNewEquipment->SetVoxelCharacterParent(nullptr);
 				pNewEquipment->LoadWeapon(itemFilename, false);
 
 				if(right)
@@ -890,10 +890,10 @@ void NPC::EquipItem(EquipSlot equipSlot, const char* itemFilename, bool left, bo
 		break;
 	case EquipSlot_Body:
 		{
-			if(m_pVoxelCharacter != NULL)
+			if(m_pVoxelCharacter != nullptr)
 			{
 				VoxelWeapon* pNewEquipment = new VoxelWeapon(m_pRenderer, m_pQubicleBinaryManager);
-				pNewEquipment->SetVoxelCharacterParent(NULL);
+				pNewEquipment->SetVoxelCharacterParent(nullptr);
 				pNewEquipment->LoadWeapon(itemFilename, false);
 
 				pNewEquipment->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->SetScaleAndOffsetForMatrix("Body", pNewEquipment->GetAnimatedSection(0)->m_renderScale, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.x, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.y, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.z);
@@ -905,10 +905,10 @@ void NPC::EquipItem(EquipSlot equipSlot, const char* itemFilename, bool left, bo
 		break;
 	case EquipSlot_Legs:
 		{
-			if(m_pVoxelCharacter != NULL)
+			if(m_pVoxelCharacter != nullptr)
 			{
 				VoxelWeapon* pNewEquipment = new VoxelWeapon(m_pRenderer, m_pQubicleBinaryManager);
-				pNewEquipment->SetVoxelCharacterParent(NULL);
+				pNewEquipment->SetVoxelCharacterParent(nullptr);
 				pNewEquipment->LoadWeapon(itemFilename, false);
 
 				pNewEquipment->GetAnimatedSection(0)->m_pVoxelObject->GetQubicleModel()->SetScaleAndOffsetForMatrix("Legs", pNewEquipment->GetAnimatedSection(0)->m_renderScale, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.x, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.y, pNewEquipment->GetAnimatedSection(0)->m_renderOffset.z);
@@ -920,10 +920,10 @@ void NPC::EquipItem(EquipSlot equipSlot, const char* itemFilename, bool left, bo
 		break;
 	case EquipSlot_Hand:
 		{
-			if(m_pVoxelCharacter != NULL)
+			if(m_pVoxelCharacter != nullptr)
 			{
 				VoxelWeapon* pNewEquipment = new VoxelWeapon(m_pRenderer, m_pQubicleBinaryManager);
-				pNewEquipment->SetVoxelCharacterParent(NULL);
+				pNewEquipment->SetVoxelCharacterParent(nullptr);
 				pNewEquipment->LoadWeapon(itemFilename, false);
 
 				if(right)
@@ -946,10 +946,10 @@ void NPC::EquipItem(EquipSlot equipSlot, const char* itemFilename, bool left, bo
 		break;
 	case EquipSlot_Feet:
 		{
-			if(m_pVoxelCharacter != NULL)
+			if(m_pVoxelCharacter != nullptr)
 			{
 				VoxelWeapon* pNewEquipment = new VoxelWeapon(m_pRenderer, m_pQubicleBinaryManager);
-				pNewEquipment->SetVoxelCharacterParent(NULL);
+				pNewEquipment->SetVoxelCharacterParent(nullptr);
 				pNewEquipment->LoadWeapon(itemFilename, false);
 
 				if(right)
@@ -1348,7 +1348,7 @@ WayPoint* NPC::AddWaypoint(vec3 pos, float xLength, float yLength, float zLength
 	pNewWayPoint->m_xLength = xLength;
 	pNewWayPoint->m_yLength = yLength;
 	pNewWayPoint->m_zLength = zLength;
-	pNewWayPoint->m_pNextWaypoint = NULL;
+	pNewWayPoint->m_pNextWaypoint = nullptr;
 
 	// Connect to previous waypoint
 	if(m_vpWayPointList.size() > 0)
@@ -1596,7 +1596,7 @@ void NPC::CheckProjectileDamageRadius(Projectile* pProjectile)
 		knockbackDirection = normalize(knockbackDirection);
 		Colour damageColour = Colour(1.0f, 1.0f, 1.0f);
 
-		if(pProjectile->GetEnemyOwner() != NULL)
+		if(pProjectile->GetEnemyOwner() != nullptr)
 		{
 			// Set NPC target as attacker
 			SetTargetEnemy(pProjectile->GetEnemyOwner());
@@ -1627,7 +1627,7 @@ void NPC::Explode()
 	// Explode the qubicle binary voxel file
 	for (int explodeCounter = 0; explodeCounter < 3; explodeCounter++)
 	{
-		const QubicleBinary* pQubicleModel = NULL;
+		const QubicleBinary* pQubicleModel = nullptr;
 		int spawnChance = 100;
 		if (explodeCounter == 0)
 		{
@@ -1636,7 +1636,7 @@ void NPC::Explode()
 		}
 		else if (explodeCounter == 1)
 		{
-			if (m_pVoxelCharacter->GetRightWeapon() != NULL)
+			if (m_pVoxelCharacter->GetRightWeapon() != nullptr)
 			{
 				if (m_pVoxelCharacter->IsRightWeaponLoaded())
 				{
@@ -1651,7 +1651,7 @@ void NPC::Explode()
 		}
 		else if (explodeCounter == 2)
 		{
-			if (m_pVoxelCharacter->GetLeftWeapon() != NULL)
+			if (m_pVoxelCharacter->GetLeftWeapon() != nullptr)
 			{
 				if (m_pVoxelCharacter->IsLeftWeaponLoaded())
 				{
@@ -1665,7 +1665,7 @@ void NPC::Explode()
 			}
 		}
 
-		if (pQubicleModel != NULL)
+		if (pQubicleModel != nullptr)
 		{
 			m_pBlockParticleManager->ExplodeQubicleBinary(pQubicleModel, m_pVoxelCharacter->GetCharacterScale(), spawnChance);
 		}
@@ -1745,8 +1745,8 @@ void NPC::Attack()
 			m_attackEnabled = true;
 			m_attackEnabledTimer = 0.0f;
 			m_attackRotation = startRotation;
-			Interpolator::GetInstance()->AddFloatInterpolation(&m_attackEnabledTimer, 0.0f, attackTime, attackTime, 0.0f, NULL, _AttackEnabledTimerFinished, this);
-			Interpolator::GetInstance()->AddFloatInterpolation(&m_attackEnabledDelayTimer, m_attackEnabledDelayTimer, 0.0f, m_attackEnabledDelayTimer, 0.0f, NULL, _AttackEnabledDelayTimerFinished, this);
+			Interpolator::GetInstance()->AddFloatInterpolation(&m_attackEnabledTimer, 0.0f, attackTime, attackTime, 0.0f, nullptr, _AttackEnabledTimerFinished, this);
+			Interpolator::GetInstance()->AddFloatInterpolation(&m_attackEnabledDelayTimer, m_attackEnabledDelayTimer, 0.0f, m_attackEnabledDelayTimer, 0.0f, nullptr, _AttackEnabledDelayTimerFinished, this);
 			Interpolator::GetInstance()->AddFloatInterpolation(&m_attackRotation, startRotation, endRotation, attackTime, easingRotation);
 
 			// Start weapon trails
@@ -1790,7 +1790,7 @@ void NPC::Attack()
 			m_attackDelayTime = 1.35f + GetRandomNumber(-100, 50, 2) * 0.005f;
 
 			m_attackEnabledDelayTimer = 0.15f;
-			Interpolator::GetInstance()->AddFloatInterpolation(&m_attackEnabledDelayTimer, m_attackEnabledDelayTimer, 0.0f, m_attackEnabledDelayTimer, 0.0f, NULL, _AttackEnabledDelayTimerFinished, this);
+			Interpolator::GetInstance()->AddFloatInterpolation(&m_attackEnabledDelayTimer, m_attackEnabledDelayTimer, 0.0f, m_attackEnabledDelayTimer, 0.0f, nullptr, _AttackEnabledDelayTimerFinished, this);
 
 			doAttack = true;
 		}
@@ -1818,7 +1818,7 @@ void NPC::Attack()
 			SetAnimationSpeed(1.5f, true, AnimationSections_FullBody);
 
 			m_attackDelayTime = 0.75f + GetRandomNumber(-50, 50, 2) * 0.005f;
-			Interpolator::GetInstance()->AddFloatInterpolation(&m_animationTimer, 0.0f, 0.3f, 0.3f, 0.0f, NULL, _AttackEnabledDelayTimerFinished, this);
+			Interpolator::GetInstance()->AddFloatInterpolation(&m_animationTimer, 0.0f, 0.3f, 0.3f, 0.0f, nullptr, _AttackEnabledDelayTimerFinished, this);
 
 			m_bCanAttack = false;
 
@@ -1846,7 +1846,7 @@ void NPC::ReleaseAttack()
 
 		Projectile* pProjectile = m_pProjectileManager->CreateProjectile(m_chargeSpawnPosition, m_chargeSpawnVelocity, 0.0f, "media/gamedata/items/Arrow/arrow.item", 0.08f);	
 		pProjectile->SetProjectileType(true, false, false);
-		pProjectile->SetOwner(NULL, this, NULL);
+		pProjectile->SetOwner(nullptr, this, nullptr);
 
 		m_bIsChargingAttack = false;
 		m_chargeAmount = 0.0f;
@@ -1900,7 +1900,7 @@ void NPC::SetEnemyDied(Enemy* pEnemy)
 {
 	if(m_pTargetEnemy == pEnemy)
 	{
-		SetTargetEnemy(NULL);
+		SetTargetEnemy(nullptr);
 
 		SetRandomLookMode();
 	}
@@ -1910,7 +1910,7 @@ void NPC::SetTargetEnemy(Enemy* pEnemy)
 {
 	m_pTargetEnemy = pEnemy;
 
-	if(m_pTargetEnemy != NULL)
+	if(m_pTargetEnemy != nullptr)
 	{
 		if(m_eNPCCombatType == eNPCCombatType_Archer || m_eNPCCombatType == eNPCCombatType_Staff || m_eNPCCombatType == eNPCCombatType_FireballHands)
 		{
@@ -2052,7 +2052,7 @@ void NPC::UpdateGridPosition()
 	if(m_position.z <= -0.5f)
 		gridPositionZ -= 1;
 
-	if(gridPositionX != m_gridPositionX || gridPositionY != m_gridPositionY || gridPositionZ != m_gridPositionZ || m_pCachedGridChunk == NULL)
+	if(gridPositionX != m_gridPositionX || gridPositionY != m_gridPositionY || gridPositionZ != m_gridPositionZ || m_pCachedGridChunk == nullptr)
 	{
 		m_gridPositionX = gridPositionX;
 		m_gridPositionY = gridPositionY;
@@ -2078,7 +2078,7 @@ Chunk* NPC::GetCachedGridChunkOrFromPosition(vec3 pos) const
 
 	if(gridPositionX != m_gridPositionX || gridPositionY != m_gridPositionY || gridPositionZ != m_gridPositionZ)
 	{
-		return NULL;
+		return nullptr;
 	}
 	else
 	{
@@ -2090,7 +2090,7 @@ void NPC::ClearChunkCacheForChunk(Chunk* pChunk)
 {
 	if(m_pCachedGridChunk == pChunk)
 	{
-		m_pCachedGridChunk = NULL;
+		m_pCachedGridChunk = nullptr;
 	}
 }
 
@@ -2129,7 +2129,7 @@ bool NPC::CheckCollisions(vec3 positionCheck, vec3 previousPosition, vec3 *pNorm
 
 					if (active == false)
 					{
-						if (pChunk == NULL || pChunk->IsSetup() == false)
+						if (pChunk == nullptr || pChunk->IsSetup() == false)
 						{
 							*pMovement = vec3(0.0f, 0.0f, 0.0f);
 							worldCollision = false;
@@ -2341,7 +2341,7 @@ bool NPC::GetHoverRender() const
 
 void NPC::SetWireFrameRender(bool wireframe)
 {
-	if(m_pVoxelCharacter != NULL)
+	if(m_pVoxelCharacter != nullptr)
 	{
 		m_pVoxelCharacter->SetWireFrameRender(wireframe);
 	}
@@ -2366,7 +2366,7 @@ void NPC::UpdateWeaponLights(float dt)
 {
 	for (int i = 0; i < 2; i++)
 	{
-		VoxelWeapon* pWeapon = NULL;
+		VoxelWeapon* pWeapon = nullptr;
 		bool isWeaponLoaded = false;
 		if (i == 0)  // Right side
 		{
@@ -2379,7 +2379,7 @@ void NPC::UpdateWeaponLights(float dt)
 			isWeaponLoaded = m_pVoxelCharacter->IsLeftWeaponLoaded();
 		}
 
-		if (pWeapon != NULL)
+		if (pWeapon != nullptr)
 		{
 			if (isWeaponLoaded)
 			{
@@ -2431,7 +2431,7 @@ void NPC::UpdateWeaponParticleEffects(float dt)
 {
 	for (int i = 0; i < 2; i++)
 	{
-		VoxelWeapon* pWeapon = NULL;
+		VoxelWeapon* pWeapon = nullptr;
 		bool isWeaponLoaded = false;
 		if (i == 0)  // Right side
 		{
@@ -2444,7 +2444,7 @@ void NPC::UpdateWeaponParticleEffects(float dt)
 			isWeaponLoaded = m_pVoxelCharacter->IsLeftWeaponLoaded();
 		}
 
-		if (pWeapon != NULL)
+		if (pWeapon != nullptr)
 		{
 			if (isWeaponLoaded)
 			{
@@ -2521,7 +2521,7 @@ void NPC::UpdateLookingAndForwardTarget(float dt)
 		m_forward = normalize(m_forward);
 	}
 
-	if(m_pVoxelCharacter != NULL)
+	if(m_pVoxelCharacter != nullptr)
 	{
 		if(m_bLookAtPoint)
 		{
@@ -2667,7 +2667,7 @@ void NPC::UpdateCombat(float dt)
 	if (m_bCanAttack == false && (m_animationFinished[AnimationSections_Right_Arm_Hand] == true))
 	{
 		// Stop weapon trails
-		if (m_pVoxelCharacter != NULL)
+		if (m_pVoxelCharacter != nullptr)
 		{
 			if (m_pVoxelCharacter->GetRightWeapon())
 			{
@@ -2735,7 +2735,7 @@ void NPC::UpdateRangedCombat(float dt)
 		}
 	}
 
-	if (m_eNPCCombatType == eNPCCombatType_Archer && m_pTargetEnemy != NULL)
+	if (m_eNPCCombatType == eNPCCombatType_Archer && m_pTargetEnemy != nullptr)
 	{
 		m_chargeSpawnPosition = GetCenter() + (m_forward*0.75f) + (GetUpVector()*0.5f);
 
@@ -2770,7 +2770,7 @@ void NPC::UpdateMovement(float dt)
 	else
 	{
 		float radius = 0.0f;
-		if(m_pTargetEnemy != NULL)
+		if(m_pTargetEnemy != nullptr)
 		{
 			SetTargetPosition(m_pTargetEnemy->GetCenter());
 			radius = m_pTargetEnemy->GetRadius();
@@ -2849,7 +2849,7 @@ void NPC::UpdateMovement(float dt)
 		{
 			if(m_movementWaitAfterAttackTimer <= 0.0f)
 			{
-				if((m_eNPCCombatType != eNPCCombatType_Archer && m_eNPCCombatType != eNPCCombatType_Staff && m_eNPCCombatType != eNPCCombatType_FireballHands) || m_pTargetEnemy == NULL)
+				if((m_eNPCCombatType != eNPCCombatType_Archer && m_eNPCCombatType != eNPCCombatType_Staff && m_eNPCCombatType != eNPCCombatType_FireballHands) || m_pTargetEnemy == nullptr)
 				{
 					vec3 toTarget = m_targetPosition - m_position;
 					vec3 movementDirection = toTarget;
@@ -3001,7 +3001,7 @@ void NPC::Update(float dt)
 	// Update timers
 	UpdateTimers(dt);
 
-	if(m_pVoxelCharacter != NULL)
+	if(m_pVoxelCharacter != nullptr)
 	{
 		m_pVoxelCharacter->Update(dt, m_animationSpeed);
 		m_pVoxelCharacter->SetWeaponTrailsOriginMatrix(dt, m_worldMatrix);
@@ -3033,7 +3033,7 @@ void NPC::UpdateScreenCoordinates2d(Camera* pCamera)
 
 void NPC::UpdateSubSelectionNamePicking(int pickingId, bool mousePressed)
 {
-	if(m_pVoxelCharacter != NULL)
+	if(m_pVoxelCharacter != nullptr)
 	{
 		if(mousePressed)
 		{
@@ -3049,12 +3049,12 @@ void NPC::UpdateSubSelectionNamePicking(int pickingId, bool mousePressed)
 
 void NPC::UpdateAggroRadius(float dt)
 {
-	if(m_pTargetEnemy != NULL)
+	if(m_pTargetEnemy != nullptr)
 	{
 		return;
 	}
 
-	Enemy* pClosestEnemy = NULL;
+	Enemy* pClosestEnemy = nullptr;
 	float closestDistance = 999.9f;
 
 	int numEnemies = m_pEnemyManager->GetNumEnemies();
@@ -3078,7 +3078,7 @@ void NPC::UpdateAggroRadius(float dt)
 		}
 	}
 
-	if(pClosestEnemy != NULL)
+	if(pClosestEnemy != nullptr)
 	{
 		SetTargetEnemy(pClosestEnemy);
 	}
@@ -3189,7 +3189,7 @@ void NPC::RenderDebug()
 		}
 	m_pRenderer->PopMatrix();
 
-	if(m_pVoxelCharacter != NULL)
+	if(m_pVoxelCharacter != nullptr)
 	{
 		m_pRenderer->PushMatrix();
 			m_pRenderer->MultiplyWorldMatrix(m_worldMatrix);
@@ -3199,7 +3199,7 @@ void NPC::RenderDebug()
 	}
 
 	// Bones
-	if(m_pVoxelCharacter != NULL)
+	if(m_pVoxelCharacter != nullptr)
 	{
 		m_pRenderer->PushMatrix();
 			m_pRenderer->MultiplyWorldMatrix(m_worldMatrix);
@@ -3319,7 +3319,7 @@ void NPC::RenderWaypointsDebug()
 			m_pRenderer->PopMatrix();
 
 			// Connecting waypoints
-			if(pWaypoint->m_pNextWaypoint != NULL)
+			if(pWaypoint->m_pNextWaypoint != nullptr)
 			{
 				m_pRenderer->SetRenderMode(RM_SOLID);
 				m_pRenderer->SetLineWidth(1.0f);
@@ -3530,7 +3530,7 @@ void NPC::AttackEnabledDelayTimerFinished()
 		return;
 	}
 
-	if(m_pTargetEnemy == NULL)
+	if(m_pTargetEnemy == nullptr)
 	{
 		return;
 	}
@@ -3546,7 +3546,7 @@ void NPC::AttackEnabledDelayTimerFinished()
 
 		Projectile* pProjectile = m_pProjectileManager->CreateProjectile(fireballSpawnPosition, fireballSpawnVelocity, 0.0f, "media/gamedata/items/Fireball/Fireball.item", 0.04f);	
 		pProjectile->SetProjectileType(true, false, false);
-		pProjectile->SetOwner(NULL, this, NULL);
+		pProjectile->SetOwner(nullptr, this, nullptr);
 		pProjectile->SetGravityMultiplier(0.0f);
 	}
 	else if(m_eNPCCombatType == eNPCCombatType_FireballHands)
@@ -3570,7 +3570,7 @@ void NPC::AttackEnabledDelayTimerFinished()
 
 		Projectile* pProjectile = m_pProjectileManager->CreateProjectile(spellSpawnPosition, spellSpawnVelocity, 0.0f, "media/gamedata/items/Fireball/FireballBlue.item", 0.05f);	
 		pProjectile->SetProjectileType(true, false, false);
-		pProjectile->SetOwner(NULL, this, NULL);
+		pProjectile->SetOwner(nullptr, this, nullptr);
 		pProjectile->SetGravityMultiplier(0.0f);
 	}
 }

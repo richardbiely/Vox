@@ -19,7 +19,7 @@
 
 inline void SeedRandomNumberGenerator()
 {
-	srand ( (unsigned int)time(NULL) );
+	srand ( (unsigned int)time(nullptr) );
 }
 
 inline void SeedRandomNumberGeneratorInt(int seed)

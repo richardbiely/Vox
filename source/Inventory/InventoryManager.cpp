@@ -35,20 +35,20 @@ static ItemTextData g_itemData[] =
 
 InventoryManager::InventoryManager()
 {
-	m_pPlayer = NULL;
-	m_pInventoryGUI = NULL;
-	m_pLootGUI = NULL;
-	m_pActionBar = NULL;
+	m_pPlayer = nullptr;
+	m_pInventoryGUI = nullptr;
+	m_pLootGUI = nullptr;
+	m_pActionBar = nullptr;
 
     // Reset the inventory mapping array
     for(int i = 0; i < MAX_NUM_INVENTORY_SLOTS; i++)
     {
-        m_ItemSlotMapping[i] = NULL;
+        m_ItemSlotMapping[i] = nullptr;
     }
 
 	for(int i = 0; i < (int)EquipSlot_NumSlots; i++)
 	{
-		m_equippedSlots[i] = NULL;
+		m_equippedSlots[i] = nullptr;
 	}	
 
 	m_playerName.clear();
@@ -106,7 +106,7 @@ void InventoryManager::ClearInventory()
 
 	for(int i = 0; i < MAX_NUM_INVENTORY_SLOTS; i++)
 	{
-		m_ItemSlotMapping[i] = NULL;
+		m_ItemSlotMapping[i] = nullptr;
 	}
 }
 
@@ -114,7 +114,7 @@ void InventoryManager::ClearEquipped()
 {
 	for(int i = 0; i < (int)EquipSlot_NumSlots; i++)
 	{
-		m_equippedSlots[i] = NULL;
+		m_equippedSlots[i] = nullptr;
 	}
 }
 
@@ -271,7 +271,7 @@ void InventoryManager::ExportInventory(string playerName)
         {
             InventoryItem* lpItem = m_ItemSlotMapping[i];
 
-            if(lpItem == NULL)
+            if(lpItem == nullptr)
             {
                 exportFile << "0" << "|";
             }
@@ -313,7 +313,7 @@ void InventoryManager::ExportInventory(string playerName)
 		{
 			InventoryItem* lpItem = m_equippedSlots[i];
 
-			if(lpItem == NULL)
+			if(lpItem == nullptr)
 			{
 				exportFile << "0" << "|";
 			}
@@ -658,7 +658,7 @@ bool InventoryManager::IsInventoryFull()
 {
   for(int i = 0; i < MAX_NUM_INVENTORY_SLOTS; i++)
   {
-    if(m_ItemSlotMapping[i] == NULL)
+    if(m_ItemSlotMapping[i] == nullptr)
     {
 			return false;
 		}
@@ -753,7 +753,7 @@ ItemTextData* InventoryManager::GetItemTextData(eItem item)
 		}
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 bool InventoryManager::CanDestroyItemWithHammer(eItem item)
@@ -782,7 +782,7 @@ bool InventoryManager::CanAddInventoryItem(const char* title, eItem item, int qu
 		// First check if the item already exists in the inventory slots, to add to its quantity
 		for(int i = 0; i < MAX_NUM_INVENTORY_SLOTS; i++)
 		{
-			if(m_ItemSlotMapping[i] != NULL && (strcmp(title, m_ItemSlotMapping[i]->m_title.c_str()) == 0) && (m_ItemSlotMapping[i]->m_item == item || item == eItem_DroppedItem))
+			if(m_ItemSlotMapping[i] != nullptr && (strcmp(title, m_ItemSlotMapping[i]->m_title.c_str()) == 0) && (m_ItemSlotMapping[i]->m_item == item || item == eItem_DroppedItem))
 			{
 				return true;
 			}
@@ -793,7 +793,7 @@ bool InventoryManager::CanAddInventoryItem(const char* title, eItem item, int qu
 		{
 			InventoryItem* lpItem = m_equippedSlots[i];
 
-			if(lpItem != NULL && (strcmp(title, lpItem->m_title.c_str()) == 0) && (m_ItemSlotMapping[i]->m_item == item || item == eItem_DroppedItem))
+			if(lpItem != nullptr && (strcmp(title, lpItem->m_title.c_str()) == 0) && (m_ItemSlotMapping[i]->m_item == item || item == eItem_DroppedItem))
 			{
 				return true;
 			}
@@ -803,7 +803,7 @@ bool InventoryManager::CanAddInventoryItem(const char* title, eItem item, int qu
 	// Search for a free slot
 	for(int i = 0; i < MAX_NUM_INVENTORY_SLOTS; i++)
 	{
-		if(m_ItemSlotMapping[i] == NULL)
+		if(m_ItemSlotMapping[i] == nullptr)
 		{
 			return true;
 		}
@@ -826,7 +826,7 @@ InventoryItem* InventoryManager::AddInventoryItem(const char* filename, const ch
     {
         for(int i = 0; i < MAX_NUM_INVENTORY_SLOTS; i++)
         {
-            if(m_ItemSlotMapping[i] != NULL && (strcmp(title, m_ItemSlotMapping[i]->m_title.c_str()) == 0) && m_ItemSlotMapping[i]->m_itemType == itemType)
+            if(m_ItemSlotMapping[i] != nullptr && (strcmp(title, m_ItemSlotMapping[i]->m_title.c_str()) == 0) && m_ItemSlotMapping[i]->m_itemType == itemType)
             {
                 createNewitem = false;
 
@@ -847,7 +847,7 @@ InventoryItem* InventoryManager::AddInventoryItem(const char* filename, const ch
         {
             InventoryItem* lpItem = m_equippedSlots[i];
 
-            if(lpItem != NULL && (strcmp(title, lpItem->m_title.c_str()) == 0) && m_equippedSlots[i]->m_itemType == itemType)
+            if(lpItem != nullptr && (strcmp(title, lpItem->m_title.c_str()) == 0) && m_equippedSlots[i]->m_itemType == itemType)
             {
                 createNewitem = false;
 
@@ -880,7 +880,7 @@ InventoryItem* InventoryManager::AddInventoryItem(const char* filename, const ch
 			// Search for a free slot
 			for(int i = 0; i < MAX_NUM_INVENTORY_SLOTS; i++)
 			{
-				if(m_ItemSlotMapping[i] == NULL)
+				if(m_ItemSlotMapping[i] == nullptr)
 				{
 					indexToUse = i;
 					break;
@@ -891,7 +891,7 @@ InventoryItem* InventoryManager::AddInventoryItem(const char* filename, const ch
 		// Create the new item
 		if(indexToUse != -1)
 		{
-			if(m_ItemSlotMapping[indexToUse] == NULL)
+			if(m_ItemSlotMapping[indexToUse] == nullptr)
 			{
 				// Create the new inventory item
 				InventoryItem* pNewItem = new InventoryItem();
@@ -944,7 +944,7 @@ InventoryItem* InventoryManager::AddInventoryItem(const char* filename, const ch
 		}
     }
     
-	return NULL;
+	return nullptr;
 }
 
 InventoryItem* InventoryManager::AddInventoryItem(InventoryItem* pInventoryItem, int inventoryX, int inventoryY)
@@ -968,7 +968,7 @@ void InventoryManager::RemoveInventoryItem(const char* title, eItem item, int qu
 {
 	for(int i = 0; i < MAX_NUM_INVENTORY_SLOTS; i++)
 	{
-		if(m_ItemSlotMapping[i] != NULL && (strcmp(title, m_ItemSlotMapping[i]->m_title.c_str()) == 0) && m_ItemSlotMapping[i]->m_item == item)
+		if(m_ItemSlotMapping[i] != nullptr && (strcmp(title, m_ItemSlotMapping[i]->m_title.c_str()) == 0) && m_ItemSlotMapping[i]->m_item == item)
 		{
 			m_ItemSlotMapping[i]->m_quantity -= quantity;
 
@@ -992,7 +992,7 @@ void InventoryManager::RemoveInventoryItem(const char* title, eItem item, int qu
 	{
 		InventoryItem* lpItem = m_equippedSlots[i];
 
-		if(lpItem != NULL && (strcmp(title, lpItem->m_title.c_str()) == 0) && m_equippedSlots[i]->m_item == item)
+		if(lpItem != nullptr && (strcmp(title, lpItem->m_title.c_str()) == 0) && m_equippedSlots[i]->m_item == item)
 		{
 			lpItem->m_quantity -= quantity;
 
@@ -1015,7 +1015,7 @@ void InventoryManager::RemoveInventoryItem(const char* title, eItem item, int qu
 
 void InventoryManager::RemoveInventoryItem(EquipSlot equipSlot)
 {
-	m_equippedSlots[equipSlot] = NULL;
+	m_equippedSlots[equipSlot] = nullptr;
 
 	SetInventoryGUINeedsUpdate(true);
 	SetCharacterGUINeedsUpdate(true);
@@ -1028,7 +1028,7 @@ void InventoryManager::RemoveInventoryItem(int slotIndex)
 {
     InventoryItem* pNewItem = m_ItemSlotMapping[slotIndex];
     pNewItem->m_remove = true;
-    m_ItemSlotMapping[slotIndex] = NULL;
+    m_ItemSlotMapping[slotIndex] = nullptr;
 
 	SetInventoryGUINeedsUpdate(true);
 	SetCharacterGUINeedsUpdate(true);
@@ -1058,7 +1058,7 @@ InventoryItem* InventoryManager::GetInventoryItemWithTitle(string title)
 {
 	for(int i = 0; i < (int)m_vpInventoryItemList.size(); i++)
 	{
-		if(m_vpInventoryItemList[i] != NULL)
+		if(m_vpInventoryItemList[i] != nullptr)
 		{
 			if(strcmp(m_vpInventoryItemList[i]->m_title.c_str(), title.c_str()) == 0)
 			{
@@ -1067,7 +1067,7 @@ InventoryItem* InventoryManager::GetInventoryItemWithTitle(string title)
 		}
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 void InventoryManager::SwitchInventoryItems(int slot1, int slot2)
@@ -1104,7 +1104,7 @@ void InventoryManager::EquipInventoryItem(int slotIndex, EquipSlot equipSlot)
 
 	// If we already have an item equipped in this slot, unequip it
 	m_ItemSlotMapping[slotIndex] = pEquippedItem;
-	if(m_ItemSlotMapping[slotIndex] != NULL)
+	if(m_ItemSlotMapping[slotIndex] != nullptr)
 	{
 		m_ItemSlotMapping[slotIndex]->m_equipped = false;
 	}
@@ -1157,7 +1157,7 @@ bool InventoryManager::IsEquippedStatus(ItemStatus status)
 {
 	for(int i = 0; i < (int)EquipSlot_NumSlots; i++)
 	{
-		if(m_equippedSlots[(ItemStatus)i] != NULL)
+		if(m_equippedSlots[(ItemStatus)i] != nullptr)
 		{
 			if(m_equippedSlots[(ItemStatus)i]->m_status == status)
 			{
@@ -1179,7 +1179,7 @@ void InventoryManager::UnequipItem(int xPos, int yPos, EquipSlot equipSlot)
 
 	m_ItemSlotMapping[index] = pEquippedItem;
 	m_equippedSlots[equipSlot] = lpTemp;
-	if(m_equippedSlots[equipSlot] != NULL)
+	if(m_equippedSlots[equipSlot] != nullptr)
 	{
 		m_equippedSlots[equipSlot]->m_equipped = true;
 	}
@@ -1194,7 +1194,7 @@ void InventoryManager::UnequipItem(int xPos, int yPos, EquipSlot equipSlot)
 void InventoryManager::UnequipItemToLootGUI(EquipSlot equipSlot)
 {
 	m_equippedSlots[equipSlot]->m_equipped = false;
-	m_equippedSlots[equipSlot] = NULL;
+	m_equippedSlots[equipSlot] = nullptr;
 
 	// Refresh stat modifier cache since we have un-equipped an item
 	m_pPlayer->RefreshStatModifierCacheValues();
@@ -1207,13 +1207,13 @@ bool InventoryManager::UnequipItemToFreeInventorySlot(EquipSlot equipSlot, int *
 {
 	for(int i = 0; i < MAX_NUM_INVENTORY_SLOTS; i++)
 	{
-		if(m_ItemSlotMapping[i] == NULL)
+		if(m_ItemSlotMapping[i] == nullptr)
 		{
 			InventoryItem* pEquippedItem = m_equippedSlots[equipSlot];
-			if(pEquippedItem != NULL)
+			if(pEquippedItem != nullptr)
 			{
 				m_equippedSlots[equipSlot]->m_equipped = false;
-				m_equippedSlots[equipSlot] = NULL;
+				m_equippedSlots[equipSlot] = nullptr;
 
 				m_ItemSlotMapping[i] = pEquippedItem;
 

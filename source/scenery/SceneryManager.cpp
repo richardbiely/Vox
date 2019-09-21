@@ -73,7 +73,7 @@ SceneryObject* SceneryManager::GetSceneryObject(string name)
 		}
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 SceneryObject* SceneryManager::AddSceneryObject(string name, string filename, vec3 pos, vec3 worldFileOffset, QubicleImportDirection importDirection, QubicleImportDirection parentImportDirection, float scale, float rotation)
@@ -84,7 +84,7 @@ SceneryObject* SceneryManager::AddSceneryObject(string name, string filename, ve
 	//{
 	//	if(m_vpSceneryObjectList[i]->m_name == name)
 	//	{
-	//		return NULL; // Don't allow creation of 2 same named scenery objects
+	//		return nullptr; // Don't allow creation of 2 same named scenery objects
 	//	}
 	//}
 
@@ -101,7 +101,7 @@ SceneryObject* SceneryManager::AddSceneryObject(string name, string filename, ve
 	//{
 	//	if(m_vpSceneryObjectList[i]->m_name == name)
 	//	{
-	//		return NULL; // Don't allow creation of 2 same named scenery objects
+	//		return nullptr; // Don't allow creation of 2 same named scenery objects
 	//	}
 	//}
 
@@ -134,7 +134,7 @@ SceneryObject* SceneryManager::AddSceneryObject(string name, string filename, ve
 
 void SceneryManager::DeleteSceneryObject(string name)
 {
-	SceneryObject* pDeleteObject = NULL;
+	SceneryObject* pDeleteObject = nullptr;
 
 	// Find
 	for(unsigned int i = 0; i < m_vpSceneryObjectList.size(); i++)
@@ -153,7 +153,7 @@ void SceneryManager::DeleteSceneryObject(string name)
 	}
 
 	// Delete
-	if(pDeleteObject != NULL)
+	if(pDeleteObject != nullptr)
 	{
 		delete pDeleteObject;
 	}

@@ -122,7 +122,7 @@ Quest* QuestJournal::GetCurrentQuest(int index)
 		}
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 Quest* QuestJournal::GetCompletedQuest(int index)
@@ -141,7 +141,7 @@ Quest* QuestJournal::GetCompletedQuest(int index)
 		}
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 void QuestJournal::ExportQuestJournal(int playerNum)
@@ -200,7 +200,7 @@ void QuestJournal::ImportQuestJournal(int playerNum)
 
 			QuestJournalEntry* pNewEntry = new QuestJournalEntry();
 			pNewEntry->m_pQuest = m_pQuestManager->GetQuest(questName);
-			if(pNewEntry->m_pQuest != NULL)
+			if(pNewEntry->m_pQuest != nullptr)
 			{
 				pNewEntry->m_status = (QuestEntryStatus)questStatus;
 

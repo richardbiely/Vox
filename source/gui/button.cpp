@@ -333,7 +333,7 @@ void Button::MousePressed(const MouseEvent& lEvent)
 	}
 
 	// If our parent is a GUIWindow, then makew this window have focus in the GUI, used to make it's depth the highest
-	if(GetParent() != NULL && GetParent()->GetComponentType() == EComponentType_GUIWindow)
+	if(GetParent() != nullptr && GetParent()->GetComponentType() == EComponentType_GUIWindow)
 	{
 		GUIWindow* lpParentWindow = (GUIWindow *)GetParent();
 		lpParentWindow->SetFocusWindow();

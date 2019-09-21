@@ -116,8 +116,8 @@ FMOD::Sound* AudioManager::PlaySound2D(FMOD::Channel** pChannel, const char* fil
 	if (m_audioEnabled)
 	{
 		FMOD::Sound* sound;
-		*pChannel = NULL;
-		FMOD::ChannelGroup *channelGroup = NULL;
+		*pChannel = nullptr;
+		FMOD::ChannelGroup *channelGroup = nullptr;
 
 		if (stream)
 		{
@@ -138,7 +138,7 @@ FMOD::Sound* AudioManager::PlaySound2D(FMOD::Channel** pChannel, const char* fil
 		return sound;
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 FMOD::Sound* AudioManager::PlaySound3D(FMOD::Channel** pChannel, const char* filename, vec3 position, bool looping, bool stream)
@@ -146,8 +146,8 @@ FMOD::Sound* AudioManager::PlaySound3D(FMOD::Channel** pChannel, const char* fil
 	if (m_audioEnabled)
 	{
 		FMOD::Sound* sound;
-		*pChannel = NULL;
-		FMOD::ChannelGroup *channelGroup = NULL;
+		*pChannel = nullptr;
+		FMOD::ChannelGroup *channelGroup = nullptr;
 
 		if (stream)
 		{
@@ -178,7 +178,7 @@ FMOD::Sound* AudioManager::PlaySound3D(FMOD::Channel** pChannel, const char* fil
 		return sound;
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 void AudioManager::StopSound(FMOD::Channel* pChannel)

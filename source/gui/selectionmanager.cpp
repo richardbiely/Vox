@@ -72,15 +72,15 @@ void SelectionManager::RemoveComponent(Component* component)
 {
 	if(component == m_foundComponent)
 	{
-		m_foundComponent = NULL;
+		m_foundComponent = nullptr;
 	}
 	if(component == m_hoverOverComponent)
 	{
-		m_hoverOverComponent = NULL;
+		m_hoverOverComponent = nullptr;
 	}
 	if(component == m_firstClickedComponent)
 	{
-		m_firstClickedComponent = NULL;
+		m_firstClickedComponent = nullptr;
 	}
 
 	ComponentList::iterator iter = std::find(m_vpComponentList.begin(), m_vpComponentList.end(), component);
@@ -154,7 +154,7 @@ Component* SelectionManager::GetComponentAt(int x, int y)
 							ScrollBar* lpScrollBar = (ScrollBar*)(*iterator)->GetParent();
 
 							Dimensions lScrollbarParent;
-							if(lpScrollBar->GetParent() != NULL)
+							if(lpScrollBar->GetParent() != nullptr)
 							{
 								lScrollbarParent = lpScrollBar->GetParent()->GetDimensions();
 							}

@@ -18,9 +18,9 @@
 
 
 Icon::Icon()
-  : RenderRectangle(NULL)
+  : RenderRectangle(nullptr)
 {
-	m_pIcon = NULL;
+	m_pIcon = nullptr;
 	m_textureID = -1;
 	m_dynamicTextureID = -1;
 	m_dynamicTexture = false;
@@ -31,7 +31,7 @@ Icon::Icon()
 Icon::Icon(Renderer* pRenderer)
   : RenderRectangle(pRenderer)
 {
-	m_pIcon = NULL;
+	m_pIcon = nullptr;
 	m_textureID = -1;
 	m_dynamicTextureID = -1;
 	m_dynamicTexture = false;
@@ -47,7 +47,7 @@ Icon::Icon(Renderer* pRenderer, const std::string &fileName, int width, int heig
 	m_dynamicTextureID = -1;
 	m_pRenderer->LoadTexture(fileName.c_str(), &m_TextureWidth, &m_TextureHeight, &m_TextureWidthPower2, &m_TextureHeightPower2, &m_textureID);
 
-	m_pIcon = NULL;
+	m_pIcon = nullptr;
 
 	// Set dimensions
 	SetDimensions(0, 0, width, height);
@@ -85,7 +85,7 @@ void Icon::CreateDrawBuffer()
 
 Icon::~Icon()
 {
-	if(m_pIcon != NULL)
+	if(m_pIcon != nullptr)
 	{
 		Remove(m_pIcon);
 		delete m_pIcon;
@@ -101,7 +101,7 @@ void Icon::SetDimensions(int x, int y, int width, int height)
 {
 	Component::SetDimensions(x, y, width, height);
 
-	if(m_pIcon != NULL)
+	if(m_pIcon != nullptr)
 	{
 		// Also set the dimensions of the icon
 		m_pIcon->SetDimensions(0, 0, width, height);
@@ -120,7 +120,7 @@ void Icon::SetIcon(RenderRectangle *icon)
 		Remove(m_pIcon);
 
 		delete m_pIcon;
-		m_pIcon = NULL;
+		m_pIcon = nullptr;
 	}
 
 	// Check what type of render rectangle we have been given, and then assign our new data

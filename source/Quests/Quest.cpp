@@ -57,17 +57,17 @@ Quest::Quest(string name, string startText, string completedText, string denyTex
 	m_questCompletedText = completedText;
 	m_questDenyText = denyText;
 
-	m_pQuestReward = NULL;
+	m_pQuestReward = nullptr;
 }
 
 Quest::~Quest()
 {
 	ClearObjectives();
 
-	if(m_pQuestReward != NULL)
+	if(m_pQuestReward != nullptr)
 	{
 		delete m_pQuestReward;
-		m_pQuestReward = NULL;
+		m_pQuestReward = nullptr;
 	}
 }
 
@@ -122,7 +122,7 @@ void Quest::ClearObjectives()
 {
 	for(unsigned int i = 0; i < m_vpObjectives.size(); i++)
 	{
-		//if(m_vpObjectives[i]->m_placementItem != NULL)
+		//if(m_vpObjectives[i]->m_placementItem != nullptr)
 		//{
 		//	delete m_vpObjectives[i]->m_placementItem;
 		//}
@@ -225,16 +225,16 @@ void Quest::ExportQuest()
 			}
 			else
 			{
-				exportFile << "NULL" << "|";
-				exportFile << "NULL" << "|";
+				exportFile << "nullptr" << "|";
+				exportFile << "nullptr" << "|";
 				exportFile << 0 << "|";
 				exportFile << 0 << "|";
 				exportFile << 0 << "|";
 				exportFile << 0 << "|";
 				exportFile << 0 << "|";
 				exportFile << 0 << "|";
-				exportFile << "NULL" << "|";
-				exportFile << "NULL" << "|";
+				exportFile << "nullptr" << "|";
+				exportFile << "nullptr" << "|";
 				exportFile << 0 << "|";
 				exportFile << 0 << "|";
 				exportFile << 0 << "|";
@@ -334,7 +334,7 @@ void Quest::ImportQuest(const char* filename)
 			pNewObjective->m_talkingNPCDialog = talkNPCDialog;
 
 			// Scenery placement item
-			InventoryItem* pNewItem = NULL;
+			InventoryItem* pNewItem = nullptr;
 			char filename[128];
 			importFile.getline(filename, 128, '|');
 
@@ -393,7 +393,7 @@ void Quest::ImportQuest(const char* filename)
 			int quantity = strtol(input, &pEnd, 10);
 
 			// Create the new inventory item		
-			if(strcmp(filename, "NULL") != 0)
+			if(strcmp(filename, "nullptr") != 0)
 			{
 				pNewItem = new InventoryItem();
 
@@ -455,7 +455,7 @@ bool Quest::CanAcceptQuest(string *acceptError)
 	{
 		if(m_vpObjectives[i]->m_questType == QuestType_PlaceXScenery)
 		{
-			if(m_vpObjectives[i]->m_placementItem != NULL)
+			if(m_vpObjectives[i]->m_placementItem != nullptr)
 			{
 				if(m_pInventoryManager->CanAddInventoryItem(m_vpObjectives[i]->m_placementItem->m_title.c_str(), m_vpObjectives[i]->m_placementItem->m_item, m_vpObjectives[i]->m_placementItem->m_quantity) == false)
 				{
@@ -484,7 +484,7 @@ void Quest::AcceptQuest()
 
 		if(m_vpObjectives[i]->m_questType == QuestType_PlaceXScenery)
 		{
-			if(m_vpObjectives[i]->m_placementItem != NULL)
+			if(m_vpObjectives[i]->m_placementItem != nullptr)
 			{
 				m_pInventoryManager->AddInventoryItem(m_vpObjectives[i]->m_placementItem, -1, -1);
 			}
@@ -513,7 +513,7 @@ void Quest::Update()
 			{
 				InventoryItem* pItem = m_pInventoryManager->GetInventoryItemForSlot(itemIndex);
 
-				if(pItem != NULL)
+				if(pItem != nullptr)
 				{
 					if(m_vpObjectives[i]->m_item == pItem->m_item)
 					{

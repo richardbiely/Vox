@@ -711,7 +711,7 @@ void VoxGame::_AnimationPullDownChanged(void *apData)
 void VoxGame::AnimationPullDownChanged()
 {
 	MenuItem* pMenuItem = m_pAnimationsPulldown->GetSelectedMenuItem();
-	if (pMenuItem != NULL)
+	if (pMenuItem != nullptr)
 	{
 		m_pPlayer->GetVoxelCharacter()->PlayAnimation(AnimationSections_FullBody, false, AnimationSections_FullBody, pMenuItem->GetLabel().GetText().c_str());
 	}
@@ -726,7 +726,7 @@ void VoxGame::_CharacterPullDownChanged(void *apData)
 void VoxGame::CharacterPullDownChanged()
 {
 	MenuItem* pMenuItem = m_pCharacterPulldown->GetSelectedMenuItem();
-	if (pMenuItem != NULL)
+	if (pMenuItem != nullptr)
 	{
 		m_pPlayer->UnloadWeapon(false);
 		m_pPlayer->UnloadWeapon(true);

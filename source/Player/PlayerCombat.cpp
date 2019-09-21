@@ -65,7 +65,7 @@ void Player::PressAttack()
 				m_pVoxelCharacter->BlendIntoAnimation(AnimationSections_FullBody, true, AnimationSections_FullBody, "SwordAttack1", 0.01f);
 				m_pVoxelCharacter->BlendIntoAnimation(AnimationSections_Right_Arm_Hand, false, AnimationSections_Right_Arm_Hand, "SwordAttack1", 0.01f);
 
-				Interpolator::GetInstance()->AddFloatInterpolation(&m_animationTimer, 0.0f, 0.22f, 0.22f, 0.0f, NULL, _AttackAnimationTimerFinished, this);
+				Interpolator::GetInstance()->AddFloatInterpolation(&m_animationTimer, 0.0f, 0.22f, 0.22f, 0.0f, nullptr, _AttackAnimationTimerFinished, this);
 
 				m_bCanAttackRight = false;
 				m_bCanThrowWeapon = false;
@@ -93,7 +93,7 @@ void Player::PressAttack()
 
 				m_bCanInteruptCombatAnim = false;
 
-				Interpolator::GetInstance()->AddFloatInterpolation(&m_animationTimer, 0.0f, 0.2f, 0.2f, 0.0f, NULL, _AttackAnimationTimerFinished, this);
+				Interpolator::GetInstance()->AddFloatInterpolation(&m_animationTimer, 0.0f, 0.2f, 0.2f, 0.0f, nullptr, _AttackAnimationTimerFinished, this);
 
 				m_magic -= 10.0f;
 				VoxGame::GetInstance()->GetHUD()->UpdatePlayerData();
@@ -114,7 +114,7 @@ void Player::PressAttack()
 			m_pVoxelCharacter->BlendIntoAnimation(AnimationSections_FullBody, true, AnimationSections_FullBody, "SwordAttack2", 0.01f);
 			m_pVoxelCharacter->BlendIntoAnimation(AnimationSections_Right_Arm_Hand, false, AnimationSections_Right_Arm_Hand, "SwordAttack2", 0.01f);
 
-			Interpolator::GetInstance()->AddFloatInterpolation(&m_animationTimer, 0.0f, 0.25f, 0.25f, 0.0f, NULL, _AttackAnimationTimerFinished, this);
+			Interpolator::GetInstance()->AddFloatInterpolation(&m_animationTimer, 0.0f, 0.25f, 0.25f, 0.0f, nullptr, _AttackAnimationTimerFinished, this);
 
 			m_bCanAttackRight = false;
 		}
@@ -127,11 +127,11 @@ void Player::PressAttack()
 		InventoryItem* pRightHand = m_pInventoryManager->GetInventoryItemForEquipSlot(EquipSlot_RightHand);
 		InventoryItem* pLeftHand = m_pInventoryManager->GetInventoryItemForEquipSlot(EquipSlot_LeftHand);
 
-		if (pRightHand != NULL && pRightHand->m_itemType == InventoryType_Weapon_Dagger && CanAttackRight())
+		if (pRightHand != nullptr && pRightHand->m_itemType == InventoryType_Weapon_Dagger && CanAttackRight())
 		{
 			m_pVoxelCharacter->BlendIntoAnimation(AnimationSections_Right_Arm_Hand, false, AnimationSections_Right_Arm_Hand, "SwordAttack2", 0.01f);
 
-			Interpolator::GetInstance()->AddFloatInterpolation(&m_animationTimer, 0.0f, 0.3f, 0.3f, 0.0f, NULL, _AttackAnimationTimerFinished, this);
+			Interpolator::GetInstance()->AddFloatInterpolation(&m_animationTimer, 0.0f, 0.3f, 0.3f, 0.0f, nullptr, _AttackAnimationTimerFinished, this);
 
 			m_bCanInteruptCombatAnim = true;
 
@@ -145,17 +145,17 @@ void Player::PressAttack()
 			m_attackEnabled = true;
 			m_attackEnabledTimer = 0.0f;
 			m_attackRotation = startRotation;
-			Interpolator::GetInstance()->AddFloatInterpolation(&m_attackEnabledTimer, 0.0f, attackTime, attackTime, 0.0f, NULL, _AttackEnabledTimerFinished, this);
-			Interpolator::GetInstance()->AddFloatInterpolation(&m_attackEnabledDelayTimer, m_attackEnabledDelayTimer, 0.0f, m_attackEnabledDelayTimer, 0.0f, NULL, _AttackEnabledDelayTimerFinished, this);
+			Interpolator::GetInstance()->AddFloatInterpolation(&m_attackEnabledTimer, 0.0f, attackTime, attackTime, 0.0f, nullptr, _AttackEnabledTimerFinished, this);
+			Interpolator::GetInstance()->AddFloatInterpolation(&m_attackEnabledDelayTimer, m_attackEnabledDelayTimer, 0.0f, m_attackEnabledDelayTimer, 0.0f, nullptr, _AttackEnabledDelayTimerFinished, this);
 			Interpolator::GetInstance()->AddFloatInterpolation(&m_attackRotation, startRotation, endRotation, attackTime, easingRotation);
 
 			m_bCanAttackRight = false;
 		}
-		else if (pLeftHand != NULL && pLeftHand->m_itemType == InventoryType_Weapon_Dagger && CanAttackLeft())
+		else if (pLeftHand != nullptr && pLeftHand->m_itemType == InventoryType_Weapon_Dagger && CanAttackLeft())
 		{
 			m_pVoxelCharacter->BlendIntoAnimation(AnimationSections_Left_Arm_Hand, false, AnimationSections_Left_Arm_Hand, "SwordAttack2", 0.01f);
 
-			Interpolator::GetInstance()->AddFloatInterpolation(&m_animationTimer, 0.0f, 0.3f, 0.3f, 0.0f, NULL, _AttackAnimationTimerFinished_Alternative, this);
+			Interpolator::GetInstance()->AddFloatInterpolation(&m_animationTimer, 0.0f, 0.3f, 0.3f, 0.0f, nullptr, _AttackAnimationTimerFinished_Alternative, this);
 
 			m_bCanInteruptCombatAnim = true;
 
@@ -169,8 +169,8 @@ void Player::PressAttack()
 			m_attackEnabled = true;
 			m_attackEnabledTimer = 0.0f;
 			m_attackRotation = startRotation;
-			Interpolator::GetInstance()->AddFloatInterpolation(&m_attackEnabledTimer, 0.0f, attackTime, attackTime, 0.0f, NULL, _AttackEnabledTimerFinished, this);
-			Interpolator::GetInstance()->AddFloatInterpolation(&m_attackEnabledDelayTimer, m_attackEnabledDelayTimer, 0.0f, m_attackEnabledDelayTimer, 0.0f, NULL, _AttackEnabledDelayTimerFinished, this);
+			Interpolator::GetInstance()->AddFloatInterpolation(&m_attackEnabledTimer, 0.0f, attackTime, attackTime, 0.0f, nullptr, _AttackEnabledTimerFinished, this);
+			Interpolator::GetInstance()->AddFloatInterpolation(&m_attackEnabledDelayTimer, m_attackEnabledDelayTimer, 0.0f, m_attackEnabledDelayTimer, 0.0f, nullptr, _AttackEnabledDelayTimerFinished, this);
 			Interpolator::GetInstance()->AddFloatInterpolation(&m_attackRotation, startRotation, endRotation, attackTime, easingRotation);
 
 			m_bCanAttackLeft = false;
@@ -194,7 +194,7 @@ void Player::PressAttack()
 
 			m_bCanInteruptCombatAnim = false;
 
-			Interpolator::GetInstance()->AddFloatInterpolation(&m_animationTimer, 0.0f, 0.4f, 0.4f, 0.0f, NULL, _AttackAnimationTimerFinished, this);
+			Interpolator::GetInstance()->AddFloatInterpolation(&m_animationTimer, 0.0f, 0.4f, 0.4f, 0.0f, nullptr, _AttackAnimationTimerFinished, this);
 
 			m_bCanAttackRight = false;
 		}
@@ -222,8 +222,8 @@ void Player::PressAttack()
 			m_attackEnabled = true;
 			m_attackEnabledTimer = 0.0f;
 			m_attackRotation = startRotation;
-			Interpolator::GetInstance()->AddFloatInterpolation(&m_attackEnabledTimer, 0.0f, attackTime, attackTime, 0.0f, NULL, _AttackEnabledTimerFinished, this);
-			Interpolator::GetInstance()->AddFloatInterpolation(&m_attackEnabledDelayTimer, m_attackEnabledDelayTimer, 0.0f, m_attackEnabledDelayTimer, 0.0f, NULL, _AttackEnabledDelayTimerFinished, this);
+			Interpolator::GetInstance()->AddFloatInterpolation(&m_attackEnabledTimer, 0.0f, attackTime, attackTime, 0.0f, nullptr, _AttackEnabledTimerFinished, this);
+			Interpolator::GetInstance()->AddFloatInterpolation(&m_attackEnabledDelayTimer, m_attackEnabledDelayTimer, 0.0f, m_attackEnabledDelayTimer, 0.0f, nullptr, _AttackEnabledDelayTimerFinished, this);
 			Interpolator::GetInstance()->AddFloatInterpolation(&m_attackRotation, startRotation, endRotation, attackTime, easingRotation);
 
 			m_bCanAttackRight = false;
@@ -290,8 +290,8 @@ void Player::PressAttack()
 			m_attackEnabled = true;
 			m_attackEnabledTimer = 0.0f;
 			m_attackRotation = startRotation;
-			Interpolator::GetInstance()->AddFloatInterpolation(&m_attackEnabledTimer, 0.0f, attackTime, attackTime, 0.0f, NULL, _AttackEnabledTimerFinished, this);
-			Interpolator::GetInstance()->AddFloatInterpolation(&m_attackEnabledDelayTimer, m_attackEnabledDelayTimer, 0.0f, m_attackEnabledDelayTimer, 0.0f, NULL, _AttackEnabledDelayTimerFinished, this);
+			Interpolator::GetInstance()->AddFloatInterpolation(&m_attackEnabledTimer, 0.0f, attackTime, attackTime, 0.0f, nullptr, _AttackEnabledTimerFinished, this);
+			Interpolator::GetInstance()->AddFloatInterpolation(&m_attackEnabledDelayTimer, m_attackEnabledDelayTimer, 0.0f, m_attackEnabledDelayTimer, 0.0f, nullptr, _AttackEnabledDelayTimerFinished, this);
 			Interpolator::GetInstance()->AddFloatInterpolation(&m_attackRotation, startRotation, endRotation, attackTime, easingRotation);
 		}
 	}
@@ -311,22 +311,22 @@ void Player::PressAttack()
 			InventoryItem* pRightHand = m_pInventoryManager->GetInventoryItemForEquipSlot(EquipSlot_RightHand);
 			InventoryItem* pLeftHand = m_pInventoryManager->GetInventoryItemForEquipSlot(EquipSlot_LeftHand);
 
-			if (pRightHand != NULL && pRightHand->m_itemType == InventoryType_Weapon_SpellHands && CanAttackRight())
+			if (pRightHand != nullptr && pRightHand->m_itemType == InventoryType_Weapon_SpellHands && CanAttackRight())
 			{
 				m_pVoxelCharacter->BlendIntoAnimation(AnimationSections_Right_Arm_Hand, false, AnimationSections_Right_Arm_Hand, "HandSpellCastRight", 0.01f);
 
-				Interpolator::GetInstance()->AddFloatInterpolation(&m_animationTimer, 0.0f, 0.3f, 0.3f, 0.0f, NULL, _AttackAnimationTimerFinished, this);
+				Interpolator::GetInstance()->AddFloatInterpolation(&m_animationTimer, 0.0f, 0.3f, 0.3f, 0.0f, nullptr, _AttackAnimationTimerFinished, this);
 
 				m_magic -= 5.0f;
 				VoxGame::GetInstance()->GetHUD()->UpdatePlayerData();
 
 				m_bCanAttackRight = false;
 			}
-			else if (pLeftHand != NULL && pLeftHand->m_itemType == InventoryType_Weapon_SpellHands && CanAttackLeft())
+			else if (pLeftHand != nullptr && pLeftHand->m_itemType == InventoryType_Weapon_SpellHands && CanAttackLeft())
 			{
 				m_pVoxelCharacter->BlendIntoAnimation(AnimationSections_Left_Arm_Hand, false, AnimationSections_Left_Arm_Hand, "HandSpellCastLeft", 0.01f);
 
-				Interpolator::GetInstance()->AddFloatInterpolation(&m_animationTimer, 0.0f, 0.3f, 0.3f, 0.0f, NULL, _AttackAnimationTimerFinished_Alternative, this);
+				Interpolator::GetInstance()->AddFloatInterpolation(&m_animationTimer, 0.0f, 0.3f, 0.3f, 0.0f, nullptr, _AttackAnimationTimerFinished_Alternative, this);
 
 				m_magic -= 5.0f;
 				VoxGame::GetInstance()->GetHUD()->UpdatePlayerData();
@@ -360,7 +360,7 @@ void Player::ReleaseAttack()
 
 			Projectile* pProjectile = m_pProjectileManager->CreateProjectile(m_chargeSpawnPosition, m_chargeSpawnVelocity, 0.0f, "media/gamedata/items/Arrow/Arrow.item", 0.08f);
 			pProjectile->SetProjectileType(true, false, false);
-			pProjectile->SetOwner(this, NULL, NULL);
+			pProjectile->SetOwner(this, nullptr, nullptr);
 
 			m_bIsChargingAttack = false;
 			m_chargeAmount = 0.0f;
@@ -652,7 +652,7 @@ void Player::Explode()
 	// Explode the qubicle binary voxel file
 	for (int explodeCounter = 0; explodeCounter < 3; explodeCounter++)
 	{
-		const QubicleBinary* pQubicleModel = NULL;
+		const QubicleBinary* pQubicleModel = nullptr;
 		int spawnChance = 100;
 		if (explodeCounter == 0)
 		{
@@ -661,7 +661,7 @@ void Player::Explode()
 		}
 		else if (explodeCounter == 1)
 		{
-			if (m_pVoxelCharacter->GetRightWeapon() != NULL)
+			if (m_pVoxelCharacter->GetRightWeapon() != nullptr)
 			{
 				if (m_pVoxelCharacter->IsRightWeaponLoaded())
 				{
@@ -676,7 +676,7 @@ void Player::Explode()
 		}
 		else if (explodeCounter == 2)
 		{
-			if (m_pVoxelCharacter->GetLeftWeapon() != NULL)
+			if (m_pVoxelCharacter->GetLeftWeapon() != nullptr)
 			{
 				if (m_pVoxelCharacter->IsLeftWeaponLoaded())
 				{
@@ -690,7 +690,7 @@ void Player::Explode()
 			}
 		}
 
-		if (pQubicleModel != NULL)
+		if (pQubicleModel != nullptr)
 		{
 			m_pBlockParticleManager->ExplodeQubicleBinary(pQubicleModel, m_pVoxelCharacter->GetCharacterScale(), spawnChance);
 		}
@@ -740,7 +740,7 @@ void Player::Respawn()
 	for (int i = 0; i < EquipSlot_NumSlots; i++)
 	{
 		InventoryItem* pItem = m_pInventoryManager->GetInventoryItemForEquipSlot((EquipSlot)i);
-		if (pItem != NULL)
+		if (pItem != nullptr)
 		{
 			EquipItem(pItem, true);
 		}
@@ -754,7 +754,7 @@ void Player::SetEnemyDied(Enemy* pEnemy)
 {
 	if (m_pTargetEnemy == pEnemy)
 	{
-		SetTargetEnemy(NULL);
+		SetTargetEnemy(nullptr);
 	}
 }
 
@@ -762,7 +762,7 @@ void Player::SetTargetEnemy(Enemy* pTargetEnemy)
 {
 	m_pTargetEnemy = pTargetEnemy;
 
-	if (m_pTargetEnemy != NULL)
+	if (m_pTargetEnemy != nullptr)
 	{
 		vec3 toTarget = m_pTargetEnemy->GetCenter() - GetCenter();
 		toTarget.y = 0.0f;
@@ -842,7 +842,7 @@ void Player::DestroyBlock()
 	{
 		Chunk* pChunk = m_pChunkManager->GetChunkFromPosition(m_blockSelectionPos.x, m_blockSelectionPos.y, m_blockSelectionPos.z);
 
-		if (pChunk != NULL)
+		if (pChunk != nullptr)
 		{
 			int blockX, blockY, blockZ;
 			vec3 blockPos;
@@ -916,7 +916,7 @@ void Player::AttackAnimationTimerFinished()
 		}
 
 		vec3 boomerangTarget = boomerangSpawnPosition + m_forward*15.0f + (vec3(0.0f, 1.0f, 0.0f) * cameraModification);
-		if (m_pTargetEnemy != NULL)
+		if (m_pTargetEnemy != nullptr)
 		{
 			boomerangTarget = m_pTargetEnemy->GetProjectileHitboxCenter();
 			if (m_pTargetEnemy->IsMoving())
@@ -931,7 +931,7 @@ void Player::AttackAnimationTimerFinished()
 
 		Projectile* pProjectile = m_pProjectileManager->CreateProjectile(boomerangSpawnPosition, vec3(0.0f, 0.0f, 0.0f), 0.0f, "media/gamedata/weapons/Boomerang/BoomerangThrown.weapon", 0.05f);
 		pProjectile->SetProjectileType(true, false, false);
-		pProjectile->SetOwner(this, NULL, NULL);
+		pProjectile->SetOwner(this, nullptr, nullptr);
 		pProjectile->SetGravityMultiplier(0.0f);
 		pProjectile->SetReturnToPlayer(true);
 		pProjectile->SetProjectileCurveParams(m_forward, boomerangTarget, curveTime);
@@ -954,7 +954,7 @@ void Player::AttackAnimationTimerFinished()
 
 		vec3 spellSpawnVelocity = m_forward * powerAmount + vec3(0.0f, 1.0f, 0.0f) * (m_cameraForward.y*cameraMultiplier);
 
-		if (m_pTargetEnemy != NULL)
+		if (m_pTargetEnemy != nullptr)
 		{
 			vec3 toTarget = m_pTargetEnemy->GetProjectileHitboxCenter() - GetCenter();
 			spellSpawnVelocity = (normalize(toTarget) * powerAmount);
@@ -962,7 +962,7 @@ void Player::AttackAnimationTimerFinished()
 
 		Projectile* pProjectile = m_pProjectileManager->CreateProjectile(spellSpawnPosition, spellSpawnVelocity, 0.0f, "media/gamedata/items/Fireball/Fireball.item", 0.05f);
 		pProjectile->SetProjectileType(true, false, false);
-		pProjectile->SetOwner(this, NULL, NULL);
+		pProjectile->SetOwner(this, nullptr, nullptr);
 		pProjectile->SetGravityMultiplier(0.0f);
 	}
 	else if (IsWand())
@@ -997,7 +997,7 @@ void Player::AttackAnimationTimerFinished()
 
 		Projectile* pProjectile = m_pProjectileManager->CreateProjectile(bombSpawnPosition, bombSpawnVelocity, 0.0f, "media/gamedata/items/Bomb/BombThrown.item", 0.05f);
 		pProjectile->SetProjectileType(true, false, false);
-		pProjectile->SetOwner(this, NULL, NULL);
+		pProjectile->SetOwner(this, nullptr, nullptr);
 		pProjectile->SetGravityMultiplier(3.5f);
 		float explodeRadius = 3.5f - (GetRandomNumber(-150, 0, 2) * 0.01f);
 		pProjectile->SetExplodingProjectile(true, explodeRadius);
@@ -1005,7 +1005,7 @@ void Player::AttackAnimationTimerFinished()
 		//m_pVoxelCharacter->SetRenderRightWeapon(false);
 
 		InventoryItem* pItem = m_pInventoryManager->GetInventoryItemForEquipSlot(EquipSlot_RightHand);
-		if (pItem != NULL)
+		if (pItem != nullptr)
 		{
 			if (pItem->m_quantity != -1)
 			{
@@ -1038,7 +1038,7 @@ void Player::AttackAnimationTimerFinished()
 	else if (IsPickaxe())
 	{
 		Item* pInteractItem = VoxGame::GetInstance()->GetInteractItem();
-		if (pInteractItem != NULL)
+		if (pInteractItem != nullptr)
 		{
 			pInteractItem->Interact();
 		}
@@ -1083,7 +1083,7 @@ void Player::AttackAnimationTimerFinished()
 
 		vec3 spellSpawnVelocity = m_forward * powerAmount + vec3(0.0f, 1.0f, 0.0f) * (m_cameraForward.y*cameraMultiplier);
 
-		if (m_pTargetEnemy != NULL)
+		if (m_pTargetEnemy != nullptr)
 		{
 			vec3 toTarget = m_pTargetEnemy->GetProjectileHitboxCenter() - GetCenter();
 			spellSpawnVelocity = (normalize(toTarget) * powerAmount);
@@ -1091,7 +1091,7 @@ void Player::AttackAnimationTimerFinished()
 
 		Projectile* pProjectile = m_pProjectileManager->CreateProjectile(spellSpawnPosition, spellSpawnVelocity, 0.0f, "media/gamedata/items/Fireball/FireballBlue.item", 0.05f);
 		pProjectile->SetProjectileType(true, false, false);
-		pProjectile->SetOwner(this, NULL, NULL);
+		pProjectile->SetOwner(this, nullptr, nullptr);
 		pProjectile->SetGravityMultiplier(0.0f);
 	}
 	else if (IsShield())
@@ -1179,7 +1179,7 @@ void Player::AttackAnimationTimerFinished_Alternative()
 
 		vec3 spellSpawnVelocity = m_forward * powerAmount + vec3(0.0f, 1.0f, 0.0f) * (m_cameraForward.y*cameraMultiplier);
 
-		if (m_pTargetEnemy != NULL)
+		if (m_pTargetEnemy != nullptr)
 		{
 			vec3 toTarget = m_pTargetEnemy->GetProjectileHitboxCenter() - GetCenter();
 			spellSpawnVelocity = (normalize(toTarget) * powerAmount);
@@ -1187,7 +1187,7 @@ void Player::AttackAnimationTimerFinished_Alternative()
 
 		Projectile* pProjectile = m_pProjectileManager->CreateProjectile(spellSpawnPosition, spellSpawnVelocity, 0.0f, "media/gamedata/items/Fireball/FireballBlue.item", 0.05f);
 		pProjectile->SetProjectileType(true, false, false);
-		pProjectile->SetOwner(this, NULL, NULL);
+		pProjectile->SetOwner(this, nullptr, nullptr);
 		pProjectile->SetGravityMultiplier(0.0f);
 	}
 	else if (IsShield())

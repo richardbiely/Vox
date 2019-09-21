@@ -25,7 +25,7 @@ TreeView::TreeView(Renderer* pRenderer, unsigned int GUIFont, string rootName)
 {
 	m_GUIFont = GUIFont;
 
-	m_root = NULL;
+	m_root = nullptr;
 
 	m_pBackgroundDefault = new DirectDrawRectangle(pRenderer);
 	m_pBackgroundDisabled = new DirectDrawRectangle(pRenderer);
@@ -78,7 +78,7 @@ void TreeView::ClearTreeView()
 {
 	ClearNode(m_root);
 
-	m_root = NULL;
+	m_root = nullptr;
 }
 
 void TreeView::ClearNode(TreeNode* pNode)
@@ -91,14 +91,14 @@ void TreeView::ClearNode(TreeNode* pNode)
 
 	Remove(pNode->m_pName);
 	delete pNode->m_pName;
-	pNode->m_pName = NULL;
+	pNode->m_pName = nullptr;
 
 	Remove(pNode->m_pExpandButton);
 	delete pNode->m_pExpandButton;
-	pNode->m_pExpandButton = NULL;
+	pNode->m_pExpandButton = nullptr;
 
 	delete pNode;
-	pNode = NULL;
+	pNode = nullptr;
 }
 
 void TreeView::SetRootName(string rootName)
@@ -108,7 +108,7 @@ void TreeView::SetRootName(string rootName)
 
 TreeNode* TreeView::FindNode(string name, TreeNode* pNode)
 {
-	if(pNode != NULL)
+	if(pNode != nullptr)
 	{
 		if(pNode->m_pName->GetText() == name)
 		{
@@ -119,19 +119,19 @@ TreeNode* TreeView::FindNode(string name, TreeNode* pNode)
 		{
 			TreeNode* foundNode = FindNode(name, pNode->m_vpChildren[i]);
 
-			if(foundNode != NULL)
+			if(foundNode != nullptr)
 			{
 				return foundNode;
 			}
 		}
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 void TreeView::AddRootNode(string name)
 {
-	if(m_root == NULL)
+	if(m_root == nullptr)
 	{
 		m_root = new TreeNode();
 		m_root->m_pTreeView = this;
@@ -141,7 +141,7 @@ void TreeView::AddRootNode(string name)
 		m_root->m_pExpandButton->SetCallBackData(m_root);
 		m_root->m_pExpandButton->SetLabelOffset(0, 0);
 		m_root->m_expanded = false;
-		m_root->m_pParentNode = NULL;
+		m_root->m_pParentNode = nullptr;
 
 		Add(m_root->m_pName);
 		Add(m_root->m_pExpandButton);
@@ -157,7 +157,7 @@ void TreeView::AddChildNode(string parentName, string name)
 {
 	TreeNode* pNode = FindNode(parentName, m_root);
 
-	if(pNode != NULL)
+	if(pNode != nullptr)
 	{
 		TreeNode* pNewNode = new TreeNode();
 		pNewNode->m_pTreeView = this;
@@ -190,7 +190,7 @@ bool TreeView::GetNodeVisible(TreeNode* pNode)
 {
 	bool visible = true;
 
-	if(pNode->m_pParentNode != NULL)
+	if(pNode->m_pParentNode != nullptr)
 	{
 		if(pNode->m_pParentNode->m_expanded == false)
 			return false;
@@ -333,7 +333,7 @@ void TreeView::DrawChildren()
 	// Do a scissor test here
 	int lScissorX = GetLocation().m_x-1;
 	int lScissorY = GetLocation().m_y-1;
-	if(GetParent() != NULL)
+	if(GetParent() != nullptr)
 	{
 		lScissorX = GetParent()->GetLocation().m_x + lScissorX;
 		lScissorY = GetParent()->GetLocation().m_y + lScissorY;

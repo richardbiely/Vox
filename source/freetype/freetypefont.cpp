@@ -203,7 +203,7 @@ void FreeTypeFont::MakeDisplayList(FT_Face face, unsigned char ch, GLuint list_b
 
 	//increment the raster position as if we were a bitmap font.
 	//(only needed if you want to calculate text length)
-	glBitmap(0,0,0,0,face->glyph->advance.x >> 6,0,NULL);
+	glBitmap(0,0,0,0,face->glyph->advance.x >> 6,0,nullptr);
 
 	//Finnish the display list
 	glEndList();

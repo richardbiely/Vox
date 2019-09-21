@@ -89,7 +89,7 @@ Menu::Menu(Renderer* pRenderer, unsigned int GUIFont, const std::string &label, 
 	mCurrentMenuheight = 0;
 	mMenuItemSpacer = 0;
 
-	m_pPullDownMenuParent = NULL;
+	m_pPullDownMenuParent = nullptr;
 }
 
 
@@ -121,7 +121,7 @@ Menu::Menu(Renderer* pRenderer, unsigned int GUIFont, const std::string &label, 
 	mCurrentMenuheight = 0;
 	mMenuItemSpacer = 0;
 
-	m_pPullDownMenuParent = NULL;
+	m_pPullDownMenuParent = nullptr;
 }
 
 Menu::~Menu()
@@ -246,7 +246,7 @@ MenuItem* Menu::FindItem(const std::string &label)
 		}
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 void Menu::SetAutoSizeMenuWidth(bool lAutoSize)
@@ -434,7 +434,7 @@ void Menu::MousePressed(const MouseEvent& lEvent)
 	{
 		MenuBar* lpMenuBar = (MenuBar *)GetParent();
 
-		if(lpMenuBar != NULL)
+		if(lpMenuBar != nullptr)
 		{
 			lpMenuBar->CloseAllMenus();
 		}
@@ -443,7 +443,7 @@ void Menu::MousePressed(const MouseEvent& lEvent)
 	{
 		MenuBar* lpMenuBar = (MenuBar *)GetParent();
 
-		if(lpMenuBar != NULL)
+		if(lpMenuBar != nullptr)
 		{
 			lpMenuBar->CloseAllMenus();
 		}		
@@ -452,7 +452,7 @@ void Menu::MousePressed(const MouseEvent& lEvent)
 	}
 
 	// If our parent is a GUIWindow, then makew this window have focus in the GUI, used to make it's depth the highest
-	if(GetParent() != NULL && GetParent()->GetComponentType() == EComponentType_GUIWindow)
+	if(GetParent() != nullptr && GetParent()->GetComponentType() == EComponentType_GUIWindow)
 	{
 		GUIWindow* lpParentWindow = (GUIWindow *)GetParent();
 		lpParentWindow->SetFocusWindow();

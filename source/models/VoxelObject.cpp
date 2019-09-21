@@ -39,7 +39,7 @@ VoxelObject::~VoxelObject()
 
 void VoxelObject::Reset()
 {
-	m_pVoxelModel = NULL;
+	m_pVoxelModel = nullptr;
 
 	m_loaded = false;
 }
@@ -57,7 +57,7 @@ QubicleBinary* VoxelObject::GetQubicleModel()
 
 Matrix4x4 VoxelObject::GetModelMatrix(int qubicleMatrixIndex)
 {
-	if(m_pVoxelModel == NULL || m_loaded == false)
+	if(m_pVoxelModel == nullptr || m_loaded == false)
 	{
 		return Matrix4x4();
 	}
@@ -67,7 +67,7 @@ Matrix4x4 VoxelObject::GetModelMatrix(int qubicleMatrixIndex)
 
 vec3 VoxelObject::GetCenter()
 {
-	if(m_pVoxelModel == NULL || m_loaded == false)
+	if(m_pVoxelModel == nullptr || m_loaded == false)
 	{
 		return vec3(0.0f, 0.0f, 0.0f);
 	}
@@ -91,7 +91,7 @@ void VoxelObject::LoadObject(const char *qbFilename, bool useManager)
 {
 	m_usingQubicleManager = useManager;
 
-	if(m_pVoxelModel == NULL)
+	if(m_pVoxelModel == nullptr)
 	{
 		if(useManager)
 		{
@@ -116,7 +116,7 @@ void VoxelObject::UnloadObject()
 			delete m_pVoxelModel;
 		}
 
-		m_pVoxelModel = NULL;
+		m_pVoxelModel = nullptr;
 	}
 
 	m_loaded = false;
@@ -125,7 +125,7 @@ void VoxelObject::UnloadObject()
 // Rendering modes
 void VoxelObject::SetWireFrameRender(bool wireframe)
 {
-	if(m_pVoxelModel != NULL)
+	if(m_pVoxelModel != nullptr)
 	{
 		m_pVoxelModel->SetWireFrameRender(wireframe);
 	}
@@ -133,7 +133,7 @@ void VoxelObject::SetWireFrameRender(bool wireframe)
 
 void VoxelObject::SetMeshAlpha(float alpha)
 {
-	if(m_pVoxelModel != NULL)
+	if(m_pVoxelModel != nullptr)
 	{
 		m_pVoxelModel->SetMeshAlpha(alpha);
 	}
@@ -141,7 +141,7 @@ void VoxelObject::SetMeshAlpha(float alpha)
 
 void VoxelObject::SetMeshSingleColour(float r, float g, float b)
 {
-	if(m_pVoxelModel != NULL)
+	if(m_pVoxelModel != nullptr)
 	{
 		m_pVoxelModel->SetMeshSingleColour(r, g, b);
 	}
@@ -157,7 +157,7 @@ void VoxelObject::Update(float dt)
 
 void VoxelObject::Render(bool renderOutline, bool reflection, bool silhouette, Colour OutlineColour)
 {
-	if(m_pVoxelModel != NULL)
+	if(m_pVoxelModel != nullptr)
 	{
 		m_pVoxelModel->Render(renderOutline, reflection, silhouette, OutlineColour);
 	}

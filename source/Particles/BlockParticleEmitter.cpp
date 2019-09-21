@@ -26,8 +26,8 @@ BlockParticleEmitter::BlockParticleEmitter(Renderer* pRenderer, BlockParticleMan
 
 	m_erase = false;
 
-	m_pParent = NULL;
-	m_pParentParticle = NULL;
+	m_pParent = nullptr;
+	m_pParentParticle = nullptr;
 	m_isReferenceEmitter = false;
 
 	m_emitterName = "";
@@ -269,7 +269,7 @@ void BlockParticleEmitter::Render()
 
 	// Emitter
 	m_pRenderer->PushMatrix();
-		if(m_pParent != NULL && m_pParentParticle == NULL)
+		if(m_pParent != nullptr && m_pParentParticle == nullptr)
 		{
 			m_pRenderer->TranslateWorldMatrix(m_pParent->m_position.x, m_pParent->m_position.y, m_pParent->m_position.z);
 		}
@@ -381,11 +381,11 @@ void BlockParticleEmitter::Render()
 	
 	// Origin Point
 	m_pRenderer->PushMatrix();
-		if(m_pParent != NULL && m_pParentParticle == NULL)
+		if(m_pParent != nullptr && m_pParentParticle == nullptr)
 		{
 			m_pRenderer->TranslateWorldMatrix(m_pParent->m_position.x, m_pParent->m_position.y, m_pParent->m_position.z);
 		}
-		if(m_pParentParticle != NULL)
+		if(m_pParentParticle != nullptr)
 		{
 			m_pRenderer->TranslateWorldMatrix(m_pParentParticle->m_position.x, m_pParentParticle->m_position.y, m_pParentParticle->m_position.z);
 		}

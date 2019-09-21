@@ -135,7 +135,7 @@ void OptionBox::RemoveIcon(RenderRectangle *pRemoveIcon)
 	{
 		Remove(pRemoveIcon);
 		delete pRemoveIcon;
-		pRemoveIcon = NULL;
+		pRemoveIcon = nullptr;
 	}
 }
 
@@ -272,7 +272,7 @@ void OptionBox::SetToggledIcon(RenderRectangle *icon)
 		Remove(m_pToggledIcon);
 
 		delete m_pToggledIcon;
-		m_pToggledIcon = NULL;
+		m_pToggledIcon = nullptr;
 	}
 
 	// Check what type of render rectangle we have been given, and then assign our new data
@@ -308,7 +308,7 @@ void OptionBox::SetToggledSelectedIcon(RenderRectangle *icon)
 		Remove(m_pToggledSelectedIcon);
 
 		delete m_pToggledSelectedIcon;
-		m_pToggledSelectedIcon = NULL;
+		m_pToggledSelectedIcon = nullptr;
 	}
 
 	// Check what type of render rectangle we have been given, and then assign our new data
@@ -344,7 +344,7 @@ void OptionBox::SetToggledHoverIcon(RenderRectangle *icon)
 		Remove(m_pToggledHoverIcon);
 
 		delete m_pToggledHoverIcon;
-		m_pToggledHoverIcon = NULL;
+		m_pToggledHoverIcon = nullptr;
 	}
 
 	// Check what type of render rectangle we have been given, and then assign our new data
@@ -380,7 +380,7 @@ void OptionBox::SetToggledDisabledIcon(RenderRectangle *icon)
 		Remove(m_pToggledDisabledIcon);
 
 		delete m_pToggledDisabledIcon;
-		m_pToggledDisabledIcon = NULL;
+		m_pToggledDisabledIcon = nullptr;
 	}
 
 	// Check what type of render rectangle we have been given, and then assign our new data
@@ -561,7 +561,7 @@ void OptionBox::MousePressed(const MouseEvent& lEvent)
 	}
 
 	// If our parent is a GUIWindow, then makew this window have focus in the GUI, used to make it's depth the highest
-	if(GetParent() != NULL && GetParent()->GetComponentType() == EComponentType_GUIWindow)
+	if(GetParent() != nullptr && GetParent()->GetComponentType() == EComponentType_GUIWindow)
 	{
 		GUIWindow* lpParentWindow = (GUIWindow *)GetParent();
 		lpParentWindow->SetFocusWindow();

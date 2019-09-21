@@ -39,17 +39,17 @@ DraggableRenderRectangle::DraggableRenderRectangle(Renderer* pRenderer)
 	m_nextX = 0;
 	m_nextY = 0;
 
-    m_PressedCallback = NULL;
-    m_pPressedCallbackData = NULL;
+    m_PressedCallback = nullptr;
+    m_pPressedCallbackData = nullptr;
     
-    m_ReleasedCallback = NULL;
-    m_pReleasedCallbackData = NULL;
+    m_ReleasedCallback = nullptr;
+    m_pReleasedCallbackData = nullptr;
 
-    m_EnterCallback = NULL;
-    m_pEnterCallbackData = NULL;
+    m_EnterCallback = nullptr;
+    m_pEnterCallbackData = nullptr;
 
-    m_ExitCallback = NULL;
-    m_pExitCallbackData = NULL;
+    m_ExitCallback = nullptr;
+    m_pExitCallbackData = nullptr;
 }
 
 DraggableRenderRectangle::~DraggableRenderRectangle()
@@ -57,7 +57,7 @@ DraggableRenderRectangle::~DraggableRenderRectangle()
 	Remove(m_pIcon);
 
 	delete m_pIcon;
-	m_pIcon = NULL;
+	m_pIcon = nullptr;
 
     for(unsigned int i = 0; i < m_vpAddedComponentList.size(); i++)
     {
@@ -81,7 +81,7 @@ void DraggableRenderRectangle::SetIcon(RenderRectangle *icon)
 		Remove(m_pIcon);
 
 		delete m_pIcon;
-		m_pIcon = NULL;
+		m_pIcon = nullptr;
 	}
 
 	// Check what type of render rectangle we have been given, and then assign our new data
@@ -269,7 +269,7 @@ void DraggableRenderRectangle::MousePressed(const MouseEvent& lEvent)
 		return;
 	}
 
-	if(GetParent() != NULL && GetParent()->GetComponentType() == EComponentType_GUIWindow)
+	if(GetParent() != nullptr && GetParent()->GetComponentType() == EComponentType_GUIWindow)
 	{
 		GUIWindow* lpParentWindow = (GUIWindow *)GetParent();
 		lpParentWindow->SetFocusWindow();

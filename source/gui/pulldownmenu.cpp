@@ -75,10 +75,10 @@ PulldownMenu::PulldownMenu(Renderer* pRenderer, unsigned int GUIFont, const std:
 
 	m_bDisplayScrollbar = true;
 
-	mpSelectedMenuItem = NULL;
+	mpSelectedMenuItem = nullptr;
 
-	m_MenuItemChangedCallback = NULL;
-	m_pMenuItemChangedCallbackData = NULL;
+	m_MenuItemChangedCallback = nullptr;
+	m_pMenuItemChangedCallbackData = nullptr;
 }
 
 PulldownMenu::PulldownMenu(Renderer* pRenderer, unsigned int GUIFont, unsigned int OutlineGUIFont, const std::string &MenuTitle, Colour fontColour, Colour outlineColour)
@@ -146,10 +146,10 @@ PulldownMenu::PulldownMenu(Renderer* pRenderer, unsigned int GUIFont, unsigned i
 
 	m_bDisplayScrollbar = true;
 
-	mpSelectedMenuItem = NULL;
+	mpSelectedMenuItem = nullptr;
 
-	m_MenuItemChangedCallback = NULL;
-	m_pMenuItemChangedCallbackData = NULL;
+	m_MenuItemChangedCallback = nullptr;
+	m_pMenuItemChangedCallbackData = nullptr;
 }
 
 PulldownMenu::PulldownMenu(Renderer* pRenderer, unsigned int GUIFont, const std::string &MenuTitle,
@@ -235,10 +235,10 @@ PulldownMenu::PulldownMenu(Renderer* pRenderer, unsigned int GUIFont, const std:
 
 	m_bDisplayScrollbar = true;
 
-	mpSelectedMenuItem = NULL;
+	mpSelectedMenuItem = nullptr;
 
-	m_MenuItemChangedCallback = NULL;
-	m_pMenuItemChangedCallbackData = NULL;
+	m_MenuItemChangedCallback = nullptr;
+	m_pMenuItemChangedCallbackData = nullptr;
 }
 
 PulldownMenu::~PulldownMenu()
@@ -274,7 +274,7 @@ void PulldownMenu::RemoveIcon(RenderRectangle *pRemoveIcon)
 	{
 		Remove(pRemoveIcon);
 		delete pRemoveIcon;
-		pRemoveIcon = NULL;
+		pRemoveIcon = nullptr;
 	}
 }
 
@@ -486,7 +486,7 @@ void PulldownMenu::SetPulldownIconDefault(RenderRectangle *icon)
 		Remove(m_pPulldownIcon);
 
 		delete m_pPulldownIcon;
-		m_pPulldownIcon = NULL;
+		m_pPulldownIcon = nullptr;
 	}
 
 	// Check what type of render rectangle we have been given, and then assign our new data
@@ -526,7 +526,7 @@ void PulldownMenu::SetPulldownIconHover(RenderRectangle *icon)
 		Remove(m_pPulldownHoverIcon);
 
 		delete m_pPulldownHoverIcon;
-		m_pPulldownHoverIcon = NULL;
+		m_pPulldownHoverIcon = nullptr;
 	}
 
 	// Check what type of render rectangle we have been given, and then assign our new data
@@ -566,7 +566,7 @@ void PulldownMenu::SetPulldownIconPressed(RenderRectangle *icon)
 		Remove(m_pPulldownSelectedIcon);
 
 		delete m_pPulldownSelectedIcon;
-		m_pPulldownSelectedIcon = NULL;
+		m_pPulldownSelectedIcon = nullptr;
 	}
 
 	// Check what type of render rectangle we have been given, and then assign our new data
@@ -606,7 +606,7 @@ void PulldownMenu::SetPulldownIconDisabled(RenderRectangle *icon)
 		Remove(m_pPulldownDisabledIcon);
 
 		delete m_pPulldownDisabledIcon;
-		m_pPulldownDisabledIcon = NULL;
+		m_pPulldownDisabledIcon = nullptr;
 	}
 
 	// Check what type of render rectangle we have been given, and then assign our new data
@@ -704,7 +704,7 @@ void PulldownMenu::RemoveEventListeners()
 
 void PulldownMenu::AddPulldownItem(const std::string &label)
 {
-	MenuItem* lpNewItem = NULL;
+	MenuItem* lpNewItem = nullptr;
 	
 	if(m_outline)
 	{
@@ -809,13 +809,13 @@ void PulldownMenu::RemoveAllPullDownMenuItems()
 
 	m_bDisplayScrollbar = true;
 
-	mpSelectedMenuItem = NULL;
+	mpSelectedMenuItem = nullptr;
 }
 
 void PulldownMenu::ResetPullDownMenu()
 {
 	mSelectedIndex = -1;
-	mpSelectedMenuItem = NULL;
+	mpSelectedMenuItem = nullptr;
 
 	mMenuTitle.SetText(mMenuName.GetText());
 
@@ -829,7 +829,7 @@ void PulldownMenu::SetSelectedItem(const std::string &label)
 {
 	mpSelectedMenuItem = mPulldownMenu.FindItem(label);
 
-	if(mpSelectedMenuItem != NULL)
+	if(mpSelectedMenuItem != nullptr)
 	{
 		SetTitleString(mpSelectedMenuItem->GetLabel().GetText());
 	}
@@ -1064,7 +1064,7 @@ void PulldownMenu::MousePressed(const MouseEvent& lEvent)
 	}
 
 	// If our parent is a GUIWindow, then makew this window have focus in the GUI, used to make it's depth the highest
-	if(GetParent() != NULL && GetParent()->GetComponentType() == EComponentType_GUIWindow)
+	if(GetParent() != nullptr && GetParent()->GetComponentType() == EComponentType_GUIWindow)
 	{
 		GUIWindow* lpParentWindow = (GUIWindow *)GetParent();
 		lpParentWindow->SetFocusWindow();

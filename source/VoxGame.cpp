@@ -38,20 +38,20 @@ VoxGame* VoxGame::GetInstance()
 // Creation
 void VoxGame::Create(VoxSettings* pVoxSettings)
 {
-	m_pRenderer = NULL;
-	m_pGameCamera = NULL;
-	m_pQubicleBinaryManager = NULL;
-	m_pPlayer = NULL;
-	m_pChunkManager = NULL;
-	m_pFrontendManager = NULL;
+	m_pRenderer = nullptr;
+	m_pGameCamera = nullptr;
+	m_pQubicleBinaryManager = nullptr;
+	m_pPlayer = nullptr;
+	m_pChunkManager = nullptr;
+	m_pFrontendManager = nullptr;
 
-	m_pInventoryGUI = NULL;
-	m_pCharacterGUI = NULL;
-	m_pLootGUI = NULL;
-	m_pCraftingGUI = NULL;
-	m_pQuestGUI = NULL;
-	m_pActionBar = NULL;
-	m_pHUD = NULL;
+	m_pInventoryGUI = nullptr;
+	m_pCharacterGUI = nullptr;
+	m_pLootGUI = nullptr;
+	m_pCraftingGUI = nullptr;
+	m_pQuestGUI = nullptr;
+	m_pActionBar = nullptr;
+	m_pHUD = nullptr;
 
 	m_GUICreated = false;
 
@@ -68,7 +68,7 @@ void VoxGame::Create(VoxSettings* pVoxSettings)
 	QueryPerformanceFrequency(&m_fpsTicksPerSecond);
 #else
 	struct timeval tm;
-	gettimeofday(&tm, NULL);
+	gettimeofday(&tm, nullptr);
 	m_fpsCurrentTicks = (double)tm.tv_sec + (double)tm.tv_usec / 1000000.0;
 	m_fpsPreviousTicks = (double)tm.tv_sec + (double)tm.tv_usec / 1000000.0;
 #endif //_WIN32
@@ -110,14 +110,14 @@ void VoxGame::Create(VoxSettings* pVoxSettings)
 	m_bPaused = false;
 
 	/* Interactions */
-	m_pInteractItem = NULL;
+	m_pInteractItem = nullptr;
 
 	/* Biome */
 	m_currentBiome = Biome_None;
 
 	/* Music and Audio */
-	m_pMusicChannel = NULL;
-	m_pMusicSound = NULL;
+	m_pMusicChannel = nullptr;
+	m_pMusicSound = nullptr;
 	m_currentBiomeMusic = Biome_None;
 
 	/* Create the GUI */
@@ -780,8 +780,8 @@ void VoxGame::StopMusic()
 	// Stop the music
 	AudioManager::GetInstance()->StopSound(m_pMusicChannel);
 
-	m_pMusicChannel = NULL;
-	m_pMusicSound = NULL;
+	m_pMusicChannel = nullptr;
+	m_pMusicSound = nullptr;
 }
 
 void VoxGame::UpdateGameMusic(float dt)
@@ -799,14 +799,14 @@ void VoxGame::UpdateMusicVolume(float dt)
 {
 	if (m_pVoxSettings->m_music)
 	{
-		if (m_pMusicChannel != NULL)
+		if (m_pMusicChannel != nullptr)
 		{
 			m_pMusicChannel->setVolume(0.125f * m_pVoxSettings->m_musicVolume);
 		}
 	}
 	else
 	{
-		if (m_pMusicChannel != NULL)
+		if (m_pMusicChannel != nullptr)
 		{
 			m_pMusicChannel->setVolume(0.0f);
 		}
@@ -885,7 +885,7 @@ void VoxGame::SetupDataForGame()
 	Item* pChest = m_pItemManager->CreateItem(vec3(17.0f, 12.0f, 28.5f), vec3(0.0f, 0.0f, 0.0f), vec3(0.0f, 0.0f, 0.0f), "media/gamedata/items/Chest/Chest.item", eItem_Chest, "Chest", true, false, 0.08f);
 	eEquipment equipment = eEquipment_None;
 	InventoryItem* pRandomLoot = VoxGame::GetInstance()->GetRandomLootManager()->GetRandomLootItem(&equipment);
-	if (pRandomLoot != NULL && equipment != eEquipment_None)
+	if (pRandomLoot != nullptr && equipment != eEquipment_None)
 	{
 		InventoryItem* pRandomLootItem = pChest->AddLootItem(pRandomLoot, 0, 2);
 		pRandomLootItem->m_scale = pRandomLoot->m_scale;
@@ -978,7 +978,7 @@ void VoxGame::SetupDataForGame()
 	string completedText1 = "You have completed the quest, and destroyed the sliminess of these lands, well done!";
 	string denyText1 = "You are already on a quest, come back to me once you have finished.";
 	Quest* pSlimeQuest = m_pQuestManager->CreateQuest("A Simple Task", startText1, completedText1, denyText1);
-	pSlimeQuest->AddQuestObjective("Kill 5 Slimes", QuestType_KillX, 5, eEnemyType_GreenSlime, eItem_None, NULL, "", NULL);
+	pSlimeQuest->AddQuestObjective("Kill 5 Slimes", QuestType_KillX, 5, eEnemyType_GreenSlime, eItem_None, nullptr, "", nullptr);
 	InventoryItem* pQuestReward1 = m_pInventoryManager->CreateEquipmentItemFromType(eEquipment_IronSword);
 	pSlimeQuest->SetQuestReward(pQuestReward1);
 	pSlimeQuest->ExportQuest();
@@ -987,7 +987,7 @@ void VoxGame::SetupDataForGame()
 	string completedText2 = "Wow... thank you for collecting the copper nuggets, you can keep it as a reward.";
 	string denyText2 = "You are already on a quest, come back to me once you have finished.";
 	Quest* pCollectQuest = m_pQuestManager->CreateQuest("A Simple Collection", startText2, completedText2, denyText2);
-	pCollectQuest->AddQuestObjective("Collect 5 Copper Nuggets", QuestType_CollectX, 5, eEnemyType_None, eItem_CopperOre, NULL, "", NULL);
+	pCollectQuest->AddQuestObjective("Collect 5 Copper Nuggets", QuestType_CollectX, 5, eEnemyType_None, eItem_CopperOre, nullptr, "", nullptr);
 	InventoryItem* pQuestReward2 = m_pInventoryManager->CreateInventoryItemForCrafting(eItem_CopperOre, 5, ItemQuality_Common);
 	pCollectQuest->SetQuestReward(pQuestReward2);
 	pCollectQuest->ExportQuest();
@@ -1213,7 +1213,7 @@ bool VoxGame::CheckInteractions()
 		return false;
 	}
 
-	if (m_pPlayer->GetTargetEnemy() != NULL)
+	if (m_pPlayer->GetTargetEnemy() != nullptr)
 	{
 		// Don't allow interactions while we are in target mode
 		return false;
@@ -1221,7 +1221,7 @@ bool VoxGame::CheckInteractions()
 
 	// Check item interactions
 	m_interactItemMutex.lock();
-	if (interaction == false && m_pInteractItem != NULL)
+	if (interaction == false && m_pInteractItem != nullptr)
 	{
 		bool shouldStopMovement = false;
 
@@ -1354,16 +1354,16 @@ Item* VoxGame::GetInteractItem()
 // Enemy Targeting
 void VoxGame::SetEnemyTarget()
 {
-	if (m_pPlayer->IsDead() == false && m_pPlayer->GetTargetEnemy() == NULL)
+	if (m_pPlayer->IsDead() == false && m_pPlayer->GetTargetEnemy() == nullptr)
 	{
 		// Get the enemy based on the cursor
 		int cursorX = (int)(m_windowWidth*0.5f);
 		int cursorY = (int)(m_windowHeight*0.5f);
 
-		Enemy* pEnemy = NULL;
+		Enemy* pEnemy = nullptr;
 		pEnemy = m_pEnemyManager->GetCursorEnemy(m_pGameCamera, cursorX, cursorY);
 
-		if (pEnemy != NULL && pEnemy->GetErase() == false)
+		if (pEnemy != nullptr && pEnemy->GetErase() == false)
 		{
 			// Set the player's enemy pointer
 			m_pPlayer->SetTargetEnemy(pEnemy);
@@ -1385,10 +1385,10 @@ void VoxGame::SetEnemyTarget()
 
 void VoxGame::ReleaseEnemyTarget()
 {
-	if (m_pPlayer->GetTargetEnemy() != NULL)
+	if (m_pPlayer->GetTargetEnemy() != nullptr)
 	{
 		m_pPlayer->GetTargetEnemy()->SetOutlineRender(false);
-		m_pPlayer->SetTargetEnemy(NULL);
+		m_pPlayer->SetTargetEnemy(nullptr);
 
 		// Reset player alpha
 		m_pPlayer->SetPlayerAlpha(1.0f);

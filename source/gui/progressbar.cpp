@@ -129,7 +129,7 @@ void ProgressBar::SetProgressFiller(RenderRectangle *icon)
 		Remove(m_pProgressFiller);
 
 		delete m_pProgressFiller;
-		m_pProgressFiller = NULL;
+		m_pProgressFiller = nullptr;
 	}
 
 	// Check what type of render rectangle we have been given, and then assign our new data
@@ -162,7 +162,7 @@ void ProgressBar::SetProgressBackground(RenderRectangle *icon)
 		Remove(m_pProgressBackground);
 
 		delete m_pProgressBackground;
-		m_pProgressBackground = NULL;
+		m_pProgressBackground = nullptr;
 	}
 
 	// Check what type of render rectangle we have been given, and then assign our new data

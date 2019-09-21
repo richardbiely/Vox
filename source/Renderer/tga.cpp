@@ -35,7 +35,7 @@ int LoadFileTGA( const char *filename, unsigned char **pixels, int *width, int *
 {
 	std::ifstream	file;				// file stream
 	TGAHEADER		*tgah;				// targa header
-	RGBTRIPLE		*palette = NULL;	// pointer on the color palette
+	RGBTRIPLE		*palette = nullptr;	// pointer on the color palette
 	char			*buffer;			// buffer storing the entire file
 	unsigned char	*ptr;				// pointer to pixels data
 	int				row, col, i;		// temporary variables

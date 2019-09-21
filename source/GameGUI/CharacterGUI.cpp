@@ -339,17 +339,17 @@ CharacterGUI::CharacterGUI(Renderer* pRenderer, OpenGLGUI* pGUI, FrontendManager
 
 	for(int i = 0; i < (int)EquipSlot_NumSlots; i++)
 	{
-		m_pEquippedItems[i] = NULL;
+		m_pEquippedItems[i] = nullptr;
 	}
 
 	m_pressedX = 0;
 	m_pressedY = 0;
-	m_pPressedCharacterItem = NULL;
+	m_pPressedCharacterItem = nullptr;
 
 	m_leftArrowPressed = false;
 	m_rightArrowPressed = false;
 
-	pBlockSlotItem = NULL;
+	pBlockSlotItem = nullptr;
 
 	m_statsTabsOpen = false;
 	m_statsTabLeftSide = true;
@@ -595,7 +595,7 @@ void CharacterGUI::Load(bool loadDelay, float loadDelayTime)
 
 	m_pressedX = 0;
 	m_pressedY = 0;
-	m_pPressedCharacterItem = NULL;
+	m_pPressedCharacterItem = nullptr;
 
 	m_toolTipVisible = false;
 	m_tooltipAppearDelayTimer = 0.0f;
@@ -671,7 +671,7 @@ void CharacterGUI::CreateInventoryItems()
 		}
 
 		InventoryItem* pItem = m_pInventoryManager->GetInventoryItemForEquipSlot((EquipSlot)i);
-		if(pItem != NULL)
+		if(pItem != nullptr)
 		{
 			int x;
 			int y;
@@ -830,7 +830,7 @@ void CharacterGUI::DeleteInventoryItems()
 	// Clear equipped items
 	for(unsigned int i = 0; i < EquipSlot_NumSlots; i++)
 	{
-		m_pEquippedItems[i] = NULL;
+		m_pEquippedItems[i] = nullptr;
 	}
 
 	// Clear item draggable buttons
@@ -845,11 +845,11 @@ void CharacterGUI::DeleteInventoryItems()
 	}
 	m_vpInventorySlotItems.clear();
 
-	if(pBlockSlotItem != NULL)
+	if(pBlockSlotItem != nullptr)
 	{
 		m_pCharacterWindow->RemoveComponent(pBlockSlotItem);
 		delete pBlockSlotItem;
-		pBlockSlotItem = NULL;
+		pBlockSlotItem = nullptr;
 	}
 }
 
@@ -911,7 +911,7 @@ void CharacterGUI::StartEquipHoverAnimation()
 	FloatInterpolation* lpXPosInterp1;
 	FloatInterpolation* lpXPosInterp2;
 	lpXPosInterp1 = Interpolator::GetInstance()->CreateFloatInterpolation(&m_equipHoverXOffset, m_equipHoverXOffset, m_equipHoverXOffset+10.0f, 0.5f, 100.0f);
-	lpXPosInterp2 = Interpolator::GetInstance()->CreateFloatInterpolation(&m_equipHoverXOffset, m_equipHoverXOffset+10.0f, m_equipHoverXOffset, 0.5f, -100.0f, NULL, _EquipHoverAnimationFinished, this);
+	lpXPosInterp2 = Interpolator::GetInstance()->CreateFloatInterpolation(&m_equipHoverXOffset, m_equipHoverXOffset+10.0f, m_equipHoverXOffset, 0.5f, -100.0f, nullptr, _EquipHoverAnimationFinished, this);
 	Interpolator::GetInstance()->LinkFloatInterpolation(lpXPosInterp1, lpXPosInterp2);
 	Interpolator::GetInstance()->AddFloatInterpolation(lpXPosInterp1);
 }
@@ -1549,12 +1549,12 @@ bool needs_erasing(CharacterSlotItem* aI)
 
 void CharacterGUI::CharacterItemReleased(CharacterSlotItem* pCharacterItem)
 {
-	if(m_pPressedCharacterItem == NULL)
+	if(m_pPressedCharacterItem == nullptr)
 	{
 		return;
 	}
 
-	m_pPressedCharacterItem = NULL;
+	m_pPressedCharacterItem = nullptr;
 
 	int x;
 	int y;
@@ -1577,7 +1577,7 @@ void CharacterGUI::CharacterItemReleased(CharacterSlotItem* pCharacterItem)
 				{
 					// Check if another inventory item already exists in this slot
 					InventorySlotItem* pInventorySlotItem = m_pInventoryGUI->GetInventorySlotItem(j, i);
-					if(pInventorySlotItem == NULL)
+					if(pInventorySlotItem == nullptr)
 					{
 						// We are unquipping an item that is in one of the equipment slots
 						m_pInventoryManager->UnequipItem(j, i, pCharacterItem->m_pInventoryItem->m_equipSlot);
@@ -1612,7 +1612,7 @@ void CharacterGUI::CharacterItemReleased(CharacterSlotItem* pCharacterItem)
 							if(pInventorySlotItem->m_pInventoryItem->m_equipSlot == EquipSlot_RightHand)
 							{
 								InventoryItem* pLeftHanded = m_pInventoryManager->GetInventoryItemForEquipSlot(EquipSlot_LeftHand);
-								if(pInventorySlotItem->m_pInventoryItem->m_left || (pLeftHanded != NULL && pLeftHanded->m_right))
+								if(pInventorySlotItem->m_pInventoryItem->m_left || (pLeftHanded != nullptr && pLeftHanded->m_right))
 								{
 									int slotX;
 									int slotY;
@@ -1622,7 +1622,7 @@ void CharacterGUI::CharacterItemReleased(CharacterSlotItem* pCharacterItem)
 									{
 										// We can't fit the other item in the inventory
 									}
-									else if(pLeftHanded != NULL)
+									else if(pLeftHanded != nullptr)
 									{
 										m_pActionBar->UpdateActionBarSlots(pLeftHanded, slotX, slotY);
 									}
@@ -1631,7 +1631,7 @@ void CharacterGUI::CharacterItemReleased(CharacterSlotItem* pCharacterItem)
 							if(pInventorySlotItem->m_pInventoryItem->m_equipSlot == EquipSlot_LeftHand)
 							{
 								InventoryItem* pRightHanded = m_pInventoryManager->GetInventoryItemForEquipSlot(EquipSlot_RightHand);
-								if(pInventorySlotItem->m_pInventoryItem->m_right || (pRightHanded != NULL && pRightHanded->m_left))
+								if(pInventorySlotItem->m_pInventoryItem->m_right || (pRightHanded != nullptr && pRightHanded->m_left))
 								{
 									int slotX;
 									int slotY;
@@ -1641,7 +1641,7 @@ void CharacterGUI::CharacterItemReleased(CharacterSlotItem* pCharacterItem)
 									{
 										// We can't fit the other item in the inventory
 									}
-									else if(pRightHanded != NULL)
+									else if(pRightHanded != nullptr)
 									{
 										m_pActionBar->UpdateActionBarSlots(pRightHanded, slotX, slotY);
 									}
@@ -1696,7 +1696,7 @@ void CharacterGUI::CharacterItemReleased(CharacterSlotItem* pCharacterItem)
 					// Check if we released (mouse cursor) in the boundary of another slot
 					if(lMouse.x > pLootWindow->GetDimensions().m_x+x && lMouse.x < pLootWindow->GetDimensions().m_x+x+width && lMouse.y > pLootWindow->GetDimensions().m_y+y && lMouse.y < pLootWindow->GetDimensions().m_y+y+height)
 					{
-						if(m_pLootGUI->GetLootSlotItem(j, i) == NULL) // ONLY if an item doesn't already exist in the loot slot position
+						if(m_pLootGUI->GetLootSlotItem(j, i) == nullptr) // ONLY if an item doesn't already exist in the loot slot position
 						{
 							m_pInventoryGUI->UnequipItem(pCharacterItem->m_pInventoryItem->m_equipSlot, pCharacterItem->m_pInventoryItem->m_left, pCharacterItem->m_pInventoryItem->m_right);
 							m_pInventoryManager->UnequipItemToLootGUI(pCharacterItem->m_pInventoryItem->m_equipSlot);

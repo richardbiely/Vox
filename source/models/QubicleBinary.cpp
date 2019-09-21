@@ -55,7 +55,7 @@ void QubicleBinary::SetNullLinkage(const QubicleBinary *pBinary)
 		{
 			if (m_vpMatrices[i] == pBinary->GetQubicleMatrix(j))
 			{
-				m_vpMatrices[i] = NULL;
+				m_vpMatrices[i] = nullptr;
 			}
 		}
 	}
@@ -73,7 +73,7 @@ void QubicleBinary::ClearMatrices()
 {
 	for(unsigned int i = 0; i < m_vpMatrices.size(); i++)
 	{
-		if (m_vpMatrices[i] == NULL)
+		if (m_vpMatrices[i] == nullptr)
 		{
 			continue;
 		}
@@ -84,7 +84,7 @@ void QubicleBinary::ClearMatrices()
 		}
 
 		m_pRenderer->ClearMesh(m_vpMatrices[i]->m_pMesh);
-		m_vpMatrices[i]->m_pMesh = NULL;
+		m_vpMatrices[i]->m_pMesh = nullptr;
 
 		delete [] m_vpMatrices[i]->m_pColour;
 
@@ -160,13 +160,13 @@ bool QubicleBinary::Import(const char* fileName, bool faceMerging)
 	char qbFilename[256];
 	sprintf(qbFilename, "%s", fileName);;
 
-	FILE* pQBfile = NULL;
+	FILE* pQBfile = nullptr;
 	fopen_s(&pQBfile, qbFilename, "rb");
 
 	const unsigned int CODEFLAG = 2;
 	const unsigned int NEXTSLICEFLAG = 6;
 
-	if (pQBfile != NULL)
+	if (pQBfile != nullptr)
 	{
 		size_t ok = 0;
 		ok = fread(&m_version[0], sizeof(char)*4, 1, pQBfile) == 1;
@@ -194,7 +194,7 @@ bool QubicleBinary::Import(const char* fileName, bool faceMerging)
 			ok = fread(&pNewMatrix->m_matrixPosZ, sizeof(int), 1, pQBfile) == 1;
 
 			pNewMatrix->m_boneIndex = -1;
-			pNewMatrix->m_pMesh = NULL;
+			pNewMatrix->m_pMesh = nullptr;
 
 			pNewMatrix->m_scale = 1.0f;
 			pNewMatrix->m_offsetX = 0.0f;
@@ -287,13 +287,13 @@ bool QubicleBinary::Export(const char* fileName)
 	char qbFilename[256];
 	sprintf(qbFilename, "%s", fileName);;
 
-	FILE* pQBfile = NULL;
+	FILE* pQBfile = nullptr;
 	fopen_s(&pQBfile, qbFilename, "wb");
 
 	const unsigned int CODEFLAG = 2;
 	const unsigned int NEXTSLICEFLAG = 6;
 
-	if (qbFilename != NULL)
+	if (qbFilename != nullptr)
 	{
 		int ok = 0;
 		ok = fwrite(&m_version[0], sizeof(char)*4, 1, pQBfile) == 1;
@@ -488,7 +488,7 @@ void QubicleBinary::CreateMesh(bool lDoFaceMerging)
 			l_merged[i] = MergedSide_None;
 		}
 
-		if(pMatrix->m_pMesh == NULL)
+		if(pMatrix->m_pMesh == nullptr)
 		{
 			pMatrix->m_pMesh = m_pRenderer->CreateMesh(OGLMeshType_Textured);
 		}
@@ -745,7 +745,7 @@ void QubicleBinary::RebuildMesh(bool lDoFaceMerging)
 	for (unsigned int i = 0; i < m_vpMatrices.size(); i++)
 	{
 		m_pRenderer->ClearMesh(m_vpMatrices[i]->m_pMesh);
-		m_vpMatrices[i]->m_pMesh = NULL;
+		m_vpMatrices[i]->m_pMesh = nullptr;
 	}
 
 	CreateMesh(lDoFaceMerging);
@@ -1121,7 +1121,7 @@ const QubicleMatrix* QubicleBinary::GetQubicleMatrix(const char* matrixName) con
 		}
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 QubicleMatrix* QubicleBinary::SetQubicleMatrix(const char* matrixName)
@@ -1134,7 +1134,7 @@ QubicleMatrix* QubicleBinary::SetQubicleMatrix(const char* matrixName)
 		}
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 const char* QubicleBinary::GetMatrixName(int index) const
@@ -1231,7 +1231,7 @@ void QubicleBinary::AddQubicleMatrix(QubicleMatrix* pNewMatrix, bool copyMatrixP
 {
 	// First check if this matrix already exists
 	const QubicleMatrix* pExistingMatrix = GetQubicleMatrix(pNewMatrix->m_name);
-	if(pExistingMatrix != NULL)
+	if(pExistingMatrix != nullptr)
 	{
 		// Replace existing matrix
 		SwapMatrix(pNewMatrix->m_name, pNewMatrix, copyMatrixParams);
@@ -1409,7 +1409,7 @@ void QubicleBinary::Render(bool renderOutline, bool reflection, bool silhouette,
 
 void QubicleBinary::RenderWithAnimator(MS3DAnimator** pSkeleton, VoxelCharacter* pVoxelCharacter, bool renderOutline, bool reflection, bool silhouette, Colour OutlineColour, bool subSelectionNamePicking)
 {
-	if(pVoxelCharacter == NULL)
+	if(pVoxelCharacter == nullptr)
 	{
 		return;
 	}
@@ -1654,7 +1654,7 @@ void QubicleBinary::RenderWithAnimator(MS3DAnimator** pSkeleton, VoxelCharacter*
 
 void QubicleBinary::RenderSingleMatrix(MS3DAnimator** pSkeleton, VoxelCharacter* pVoxelCharacter, string matrixName, bool renderOutline, bool silhouette, Colour OutlineColour)
 {
-	if(pVoxelCharacter == NULL)
+	if(pVoxelCharacter == nullptr)
 	{
 		return;
 	}
@@ -1878,7 +1878,7 @@ void QubicleBinary::RenderSingleMatrix(MS3DAnimator** pSkeleton, VoxelCharacter*
 
 void QubicleBinary::RenderFace(MS3DAnimator* pSkeleton, VoxelCharacter* pVoxelCharacter, bool transparency, bool useScale, bool useTranslate)
 {
-	if(pVoxelCharacter == NULL)
+	if(pVoxelCharacter == nullptr)
 	{
 		return;
 	}
@@ -2034,7 +2034,7 @@ void QubicleBinary::RenderFace(MS3DAnimator* pSkeleton, VoxelCharacter* pVoxelCh
 
 void QubicleBinary::RenderPaperdoll(MS3DAnimator* pSkeleton_Left, MS3DAnimator* pSkeleton_Right, VoxelCharacter* pVoxelCharacter)
 {
-	if(pVoxelCharacter == NULL)
+	if(pVoxelCharacter == nullptr)
 	{
 		return;
 	}
@@ -2049,7 +2049,7 @@ void QubicleBinary::RenderPaperdoll(MS3DAnimator* pSkeleton_Left, MS3DAnimator* 
 				continue;
 			}
 
-			MS3DAnimator* pSkeletonToUse = NULL;
+			MS3DAnimator* pSkeletonToUse = nullptr;
 
 			if (m_vpMatrices[i]->m_boneIndex == pVoxelCharacter->GetLeftShoulderBoneIndex() ||
 				m_vpMatrices[i]->m_boneIndex == pVoxelCharacter->GetLeftHandBoneIndex())
@@ -2191,7 +2191,7 @@ void QubicleBinary::RenderPaperdoll(MS3DAnimator* pSkeleton_Left, MS3DAnimator* 
 
 void QubicleBinary::RenderPortrait(MS3DAnimator* pSkeleton, VoxelCharacter* pVoxelCharacter, string matrixName)
 {
-	if(pVoxelCharacter == NULL)
+	if(pVoxelCharacter == nullptr)
 	{
 		return;
 	}

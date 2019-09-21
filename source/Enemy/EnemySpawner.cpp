@@ -162,9 +162,9 @@ bool EnemySpawner::GetSpawnPosition(vec3* pSpawnPosition)
 
 		int blockX, blockY, blockZ;
 		vec3 blockPos;
-		Chunk* pChunk = NULL;
+		Chunk* pChunk = nullptr;
 		bool active = m_pChunkManager->GetBlockActiveFrom3DPosition(spawnPos.x, spawnPos.y, spawnPos.z, &blockPos, &blockX, &blockY, &blockZ, &pChunk);
-		if (pChunk != NULL && pChunk->IsSetup() && active == false)
+		if (pChunk != nullptr && pChunk->IsSetup() && active == false)
 		{
 			if (m_shouldSpawnOnGround)
 			{
@@ -176,8 +176,8 @@ bool EnemySpawner::GetSpawnPosition(vec3* pSpawnPosition)
 
 					BiomeManager* biomeManager = VoxGame::GetInstance()->GetBiomeManager();
 					Biome biome = biomeManager->GetBiome(spawnPos);
-					ZoneData *pTown = NULL;
-					ZoneData *pSafeZone = NULL;
+					ZoneData *pTown = nullptr;
+					ZoneData *pSafeZone = nullptr;
 					bool isInTown = biomeManager->IsInTown(spawnPos, &pTown);
 					bool isInSafeZone = biomeManager->IsInSafeZone(spawnPos, &pSafeZone);
 					if (biome == m_biomeSpawn && isInTown == false && isInSafeZone == false)

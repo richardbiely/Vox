@@ -17,10 +17,10 @@ MS3DAnimator::MS3DAnimator(Renderer *lpRenderer, MS3DModel* pModel)
 	mpModel = pModel;
 
 	numJointAnimations = 0;
-	pJointAnimations = NULL;
+	pJointAnimations = nullptr;
 
 	numAnimations = 0;
-	pAnimations = NULL;
+	pAnimations = nullptr;
 
 	// Once we have some model data, create out joint animations
 	CreateJointAnimations();
@@ -53,17 +53,17 @@ MS3DAnimator::MS3DAnimator(Renderer *lpRenderer, MS3DModel* pModel)
 MS3DAnimator::~MS3DAnimator()
 {
 	numJointAnimations = 0;
-	if(pJointAnimations != NULL)
+	if(pJointAnimations != nullptr)
 	{
 		delete[] pJointAnimations;
-		pJointAnimations = NULL;
+		pJointAnimations = nullptr;
 	}
 
 	numAnimations = 0;
-	if(pAnimations != NULL)
+	if(pAnimations != nullptr)
 	{
 		delete[] pAnimations;
-		pAnimations = NULL;
+		pAnimations = nullptr;
 	}
 }
 

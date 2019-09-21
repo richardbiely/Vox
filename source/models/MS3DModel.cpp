@@ -11,24 +11,24 @@ MS3DModel::MS3DModel(Renderer *lpRenderer)
 	mpRenderer = lpRenderer;
 
 	numVertices = 0;
-	pVertices = NULL;
+	pVertices = nullptr;
 
 	numTriangles = 0;
-	pTriangles = NULL;
+	pTriangles = nullptr;
 
 	numMaterials = 0;
-	pMaterials = NULL;
+	pMaterials = nullptr;
 
 	numMeshes = 0;
-	pMeshes = NULL;
+	pMeshes = nullptr;
 
 	numJoints = 0;
-	pJoints = NULL;
+	pJoints = nullptr;
 
 	mbStatic = false;
 
 	mAnimationFPS = 0.0f;
-	mStaticRenderBuffers = NULL;
+	mStaticRenderBuffers = nullptr;
 }
 
 MS3DModel::~MS3DModel()
@@ -41,31 +41,31 @@ MS3DModel::~MS3DModel()
 		delete[] pMaterials[i].pTextureFilename;
 
 	numMeshes = 0;
-	if(pMeshes != NULL)
+	if(pMeshes != nullptr)
 	{
 		delete[] pMeshes;
-		pMeshes = NULL;
+		pMeshes = nullptr;
 	}
 
 	numMaterials = 0;
-	if(pMaterials != NULL)
+	if(pMaterials != nullptr)
 	{
 		delete[] pMaterials;
-		pMaterials = NULL;
+		pMaterials = nullptr;
 	}
 
 	numTriangles = 0;
-	if(pTriangles != NULL)
+	if(pTriangles != nullptr)
 	{
 		delete[] pTriangles;
-		pTriangles = NULL;
+		pTriangles = nullptr;
 	}
 
 	numVertices = 0;
-	if(pVertices != NULL)
+	if(pVertices != nullptr)
 	{
 		delete[] pVertices;
-		pVertices = NULL;
+		pVertices = nullptr;
 	}
 
 	for(i = 0; i < numJoints; i++)
@@ -75,10 +75,10 @@ MS3DModel::~MS3DModel()
 	}
 
 	numJoints = 0;
-	if(pJoints != NULL)
+	if(pJoints != nullptr)
 	{
 		delete[] pJoints;
-		pJoints = NULL;
+		pJoints = nullptr;
 	}
 }
 
@@ -429,7 +429,7 @@ void MS3DModel::SetupStaticBuffer()
 
 		int materialIndex = pMeshes[i].materialIndex;
 
-		mpRenderer->CreateStaticBuffer(VT_POSITION_NORMAL_UV, -1, pMaterials[materialIndex].texture, pMeshes[i].numTriangles*3, pMeshes[i].numTriangles*3, 0, vertices, textureCoordinates, NULL, &mStaticRenderBuffers[i]);
+		mpRenderer->CreateStaticBuffer(VT_POSITION_NORMAL_UV, -1, pMaterials[materialIndex].texture, pMeshes[i].numTriangles*3, pMeshes[i].numTriangles*3, 0, vertices, textureCoordinates, nullptr, &mStaticRenderBuffers[i]);
 	}
 }
 
@@ -596,7 +596,7 @@ const Joint* MS3DModel::GetJoint(const char* jointName) const
 		}
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 const Joint* MS3DModel::GetJoint(int index) const

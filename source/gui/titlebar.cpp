@@ -170,7 +170,7 @@ void TitleBar::MouseExited(const MouseEvent& lEvent)
 
 void TitleBar::MousePressed(const MouseEvent& lEvent)
 {
-	if(m_pParent != NULL)
+	if(m_pParent != nullptr)
 	{
 		m_pParent->SetFocusWindow();
 	}
@@ -336,7 +336,7 @@ void TitleBar::SetBackgroundIcon(RenderRectangle *icon)
 		Remove(m_pBackgroundIcon);
 
 		delete m_pBackgroundIcon;
-		m_pBackgroundIcon = NULL;
+		m_pBackgroundIcon = nullptr;
 	}
 
 	// Check what type of render rectangle we have been given, and then assign our new data

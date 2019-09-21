@@ -35,7 +35,7 @@ Component::Component(Renderer* pRenderer)
     m_audio = true;
     m_audioVolume = 1.0f;
 
-	m_pParent = NULL;
+	m_pParent = nullptr;
 
 	m_dimensions = Dimensions(0, 0, 0, 0);
 
@@ -71,7 +71,7 @@ bool Component::IsEnabled() const
 
 bool Component::IsParentVisible() const
 {
-	if(m_pParent == NULL)
+	if(m_pParent == nullptr)
 	{
 		return IsVisible();
 	}
@@ -81,7 +81,7 @@ bool Component::IsParentVisible() const
 
 bool Component::IsParentEnabled() const
 {
-	if(m_pParent == NULL)
+	if(m_pParent == nullptr)
 	{
 		return IsEnabled();
 	}
@@ -108,7 +108,7 @@ float Component::GetDepth() const
 {
 	float depth = m_depth;
 
-	if(m_pParent != NULL)
+	if(m_pParent != nullptr)
 	{
 		depth += m_pParent->GetDepth();
 	}

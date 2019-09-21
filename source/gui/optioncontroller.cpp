@@ -26,7 +26,7 @@ OptionController::OptionController(Renderer* pRenderer, unsigned int GUIFont, co
 
 	m_labelIndent = 5;
 
-	m_pActiveOption = NULL;
+	m_pActiveOption = nullptr;
 
 	mbDisplayLabel = false;
 	mbDisplayBorder = false;
@@ -46,7 +46,7 @@ OptionController::OptionController(Renderer* pRenderer, unsigned int GUIFont, un
 
 	m_labelIndent = 5;
 
-	m_pActiveOption = NULL;
+	m_pActiveOption = nullptr;
 
 	mbDisplayLabel = false;
 	mbDisplayBorder = false;
@@ -112,7 +112,7 @@ OptionBox *OptionController::GetActiveOption() const
 
 void OptionController::ResetAllOptions()
 {
-	m_pActiveOption = NULL;
+	m_pActiveOption = nullptr;
 
 	ComponentList::const_iterator iterator;
 

@@ -78,7 +78,7 @@ Quest* QuestManager::CreateQuest(string name, string startText, string completed
 
 Quest* QuestManager::CreateRandomQuest()
 {
-	return NULL;
+	return nullptr;
 }
 
 Quest* QuestManager::GetQuest(string name)
@@ -91,7 +91,7 @@ Quest* QuestManager::GetQuest(string name)
         }
     }
 
-    return NULL;
+    return nullptr;
 }
 
 void QuestManager::Update(float dt)

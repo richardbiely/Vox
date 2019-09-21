@@ -215,5 +215,5 @@ InventoryItem* RandomLootManager::GetRandomLootItem(eEquipment *equipment)
 	}
 
 	*equipment = eEquipment_None;
-	return NULL;
+	return nullptr;
 }
