@@ -4,7 +4,6 @@
 
 [![Build Status](https://circleci.com/gh/richardbiely/Vox.svg?style=shield&circle-token=c9391233c76d9211511f0071840abead1b50f09b)](https://circleci.com/gh/richardbiely/Vox/tree/master)
 [![Join the chat at https://gitter.im/AlwaysGeeky/Vox](https://badges.gitter.im/AlwaysGeeky/Vox.svg)](https://gitter.im/AlwaysGeeky/Vox?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Repo Size](https://reposs.herokuapp.com/?path=AlwaysGeeky/Vox)](https://github.com/AlwaysGeeky/Vox)
 [![License](https://img.shields.io/badge/Licence-GNU-blue.svg)](https://github.com/AlwaysGeeky/Vox/blob/master/LICENSE.md)
 
 Vox is an open source Voxel Engine, and game, that is written in C++ and OpenGL and can be used to create easy and fast voxel based games and applications. The engine is written to be highly functional and very efficient at allowing voxel game creation and provides a simple framework for creating 3D voxel games.
@@ -76,7 +75,7 @@ Alternatively you can run the pre-built executable ```VoxGame.exe``` that is con
 The documentation and wiki-pages for Vox can be found on the [Vox GitHub Wiki](https://github.com/AlwaysGeeky/Vox/wiki).
 
 ## Changelog
-The full and complete Vox changelog can be found in the [Changelog file](https://github.com/AlwaysGeeky/Vox/blob/master/CHANGELOG.md).
+The full and complete Vox changelog can be found in the [Changelog file](https://github.com/richardbiely/Vox/blob/master/CHANGELOG.md).
 
 ## License
 This software is provided under the **GNU General Public License**, more information can be found in the [license file](https://github.com/AlwaysGeeky/Vox/blob/master/LICENSE.md).
