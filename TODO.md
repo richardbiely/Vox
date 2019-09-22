@@ -15,6 +15,7 @@
 - [x] Add weapon trails.
 - [x] Remove any GL calls from VoxGame - Add InitZeroTexture() functionality to renderer.
 - [x] Use Cmake for build management.
+  - [] Make CMake generate proper VS projects and delete all projects from the repo afterwards (they will be generated via cmake)
 - [x] Add fullscreen support and toggle.
 - [x] Enable x64 build configurations.
 - [x] Phong lighting shader.
