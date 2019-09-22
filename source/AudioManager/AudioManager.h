@@ -16,7 +16,7 @@
 #pragma once
 
 #include "../Maths/3dmaths.h"
-#include "fmod/include/fmod.hpp"
+#include <fmod.hpp>
 
 
 class AudioManager

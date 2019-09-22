@@ -19,26 +19,8 @@
     <Filter Include="source\extern\glm">
       <UniqueIdentifier>{4b37c1c6-24f5-4c4c-ae88-3a8a66956f54}</UniqueIdentifier>
     </Filter>
-    <Filter Include="source\extern\glm\detail">
-      <UniqueIdentifier>{9ef72bda-dcde-4417-93ca-11003010a83d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="source\extern\glm\gtc">
-      <UniqueIdentifier>{ab507372-ed5a-4109-8ed4-1f9854467cc7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="source\extern\glm\gtx">
-      <UniqueIdentifier>{5ac711ae-1e29-4947-8199-491b37fd6239}</UniqueIdentifier>
-    </Filter>
     <Filter Include="source\extern\glew">
       <UniqueIdentifier>{7d4cfcce-2df7-4e25-9670-d5f058a170b8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="source\extern\glew\src">
-      <UniqueIdentifier>{05201492-9f43-4342-869c-2e8c095546a2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="source\extern\glew\include">
-      <UniqueIdentifier>{bb903b1b-8bc4-4d52-b851-6484be55b6b4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="source\extern\glew\include\GL">
-      <UniqueIdentifier>{311296e4-39b2-4bba-865d-493a3fc79dcc}</UniqueIdentifier>
     </Filter>
     <Filter Include="source\game\Quests">
       <UniqueIdentifier>{aa4d79f0-ae22-45d8-b22d-abe1a71424a1}</UniqueIdentifier>
@@ -115,23 +97,38 @@
     <Filter Include="source\extern\selene">
       <UniqueIdentifier>{f396e66d-c322-4337-9aa0-9ac3fc70db84}</UniqueIdentifier>
     </Filter>
-    <Filter Include="source\extern\selene\selene">
-      <UniqueIdentifier>{455a1576-3d57-40da-afb5-0ca0a2557b5b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="source\extern\ini">
       <UniqueIdentifier>{cd45ed9a-f6e2-451a-8cc1-982d97ff8db8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="source\extern\simplex">
-      <UniqueIdentifier>{812722e0-2f6d-411c-84dd-3f5b4fe1a91b}</UniqueIdentifier>
     </Filter>
     <Filter Include="source\game\AudioManager">
       <UniqueIdentifier>{f529fbda-4588-40d3-8dc1-bfda9a8762bf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="source\extern\selene\selene">
+      <UniqueIdentifier>{0a71295e-419b-4e5d-b529-b85992f971c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\extern\simplex">
+      <UniqueIdentifier>{806570e5-ae29-4ced-aadc-138dc4e39bcd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\extern\glm\gtx">
+      <UniqueIdentifier>{628100e5-fe55-4a55-81ae-d22865e33477}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\extern\glm\gtc">
+      <UniqueIdentifier>{9b053859-6e05-4e72-8928-1ee82e3726c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\extern\glm\detail">
+      <UniqueIdentifier>{597cacef-e62f-4b9a-bcb2-3d2f0b204a6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\extern\glew\include">
+      <UniqueIdentifier>{dcff8207-baa3-4ee3-931d-af42a261ae44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\extern\glew\src">
+      <UniqueIdentifier>{67e097c7-45e0-484d-81e1-c0946f781404}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\extern\glew\include\GL">
+      <UniqueIdentifier>{1859940c-b0ed-452e-a25b-a1af8caca262}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\source\glew\src\glew.c">
-      <Filter>source\extern\glew\src</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\source\freetype\freetypefont.cpp">
       <Filter>source\game\freetype</Filter>
     </ClCompile>
@@ -224,12 +221,6 @@
     </ClCompile>
     <ClCompile Include="..\..\source\Particles\BlockParticleManager.cpp">
       <Filter>source\game\Particles</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\glm\detail\dummy.cpp">
-      <Filter>source\extern\glm\detail</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\glm\detail\glm.cpp">
-      <Filter>source\extern\glm\detail</Filter>
     </ClCompile>
     <ClCompile Include="..\..\source\gui\checkbox.cpp">
       <Filter>source\game\gui</Filter>
@@ -363,105 +354,6 @@
     <ClCompile Include="..\..\source\Player\Player.cpp">
       <Filter>source\game\Player</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\source\lua\lstate.c">
-      <Filter>source\extern\lua</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\lua\lstring.c">
-      <Filter>source\extern\lua</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\lua\lstrlib.c">
-      <Filter>source\extern\lua</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\lua\ltable.c">
-      <Filter>source\extern\lua</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\lua\ltablib.c">
-      <Filter>source\extern\lua</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\lua\ltm.c">
-      <Filter>source\extern\lua</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\lua\lundump.c">
-      <Filter>source\extern\lua</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\lua\lutf8lib.c">
-      <Filter>source\extern\lua</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\lua\lvm.c">
-      <Filter>source\extern\lua</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\lua\lzio.c">
-      <Filter>source\extern\lua</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\lua\lapi.c">
-      <Filter>source\extern\lua</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\lua\lauxlib.c">
-      <Filter>source\extern\lua</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\lua\lbaselib.c">
-      <Filter>source\extern\lua</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\lua\lbitlib.c">
-      <Filter>source\extern\lua</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\lua\lcode.c">
-      <Filter>source\extern\lua</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\lua\lcorolib.c">
-      <Filter>source\extern\lua</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\lua\lctype.c">
-      <Filter>source\extern\lua</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\lua\ldblib.c">
-      <Filter>source\extern\lua</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\lua\ldebug.c">
-      <Filter>source\extern\lua</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\lua\ldo.c">
-      <Filter>source\extern\lua</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\lua\ldump.c">
-      <Filter>source\extern\lua</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\lua\lfunc.c">
-      <Filter>source\extern\lua</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\lua\lgc.c">
-      <Filter>source\extern\lua</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\lua\linit.c">
-      <Filter>source\extern\lua</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\lua\liolib.c">
-      <Filter>source\extern\lua</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\lua\llex.c">
-      <Filter>source\extern\lua</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\lua\lmathlib.c">
-      <Filter>source\extern\lua</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\lua\lmem.c">
-      <Filter>source\extern\lua</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\lua\loadlib.c">
-      <Filter>source\extern\lua</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\lua\lobject.c">
-      <Filter>source\extern\lua</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\lua\lopcodes.c">
-      <Filter>source\extern\lua</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\lua\loslib.c">
-      <Filter>source\extern\lua</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\lua\lparser.c">
-      <Filter>source\extern\lua</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\source\blocks\ChunkManager.cpp">
       <Filter>source\game\blocks</Filter>
     </ClCompile>
@@ -473,18 +365,6 @@
     </ClCompile>
     <ClCompile Include="..\..\source\utils\FileUtils.cpp">
       <Filter>source\game\utils</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\ini\ini.c">
-      <Filter>source\extern\ini</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\ini\INIReader.cpp">
-      <Filter>source\extern\ini</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\simplex\simplexnoise.cpp">
-      <Filter>source\extern\simplex</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\source\simplex\simplextextures.cpp">
-      <Filter>source\extern\simplex</Filter>
     </ClCompile>
     <ClCompile Include="..\..\source\Skybox\Skybox.cpp">
       <Filter>source\game\Skybox</Filter>
@@ -615,9 +495,6 @@
     <ClCompile Include="..\..\source\Items\RandomLootManager.cpp">
       <Filter>source\game\Items</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\source\libnoise\noiseutils.cpp">
-      <Filter>source\extern\libnoise</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\source\AudioManager\AudioManager.cpp">
       <Filter>source\game\AudioManager</Filter>
     </ClCompile>
@@ -654,17 +531,131 @@
     <ClCompile Include="..\..\source\AudioManager\SoundEffects.cpp">
       <Filter>source\game\AudioManager</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\source\extern\lua\lapi.c">
+      <Filter>source\extern\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\extern\lua\lauxlib.c">
+      <Filter>source\extern\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\extern\lua\lbaselib.c">
+      <Filter>source\extern\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\extern\lua\lbitlib.c">
+      <Filter>source\extern\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\extern\lua\lcode.c">
+      <Filter>source\extern\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\extern\lua\lcorolib.c">
+      <Filter>source\extern\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\extern\lua\lctype.c">
+      <Filter>source\extern\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\extern\lua\ldblib.c">
+      <Filter>source\extern\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\extern\lua\ldebug.c">
+      <Filter>source\extern\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\extern\lua\ldo.c">
+      <Filter>source\extern\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\extern\lua\ldump.c">
+      <Filter>source\extern\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\extern\lua\lfunc.c">
+      <Filter>source\extern\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\extern\lua\lgc.c">
+      <Filter>source\extern\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\extern\lua\linit.c">
+      <Filter>source\extern\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\extern\lua\liolib.c">
+      <Filter>source\extern\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\extern\lua\llex.c">
+      <Filter>source\extern\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\extern\lua\lmathlib.c">
+      <Filter>source\extern\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\extern\lua\lmem.c">
+      <Filter>source\extern\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\extern\lua\loadlib.c">
+      <Filter>source\extern\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\extern\lua\lobject.c">
+      <Filter>source\extern\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\extern\lua\lopcodes.c">
+      <Filter>source\extern\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\extern\lua\loslib.c">
+      <Filter>source\extern\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\extern\lua\lparser.c">
+      <Filter>source\extern\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\extern\lua\lstate.c">
+      <Filter>source\extern\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\extern\lua\lstring.c">
+      <Filter>source\extern\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\extern\lua\lstrlib.c">
+      <Filter>source\extern\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\extern\lua\ltable.c">
+      <Filter>source\extern\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\extern\lua\ltablib.c">
+      <Filter>source\extern\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\extern\lua\ltm.c">
+      <Filter>source\extern\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\extern\lua\lundump.c">
+      <Filter>source\extern\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\extern\lua\lutf8lib.c">
+      <Filter>source\extern\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\extern\lua\lvm.c">
+      <Filter>source\extern\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\extern\lua\lzio.c">
+      <Filter>source\extern\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\extern\simplex\simplexnoise.cpp">
+      <Filter>source\extern\simplex</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\extern\simplex\simplextextures.cpp">
+      <Filter>source\extern\simplex</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\extern\libnoise\noiseutils.cpp">
+      <Filter>source\extern\libnoise</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\extern\ini\ini.c">
+      <Filter>source\extern\ini</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\extern\ini\INIReader.cpp">
+      <Filter>source\extern\ini</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\extern\glm\detail\dummy.cpp">
+      <Filter>source\extern\glm\detail</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\extern\glm\detail\glm.cpp">
+      <Filter>source\extern\glm\detail</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\source\extern\glew\src\glew.c">
+      <Filter>source\extern\glew\src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\source\glew\include\GL\glew.h">
-      <Filter>source\extern\glew\include\GL</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glew\include\GL\glxew.h">
-      <Filter>source\extern\glew\include\GL</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glew\include\GL\wglew.h">
-      <Filter>source\extern\glew\include\GL</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\source\freetype\freetypefont.h">
       <Filter>source\game\freetype</Filter>
     </ClInclude>
@@ -766,432 +757,6 @@
     </ClInclude>
     <ClInclude Include="..\..\source\Particles\BlockParticleManager.h">
       <Filter>source\game\Particles</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\common.hpp">
-      <Filter>source\extern\glm</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\exponential.hpp">
-      <Filter>source\extern\glm</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\ext.hpp">
-      <Filter>source\extern\glm</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\fwd.hpp">
-      <Filter>source\extern\glm</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\geometric.hpp">
-      <Filter>source\extern\glm</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\glm.hpp">
-      <Filter>source\extern\glm</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\integer.hpp">
-      <Filter>source\extern\glm</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\mat2x2.hpp">
-      <Filter>source\extern\glm</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\mat2x3.hpp">
-      <Filter>source\extern\glm</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\mat2x4.hpp">
-      <Filter>source\extern\glm</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\mat3x2.hpp">
-      <Filter>source\extern\glm</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\mat3x3.hpp">
-      <Filter>source\extern\glm</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\mat3x4.hpp">
-      <Filter>source\extern\glm</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\mat4x2.hpp">
-      <Filter>source\extern\glm</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\mat4x3.hpp">
-      <Filter>source\extern\glm</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\mat4x4.hpp">
-      <Filter>source\extern\glm</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\matrix.hpp">
-      <Filter>source\extern\glm</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\packing.hpp">
-      <Filter>source\extern\glm</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\trigonometric.hpp">
-      <Filter>source\extern\glm</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\vec2.hpp">
-      <Filter>source\extern\glm</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\vec3.hpp">
-      <Filter>source\extern\glm</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\vec4.hpp">
-      <Filter>source\extern\glm</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\vector_relational.hpp">
-      <Filter>source\extern\glm</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\detail\type_mat3x4.hpp">
-      <Filter>source\extern\glm\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\detail\type_mat4x2.hpp">
-      <Filter>source\extern\glm\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\detail\type_mat4x3.hpp">
-      <Filter>source\extern\glm\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\detail\type_mat4x4.hpp">
-      <Filter>source\extern\glm\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\detail\type_vec.hpp">
-      <Filter>source\extern\glm\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\detail\type_vec1.hpp">
-      <Filter>source\extern\glm\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\detail\type_vec2.hpp">
-      <Filter>source\extern\glm\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\detail\type_vec3.hpp">
-      <Filter>source\extern\glm\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\detail\type_vec4.hpp">
-      <Filter>source\extern\glm\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\detail\_features.hpp">
-      <Filter>source\extern\glm\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\detail\_fixes.hpp">
-      <Filter>source\extern\glm\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\detail\_noise.hpp">
-      <Filter>source\extern\glm\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\detail\_swizzle.hpp">
-      <Filter>source\extern\glm\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\detail\_swizzle_func.hpp">
-      <Filter>source\extern\glm\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\detail\_vectorize.hpp">
-      <Filter>source\extern\glm\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\detail\func_common.hpp">
-      <Filter>source\extern\glm\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\detail\func_exponential.hpp">
-      <Filter>source\extern\glm\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\detail\func_geometric.hpp">
-      <Filter>source\extern\glm\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\detail\func_integer.hpp">
-      <Filter>source\extern\glm\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\detail\func_matrix.hpp">
-      <Filter>source\extern\glm\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\detail\func_packing.hpp">
-      <Filter>source\extern\glm\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\detail\func_trigonometric.hpp">
-      <Filter>source\extern\glm\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\detail\func_vector_relational.hpp">
-      <Filter>source\extern\glm\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\detail\intrinsic_common.hpp">
-      <Filter>source\extern\glm\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\detail\intrinsic_exponential.hpp">
-      <Filter>source\extern\glm\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\detail\intrinsic_geometric.hpp">
-      <Filter>source\extern\glm\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\detail\intrinsic_integer.hpp">
-      <Filter>source\extern\glm\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\detail\intrinsic_matrix.hpp">
-      <Filter>source\extern\glm\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\detail\intrinsic_trigonometric.hpp">
-      <Filter>source\extern\glm\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\detail\intrinsic_vector_relational.hpp">
-      <Filter>source\extern\glm\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\detail\precision.hpp">
-      <Filter>source\extern\glm\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\detail\setup.hpp">
-      <Filter>source\extern\glm\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\detail\type_float.hpp">
-      <Filter>source\extern\glm\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\detail\type_gentype.hpp">
-      <Filter>source\extern\glm\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\detail\type_half.hpp">
-      <Filter>source\extern\glm\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\detail\type_int.hpp">
-      <Filter>source\extern\glm\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\detail\type_mat.hpp">
-      <Filter>source\extern\glm\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\detail\type_mat2x2.hpp">
-      <Filter>source\extern\glm\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\detail\type_mat2x3.hpp">
-      <Filter>source\extern\glm\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\detail\type_mat2x4.hpp">
-      <Filter>source\extern\glm\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\detail\type_mat3x2.hpp">
-      <Filter>source\extern\glm\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\detail\type_mat3x3.hpp">
-      <Filter>source\extern\glm\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\color_space.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\color_space_YCoCg.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\common.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\compatibility.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\component_wise.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\dual_quaternion.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\euler_angles.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\extend.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\extended_min_max.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\fast_exponential.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\fast_square_root.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\fast_trigonometry.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\gradient_paint.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\handed_coordinate_space.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\hash.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\integer.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\intersect.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\io.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\log_base.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\matrix_cross_product.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\matrix_decompose.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\matrix_interpolation.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\matrix_major_storage.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\matrix_operation.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\matrix_query.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\matrix_transform_2d.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\mixed_product.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\norm.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\normal.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\normalize_dot.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\number_precision.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\optimum_pow.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\orthonormalize.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\perpendicular.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\polar_coordinates.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\projection.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\quaternion.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\range.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\raw_data.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\rotate_normalized_axis.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\rotate_vector.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\scalar_multiplication.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\scalar_relational.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\simd_mat4.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\simd_quat.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\simd_vec4.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\spline.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\std_based_type.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\string_cast.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\transform.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\transform2.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\type_aligned.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\vector_angle.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\vector_query.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\wrap.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\associated_min_max.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\bit.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtx\closest_point.hpp">
-      <Filter>source\extern\glm\gtx</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtc\constants.hpp">
-      <Filter>source\extern\glm\gtc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtc\epsilon.hpp">
-      <Filter>source\extern\glm\gtc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtc\integer.hpp">
-      <Filter>source\extern\glm\gtc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtc\matrix_access.hpp">
-      <Filter>source\extern\glm\gtc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtc\matrix_integer.hpp">
-      <Filter>source\extern\glm\gtc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtc\matrix_inverse.hpp">
-      <Filter>source\extern\glm\gtc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtc\matrix_transform.hpp">
-      <Filter>source\extern\glm\gtc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtc\noise.hpp">
-      <Filter>source\extern\glm\gtc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtc\packing.hpp">
-      <Filter>source\extern\glm\gtc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtc\quaternion.hpp">
-      <Filter>source\extern\glm\gtc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtc\random.hpp">
-      <Filter>source\extern\glm\gtc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtc\reciprocal.hpp">
-      <Filter>source\extern\glm\gtc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtc\round.hpp">
-      <Filter>source\extern\glm\gtc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtc\type_precision.hpp">
-      <Filter>source\extern\glm\gtc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtc\type_ptr.hpp">
-      <Filter>source\extern\glm\gtc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtc\ulp.hpp">
-      <Filter>source\extern\glm\gtc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtc\vec1.hpp">
-      <Filter>source\extern\glm\gtc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtc\bitfield.hpp">
-      <Filter>source\extern\glm\gtc</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\glm\gtc\color_space.hpp">
-      <Filter>source\extern\glm\gtc</Filter>
     </ClInclude>
     <ClInclude Include="..\..\source\gui\button.h">
       <Filter>source\game\gui</Filter>
@@ -1325,153 +890,6 @@
     <ClInclude Include="..\..\source\Player\Player.h">
       <Filter>source\game\Player</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\source\selene\selene.h">
-      <Filter>source\extern\selene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\selene\selene\Class.h">
-      <Filter>source\extern\selene\selene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\selene\selene\ClassFun.h">
-      <Filter>source\extern\selene\selene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\selene\selene\Ctor.h">
-      <Filter>source\extern\selene\selene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\selene\selene\Dtor.h">
-      <Filter>source\extern\selene\selene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\selene\selene\exception.h">
-      <Filter>source\extern\selene\selene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\selene\selene\exotics.h">
-      <Filter>source\extern\selene\selene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\selene\selene\Fun.h">
-      <Filter>source\extern\selene\selene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\selene\selene\function.h">
-      <Filter>source\extern\selene\selene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\selene\selene\LuaName.h">
-      <Filter>source\extern\selene\selene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\selene\selene\LuaRef.h">
-      <Filter>source\extern\selene\selene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\selene\selene\MetatableRegistry.h">
-      <Filter>source\extern\selene\selene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\selene\selene\Obj.h">
-      <Filter>source\extern\selene\selene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\selene\selene\ObjFun.h">
-      <Filter>source\extern\selene\selene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\selene\selene\primitives.h">
-      <Filter>source\extern\selene\selene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\selene\selene\Registry.h">
-      <Filter>source\extern\selene\selene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\selene\selene\ResourceHandler.h">
-      <Filter>source\extern\selene\selene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\selene\selene\Selector.h">
-      <Filter>source\extern\selene\selene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\selene\selene\State.h">
-      <Filter>source\extern\selene\selene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\selene\selene\traits.h">
-      <Filter>source\extern\selene\selene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\selene\selene\Tuple.h">
-      <Filter>source\extern\selene\selene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\selene\selene\util.h">
-      <Filter>source\extern\selene\selene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\selene\selene\BaseFun.h">
-      <Filter>source\extern\selene\selene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\lua\lprefix.h">
-      <Filter>source\extern\lua</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\lua\lstate.h">
-      <Filter>source\extern\lua</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\lua\lstring.h">
-      <Filter>source\extern\lua</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\lua\ltable.h">
-      <Filter>source\extern\lua</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\lua\ltm.h">
-      <Filter>source\extern\lua</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\lua\lua.h">
-      <Filter>source\extern\lua</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\lua\lua.hpp">
-      <Filter>source\extern\lua</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\lua\luaconf.h">
-      <Filter>source\extern\lua</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\lua\lualib.h">
-      <Filter>source\extern\lua</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\lua\lundump.h">
-      <Filter>source\extern\lua</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\lua\lvm.h">
-      <Filter>source\extern\lua</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\lua\lzio.h">
-      <Filter>source\extern\lua</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\lua\lapi.h">
-      <Filter>source\extern\lua</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\lua\lauxlib.h">
-      <Filter>source\extern\lua</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\lua\lcode.h">
-      <Filter>source\extern\lua</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\lua\lctype.h">
-      <Filter>source\extern\lua</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\lua\ldebug.h">
-      <Filter>source\extern\lua</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\lua\ldo.h">
-      <Filter>source\extern\lua</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\lua\lfunc.h">
-      <Filter>source\extern\lua</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\lua\lgc.h">
-      <Filter>source\extern\lua</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\lua\llex.h">
-      <Filter>source\extern\lua</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\lua\llimits.h">
-      <Filter>source\extern\lua</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\lua\lmem.h">
-      <Filter>source\extern\lua</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\lua\lobject.h">
-      <Filter>source\extern\lua</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\lua\lopcodes.h">
-      <Filter>source\extern\lua</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\lua\lparser.h">
-      <Filter>source\extern\lua</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\source\blocks\ChunkManager.h">
       <Filter>source\game\blocks</Filter>
     </ClInclude>
@@ -1483,18 +901,6 @@
     </ClInclude>
     <ClInclude Include="..\..\source\utils\FileUtils.h">
       <Filter>source\game\utils</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\ini\ini.h">
-      <Filter>source\extern\ini</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\ini\INIReader.h">
-      <Filter>source\extern\ini</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\simplex\simplexnoise.h">
-      <Filter>source\extern\simplex</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\source\simplex\simplextextures.h">
-      <Filter>source\extern\simplex</Filter>
     </ClInclude>
     <ClInclude Include="..\..\source\Skybox\Skybox.h">
       <Filter>source\game\Skybox</Filter>
@@ -1634,9 +1040,6 @@
     <ClInclude Include="..\..\source\Items\RandomLootManager.h">
       <Filter>source\game\Items</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\source\libnoise\noiseutils.h">
-      <Filter>source\extern\libnoise</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\source\AudioManager\AudioManager.h">
       <Filter>source\game\AudioManager</Filter>
     </ClInclude>
@@ -1652,337 +1055,934 @@
     <ClInclude Include="..\..\source\AudioManager\SoundEffectsEnum.h">
       <Filter>source\game\AudioManager</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\source\extern\lua\lapi.h">
+      <Filter>source\extern\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\lua\lauxlib.h">
+      <Filter>source\extern\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\lua\lcode.h">
+      <Filter>source\extern\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\lua\lctype.h">
+      <Filter>source\extern\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\lua\ldebug.h">
+      <Filter>source\extern\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\lua\ldo.h">
+      <Filter>source\extern\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\lua\lfunc.h">
+      <Filter>source\extern\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\lua\lgc.h">
+      <Filter>source\extern\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\lua\llex.h">
+      <Filter>source\extern\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\lua\llimits.h">
+      <Filter>source\extern\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\lua\lmem.h">
+      <Filter>source\extern\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\lua\lobject.h">
+      <Filter>source\extern\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\lua\lopcodes.h">
+      <Filter>source\extern\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\lua\lparser.h">
+      <Filter>source\extern\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\lua\lprefix.h">
+      <Filter>source\extern\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\lua\lstate.h">
+      <Filter>source\extern\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\lua\lstring.h">
+      <Filter>source\extern\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\lua\ltable.h">
+      <Filter>source\extern\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\lua\ltm.h">
+      <Filter>source\extern\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\lua\lua.h">
+      <Filter>source\extern\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\lua\lua.hpp">
+      <Filter>source\extern\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\lua\luaconf.h">
+      <Filter>source\extern\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\lua\lualib.h">
+      <Filter>source\extern\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\lua\lundump.h">
+      <Filter>source\extern\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\lua\lvm.h">
+      <Filter>source\extern\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\lua\lzio.h">
+      <Filter>source\extern\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\selene\selene.h">
+      <Filter>source\extern\selene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\selene\selene\BaseFun.h">
+      <Filter>source\extern\selene\selene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\selene\selene\Class.h">
+      <Filter>source\extern\selene\selene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\selene\selene\ClassFun.h">
+      <Filter>source\extern\selene\selene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\selene\selene\Ctor.h">
+      <Filter>source\extern\selene\selene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\selene\selene\Dtor.h">
+      <Filter>source\extern\selene\selene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\selene\selene\exception.h">
+      <Filter>source\extern\selene\selene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\selene\selene\exotics.h">
+      <Filter>source\extern\selene\selene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\selene\selene\Fun.h">
+      <Filter>source\extern\selene\selene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\selene\selene\function.h">
+      <Filter>source\extern\selene\selene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\selene\selene\LuaName.h">
+      <Filter>source\extern\selene\selene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\selene\selene\LuaRef.h">
+      <Filter>source\extern\selene\selene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\selene\selene\MetatableRegistry.h">
+      <Filter>source\extern\selene\selene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\selene\selene\Obj.h">
+      <Filter>source\extern\selene\selene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\selene\selene\ObjFun.h">
+      <Filter>source\extern\selene\selene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\selene\selene\primitives.h">
+      <Filter>source\extern\selene\selene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\selene\selene\Registry.h">
+      <Filter>source\extern\selene\selene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\selene\selene\ResourceHandler.h">
+      <Filter>source\extern\selene\selene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\selene\selene\Selector.h">
+      <Filter>source\extern\selene\selene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\selene\selene\State.h">
+      <Filter>source\extern\selene\selene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\selene\selene\traits.h">
+      <Filter>source\extern\selene\selene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\selene\selene\Tuple.h">
+      <Filter>source\extern\selene\selene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\selene\selene\util.h">
+      <Filter>source\extern\selene\selene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\simplex\simplexnoise.h">
+      <Filter>source\extern\simplex</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\simplex\simplextextures.h">
+      <Filter>source\extern\simplex</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\libnoise\noiseutils.h">
+      <Filter>source\extern\libnoise</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\ini\ini.h">
+      <Filter>source\extern\ini</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\ini\INIReader.h">
+      <Filter>source\extern\ini</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\common.hpp">
+      <Filter>source\extern\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\exponential.hpp">
+      <Filter>source\extern\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\ext.hpp">
+      <Filter>source\extern\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\fwd.hpp">
+      <Filter>source\extern\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\geometric.hpp">
+      <Filter>source\extern\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\glm.hpp">
+      <Filter>source\extern\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\integer.hpp">
+      <Filter>source\extern\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\mat2x2.hpp">
+      <Filter>source\extern\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\mat2x3.hpp">
+      <Filter>source\extern\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\mat2x4.hpp">
+      <Filter>source\extern\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\mat3x2.hpp">
+      <Filter>source\extern\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\mat3x3.hpp">
+      <Filter>source\extern\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\mat3x4.hpp">
+      <Filter>source\extern\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\mat4x2.hpp">
+      <Filter>source\extern\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\mat4x3.hpp">
+      <Filter>source\extern\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\mat4x4.hpp">
+      <Filter>source\extern\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\matrix.hpp">
+      <Filter>source\extern\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\packing.hpp">
+      <Filter>source\extern\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\trigonometric.hpp">
+      <Filter>source\extern\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\vec2.hpp">
+      <Filter>source\extern\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\vec3.hpp">
+      <Filter>source\extern\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\vec4.hpp">
+      <Filter>source\extern\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\vector_relational.hpp">
+      <Filter>source\extern\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\associated_min_max.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\bit.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\closest_point.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\color_space.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\color_space_YCoCg.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\common.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\compatibility.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\component_wise.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\dual_quaternion.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\euler_angles.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\extend.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\extended_min_max.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\fast_exponential.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\fast_square_root.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\fast_trigonometry.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\gradient_paint.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\handed_coordinate_space.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\hash.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\integer.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\intersect.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\io.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\log_base.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\matrix_cross_product.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\matrix_decompose.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\matrix_interpolation.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\matrix_major_storage.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\matrix_operation.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\matrix_query.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\matrix_transform_2d.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\mixed_product.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\norm.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\normal.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\normalize_dot.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\number_precision.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\optimum_pow.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\orthonormalize.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\perpendicular.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\polar_coordinates.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\projection.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\quaternion.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\range.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\raw_data.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\rotate_normalized_axis.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\rotate_vector.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\scalar_multiplication.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\scalar_relational.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\simd_mat4.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\simd_quat.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\simd_vec4.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\spline.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\std_based_type.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\string_cast.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\transform.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\transform2.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\type_aligned.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\vector_angle.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\vector_query.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtx\wrap.hpp">
+      <Filter>source\extern\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtc\bitfield.hpp">
+      <Filter>source\extern\glm\gtc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtc\color_space.hpp">
+      <Filter>source\extern\glm\gtc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtc\constants.hpp">
+      <Filter>source\extern\glm\gtc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtc\epsilon.hpp">
+      <Filter>source\extern\glm\gtc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtc\integer.hpp">
+      <Filter>source\extern\glm\gtc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtc\matrix_access.hpp">
+      <Filter>source\extern\glm\gtc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtc\matrix_integer.hpp">
+      <Filter>source\extern\glm\gtc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtc\matrix_inverse.hpp">
+      <Filter>source\extern\glm\gtc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtc\matrix_transform.hpp">
+      <Filter>source\extern\glm\gtc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtc\noise.hpp">
+      <Filter>source\extern\glm\gtc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtc\packing.hpp">
+      <Filter>source\extern\glm\gtc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtc\quaternion.hpp">
+      <Filter>source\extern\glm\gtc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtc\random.hpp">
+      <Filter>source\extern\glm\gtc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtc\reciprocal.hpp">
+      <Filter>source\extern\glm\gtc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtc\round.hpp">
+      <Filter>source\extern\glm\gtc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtc\type_precision.hpp">
+      <Filter>source\extern\glm\gtc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtc\type_ptr.hpp">
+      <Filter>source\extern\glm\gtc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtc\ulp.hpp">
+      <Filter>source\extern\glm\gtc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\gtc\vec1.hpp">
+      <Filter>source\extern\glm\gtc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\detail\_features.hpp">
+      <Filter>source\extern\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\detail\_fixes.hpp">
+      <Filter>source\extern\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\detail\_noise.hpp">
+      <Filter>source\extern\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\detail\_swizzle.hpp">
+      <Filter>source\extern\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\detail\_swizzle_func.hpp">
+      <Filter>source\extern\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\detail\_vectorize.hpp">
+      <Filter>source\extern\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\detail\func_common.hpp">
+      <Filter>source\extern\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\detail\func_exponential.hpp">
+      <Filter>source\extern\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\detail\func_geometric.hpp">
+      <Filter>source\extern\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\detail\func_integer.hpp">
+      <Filter>source\extern\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\detail\func_matrix.hpp">
+      <Filter>source\extern\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\detail\func_packing.hpp">
+      <Filter>source\extern\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\detail\func_trigonometric.hpp">
+      <Filter>source\extern\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\detail\func_vector_relational.hpp">
+      <Filter>source\extern\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\detail\intrinsic_common.hpp">
+      <Filter>source\extern\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\detail\intrinsic_exponential.hpp">
+      <Filter>source\extern\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\detail\intrinsic_geometric.hpp">
+      <Filter>source\extern\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\detail\intrinsic_integer.hpp">
+      <Filter>source\extern\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\detail\intrinsic_matrix.hpp">
+      <Filter>source\extern\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\detail\intrinsic_trigonometric.hpp">
+      <Filter>source\extern\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\detail\intrinsic_vector_relational.hpp">
+      <Filter>source\extern\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\detail\precision.hpp">
+      <Filter>source\extern\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\detail\setup.hpp">
+      <Filter>source\extern\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\detail\type_float.hpp">
+      <Filter>source\extern\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\detail\type_gentype.hpp">
+      <Filter>source\extern\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\detail\type_half.hpp">
+      <Filter>source\extern\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\detail\type_int.hpp">
+      <Filter>source\extern\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\detail\type_mat.hpp">
+      <Filter>source\extern\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\detail\type_mat2x2.hpp">
+      <Filter>source\extern\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\detail\type_mat2x3.hpp">
+      <Filter>source\extern\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\detail\type_mat2x4.hpp">
+      <Filter>source\extern\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\detail\type_mat3x2.hpp">
+      <Filter>source\extern\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\detail\type_mat3x3.hpp">
+      <Filter>source\extern\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\detail\type_mat3x4.hpp">
+      <Filter>source\extern\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\detail\type_mat4x2.hpp">
+      <Filter>source\extern\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\detail\type_mat4x3.hpp">
+      <Filter>source\extern\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\detail\type_mat4x4.hpp">
+      <Filter>source\extern\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\detail\type_vec.hpp">
+      <Filter>source\extern\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\detail\type_vec1.hpp">
+      <Filter>source\extern\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\detail\type_vec2.hpp">
+      <Filter>source\extern\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\detail\type_vec3.hpp">
+      <Filter>source\extern\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glm\detail\type_vec4.hpp">
+      <Filter>source\extern\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glew\include\GL\glew.h">
+      <Filter>source\extern\glew\include\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glew\include\GL\glxew.h">
+      <Filter>source\extern\glew\include\GL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\source\extern\glew\include\GL\wglew.h">
+      <Filter>source\extern\glew\include\GL</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\source\glm\detail\type_mat3x4.inl">
-      <Filter>source\extern\glm\detail</Filter>
-    </None>
-    <None Include="..\..\source\glm\detail\type_mat4x2.inl">
-      <Filter>source\extern\glm\detail</Filter>
-    </None>
-    <None Include="..\..\source\glm\detail\type_mat4x3.inl">
-      <Filter>source\extern\glm\detail</Filter>
-    </None>
-    <None Include="..\..\source\glm\detail\type_mat4x4.inl">
-      <Filter>source\extern\glm\detail</Filter>
-    </None>
-    <None Include="..\..\source\glm\detail\type_vec.inl">
-      <Filter>source\extern\glm\detail</Filter>
-    </None>
-    <None Include="..\..\source\glm\detail\type_vec1.inl">
-      <Filter>source\extern\glm\detail</Filter>
-    </None>
-    <None Include="..\..\source\glm\detail\type_vec2.inl">
-      <Filter>source\extern\glm\detail</Filter>
-    </None>
-    <None Include="..\..\source\glm\detail\type_vec3.inl">
-      <Filter>source\extern\glm\detail</Filter>
-    </None>
-    <None Include="..\..\source\glm\detail\type_vec4.inl">
-      <Filter>source\extern\glm\detail</Filter>
-    </None>
-    <None Include="..\..\source\glm\detail\type_vec4_avx.inl">
-      <Filter>source\extern\glm\detail</Filter>
-    </None>
-    <None Include="..\..\source\glm\detail\type_vec4_avx2.inl">
-      <Filter>source\extern\glm\detail</Filter>
-    </None>
-    <None Include="..\..\source\glm\detail\type_vec4_sse2.inl">
-      <Filter>source\extern\glm\detail</Filter>
-    </None>
-    <None Include="..\..\source\glm\detail\func_common.inl">
-      <Filter>source\extern\glm\detail</Filter>
-    </None>
-    <None Include="..\..\source\glm\detail\func_exponential.inl">
-      <Filter>source\extern\glm\detail</Filter>
-    </None>
-    <None Include="..\..\source\glm\detail\func_geometric.inl">
-      <Filter>source\extern\glm\detail</Filter>
-    </None>
-    <None Include="..\..\source\glm\detail\func_integer.inl">
-      <Filter>source\extern\glm\detail</Filter>
-    </None>
-    <None Include="..\..\source\glm\detail\func_matrix.inl">
-      <Filter>source\extern\glm\detail</Filter>
-    </None>
-    <None Include="..\..\source\glm\detail\func_packing.inl">
-      <Filter>source\extern\glm\detail</Filter>
-    </None>
-    <None Include="..\..\source\glm\detail\func_trigonometric.inl">
-      <Filter>source\extern\glm\detail</Filter>
-    </None>
-    <None Include="..\..\source\glm\detail\func_vector_relational.inl">
-      <Filter>source\extern\glm\detail</Filter>
-    </None>
-    <None Include="..\..\source\glm\detail\intrinsic_common.inl">
-      <Filter>source\extern\glm\detail</Filter>
-    </None>
-    <None Include="..\..\source\glm\detail\intrinsic_exponential.inl">
-      <Filter>source\extern\glm\detail</Filter>
-    </None>
-    <None Include="..\..\source\glm\detail\intrinsic_geometric.inl">
-      <Filter>source\extern\glm\detail</Filter>
-    </None>
-    <None Include="..\..\source\glm\detail\intrinsic_integer.inl">
-      <Filter>source\extern\glm\detail</Filter>
-    </None>
-    <None Include="..\..\source\glm\detail\intrinsic_matrix.inl">
-      <Filter>source\extern\glm\detail</Filter>
-    </None>
-    <None Include="..\..\source\glm\detail\intrinsic_trigonometric.inl">
-      <Filter>source\extern\glm\detail</Filter>
-    </None>
-    <None Include="..\..\source\glm\detail\intrinsic_vector_relational.inl">
-      <Filter>source\extern\glm\detail</Filter>
-    </None>
-    <None Include="..\..\source\glm\detail\type_gentype.inl">
-      <Filter>source\extern\glm\detail</Filter>
-    </None>
-    <None Include="..\..\source\glm\detail\type_half.inl">
-      <Filter>source\extern\glm\detail</Filter>
-    </None>
-    <None Include="..\..\source\glm\detail\type_mat.inl">
-      <Filter>source\extern\glm\detail</Filter>
-    </None>
-    <None Include="..\..\source\glm\detail\type_mat2x2.inl">
-      <Filter>source\extern\glm\detail</Filter>
-    </None>
-    <None Include="..\..\source\glm\detail\type_mat2x3.inl">
-      <Filter>source\extern\glm\detail</Filter>
-    </None>
-    <None Include="..\..\source\glm\detail\type_mat2x4.inl">
-      <Filter>source\extern\glm\detail</Filter>
-    </None>
-    <None Include="..\..\source\glm\detail\type_mat3x2.inl">
-      <Filter>source\extern\glm\detail</Filter>
-    </None>
-    <None Include="..\..\source\glm\detail\type_mat3x3.inl">
-      <Filter>source\extern\glm\detail</Filter>
-    </None>
-    <None Include="..\..\source\glm\gtx\closest_point.inl">
+    <None Include="..\..\source\extern\glm\gtx\associated_min_max.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\color_space.inl">
+    <None Include="..\..\source\extern\glm\gtx\bit.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\color_space_YCoCg.inl">
+    <None Include="..\..\source\extern\glm\gtx\closest_point.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\common.inl">
+    <None Include="..\..\source\extern\glm\gtx\color_space.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\compatibility.inl">
+    <None Include="..\..\source\extern\glm\gtx\color_space_YCoCg.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\component_wise.inl">
+    <None Include="..\..\source\extern\glm\gtx\common.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\dual_quaternion.inl">
+    <None Include="..\..\source\extern\glm\gtx\compatibility.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\euler_angles.inl">
+    <None Include="..\..\source\extern\glm\gtx\component_wise.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\extend.inl">
+    <None Include="..\..\source\extern\glm\gtx\dual_quaternion.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\extended_min_max.inl">
+    <None Include="..\..\source\extern\glm\gtx\euler_angles.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\fast_exponential.inl">
+    <None Include="..\..\source\extern\glm\gtx\extend.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\fast_square_root.inl">
+    <None Include="..\..\source\extern\glm\gtx\extended_min_max.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\fast_trigonometry.inl">
+    <None Include="..\..\source\extern\glm\gtx\fast_exponential.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\float_notmalize.inl">
+    <None Include="..\..\source\extern\glm\gtx\fast_square_root.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\gradient_paint.inl">
+    <None Include="..\..\source\extern\glm\gtx\fast_trigonometry.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\handed_coordinate_space.inl">
+    <None Include="..\..\source\extern\glm\gtx\float_notmalize.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\hash.inl">
+    <None Include="..\..\source\extern\glm\gtx\gradient_paint.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\integer.inl">
+    <None Include="..\..\source\extern\glm\gtx\handed_coordinate_space.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\intersect.inl">
+    <None Include="..\..\source\extern\glm\gtx\hash.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\io.inl">
+    <None Include="..\..\source\extern\glm\gtx\integer.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\log_base.inl">
+    <None Include="..\..\source\extern\glm\gtx\intersect.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\matrix_cross_product.inl">
+    <None Include="..\..\source\extern\glm\gtx\io.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\matrix_decompose.inl">
+    <None Include="..\..\source\extern\glm\gtx\log_base.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\matrix_interpolation.inl">
+    <None Include="..\..\source\extern\glm\gtx\matrix_cross_product.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\matrix_major_storage.inl">
+    <None Include="..\..\source\extern\glm\gtx\matrix_decompose.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\matrix_operation.inl">
+    <None Include="..\..\source\extern\glm\gtx\matrix_interpolation.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\matrix_query.inl">
+    <None Include="..\..\source\extern\glm\gtx\matrix_major_storage.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\matrix_transform_2d.inl">
+    <None Include="..\..\source\extern\glm\gtx\matrix_operation.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\mixed_product.inl">
+    <None Include="..\..\source\extern\glm\gtx\matrix_query.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\norm.inl">
+    <None Include="..\..\source\extern\glm\gtx\matrix_transform_2d.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\normal.inl">
+    <None Include="..\..\source\extern\glm\gtx\mixed_product.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\normalize_dot.inl">
+    <None Include="..\..\source\extern\glm\gtx\norm.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\number_precision.inl">
+    <None Include="..\..\source\extern\glm\gtx\normal.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\optimum_pow.inl">
+    <None Include="..\..\source\extern\glm\gtx\normalize_dot.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\orthonormalize.inl">
+    <None Include="..\..\source\extern\glm\gtx\number_precision.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\perpendicular.inl">
+    <None Include="..\..\source\extern\glm\gtx\optimum_pow.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\polar_coordinates.inl">
+    <None Include="..\..\source\extern\glm\gtx\orthonormalize.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\projection.inl">
+    <None Include="..\..\source\extern\glm\gtx\perpendicular.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\quaternion.inl">
+    <None Include="..\..\source\extern\glm\gtx\polar_coordinates.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\raw_data.inl">
+    <None Include="..\..\source\extern\glm\gtx\projection.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\rotate_normalized_axis.inl">
+    <None Include="..\..\source\extern\glm\gtx\quaternion.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\rotate_vector.inl">
+    <None Include="..\..\source\extern\glm\gtx\raw_data.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\scalar_relational.inl">
+    <None Include="..\..\source\extern\glm\gtx\rotate_normalized_axis.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\simd_mat4.inl">
+    <None Include="..\..\source\extern\glm\gtx\rotate_vector.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\simd_quat.inl">
+    <None Include="..\..\source\extern\glm\gtx\scalar_relational.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\simd_vec4.inl">
+    <None Include="..\..\source\extern\glm\gtx\simd_mat4.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\spline.inl">
+    <None Include="..\..\source\extern\glm\gtx\simd_quat.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\std_based_type.inl">
+    <None Include="..\..\source\extern\glm\gtx\simd_vec4.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\string_cast.inl">
+    <None Include="..\..\source\extern\glm\gtx\spline.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\transform.inl">
+    <None Include="..\..\source\extern\glm\gtx\std_based_type.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\transform2.inl">
+    <None Include="..\..\source\extern\glm\gtx\string_cast.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\type_aligned.inl">
+    <None Include="..\..\source\extern\glm\gtx\transform.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\vector_angle.inl">
+    <None Include="..\..\source\extern\glm\gtx\transform2.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\vector_query.inl">
+    <None Include="..\..\source\extern\glm\gtx\type_aligned.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\wrap.inl">
+    <None Include="..\..\source\extern\glm\gtx\vector_angle.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\associated_min_max.inl">
+    <None Include="..\..\source\extern\glm\gtx\vector_query.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtx\bit.inl">
+    <None Include="..\..\source\extern\glm\gtx\wrap.inl">
       <Filter>source\extern\glm\gtx</Filter>
     </None>
-    <None Include="..\..\source\glm\gtc\color_space.inl">
+    <None Include="..\..\source\extern\glm\gtc\bitfield.inl">
       <Filter>source\extern\glm\gtc</Filter>
     </None>
-    <None Include="..\..\source\glm\gtc\constants.inl">
+    <None Include="..\..\source\extern\glm\gtc\color_space.inl">
       <Filter>source\extern\glm\gtc</Filter>
     </None>
-    <None Include="..\..\source\glm\gtc\epsilon.inl">
+    <None Include="..\..\source\extern\glm\gtc\constants.inl">
       <Filter>source\extern\glm\gtc</Filter>
     </None>
-    <None Include="..\..\source\glm\gtc\integer.inl">
+    <None Include="..\..\source\extern\glm\gtc\epsilon.inl">
       <Filter>source\extern\glm\gtc</Filter>
     </None>
-    <None Include="..\..\source\glm\gtc\matrix_access.inl">
+    <None Include="..\..\source\extern\glm\gtc\integer.inl">
       <Filter>source\extern\glm\gtc</Filter>
     </None>
-    <None Include="..\..\source\glm\gtc\matrix_inverse.inl">
+    <None Include="..\..\source\extern\glm\gtc\matrix_access.inl">
       <Filter>source\extern\glm\gtc</Filter>
     </None>
-    <None Include="..\..\source\glm\gtc\matrix_transform.inl">
+    <None Include="..\..\source\extern\glm\gtc\matrix_inverse.inl">
       <Filter>source\extern\glm\gtc</Filter>
     </None>
-    <None Include="..\..\source\glm\gtc\noise.inl">
+    <None Include="..\..\source\extern\glm\gtc\matrix_transform.inl">
       <Filter>source\extern\glm\gtc</Filter>
     </None>
-    <None Include="..\..\source\glm\gtc\packing.inl">
+    <None Include="..\..\source\extern\glm\gtc\noise.inl">
       <Filter>source\extern\glm\gtc</Filter>
     </None>
-    <None Include="..\..\source\glm\gtc\quaternion.inl">
+    <None Include="..\..\source\extern\glm\gtc\packing.inl">
       <Filter>source\extern\glm\gtc</Filter>
     </None>
-    <None Include="..\..\source\glm\gtc\random.inl">
+    <None Include="..\..\source\extern\glm\gtc\quaternion.inl">
       <Filter>source\extern\glm\gtc</Filter>
     </None>
-    <None Include="..\..\source\glm\gtc\reciprocal.inl">
+    <None Include="..\..\source\extern\glm\gtc\random.inl">
       <Filter>source\extern\glm\gtc</Filter>
     </None>
-    <None Include="..\..\source\glm\gtc\round.inl">
+    <None Include="..\..\source\extern\glm\gtc\reciprocal.inl">
       <Filter>source\extern\glm\gtc</Filter>
     </None>
-    <None Include="..\..\source\glm\gtc\type_precision.inl">
+    <None Include="..\..\source\extern\glm\gtc\round.inl">
       <Filter>source\extern\glm\gtc</Filter>
     </None>
-    <None Include="..\..\source\glm\gtc\type_ptr.inl">
+    <None Include="..\..\source\extern\glm\gtc\type_precision.inl">
       <Filter>source\extern\glm\gtc</Filter>
     </None>
-    <None Include="..\..\source\glm\gtc\ulp.inl">
+    <None Include="..\..\source\extern\glm\gtc\type_ptr.inl">
       <Filter>source\extern\glm\gtc</Filter>
     </None>
-    <None Include="..\..\source\glm\gtc\vec1.inl">
+    <None Include="..\..\source\extern\glm\gtc\ulp.inl">
       <Filter>source\extern\glm\gtc</Filter>
     </None>
-    <None Include="..\..\source\glm\gtc\bitfield.inl">
+    <None Include="..\..\source\extern\glm\gtc\vec1.inl">
       <Filter>source\extern\glm\gtc</Filter>
+    </None>
+    <None Include="..\..\source\extern\glm\detail\func_common.inl">
+      <Filter>source\extern\glm\detail</Filter>
+    </None>
+    <None Include="..\..\source\extern\glm\detail\func_exponential.inl">
+      <Filter>source\extern\glm\detail</Filter>
+    </None>
+    <None Include="..\..\source\extern\glm\detail\func_geometric.inl">
+      <Filter>source\extern\glm\detail</Filter>
+    </None>
+    <None Include="..\..\source\extern\glm\detail\func_integer.inl">
+      <Filter>source\extern\glm\detail</Filter>
+    </None>
+    <None Include="..\..\source\extern\glm\detail\func_matrix.inl">
+      <Filter>source\extern\glm\detail</Filter>
+    </None>
+    <None Include="..\..\source\extern\glm\detail\func_packing.inl">
+      <Filter>source\extern\glm\detail</Filter>
+    </None>
+    <None Include="..\..\source\extern\glm\detail\func_trigonometric.inl">
+      <Filter>source\extern\glm\detail</Filter>
+    </None>
+    <None Include="..\..\source\extern\glm\detail\func_vector_relational.inl">
+      <Filter>source\extern\glm\detail</Filter>
+    </None>
+    <None Include="..\..\source\extern\glm\detail\intrinsic_common.inl">
+      <Filter>source\extern\glm\detail</Filter>
+    </None>
+    <None Include="..\..\source\extern\glm\detail\intrinsic_exponential.inl">
+      <Filter>source\extern\glm\detail</Filter>
+    </None>
+    <None Include="..\..\source\extern\glm\detail\intrinsic_geometric.inl">
+      <Filter>source\extern\glm\detail</Filter>
+    </None>
+    <None Include="..\..\source\extern\glm\detail\intrinsic_integer.inl">
+      <Filter>source\extern\glm\detail</Filter>
+    </None>
+    <None Include="..\..\source\extern\glm\detail\intrinsic_matrix.inl">
+      <Filter>source\extern\glm\detail</Filter>
+    </None>
+    <None Include="..\..\source\extern\glm\detail\intrinsic_trigonometric.inl">
+      <Filter>source\extern\glm\detail</Filter>
+    </None>
+    <None Include="..\..\source\extern\glm\detail\intrinsic_vector_relational.inl">
+      <Filter>source\extern\glm\detail</Filter>
+    </None>
+    <None Include="..\..\source\extern\glm\detail\type_gentype.inl">
+      <Filter>source\extern\glm\detail</Filter>
+    </None>
+    <None Include="..\..\source\extern\glm\detail\type_half.inl">
+      <Filter>source\extern\glm\detail</Filter>
+    </None>
+    <None Include="..\..\source\extern\glm\detail\type_mat.inl">
+      <Filter>source\extern\glm\detail</Filter>
+    </None>
+    <None Include="..\..\source\extern\glm\detail\type_mat2x2.inl">
+      <Filter>source\extern\glm\detail</Filter>
+    </None>
+    <None Include="..\..\source\extern\glm\detail\type_mat2x3.inl">
+      <Filter>source\extern\glm\detail</Filter>
+    </None>
+    <None Include="..\..\source\extern\glm\detail\type_mat2x4.inl">
+      <Filter>source\extern\glm\detail</Filter>
+    </None>
+    <None Include="..\..\source\extern\glm\detail\type_mat3x2.inl">
+      <Filter>source\extern\glm\detail</Filter>
+    </None>
+    <None Include="..\..\source\extern\glm\detail\type_mat3x3.inl">
+      <Filter>source\extern\glm\detail</Filter>
+    </None>
+    <None Include="..\..\source\extern\glm\detail\type_mat3x4.inl">
+      <Filter>source\extern\glm\detail</Filter>
+    </None>
+    <None Include="..\..\source\extern\glm\detail\type_mat4x2.inl">
+      <Filter>source\extern\glm\detail</Filter>
+    </None>
+    <None Include="..\..\source\extern\glm\detail\type_mat4x3.inl">
+      <Filter>source\extern\glm\detail</Filter>
+    </None>
+    <None Include="..\..\source\extern\glm\detail\type_mat4x4.inl">
+      <Filter>source\extern\glm\detail</Filter>
+    </None>
+    <None Include="..\..\source\extern\glm\detail\type_vec.inl">
+      <Filter>source\extern\glm\detail</Filter>
+    </None>
+    <None Include="..\..\source\extern\glm\detail\type_vec1.inl">
+      <Filter>source\extern\glm\detail</Filter>
+    </None>
+    <None Include="..\..\source\extern\glm\detail\type_vec2.inl">
+      <Filter>source\extern\glm\detail</Filter>
+    </None>
+    <None Include="..\..\source\extern\glm\detail\type_vec3.inl">
+      <Filter>source\extern\glm\detail</Filter>
+    </None>
+    <None Include="..\..\source\extern\glm\detail\type_vec4.inl">
+      <Filter>source\extern\glm\detail</Filter>
+    </None>
+    <None Include="..\..\source\extern\glm\detail\type_vec4_avx.inl">
+      <Filter>source\extern\glm\detail</Filter>
+    </None>
+    <None Include="..\..\source\extern\glm\detail\type_vec4_avx2.inl">
+      <Filter>source\extern\glm\detail</Filter>
+    </None>
+    <None Include="..\..\source\extern\glm\detail\type_vec4_sse2.inl">
+      <Filter>source\extern\glm\detail</Filter>
     </None>
   </ItemGroup>
 </Project>
