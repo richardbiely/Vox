@@ -4,20 +4,14 @@
 //	David Henry - tfc_duke@hotmail.com
 //
 
-
 #ifndef		__TARGA_H_
 #define		__TARGA_H_
-
-
-
-#pragma warning( disable : 4103 ) // used #pragma pack to change alignment
-
-
 
 // --------------------------------------------
 // TGAHEADER - targa header.
 // --------------------------------------------
 
+#pragma pack(push)
 #pragma pack(1)
 
 typedef struct tagTGAHEADER
@@ -41,13 +35,15 @@ typedef struct tagTGAHEADER
 
 } TGAHEADER, *PTGAHEADER;
 
-#pragma pack(4)
-
-
+#pragma pack(pop)
 
 #ifdef WIN32
 #include	<windows.h>
 #else
+
+
+#pragma pack(push)
+#pragma pack(4)
 
 // --------------------------------------------
 // RGBTRIPLE - 24 bits pixel
@@ -61,9 +57,13 @@ typedef struct tagRGBTRIPLE			// rgbt
 
 } RGBTRIPLE, *PRGBTRIPLE;
 
+#pragma pack(pop)
+
 #endif	// WIN32
 
 
+#pragma pack(push)
+#pragma pack(4)
 
 // --------------------------------------------
 // BGRAQUAD - 32 bits pixel
@@ -78,5 +78,6 @@ typedef struct tagBGRAQUAD			// rgbt
 
 } BGRAQUAD, *PBGRAQUAD;
 
+#pragma pack(pop)
 
 #endif	// __TARGA_H_
