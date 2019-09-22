@@ -1,26 +1,26 @@
 version: 2
 
 jobs:
-	build:
-		docker:
-			- image: "debian:stretch"
-		steps:
-			- checkout
-			- run:
-					name: Installing sudo
-					command: 'apt-get update && apt-get install -y sudo && rm -rf /var/lib/apt/lists/*'
-			- run:
-					name: Installing GCC
-					command: 'apt-get update && apt-get install -y gcc g++'
-			- run:
-					name: Install cmake
-					command: 'apt-get update && sudo apt-get install -y cmake'
-			- run:
-					name: Install libxxf86vm-dev
-					command: 'apt-get update && sudo apt-get install -y libxxf86vm-dev'
-			- run:
-					name: Creating Build Files
-					command: 'cmake -H. -Bbuild'
-			- run:
-					name: Creating Binary Files
-					command: 'cmake --build build'
+  build:
+    docker:
+      - image: "debian:stretch"
+    steps:
+      - checkout
+      - run:
+          name: Installing sudo
+          command: 'apt-get update && apt-get install -y sudo && rm -rf /var/lib/apt/lists/*'
+      - run:
+          name: Installing GCC
+          command: 'apt-get update && apt-get install -y gcc g++'
+      - run:
+          name: Install cmake
+          command: 'apt-get update && sudo apt-get install -y cmake'
+      - run:
+          name: Install libxxf86vm-dev
+          command: 'apt-get update && sudo apt-get install -y libxxf86vm-dev'
+      - run:
+          name: Creating Build Files
+          command: 'cmake -H. -Bbuild'
+      - run:
+          name: Creating Binary Files
+          command: 'cmake --build build'
