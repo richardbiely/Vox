@@ -19,6 +19,12 @@ jobs:
           name: Install libxxf86vm-dev
           command: 'apt-get update && sudo apt-get install -y libxxf86vm-dev'
       - run:
+          name: Install libglu1-mesa-dev
+          command: 'apt-get update && sudo apt-get install -y libglu1-mesa-dev'
+      - run:
+          name: Install freeglut3-dev
+          command: 'apt-get update && sudo apt-get install -y freeglut3-dev'
+      - run:
           name: Creating Build Files
           command: 'cmake -H. -Bbuild'
       - run:
