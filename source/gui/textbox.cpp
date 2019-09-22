@@ -18,7 +18,7 @@
 #include "focusmanager.h"
 #include "../utils/TimeManager.h"
 
-#include <GLFW/glfw3.h>
+#include <glfw/glfw3.h>
 
 
 TextBox::TextBox(Renderer* pRenderer, unsigned int GUIFont, const std::string &defaultText, const std::string &name)

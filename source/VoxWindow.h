@@ -22,7 +22,7 @@
 #include <string>
 using namespace std;
 
-#include <GLFW/glfw3.h>
+#include <glfw/glfw3.h>
 
 class VoxGame;
 class VoxSettings;
